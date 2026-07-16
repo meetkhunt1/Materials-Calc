@@ -1,12 +1,15 @@
-name: Deploy to Hostinger
+name: Build for Hostinger
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,11 +27,9 @@ jobs:
       - name: Build static site
         run: npm run build
 
-      - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Push built site to hostinger-deploy branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
-          server-dir: ./public_html/
+          branch: hostinger-deploy
+          folder: out
+          single-commit: true
