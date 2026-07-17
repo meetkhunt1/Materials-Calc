@@ -1,5 +1,35 @@
 ErrorDocument 404 /404.html
 
+# ── Security: this site is 100% static. No script may ever execute here. ──
+# Any PHP/CGI file dropped by an attacker (e.g. via a compromised sibling
+# site on the same hosting account) is refused instead of executed.
+<FilesMatch "\.(php|php[0-9]|phtml|pht|phar|cgi|pl|py|sh|asp|aspx|jsp)$">
+  Require all denied
+</FilesMatch>
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .pht .phar
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .pht .phar
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+
+# Never serve dotfiles (.git, .env, .htaccess itself, etc.)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.git
+
+# No directory listings
+Options -Indexes
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
 RewriteEngine On
 
 # Force HTTPS

@@ -1,0 +1,47 @@
+name: Site integrity check
+
+# Detects tampering: compares the live site against the known-good
+# hostinger-deploy branch. A failed run means the live files no longer
+# match what we deployed — investigate immediately.
+on:
+  schedule:
+    - cron: "17 */6 * * *" # every 6 hours
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout deployed snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: hostinger-deploy
+
+      - name: Compare live files against deployed snapshot
+        run: |
+          set -e
+          FAIL=0
+          for f in index.html sitemap.xml robots.txt 404.html \
+                   asphalt/index.html concrete/index.html gravel/index.html \
+                   asphalt/asphalt-calculator/index.html; do
+            url="https://materialscalc.com/${f%index.html}"
+            [ "$f" = "index.html" ] && url="https://materialscalc.com/"
+            case "$f" in
+              sitemap.xml|robots.txt|404.html) url="https://materialscalc.com/$f" ;;
+            esac
+            curl -fsS "$url" -o live_file || { echo "::error::FETCH FAILED: $url"; FAIL=1; continue; }
+            if ! cmp -s live_file "$f"; then
+              echo "::error::TAMPERED OR CHANGED: $url does not match deployed copy"
+              FAIL=1
+            else
+              echo "OK: $url"
+            fi
+          done
+
+          # Security posture probes
+          code=$(curl -s -o /dev/null -w '%{http_code}' https://materialscalc.com/.git/config)
+          [ "$code" = "404" ] || [ "$code" = "403" ] || { echo "::error::/.git/config reachable (HTTP $code)"; FAIL=1; }
+          hsts=$(curl -sI https://materialscalc.com/ | grep -ci 'strict-transport-security' || true)
+          [ "$hsts" -ge 1 ] || { echo "::error::HSTS header missing — .htaccess may have been altered"; FAIL=1; }
+
+          exit $FAIL
