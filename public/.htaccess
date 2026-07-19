@@ -32,6 +32,11 @@ Options -Indexes
 
 RewriteEngine On
 
+# Spam URL paths left over from the past hack: serve 410 Gone (not 404)
+# so search engines drop them from the index faster. These prefixes are
+# not used by any real page on the site.
+RewriteRule ^(item|pages)(/|$) - [G]
+
 # Force HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
