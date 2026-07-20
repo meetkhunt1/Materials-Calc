@@ -37,6 +37,14 @@ RewriteEngine On
 # not used by any real page on the site.
 RewriteRule ^(item|pages)(/|$) - [G]
 
+# 301s for old WordPress URLs still indexed by Google — preserve their
+# ranking equity by pointing each at its closest equivalent page.
+RewriteRule ^the-asphalt-engineering-guide/?$ /asphalt/asphalt-thickness-guide/ [R=301,L]
+RewriteRule ^tons-of-asphalt-per-square-foot/?$ /asphalt/asphalt-coverage-guide/ [R=301,L]
+RewriteRule ^cubic-yards-to-tons/?$ /asphalt/tons-vs-cubic-yards/ [R=301,L]
+RewriteRule ^asphalt-driveway-cost-per-square-foot/?$ /asphalt/asphalt-cost-per-square-foot/ [R=301,L]
+RewriteRule ^how-much-asphalt-do-i-need/?$ /asphalt/asphalt-calculator/ [R=301,L]
+
 # Force HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
