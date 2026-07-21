@@ -32,10 +32,24 @@ Options -Indexes
 
 RewriteEngine On
 
-# Spam URL paths left over from the past hack: serve 410 Gone (not 404)
-# so search engines drop them from the index faster. These prefixes are
-# not used by any real page on the site.
-RewriteRule ^(item|pages)(/|$) - [G]
+# ── Hacked-URL cleanup: serve 410 Gone (not 404) so Google drops these ──
+# GSC still shows the old WordPress/hack URLs ranking instead of the real
+# pages. 410 tells search engines to remove them permanently and fast.
+
+# (a) Query-string spam served off "/" as HTTP 200 (the largest ghost group
+#     in GSC — e.g. /?products/detail/233526373, /?category/0/1/..., /?userguide).
+#     RewriteRule matches only the path, so these MUST be caught on QUERY_STRING.
+RewriteCond %{QUERY_STRING} (^|&)?(products/|category/|userguide|detail/) [NC,OR]
+RewriteCond %{QUERY_STRING} (SPC=|SGC=|CPPR=|SFL_DF=) [NC]
+RewriteRule ^ - [G]
+
+# (b) Spam path prefixes never used by any real page (real routes are
+#     /concrete, /asphalt, /gravel, /sand). Added "products" alongside item|pages.
+RewriteRule ^(item|pages|products)(/|$) - [G]
+
+# (c) Ghost PHP endpoints from the WordPress era (e.g. /detail.php?items/...,
+#     /products.php?products/...). No PHP exists on this static site.
+RewriteRule ^(detail|products)\.php$ - [G]
 
 # 301s for old WordPress URLs still indexed by Google — preserve their
 # ranking equity by pointing each at its closest equivalent page.
@@ -45,9 +59,12 @@ RewriteRule ^cubic-yards-to-tons/?$ /asphalt/tons-vs-cubic-yards/ [R=301,L]
 RewriteRule ^asphalt-driveway-cost-per-square-foot/?$ /asphalt/asphalt-cost-per-square-foot/ [R=301,L]
 RewriteRule ^how-much-asphalt-do-i-need/?$ /asphalt/asphalt-calculator/ [R=301,L]
 
-# Force HTTPS
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# ── Canonical host + HTTPS in one hop ──
+# GSC shows BOTH www and non-www indexed (www./ at pos 3, / at pos 40),
+# splitting ranking signals. Force https + non-www (matches siteConfig.url).
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://materialscalc.com%{REQUEST_URI} [R=301,L]
 
 # Cache static assets aggressively (Next.js hashes filenames)
 <IfModule mod_expires.c>
