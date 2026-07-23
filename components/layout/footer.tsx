@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calculator } from "lucide-react";
+import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { categories } from "@/data/categories";
 import { siteConfig } from "@/lib/site";
@@ -17,11 +17,14 @@ export function Footer() {
       <Container className="py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-3">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
-              <span className="flex size-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <Calculator className="size-4" />
-              </span>
-              {siteConfig.shortName}
+            <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} home`}>
+              <Image
+                src="/logo.png"
+                alt={siteConfig.name}
+                width={436}
+                height={90}
+                className="h-7 w-auto"
+              />
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
               Accurate, free construction material calculators and estimating

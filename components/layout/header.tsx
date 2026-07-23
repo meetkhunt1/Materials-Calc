@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calculator } from "lucide-react";
+import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { SiteSearch } from "@/components/layout/site-search";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -13,13 +13,17 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
-          className="flex items-center gap-2 font-semibold tracking-tight"
+          className="flex items-center"
           aria-label={`${siteConfig.name} home`}
         >
-          <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Calculator className="size-4.5" />
-          </span>
-          <span className="text-lg">{siteConfig.shortName}</span>
+          <Image
+            src="/logo.png"
+            alt={siteConfig.name}
+            width={436}
+            height={90}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
