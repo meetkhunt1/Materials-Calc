@@ -1,0 +1,80 @@
+ErrorDocument 404 /404.html
+
+# ── Security: this site is 100% static. No script may ever execute here. ──
+# Any PHP/CGI file dropped by an attacker (e.g. via a compromised sibling
+# site on the same hosting account) is refused instead of executed.
+<FilesMatch "\.(php|php[0-9]|phtml|pht|phar|cgi|pl|py|sh|asp|aspx|jsp)$">
+  Require all denied
+</FilesMatch>
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .pht .phar
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .pht .phar
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+
+# Never serve dotfiles (.git, .env, .htaccess itself, etc.)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.git
+
+# No directory listings
+Options -Indexes
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+RewriteEngine On
+
+# ── Hacked-URL cleanup: serve 410 Gone (not 404) so Google drops these ──
+# GSC still shows the old WordPress/hack URLs ranking instead of the real
+# pages. 410 tells search engines to remove them permanently and fast.
+
+# (a) Query-string spam served off "/" as HTTP 200 (the largest ghost group
+#     in GSC — e.g. /?products/detail/233526373, /?category/0/1/..., /?userguide).
+#     RewriteRule matches only the path, so these MUST be caught on QUERY_STRING.
+RewriteCond %{QUERY_STRING} (^|&)?(products/|category/|userguide|detail/) [NC,OR]
+RewriteCond %{QUERY_STRING} (SPC=|SGC=|CPPR=|SFL_DF=) [NC]
+RewriteRule ^ - [G]
+
+# (b) Spam path prefixes never used by any real page (real routes are
+#     /concrete, /asphalt, /gravel, /sand). Added "products" alongside item|pages.
+RewriteRule ^(item|pages|products)(/|$) - [G]
+
+# (c) Ghost PHP endpoints from the WordPress era (e.g. /detail.php?items/...,
+#     /products.php?products/...). No PHP exists on this static site.
+RewriteRule ^(detail|products)\.php$ - [G]
+
+# 301s for old WordPress URLs still indexed by Google — preserve their
+# ranking equity by pointing each at its closest equivalent page.
+RewriteRule ^the-asphalt-engineering-guide/?$ /asphalt/asphalt-thickness-guide/ [R=301,L]
+RewriteRule ^tons-of-asphalt-per-square-foot/?$ /asphalt/asphalt-coverage-guide/ [R=301,L]
+RewriteRule ^cubic-yards-to-tons/?$ /asphalt/tons-vs-cubic-yards/ [R=301,L]
+RewriteRule ^asphalt-driveway-cost-per-square-foot/?$ /asphalt/asphalt-cost-per-square-foot/ [R=301,L]
+RewriteRule ^how-much-asphalt-do-i-need/?$ /asphalt/asphalt-calculator/ [R=301,L]
+
+# ── Canonical host + HTTPS in one hop ──
+# GSC shows BOTH www and non-www indexed (www./ at pos 3, / at pos 40),
+# splitting ranking signals. Force https + non-www (matches siteConfig.url).
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://materialscalc.com%{REQUEST_URI} [R=301,L]
+
+# Cache static assets aggressively (Next.js hashes filenames)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
