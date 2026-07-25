@@ -1,0 +1,31 @@
+name: Debug connectivity to Hostinger
+# Temporary diagnostic: figure out why GitHub runners can't reach
+# materialscalc.com while every other network can. Delete when solved.
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe
+        run: |
+          echo "== DNS =="
+          getent hosts materialscalc.com || true
+          echo "== control: google.com =="
+          curl -s -o /dev/null --max-time 15 -w '%{http_code} connect=%{time_connect}s\n' https://www.google.com/ || echo "curl exit $?"
+          echo "== control: hostinger.com (same CDN) =="
+          curl -s -o /dev/null --max-time 15 -w '%{http_code} connect=%{time_connect}s\n' https://www.hostinger.com/ || echo "curl exit $?"
+          echo "== target: default curl =="
+          curl -sv -o /dev/null --max-time 20 https://materialscalc.com/ 2>&1 | tail -20 || echo "curl exit $?"
+          echo "== target: browser user-agent =="
+          curl -s -o /dev/null --max-time 20 -w '%{http_code} connect=%{time_connect}s ttfb=%{time_starttransfer}s\n' \
+            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36" \
+            https://materialscalc.com/ || echo "curl exit $?"
+          echo "== target: www host =="
+          curl -s -o /dev/null --max-time 20 -w '%{http_code} connect=%{time_connect}s\n' https://www.materialscalc.com/ || echo "curl exit $?"
+          echo "== target: HTTP/1.1 vs HTTP/2 =="
+          curl -s -o /dev/null --http1.1 --max-time 20 -w 'http1.1: %{http_code} connect=%{time_connect}s\n' https://materialscalc.com/ || echo "curl exit $?"
+          echo "== target: plain http =="
+          curl -s -o /dev/null --max-time 20 -w 'http: %{http_code}\n' http://materialscalc.com/ || echo "curl exit $?"
+          echo "done"
