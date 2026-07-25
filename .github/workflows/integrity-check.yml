@@ -21,6 +21,9 @@ jobs:
         run: |
           set -e
           FAIL=0
+          # Retry transient network failures so a brief blip between GitHub
+          # and Hostinger doesn't page as a false tamper alarm.
+          CURL="curl -fsS --retry 5 --retry-all-errors --retry-delay 10 --max-time 30"
           for f in index.html sitemap.xml robots.txt 404.html \
                    asphalt/index.html concrete/index.html gravel/index.html \
                    asphalt/asphalt-calculator/index.html; do
@@ -29,7 +32,7 @@ jobs:
             case "$f" in
               sitemap.xml|robots.txt|404.html) url="https://materialscalc.com/$f" ;;
             esac
-            curl -fsS "$url" -o live_file || { echo "::error::FETCH FAILED: $url"; FAIL=1; continue; }
+            $CURL "$url" -o live_file || { echo "::error::FETCH FAILED: $url"; FAIL=1; continue; }
             if ! cmp -s live_file "$f"; then
               echo "::error::TAMPERED OR CHANGED: $url does not match deployed copy"
               FAIL=1
@@ -39,9 +42,9 @@ jobs:
           done
 
           # Security posture probes
-          code=$(curl -s -o /dev/null -w '%{http_code}' https://materialscalc.com/.git/config)
+          code=$(curl -s --retry 5 --retry-delay 10 --max-time 30 -o /dev/null -w '%{http_code}' https://materialscalc.com/.git/config)
           [ "$code" = "404" ] || [ "$code" = "403" ] || { echo "::error::/.git/config reachable (HTTP $code)"; FAIL=1; }
-          hsts=$(curl -sI https://materialscalc.com/ | grep -ci 'strict-transport-security' || true)
+          hsts=$(curl -sI --retry 5 --retry-all-errors --retry-delay 10 --max-time 30 https://materialscalc.com/ | grep -ci 'strict-transport-security' || true)
           [ "$hsts" -ge 1 ] || { echo "::error::HSTS header missing — .htaccess may have been altered"; FAIL=1; }
 
           exit $FAIL
