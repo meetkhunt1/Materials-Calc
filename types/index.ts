@@ -77,6 +77,14 @@ export interface FieldValue {
 
 export type CalculatorValues = Record<string, FieldValue>;
 
+export interface CalculatorPreset {
+  id: string;
+  label: string;
+  description?: string;
+  /** Field values to apply — same shape as CalculatorValues, so units come along with each preset. */
+  values: CalculatorValues;
+}
+
 export interface CalculatorDefinition {
   id: string;
   name: string;
@@ -90,6 +98,14 @@ export interface CalculatorDefinition {
   compute: (inputs: Record<string, number | string>) => CalculatorResultItem[];
   /** Optional footnote shown under results */
   disclaimer?: string;
+  /** One-click project-size shortcuts rendered above the field grid */
+  presets?: CalculatorPreset[];
+  /**
+   * Canonical page path (e.g. "/concrete/concrete-calculator/") — set only when
+   * a matching route exists under app/embed/{id}/. Presence of this field is what
+   * makes the "Embed" action appear in <CalculatorActions>.
+   */
+  embedPath?: string;
 }
 
 export interface ValidationError {
@@ -107,6 +123,8 @@ export interface Author {
   avatar?: string;
   url?: string;
   sameAs?: string[];
+  /** Topics this author/team actually covers, for Article/Person schema. */
+  knowsAbout?: string[];
 }
 
 export interface FaqItem {

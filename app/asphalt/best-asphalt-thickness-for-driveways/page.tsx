@@ -19,7 +19,7 @@ import { getAuthor } from "@/data/authors";
 import { ASPHALT, drivewayGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Best Asphalt Thickness for Driveways (2, 3 or 4 Inches?)";
+const title = "Best Asphalt Thickness for Driveways";
 const description =
   "2, 3 or 4 inches of asphalt for a driveway? The engineering answer: 3 in compacted hot mix in two lifts over 6 in of aggregate base for cars and pickups — with the tonnage, cost and lifespan numbers for each option.";
 const path = ASPHALT.drivewayThickness;

@@ -1,6 +1,6 @@
 import { execFileSync } from "node:child_process";
 import type { MetadataRoute } from "next";
-import { absoluteUrl } from "@/lib/site";
+import { canonicalUrl } from "@/lib/site";
 import { searchIndex } from "@/data/search-index";
 import { liveCategories } from "@/data/categories";
 
@@ -11,13 +11,50 @@ export const dynamic = "force-static";
  * category list + search index. Publishing flow for every new page:
  *   1. create the page  2. add it to data/search-index.ts → done.
  */
+
+/** The five highest-search-volume calculators — homepage-linked, top crawl priority. */
+const TOP_CALCULATORS = new Set([
+  "/concrete/concrete-calculator/",
+  "/concrete/concrete-slab-calculator/",
+  "/gravel/gravel-calculator/",
+  "/asphalt/asphalt-calculator/",
+  "/asphalt/asphalt-driveway-calculator/",
+]);
+
 /**
- * next.config.ts sets trailingSlash: true, so every page is served at a
- * trailing-slash URL; sitemap entries must match or they 301-redirect.
+ * Flagship per-category guides: the "how to calculate", density, coverage,
+ * cost and comparison pages each topic cluster anchors around. Everything
+ * else informational (sub-guides, series pages, FAQs) is a minor page.
  */
-function canonicalUrl(path: string): string {
-  const url = absoluteUrl(path);
-  return url.endsWith("/") ? url : `${url}/`;
+const CORE_GUIDES = new Set([
+  "/concrete/how-to-calculate-concrete/",
+  "/asphalt/how-to-calculate-asphalt/",
+  "/gravel/how-to-calculate-gravel/",
+  "/concrete/concrete-density-chart/",
+  "/asphalt/asphalt-density-chart/",
+  "/asphalt/asphalt-density-explained/",
+  "/gravel/gravel-density-chart/",
+  "/gravel/gravel-density-database/",
+  "/concrete/concrete-coverage-guide/",
+  "/asphalt/asphalt-coverage-guide/",
+  "/gravel/gravel-coverage-guide/",
+  "/concrete/concrete-cost-guide/",
+  "/asphalt/asphalt-cost-guide/",
+  "/gravel/gravel-price-guide/",
+  "/concrete/concrete-mix-ratio-guide/",
+  "/concrete/concrete-curing-guide/",
+  "/asphalt/asphalt-thickness-guide/",
+  "/concrete/concrete-vs-asphalt/",
+  "/asphalt/asphalt-vs-concrete/",
+  "/gravel/crushed-stone-vs-gravel/",
+]);
+
+/** Tiered priority for a content page: calculators first, then guide depth. */
+function priorityFor(href: string): number {
+  if (TOP_CALCULATORS.has(href)) return 0.9;
+  if (href.endsWith("-calculator/")) return 0.8;
+  if (CORE_GUIDES.has(href)) return 0.7;
+  return 0.6;
 }
 
 /**
@@ -79,7 +116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: canonicalUrl(entry.href),
     lastModified: lastModified(entry.href),
     changeFrequency: "monthly",
-    priority: 0.8,
+    priority: priorityFor(entry.href),
   }));
 
   return [...staticEntries, ...contentEntries];

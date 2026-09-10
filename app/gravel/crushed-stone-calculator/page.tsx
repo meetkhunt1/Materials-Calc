@@ -5,10 +5,12 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { CrushedStoneCalculatorCard } from "@/content/gravel/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { InlineToc } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -113,6 +115,27 @@ export default function CrushedStoneCalculatorPage() {
         }
       >
         <InlineToc items={toc} />
+
+        <QuickAnswer
+          question="How many tons of #57 crushed stone do I need?"
+          answer="A 50 ft French drain (1 ft wide × 12 in deep) needs about 3.0 tons of #57 stone with a 10% waste allowance. A 20×10 ft driveway base at 6 in of crusher run needs about 7.7 tons. Tonnage scales directly with area and depth."
+          ruleOfThumb="#57 stone weighs about 109 lb/ft³ compacted — roughly 1.8 tons per 100 ft² at 4 in deep."
+          formula="Tons = Area × depth × compacted density ÷ 2,000 × (1 + waste)"
+        />
+
+        <Section title="Crushed stone by common project">
+          <QuickSizeTable
+            headers={["Project", "Dimensions", "Stone type", "Tons", "Loose volume (on the truck)"]}
+            rows={[
+              ["French drain", "50 ft × 1 ft × 12 in", "#57 clean stone", "3.00 tons", "2.23 yd³"],
+              ["French drain, long run", "100 ft × 1 ft × 12 in", "#57 clean stone", "6.01 tons", "4.46 yd³"],
+              ["Walkway base", "3 ft × 20 ft × 4 in", "#57 clean stone", "1.20 tons", "0.89 yd³"],
+              ["Driveway base", "20 ft × 10 ft × 6 in", "Crusher run", "7.69 tons", "4.56 yd³"],
+              ["Driveway base, long run", "50 ft × 12 ft × 6 in", "Crusher run", "23.07 tons", "13.69 yd³"],
+            ]}
+            caption="10% waste included. 'Loose volume' is what arrives on the truck — always larger than the finished in-place volume, since compaction densifies the stone. Cost varies by stone type and region; see the crushed stone cost guide."
+          />
+        </Section>
 
         <Section title="Loose vs compacted: what you're really ordering">
           <FormulaBlock

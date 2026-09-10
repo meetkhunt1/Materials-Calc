@@ -132,6 +132,14 @@ export default function PeaGravelInstallationGuidePage() {
             path,
             totalTime: "PT4H",
             steps: installSteps,
+            tools: ["Shovel", "Plate compactor", "Rake", "Screed board", "Wheelbarrow"],
+            supplies: [
+              "Pea gravel",
+              "Geotextile landscape fabric",
+              "Crushed stone base",
+              "Landscape edging",
+            ],
+            deepLinkSteps: true,
           }),
         ]}
       />
@@ -199,8 +207,8 @@ export default function PeaGravelInstallationGuidePage() {
 
         <Section title="Step-by-step installation">
           <ol className="list-decimal space-y-4 pl-5 text-muted-foreground">
-            {installSteps.map((step) => (
-              <li key={step.name} className="leading-relaxed">
+            {installSteps.map((step, index) => (
+              <li id={`step-${index + 1}`} key={step.name} className="leading-relaxed">
                 <strong className="text-foreground">{step.name}.</strong> {step.text}
               </li>
             ))}

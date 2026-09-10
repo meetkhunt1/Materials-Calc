@@ -7,7 +7,7 @@ import { SuccessBlock } from "@/components/blocks/callout";
 import { CategoryNav } from "@/components/layout/category-nav";
 import { JsonLd } from "@/components/seo/json-ld";
 import { webPageSchema } from "@/lib/jsonld";
-import { absoluteUrl } from "@/lib/site";
+import { canonicalUrl } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
 
@@ -28,11 +28,11 @@ export default function AboutPage() {
           {
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "@id": absoluteUrl("/about#aboutpage"),
+            "@id": canonicalUrl("/about#aboutpage"),
             name: title,
-            url: absoluteUrl(path),
-            isPartOf: { "@id": absoluteUrl("/#website") },
-            about: { "@id": absoluteUrl("/#organization") },
+            url: canonicalUrl(path),
+            isPartOf: { "@id": canonicalUrl("/#website") },
+            about: { "@id": canonicalUrl("/#organization") },
           },
         ]}
       />

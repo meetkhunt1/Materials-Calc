@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { absoluteUrl, siteConfig } from "@/lib/site";
+import { absoluteUrl, canonicalUrl, siteConfig } from "@/lib/site";
 
 interface BuildMetadataOptions {
   title: string;
@@ -40,7 +40,7 @@ export function buildMetadata(options: BuildMetadataOptions): Metadata {
     noIndex,
   } = options;
 
-  const url = absoluteUrl(path);
+  const url = canonicalUrl(path);
   const ogImage = image
     ? image.startsWith("http")
       ? image

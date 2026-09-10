@@ -30,7 +30,7 @@ import {
 } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Cost Guide — Per Ton, Per Square Foot, Installed";
+const title = "Asphalt Cost Guide — Per Ton & Sq Ft";
 const description =
   "What asphalt costs in 2026: $100–150 per ton for hot mix at the plant, $2.50–5 per square foot installed, plus the trucking, mobilization and minimum-load fees that decide small-job pricing.";
 const path = ASPHALT.costGuide;

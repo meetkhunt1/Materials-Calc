@@ -5,6 +5,7 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { ColumnCalculatorCard } from "@/content/concrete/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { TipBlock, SuccessBlock } from "@/components/blocks/callout";
@@ -104,6 +105,13 @@ export default function ColumnCalculatorPage() {
         calculator={<ColumnCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How many bags of concrete for a 12-inch sonotube?"
+          answer="A 12-inch sonotube 4 ft deep holds 3.14 ft³ of concrete — six 80 lb bags (0.60 ft³ each) with the standard 5% tube-form waste allowance. Larger or deeper piers scale directly; see the sonotube table below for every standard size."
+          ruleOfThumb="A 12-inch tube holds about 0.79 ft³ of concrete per foot of height."
+          formula="V = (π × d² ÷ 4) × h"
+        />
+
         <Section title="Round vs square: the volume formulas">
           <div className="grid gap-4 sm:grid-cols-2">
             <FormulaBlock

@@ -50,7 +50,7 @@ export function MobileNav() {
               ) : (
                 <Link
                   key={category.slug}
-                  href={`/${category.slug}`}
+                  href={`/${category.slug}/`}
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-muted"
                 >

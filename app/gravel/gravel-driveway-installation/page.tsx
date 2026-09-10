@@ -137,6 +137,13 @@ export default function GravelDrivewayInstallationPage() {
             path,
             steps: installSteps,
             totalTime: "P3D",
+            tools: ["Tractor or skid steer", "Plate compactor", "String line & stakes", "Rake"],
+            supplies: [
+              "Crushed stone (sub-base, base and surface layers)",
+              "Geotextile fabric",
+              "Landscape edging",
+            ],
+            deepLinkSteps: true,
           }),
         ]}
       />
@@ -172,7 +179,7 @@ export default function GravelDrivewayInstallationPage() {
         <Section title="The eight-step build">
           <ol className="space-y-4">
             {installSteps.map((step, index) => (
-              <li key={step.name} className="flex gap-4 rounded-xl border p-4">
+              <li id={`step-${index + 1}`} key={step.name} className="flex gap-4 rounded-xl border p-4">
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
                   {index + 1}
                 </span>

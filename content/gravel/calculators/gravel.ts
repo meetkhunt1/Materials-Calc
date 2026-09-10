@@ -1,5 +1,16 @@
 import { defineCalculator } from "@/lib/calculator";
 import { fromBase } from "@/lib/units";
+import type { SelectOption } from "@/types";
+
+/** Shared material list — reused by the rectangular and circular gravel calculators. */
+export const GRAVEL_TYPE_OPTIONS: SelectOption[] = [
+  { value: "common", label: "Common gravel — 105 lb/ft³", data: { density: 1680 } },
+  { value: "pea", label: "Pea gravel — 96 lb/ft³", data: { density: 1540 } },
+  { value: "57", label: "Crushed stone #57 — 100 lb/ft³", data: { density: 1600 } },
+  { value: "crusher", label: "Crusher run (compacted) — 140 lb/ft³", data: { density: 2240 } },
+  { value: "river", label: "River rock — 100 lb/ft³", data: { density: 1600 } },
+  { value: "bank", label: "Bank run mix — 112 lb/ft³", data: { density: 1800 } },
+];
 
 /** General gravel calculator: area × depth × type density → tons + yards. */
 export const gravelCalculator = defineCalculator({
@@ -7,6 +18,7 @@ export const gravelCalculator = defineCalculator({
   name: "Gravel Calculator",
   description:
     "Tons and cubic yards for any gravel or crushed stone type. Pick the material — the right density is applied automatically.",
+  embedPath: "/gravel/gravel-calculator/",
   fields: [
     {
       id: "length",
@@ -15,6 +27,7 @@ export const gravelCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "yd"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "20",
       min: 0.01,
     },
@@ -25,6 +38,7 @@ export const gravelCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "yd"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "10",
       min: 0.01,
     },
@@ -35,6 +49,7 @@ export const gravelCalculator = defineCalculator({
       unitCategory: "length",
       units: ["in", "cm", "mm", "ft"],
       defaultUnit: "in",
+      defaultValue: 3,
       placeholder: "3",
       min: 0.25,
       hint: "Paths 2–3 in · patios 2–4 in · driveways 4–12 in in layers.",
@@ -43,14 +58,7 @@ export const gravelCalculator = defineCalculator({
       id: "type",
       label: "Gravel type",
       type: "select",
-      options: [
-        { value: "common", label: "Common gravel — 105 lb/ft³", data: { density: 1680 } },
-        { value: "pea", label: "Pea gravel — 96 lb/ft³", data: { density: 1540 } },
-        { value: "57", label: "Crushed stone #57 — 100 lb/ft³", data: { density: 1600 } },
-        { value: "crusher", label: "Crusher run (compacted) — 140 lb/ft³", data: { density: 2240 } },
-        { value: "river", label: "River rock — 100 lb/ft³", data: { density: 1600 } },
-        { value: "bank", label: "Bank run mix — 112 lb/ft³", data: { density: 1800 } },
-      ],
+      options: GRAVEL_TYPE_OPTIONS,
       defaultValue: "common",
     },
     {

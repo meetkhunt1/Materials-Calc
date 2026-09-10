@@ -10,6 +10,7 @@ export const asphaltCalculator = defineCalculator({
   name: "Asphalt Calculator",
   description:
     "Tons and cubic yards for any paving area. Uses compacted thickness — the thickness after rolling, which is what plans specify.",
+  embedPath: "/asphalt/asphalt-calculator/",
   fields: [
     {
       id: "length",
@@ -18,6 +19,7 @@ export const asphaltCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "yd"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "50",
       min: 0.01,
     },
@@ -28,6 +30,7 @@ export const asphaltCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "yd"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "12",
       min: 0.01,
     },
@@ -38,6 +41,7 @@ export const asphaltCalculator = defineCalculator({
       unitCategory: "length",
       units: ["in", "cm", "mm"],
       defaultUnit: "in",
+      defaultValue: 3,
       placeholder: "3",
       min: 0.25,
       hint: "Driveways: 3 in total. Parking lots: 4 in+. Overlays: 1.5–2 in.",

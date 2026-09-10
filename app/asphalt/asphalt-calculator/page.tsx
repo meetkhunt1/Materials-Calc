@@ -5,10 +5,12 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { AsphaltCalculatorCard } from "@/content/asphalt/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { InlineToc } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock, TipBlock } from "@/components/blocks/callout";
 import { DensityTable } from "@/components/tables/density-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -29,7 +31,7 @@ import {
 import { CONCRETE, calculatorLinks as concreteCalcs, pickLinks as pickConcrete } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Calculator — Tons, Cubic Yards & Coverage";
+const title = "Asphalt Calculator — Tons & Cubic Yards";
 const description =
   "Convert paving dimensions to the tons of hot mix a plant will quote. Handles compacted thickness, four mix densities and a waste allowance.";
 const path = ASPHALT.calculator;
@@ -130,6 +132,27 @@ export default function AsphaltCalculatorPage() {
         }
       >
         <InlineToc items={toc} />
+
+        <QuickAnswer
+          question="How much asphalt do I need for a 10×10 area?"
+          answer="A 10×10 ft area at the standard 3-inch compacted depth needs about 1.99 tons of hot mix asphalt with a 10% waste allowance. A 20×20 ft pad at the same depth needs roughly 8 tons."
+          ruleOfThumb="One ton of hot mix asphalt covers about 53 ft² at 3 in compacted."
+          formula="Tons = Area × depth × 145 lb/ft³ ÷ 2,000 × (1 + waste)"
+        />
+
+        <Section title="Asphalt by common area size">
+          <QuickSizeTable
+            headers={["Area", "Tons (hot mix)", "Volume (yd³)", "Est. material cost"]}
+            rows={[
+              ["10×10 ft", "1.99 tons", "1.02 yd³", "$199–299"],
+              ["12×12 ft", "2.87 tons", "1.47 yd³", "$287–431"],
+              ["16×20 ft", "6.38 tons", "3.26 yd³", "$638–957"],
+              ["20×20 ft", "7.97 tons", "4.07 yd³", "$797–1,196"],
+              ["24×24 ft", "11.48 tons", "5.87 yd³", "$1,148–1,722"],
+            ]}
+            caption="3 in compacted depth, hot mix asphalt (145 lb/ft³), 10% waste included. Cost uses the $100–150/ton material range from our driveway cost guide — installed price (with labor and base) runs higher."
+          />
+        </Section>
 
         <Section title="The tonnage formula">
           <FormulaBlock

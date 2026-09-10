@@ -5,10 +5,12 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { PeaGravelCalculatorCard } from "@/content/gravel/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { TipBlock, InfoBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -39,7 +41,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How much pea gravel do I need for a 12×12 patio?",
     answer:
-      "At the typical 3-inch depth: 144 ft² × 0.25 ft = 36 ft³ = 1.33 yd³ ≈ 1.7 tons, or about 79 half-cubic-foot bags. That bag count is the argument for bulk delivery — at $5 a bag it's $395 versus roughly $90 of bulk stone plus delivery.",
+      "At the typical 3-inch depth: 144 ft² × 0.25 ft = 36 ft³ = 1.33 yd³, or about 1.9 tons and 79 half-cubic-foot bags with a 10% waste allowance. That bag count is the argument for bulk delivery — at $5 a bag it's $395 versus roughly $90 of bulk stone plus delivery.",
   },
   {
     question: "How many bags of pea gravel in a ton?",
@@ -112,6 +114,27 @@ export default function PeaGravelCalculatorPage() {
         calculator={<PeaGravelCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much pea gravel do I need for a 10×10 patio?"
+          answer="A 10×10 ft patio at the typical 3-inch depth needs about 1.32 tons (1.02 yd³) of pea gravel with a 10% waste allowance — around 55 retail 0.5 ft³ bags if buying bagged instead of bulk."
+          ruleOfThumb="One ton of pea gravel covers about 83 ft² at 3 in deep."
+          formula="Tons = Area × depth × 96 lb/ft³ ÷ 2,000 × (1 + waste)"
+        />
+
+        <Section title="Pea gravel by common area size">
+          <QuickSizeTable
+            headers={["Area", "Tons", "Volume (yd³)", "0.5 ft³ bags", "Est. material cost"]}
+            rows={[
+              ["10×10 ft", "1.32 tons", "1.02 yd³", "55", "$40–79"],
+              ["12×12 ft", "1.90 tons", "1.47 yd³", "79", "$57–114"],
+              ["16×20 ft", "4.23 tons", "3.26 yd³", "175", "$127–254"],
+              ["20×20 ft", "5.29 tons", "4.07 yd³", "219", "$159–317"],
+              ["24×24 ft", "7.61 tons", "5.87 yd³", "316", "$228–457"],
+            ]}
+            caption="3 in depth, 10% waste included. Cost uses the $30–60/ton range from our gravel price guide — confirm with local suppliers."
+          />
+        </Section>
+
         <Section title="Coverage at a glance">
           <CoverageTable
             headers={["Depth", "Per ton", "Per 0.5 ft³ bag"]}

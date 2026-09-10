@@ -119,4 +119,39 @@ export const drivewayGravelCalculator = defineCalculator({
   },
   disclaimer:
     "Layer system follows FHWA gravel-road practice: coarse stone at the bottom, fines-bound crusher run on top, each compacted before the next. Depths are compacted values.",
+  presets: [
+    {
+      id: "new-drive-100ft",
+      label: "100 ft New Driveway",
+      description: "3-layer full build, 12 ft wide",
+      values: {
+        length: { value: 100, unit: "ft" },
+        width: { value: 12, unit: "ft" },
+        build: { value: "full" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "standard-drive-50ft",
+      label: "50 ft Driveway",
+      description: "2-layer standard build, 12 ft wide",
+      values: {
+        length: { value: 50, unit: "ft" },
+        width: { value: 12, unit: "ft" },
+        build: { value: "standard" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "resurface-existing",
+      label: "Resurface Existing",
+      description: "2 in crusher-run top-up, 12 ft wide",
+      values: {
+        length: { value: 50, unit: "ft" },
+        width: { value: 12, unit: "ft" },
+        build: { value: "topup" },
+        waste: { value: "10" },
+      },
+    },
+  ],
 });

@@ -24,7 +24,7 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Equipment Cost — Pavers, Rollers & What Jobs Carry";
+const title = "Asphalt Equipment Cost Guide";
 const description =
   "2026 rental rates for pavers, rollers, milling machines and compactors, what each machine adds per square foot, and why hand-laying hot mix beyond patch scale fails on compaction.";
 const path = ASPHALT.equipmentCost;

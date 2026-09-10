@@ -4,19 +4,9 @@ import * as React from "react";
 import Link from "next/link";
 import { Search, FileText, X } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { searchIndex, type SearchEntry } from "@/data/search-index";
+import { searchIndex } from "@/data/search-index";
+import { searchSite } from "@/lib/search";
 import { cn } from "@/lib/utils";
-
-function matchScore(entry: SearchEntry, query: string): number {
-  const q = query.toLowerCase();
-  const title = entry.title.toLowerCase();
-  if (title === q) return 100;
-  if (title.startsWith(q)) return 80;
-  if (title.includes(q)) return 60;
-  if (entry.keywords?.some((k) => k.toLowerCase().includes(q))) return 40;
-  if (entry.category.toLowerCase().includes(q)) return 20;
-  return 0;
-}
 
 /** Header search — opens a dialog, filters the static index as you type. */
 export function SiteSearch({ className }: { className?: string }) {
@@ -34,15 +24,7 @@ export function SiteSearch({ className }: { className?: string }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const results = React.useMemo(() => {
-    if (!query.trim()) return searchIndex.slice(0, 8);
-    return searchIndex
-      .map((entry) => ({ entry, score: matchScore(entry, query.trim()) }))
-      .filter((r) => r.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 8)
-      .map((r) => r.entry);
-  }, [query]);
+  const results = React.useMemo(() => searchSite(query), [query]);
 
   return (
     <DialogPrimitive.Root open={open} onOpenChange={setOpen}>

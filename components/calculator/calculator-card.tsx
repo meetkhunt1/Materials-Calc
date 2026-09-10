@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { CalculatorField } from "@/components/calculator/calculator-field";
 import { CalculatorResults } from "@/components/calculator/calculator-results";
 import { CalculatorActions } from "@/components/calculator/calculator-actions";
+import { CalculatorPresets } from "@/components/calculator/calculator-presets";
 import { useCalculator } from "@/hooks/use-calculator";
 import { cn } from "@/lib/utils";
 
@@ -50,6 +51,10 @@ export function CalculatorCard({
       }}
       className="space-y-5"
     >
+      {definition.presets && definition.presets.length > 0 && (
+        <CalculatorPresets presets={definition.presets} onSelect={(preset) => calc.applyPreset(preset.values)} />
+      )}
+
       <div className={cn("grid gap-4", columns === 2 && "sm:grid-cols-2")}>
         {definition.fields.map((field) => (
           <CalculatorField
@@ -80,6 +85,7 @@ export function CalculatorCard({
         shareTitle={definition.name}
         onReset={calc.reset}
         hasResults={Boolean(calc.results && calc.results.length > 0)}
+        embed={definition.embedPath ? { id: definition.id, path: definition.embedPath } : undefined}
       />
     </form>
   );

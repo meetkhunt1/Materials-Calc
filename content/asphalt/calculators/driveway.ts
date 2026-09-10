@@ -116,4 +116,30 @@ export const drivewayCalculator = defineCalculator({
   },
   disclaimer:
     "Assumes compacted hot mix at 145 lb/ft³ over dense-graded aggregate at 140 lb/ft³. Base thickness is a soils decision — see the driveway installation guide before finalizing.",
+  presets: [
+    {
+      id: "1-car-12x30",
+      label: "12×30 1-Car",
+      description: "3 in asphalt, 6 in base",
+      values: {
+        length: { value: 30, unit: "ft" },
+        width: { value: 12, unit: "ft" },
+        asphaltThickness: { value: "0.0762" },
+        baseThickness: { value: "0.1524" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "2-car-20x40",
+      label: "20×40 2-Car",
+      description: "3 in asphalt, 6 in base",
+      values: {
+        length: { value: 40, unit: "ft" },
+        width: { value: 20, unit: "ft" },
+        asphaltThickness: { value: "0.0762" },
+        baseThickness: { value: "0.1524" },
+        waste: { value: "10" },
+      },
+    },
+  ],
 });

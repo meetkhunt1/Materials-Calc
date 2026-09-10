@@ -126,6 +126,14 @@ export default function DrivewayInstallationGuidePage() {
             path,
             steps: installSteps,
             totalTime: "P2D",
+            tools: ["Plate compactor", "String line & stakes", "Rake", "Asphalt lute", "Hand tamper"],
+            supplies: [
+              "Hot mix asphalt (HMA)",
+              "Crushed stone base",
+              "Tack coat / asphalt emulsion",
+              "Landscape edging",
+            ],
+            deepLinkSteps: true,
           }),
         ]}
       />
@@ -160,7 +168,7 @@ export default function DrivewayInstallationGuidePage() {
         <Section title="The eight-step installation sequence">
           <ol className="space-y-4">
             {installSteps.map((step, index) => (
-              <li key={step.name} className="flex gap-4 rounded-xl border p-4">
+              <li id={`step-${index + 1}`} key={step.name} className="flex gap-4 rounded-xl border p-4">
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
                   {index + 1}
                 </span>

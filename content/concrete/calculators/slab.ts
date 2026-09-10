@@ -16,6 +16,7 @@ export const slabCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "in", "yd"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "20",
       min: 0.01,
     },
@@ -26,6 +27,7 @@ export const slabCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "in", "yd"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "10",
       min: 0.01,
     },
@@ -100,4 +102,50 @@ export const slabCalculator = defineCalculator({
   },
   disclaimer:
     "Add rebar or welded wire mesh per your local code; reinforcement is not included in this estimate. Thickened slab edges need extra volume — see the worked example below.",
+  presets: [
+    {
+      id: "patio-10x10",
+      label: "10×10 Patio",
+      description: "4 in slab, 10% waste",
+      values: {
+        length: { value: 10, unit: "ft" },
+        width: { value: 10, unit: "ft" },
+        thickness: { value: "0.1016" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "shed-12x12",
+      label: "12×12 Shed",
+      description: "4 in slab, 10% waste",
+      values: {
+        length: { value: 12, unit: "ft" },
+        width: { value: 12, unit: "ft" },
+        thickness: { value: "0.1016" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "garage-20x20",
+      label: "20×20 2-Car Garage",
+      description: "6 in slab, 10% waste",
+      values: {
+        length: { value: 20, unit: "ft" },
+        width: { value: 20, unit: "ft" },
+        thickness: { value: "0.1524" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "sidewalk-4x50",
+      label: "4×50 Sidewalk",
+      description: "4 in slab, 10% waste",
+      values: {
+        length: { value: 50, unit: "ft" },
+        width: { value: 4, unit: "ft" },
+        thickness: { value: "0.1016" },
+        waste: { value: "10" },
+      },
+    },
+  ],
 });

@@ -110,6 +110,9 @@ export default function HowToCalculateGravelPage() {
             path,
             steps,
             totalTime: "PT15M",
+            tools: ["Measuring tape", "Wheelbarrow", "Rake", "Plate compactor"],
+            supplies: ["Crushed stone or gravel", "Geotextile landscape fabric"],
+            deepLinkSteps: true,
           }),
         ]}
       />
@@ -145,7 +148,7 @@ export default function HowToCalculateGravelPage() {
         <Section title="The five-step method">
           <ol className="space-y-4">
             {steps.map((step, index) => (
-              <li key={step.name} className="flex gap-4 rounded-xl border p-4">
+              <li id={`step-${index + 1}`} key={step.name} className="flex gap-4 rounded-xl border p-4">
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
                   {index + 1}
                 </span>

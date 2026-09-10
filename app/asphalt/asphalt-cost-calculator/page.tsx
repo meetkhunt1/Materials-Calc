@@ -5,9 +5,11 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { CostCalculatorCard } from "@/content/asphalt/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock, TipBlock } from "@/components/blocks/callout";
 import { CostTable } from "@/components/tables/cost-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -103,6 +105,26 @@ export default function CostCalculatorPage() {
         calculator={<CostCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much does asphalt cost per square foot installed?"
+          answer="At this calculator's defaults ($115/ton hot mix, $2.50/ft² paving labor), a 3-inch driveway runs about $4.79/ft² for material and paving alone — within the typical $2.50–5.00/ft² range for that scope. Excavation, base gravel and mobilization are separate line items, not included here."
+          ruleOfThumb="Budget $2.50–5.00 per square foot for asphalt material and paving labor at 3 inches — add excavation, base and mobilization for the full job cost."
+          formula="Total = (Tons × price per ton) + (Area × labor rate per ft²)"
+        />
+
+        <Section title="Asphalt scope cost by driveway size">
+          <QuickSizeTable
+            headers={["Driveway area", "Tons", "Material cost", "Labor cost", "Total (asphalt scope)"]}
+            rows={[
+              ["400 ft²", "7.97 tons", "$917", "$1,000", "$1,917 (≈$4.79/ft²)"],
+              ["600 ft²", "11.96 tons", "$1,375", "$1,500", "$2,875 (≈$4.79/ft²)"],
+              ["800 ft²", "15.95 tons", "$1,834", "$2,000", "$3,834 (≈$4.79/ft²)"],
+              ["1,200 ft²", "23.92 tons", "$2,751", "$3,000", "$5,751 (≈$4.79/ft²)"],
+            ]}
+            caption="At the calculator's defaults: $115/ton hot mix, $2.50/ft² paving labor, 3 in compacted depth, 10% waste. Excludes excavation, base gravel and mobilization — see the worked example below for the full job budget, and swap in your local per-ton price."
+          />
+        </Section>
+
         <Section title="What the calculator includes">
           <p className="text-muted-foreground">
             Two cost layers: material (tons × your per-ton price, waste included) and an

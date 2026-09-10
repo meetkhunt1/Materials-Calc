@@ -12,6 +12,12 @@ export const authors: Record<string, Author> = {
     bio: "Our editorial team combines hands-on construction experience with careful research. Every calculator and guide is checked against industry standards and supplier data before publishing.",
     avatar: "/authors/materials-team.jpg",
     url: "/about",
+    knowsAbout: [
+      "Concrete Estimating",
+      "Asphalt Estimating",
+      "Gravel & Aggregate Estimating",
+      "Construction Material Takeoffs",
+    ],
   },
 };
 

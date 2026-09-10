@@ -21,7 +21,7 @@ import { getAuthor } from "@/data/authors";
 import { CONCRETE, guideLinks, calculatorLinks, pickLinks, REFS } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete Mix Ratio Guide — 1:2:4, M15, M20 & More";
+const title = "Concrete Mix Ratio Guide (1:2:4, M20)";
 const description =
   "Nominal concrete mix ratios explained: cement-sand-aggregate proportions, IS-grade equivalents, water-cement ratio, and batch quantities per cubic meter.";
 const path = CONCRETE.mixRatio;

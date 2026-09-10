@@ -101,6 +101,13 @@ export default function CuringGuidePage() {
             path,
             steps: curingSteps,
             totalTime: "P7D",
+            tools: ["Fogging sprayer", "Moisture meter (optional)"],
+            supplies: [
+              "Wet burlap or cotton mats",
+              "Plastic sheeting",
+              "Curing compound (ASTM C309)",
+              "Insulated blankets (cold weather)",
+            ],
           }),
         ]}
       />

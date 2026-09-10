@@ -18,7 +18,7 @@ import { getAuthor } from "@/data/authors";
 import { ASPHALT, drivewayGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Standard Driveway Dimensions — Widths, Lengths & Turning Space";
+const title = "Standard Driveway Dimensions Guide";
 const description =
   "Standard driveway dimensions for single, double and circular layouts: 10–12 ft single lanes, 20–24 ft doubles, turning radii by vehicle, apron flares, and the slope limits that keep bumpers off the pavement.";
 const path = ASPHALT.drivewayDimensions;

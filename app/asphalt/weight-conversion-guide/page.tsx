@@ -19,7 +19,7 @@ import { getAuthor } from "@/data/authors";
 import { ASPHALT, weightGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Weight Conversion Guide — Tons, Tonnes, Pounds, Kilograms";
+const title = "Asphalt Weight Conversion Guide";
 const description =
   "Convert asphalt weights between US tons, metric tonnes, pounds and kilograms without a factor-of-10% mistake: 1 US ton = 2,000 lb = 0.907 tonne, 1 tonne = 2,204.6 lb — plus asphalt-specific per-yard and per-meter tables.";
 const path = ASPHALT.weightConversion;

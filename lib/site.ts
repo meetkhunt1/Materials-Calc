@@ -22,3 +22,18 @@ export function absoluteUrl(path: string): string {
   const base = siteConfig.url.replace(/\/$/, "");
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
+
+/**
+ * Canonical page URL — always trailing-slash-terminated to match
+ * next.config.ts's `trailingSlash: true`, so it never 301-redirects.
+ * Use this (not `absoluteUrl`) for any URL that points at an app route
+ * (canonical tags, JSON-LD `url`/`@id`/breadcrumb links). Keep using
+ * `absoluteUrl` for static assets (images, sitemap.xml) which aren't
+ * subject to trailing-slash routing. Preserves an optional #fragment.
+ */
+export function canonicalUrl(path: string): string {
+  const [pathname, hash] = path.split("#");
+  const base = absoluteUrl(pathname || "/");
+  const withSlash = base.endsWith("/") ? base : `${base}/`;
+  return hash ? `${withSlash}#${hash}` : withSlash;
+}

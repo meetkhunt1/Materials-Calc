@@ -39,7 +39,7 @@ export function Header() {
             ) : (
               <Link
                 key={category.slug}
-                href={`/${category.slug}`}
+                href={`/${category.slug}/`}
                 className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 {category.name}

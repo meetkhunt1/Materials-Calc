@@ -18,7 +18,7 @@ import { getAuthor } from "@/data/authors";
 import { ASPHALT, weightGuideLinks, coreGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Density Explained — Loose, Compacted & Why It Matters";
+const title = "Asphalt Density Explained";
 const description =
   "What asphalt density actually measures — bulk specific gravity, air voids and the 92–93% compaction target — and why the gap between loose (117 lb/ft³) and compacted (145 lb/ft³) mix decides pavement life.";
 const path = ASPHALT.densityExplained;

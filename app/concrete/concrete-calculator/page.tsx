@@ -2,13 +2,15 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell";
-import { ConcreteCalculatorCard } from "@/content/concrete/calculators/cards";
+import { MultiShapeConcreteCalculator } from "@/content/concrete/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock, TipBlock } from "@/components/blocks/callout";
 import { DensityTable } from "@/components/tables/density-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -27,7 +29,7 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete Calculator — Volume, Bags & Weight";
+const title = "Concrete Calculator — Yards, Bags & Weight";
 const description =
   "Work out exactly how much concrete to order in cubic yards or meters, plus bag counts and weight. Handles mixed units and includes a waste allowance.";
 const path = CONCRETE.calculator;
@@ -45,7 +47,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How much concrete do I need for a 10×10 slab?",
     answer:
-      "At the standard 4-inch thickness: 10 × 10 × 0.333 = 33.3 ft³ = 1.23 yd³. With a 10% waste allowance, order 1.5 yd³ (ready-mix is sold in quarter-yard steps). Hand mixing instead? That's 56 bags of 80 lb mix.",
+      "At the standard 4-inch thickness: 10 × 10 × 0.333 = 33.3 ft³ = 1.23 yd³. With a 10% waste allowance, order 1.5 yd³ (ready-mix is sold in quarter-yard steps). Hand mixing instead? That's 62 bags of 80 lb mix (waste included, same as the calculator above).",
   },
   {
     question: "How many 80 lb bags make a yard of concrete?",
@@ -88,7 +90,18 @@ export default function ConcreteCalculatorPage() {
       <JsonLd
         data={[
           webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
-          calculatorSchema({ name: "Concrete Calculator", description, path }),
+          calculatorSchema({
+            name: "Concrete Calculator",
+            description,
+            path,
+            features: [
+              "Imperial and metric unit conversion",
+              "Slab, round column and strip footing modes",
+              "Instant material volume and weight calculation",
+              "Waste factor allowance",
+              "Printable and shareable estimate",
+            ],
+          }),
         ]}
       />
       <CalculatorPageShell
@@ -113,9 +126,29 @@ export default function ConcreteCalculatorPage() {
             </Container>
           </>
         }
-        calculator={<ConcreteCalculatorCard />}
+        calculator={<MultiShapeConcreteCalculator />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much concrete do I need for a 10×10 slab?"
+          answer="At the standard 4-inch thickness, a 10×10 ft slab needs 1.23 yd³ of concrete — order 1.5 yd³ with a 10% waste allowance (ready-mix sells in quarter-yard steps), or 62 bags of 80 lb mix if hand mixing."
+          ruleOfThumb="1 cubic yard of concrete covers about 81 ft² at 4 in thick."
+          formula="Order (yd³) = (L × W × D ÷ 27) × (1 + waste)"
+        />
+
+        <Section title="Concrete for common project sizes">
+          <QuickSizeTable
+            headers={["Project size", "Order (yd³)", "80 lb bags", "Est. material cost"]}
+            rows={[
+              ["10×10 ft, 4 in", "1.50 yd³", "62", "$225–270"],
+              ["12×12 ft, 4 in", "2.00 yd³", "88", "$300–360"],
+              ["20×20 ft, 6 in", "8.25 yd³", "Ready-mix recommended", "$1,238–1,485"],
+              ["4×50 ft, 4 in", "2.75 yd³", "123", "$413–495"],
+            ]}
+            caption="10% waste included. Bag counts use 80 lb bags (0.60 ft³ yield). Cost uses the $150–180/yd³ delivered ready-mix range from our concrete cost guide — confirm with your local plant."
+          />
+        </Section>
+
         <Section
           title="How this calculator works"
           lead="Four steps, the same ones a professional estimator follows on every takeoff."

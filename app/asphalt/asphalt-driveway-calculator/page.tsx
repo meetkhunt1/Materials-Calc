@@ -5,10 +5,12 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { DrivewayCalculatorCard } from "@/content/asphalt/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -104,6 +106,24 @@ export default function DrivewayCalculatorPage() {
         calculator={<DrivewayCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much asphalt do I need for a driveway?"
+          answer="A 12×30 ft single-car driveway at 3 in compacted needs about 7.2 tons of hot mix plus 13.8 tons of aggregate base at 6 in. A 20×40 ft double driveway needs roughly 16 tons of asphalt and 31 tons of base."
+          ruleOfThumb="One ton of hot mix covers about 53 ft² at 3 in compacted."
+          formula="Tons = Area × thickness × 145 lb/ft³ ÷ 2,000 × (1 + waste)"
+        />
+
+        <Section title="Driveways by common size">
+          <QuickSizeTable
+            headers={["Driveway size", "Asphalt (tons)", "Base gravel (tons)", "Est. asphalt material cost"]}
+            rows={[
+              ["12×30 ft, 1-Car", "7.2 tons", "13.8 tons", "$718–1,076"],
+              ["20×40 ft, 2-Car", "15.9 tons", "30.8 tons", "$1,595–2,392"],
+            ]}
+            caption="3 in asphalt over 6 in base, 10% waste included. Asphalt cost uses the $100–150/ton material range from our driveway cost guide (installed price, including labor and base, runs $5–10/ft²) — confirm with local suppliers. Match these to the presets above the calculator."
+          />
+        </Section>
+
         <Section title="How the two-layer estimate works">
           <FormulaBlock
             formula="Tons = Area × t × ρ ÷ 2,000   (asphalt and base separately)"

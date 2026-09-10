@@ -5,10 +5,12 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { SlabCalculatorCard } from "@/content/concrete/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -21,7 +23,7 @@ import { getAuthor } from "@/data/authors";
 import { CONCRETE, guideLinks, calculatorLinks, pickLinks, REFS } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete Slab Calculator — Patios, Garages & Driveways";
+const title = "Concrete Slab Calculator — Yards & Bags";
 const description =
   "Calculate concrete for a slab by area and thickness, with code-based thickness recommendations, bag counts and a worked garage-slab example.";
 const path = CONCRETE.slab;
@@ -113,6 +115,26 @@ export default function SlabCalculatorPage() {
         calculator={<SlabCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much concrete do I need for a 10×10 patio slab?"
+          answer="At the standard 4-inch thickness, a 10×10 ft patio slab needs 1.23 yd³ of concrete — order 1.5 yd³ with a 10% waste allowance, or 62 bags of 80 lb mix if hand mixing."
+          ruleOfThumb="1 cubic yard of concrete covers about 81 ft² at 4 in thick."
+          formula="Order (yd³) = (L × W × Thickness ÷ 27) × (1 + waste)"
+        />
+
+        <Section title="Slabs by common project size">
+          <QuickSizeTable
+            headers={["Project size", "Order (yd³)", "80 lb bags", "Est. material cost"]}
+            rows={[
+              ["10×10 ft Patio, 4 in", "1.50 yd³", "62", "$225–270"],
+              ["12×12 ft Shed, 4 in", "2.00 yd³", "88", "$300–360"],
+              ["20×20 ft Garage, 6 in", "8.25 yd³", "Ready-mix recommended", "$1,238–1,485"],
+              ["4×50 ft Sidewalk, 4 in", "2.75 yd³", "123", "$413–495"],
+            ]}
+            caption="10% waste included. Bag counts use 80 lb bags (0.60 ft³ yield). Cost uses the $150–180/yd³ delivered ready-mix range from our concrete cost guide — confirm with your local plant. Match these to the presets above the calculator."
+          />
+        </Section>
+
         <Section
           title="Choosing the slab thickness"
           lead="Thickness is the single biggest cost lever — and the most common overspecification."

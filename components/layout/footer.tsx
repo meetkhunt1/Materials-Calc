@@ -3,19 +3,31 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { categories } from "@/data/categories";
 import { siteConfig } from "@/lib/site";
+import { CONCRETE } from "@/content/concrete/links";
+import { GRAVEL } from "@/content/gravel/links";
+import { ASPHALT } from "@/content/asphalt/links";
 
 const legalLinks = [
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Use", href: "/terms" },
+  { label: "About", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
+  { label: "Privacy Policy", href: "/privacy/" },
+  { label: "Terms of Use", href: "/terms/" },
+];
+
+/** Direct links to the highest-search-volume calculators — footer appears on every page. */
+const popularCalculatorLinks = [
+  { label: "Concrete Slab Calculator", href: CONCRETE.slab },
+  { label: "Concrete Footing Calculator", href: CONCRETE.footing },
+  { label: "Gravel Calculator", href: GRAVEL.calculator },
+  { label: "Pea Gravel Calculator", href: GRAVEL.pea },
+  { label: "Asphalt Driveway Calculator", href: ASPHALT.driveway },
 ];
 
 export function Footer() {
   return (
     <footer className="mt-20 border-t bg-muted/40">
       <Container className="py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="space-y-3">
             <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} home`}>
               <Image
@@ -33,6 +45,19 @@ export function Footer() {
           </div>
 
           <div>
+            <h3 className="mb-3 text-sm font-semibold">Popular Calculators</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {popularCalculatorLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition-colors hover:text-foreground">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <h3 className="mb-3 text-sm font-semibold">Calculators</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {categories.map((category) => (
@@ -43,7 +68,7 @@ export function Footer() {
                     </span>
                   ) : (
                     <Link
-                      href={`/${category.slug}`}
+                      href={`/${category.slug}/`}
                       className="transition-colors hover:text-foreground"
                     >
                       {category.name}

@@ -20,19 +20,19 @@ import {
  */
 
 export const CONCRETE = {
-  hub: "/concrete",
-  calculator: "/concrete/concrete-calculator",
-  slab: "/concrete/concrete-slab-calculator",
-  footing: "/concrete/concrete-footing-calculator",
-  wall: "/concrete/concrete-wall-calculator",
-  column: "/concrete/concrete-column-calculator",
-  howTo: "/concrete/how-to-calculate-concrete",
-  cost: "/concrete/concrete-cost-guide",
-  density: "/concrete/concrete-density-chart",
-  coverage: "/concrete/concrete-coverage-guide",
-  mixRatio: "/concrete/concrete-mix-ratio-guide",
-  curing: "/concrete/concrete-curing-guide",
-  vsAsphalt: "/concrete/concrete-vs-asphalt",
+  hub: "/concrete/",
+  calculator: "/concrete/concrete-calculator/",
+  slab: "/concrete/concrete-slab-calculator/",
+  footing: "/concrete/concrete-footing-calculator/",
+  wall: "/concrete/concrete-wall-calculator/",
+  column: "/concrete/concrete-column-calculator/",
+  howTo: "/concrete/how-to-calculate-concrete/",
+  cost: "/concrete/concrete-cost-guide/",
+  density: "/concrete/concrete-density-chart/",
+  coverage: "/concrete/concrete-coverage-guide/",
+  mixRatio: "/concrete/concrete-mix-ratio-guide/",
+  curing: "/concrete/concrete-curing-guide/",
+  vsAsphalt: "/concrete/concrete-vs-asphalt/",
 } as const;
 
 export const calculatorLinks: RelatedArticle[] = [

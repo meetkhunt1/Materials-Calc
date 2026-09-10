@@ -2,13 +2,15 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell";
-import { GravelCalculatorCard } from "@/content/gravel/calculators/cards";
+import { MultiShapeGravelCalculator } from "@/content/gravel/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock, TipBlock } from "@/components/blocks/callout";
 import { DensityTable } from "@/components/tables/density-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -30,7 +32,7 @@ import { CONCRETE, calculatorLinks as concreteCalcs, pickLinks as pickConcrete }
 import { ASPHALT, asphaltCalculatorLinks, pickLinks as pickAsphalt } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Gravel Calculator — Tons, Cubic Yards & Coverage";
+const title = "Gravel Calculator — Tons & Cubic Yards";
 const description =
   "How much gravel do you need? Get tons and cubic yards for any gravel or crushed stone type, with the right density applied automatically.";
 const path = GRAVEL.calculator;
@@ -90,7 +92,18 @@ export default function GravelCalculatorPage() {
       <JsonLd
         data={[
           webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
-          calculatorSchema({ name: "Gravel Calculator", description, path }),
+          calculatorSchema({
+            name: "Gravel Calculator",
+            description,
+            path,
+            features: [
+              "Imperial and metric unit conversion",
+              "Rectangular and circular/round area modes",
+              "Instant tons and cubic yards for six gravel types",
+              "Waste factor allowance",
+              "Printable and shareable estimate",
+            ],
+          }),
         ]}
       />
       <CalculatorPageShell
@@ -113,9 +126,30 @@ export default function GravelCalculatorPage() {
             </Container>
           </>
         }
-        calculator={<GravelCalculatorCard />}
+        calculator={<MultiShapeGravelCalculator />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much gravel do I need for a 10×10 area?"
+          answer="A 10×10 ft area at the common 3-inch depth needs about 1.44 tons (1.02 yd³) of common gravel with a 10% waste allowance. A 20×20 ft area at the same depth needs roughly 5.8 tons."
+          ruleOfThumb="One ton of common gravel covers about 76 ft² at 3 in deep."
+          formula="Tons = Area × depth × density ÷ 2,000 × (1 + waste)"
+        />
+
+        <Section title="Gravel by common area size">
+          <QuickSizeTable
+            headers={["Area", "Tons (common gravel)", "Volume (yd³)", "Est. material cost"]}
+            rows={[
+              ["10×10 ft", "1.44 tons", "1.02 yd³", "$22–43"],
+              ["12×12 ft", "2.08 tons", "1.47 yd³", "$31–62"],
+              ["16×20 ft", "4.61 tons", "3.26 yd³", "$69–138"],
+              ["20×20 ft", "5.77 tons", "4.07 yd³", "$87–173"],
+              ["24×24 ft", "8.31 tons", "5.87 yd³", "$125–249"],
+            ]}
+            caption="3 in depth, common gravel (105 lb/ft³), 10% waste included. Cost uses the $15–30/ton crusher-run-equivalent range from our gravel price guide — exact pricing varies by material type."
+          />
+        </Section>
+
         <Section title="The gravel formula">
           <FormulaBlock
             formula="Tons = Area (ft²) × (depth ÷ 12) × density ÷ 2,000 × (1 + waste)"

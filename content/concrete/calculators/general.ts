@@ -16,6 +16,7 @@ export const concreteCalculator = defineCalculator({
   name: "Concrete Calculator",
   description:
     "Volume, weight and bag count for any rectangular pour. Switch units freely — the math is handled for you.",
+  embedPath: "/concrete/concrete-calculator/",
   fields: [
     {
       id: "length",
@@ -24,6 +25,7 @@ export const concreteCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "in", "yd", "cm"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "12",
       min: 0.01,
     },
@@ -34,6 +36,7 @@ export const concreteCalculator = defineCalculator({
       unitCategory: "length",
       units: ["ft", "m", "in", "yd", "cm"],
       defaultUnit: "ft",
+      defaultValue: 10,
       placeholder: "10",
       min: 0.01,
     },
@@ -44,6 +47,7 @@ export const concreteCalculator = defineCalculator({
       unitCategory: "length",
       units: ["in", "cm", "mm", "ft", "m"],
       defaultUnit: "in",
+      defaultValue: 4,
       placeholder: "4",
       min: 0.1,
       hint: "Slabs are typically 4 in (100 mm); driveways 5–6 in.",
@@ -123,4 +127,50 @@ export const concreteCalculator = defineCalculator({
   },
   disclaimer:
     "Assumes normal-weight concrete at 2,400 kg/m³ (150 lb/ft³). Ready-mix is sold in 0.25 yd³ increments — confirm the final order with your supplier.",
+  presets: [
+    {
+      id: "patio-10x10",
+      label: "10×10 Patio",
+      description: "4 in deep, 10% waste",
+      values: {
+        length: { value: 10, unit: "ft" },
+        width: { value: 10, unit: "ft" },
+        depth: { value: 4, unit: "in" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "shed-12x12",
+      label: "12×12 Shed",
+      description: "4 in deep, 10% waste",
+      values: {
+        length: { value: 12, unit: "ft" },
+        width: { value: 12, unit: "ft" },
+        depth: { value: 4, unit: "in" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "garage-20x20",
+      label: "20×20 2-Car Garage",
+      description: "6 in deep, 10% waste",
+      values: {
+        length: { value: 20, unit: "ft" },
+        width: { value: 20, unit: "ft" },
+        depth: { value: 6, unit: "in" },
+        waste: { value: "10" },
+      },
+    },
+    {
+      id: "sidewalk-4x50",
+      label: "4×50 Sidewalk",
+      description: "4 in deep, 10% waste",
+      values: {
+        length: { value: 50, unit: "ft" },
+        width: { value: 4, unit: "ft" },
+        depth: { value: 4, unit: "in" },
+        waste: { value: "10" },
+      },
+    },
+  ],
 });

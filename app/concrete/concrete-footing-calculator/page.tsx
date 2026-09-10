@@ -4,10 +4,12 @@ import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrum
 import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell";
 import { FootingCalculatorCard } from "@/content/concrete/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock, TipBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { InlineToc } from "@/components/toc/table-of-contents";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
@@ -111,6 +113,27 @@ export default function FootingCalculatorPage() {
         }
       >
         <InlineToc items={toc} />
+
+        <QuickAnswer
+          question="How much concrete do I need for a footing?"
+          answer="A 120 ft footing run at the standard 16×8 in section needs about 4.35 yd³ of concrete with a 10% waste allowance — roughly 8 tonnes of material. Width and depth are structural decisions, so confirm both against IRC Table R403.1 before ordering."
+          ruleOfThumb="A 16×8 in footing uses about 1 cubic yard per 30 linear feet."
+          formula="Order (yd³) = (Run × Width × Depth ÷ 27) × (1 + waste)"
+        />
+
+        <Section title="Footings by common run length">
+          <QuickSizeTable
+            headers={["Footing run (16×8 in)", "Order (yd³)", "Approx. weight", "Est. material cost"]}
+            rows={[
+              ["40 ft", "1.45 yd³", "2.7 t", "$218–261"],
+              ["80 ft", "2.90 yd³", "5.3 t", "$435–522"],
+              ["120 ft", "4.35 yd³", "8.0 t", "$653–783"],
+              ["160 ft", "5.79 yd³", "10.6 t", "$869–1,042"],
+              ["200 ft", "7.24 yd³", "13.3 t", "$1,086–1,303"],
+            ]}
+            caption="16 in wide × 8 in deep, 10% waste included. Cost uses the $150–180/yd³ delivered ready-mix range from our concrete cost guide. Bag counts aren't shown — at this scale, ready-mix is standard."
+          />
+        </Section>
 
         <Section
           title="Footing sizes that pass inspection"

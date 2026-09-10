@@ -5,9 +5,11 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { DrivewayGravelCalculatorCard } from "@/content/gravel/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { BarChart } from "@/components/charts/bar-chart";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
@@ -40,7 +42,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How much gravel do I need for a 50-foot driveway?",
     answer:
-      "A 50 × 12 ft drive (600 ft²) as a standard two-layer new build (4 in #57 + 4 in crusher run) needs roughly 24–26 tons with a 10% allowance — two tandem truck loads. A 2-inch resurfacing top-up needs about 6 tons.",
+      "A 50 × 12 ft drive (600 ft²) as a standard two-layer new build (4 in #57 + 4 in crusher run) needs about 27 tons with the standard 10% allowance — two tandem truck loads. A 2-inch resurfacing top-up needs about 6 tons.",
   },
   {
     question: "Why order the layers separately?",
@@ -108,6 +110,24 @@ export default function DrivewayGravelCalculatorPage() {
         calculator={<DrivewayGravelCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much gravel do I need for a driveway?"
+          answer="A 50×12 ft driveway as a standard two-layer build (4 in #57 stone + 4 in crusher run) needs about 27 tons with a 10% allowance — two tandem truck loads. A 100×12 ft new build with a #2 stone sub-base added needs about 78 tons."
+          ruleOfThumb="A tandem truck carries about 14 tons — divide your total by 14 for the load count."
+          formula="Tons = Area × layer depth × layer density ÷ 2,000 × (1 + waste), summed per layer"
+        />
+
+        <Section title="Driveways by common size">
+          <QuickSizeTable
+            headers={["Driveway size", "Build", "Total gravel", "Truck loads", "Est. material cost"]}
+            rows={[
+              ["50×12 ft", "Standard, 2-layer", "27.4 tons", "2", "$411–822"],
+              ["100×12 ft", "Full, 3-layer", "78.1 tons", "6", "$1,172–2,344"],
+            ]}
+            caption="10% waste included. Cost uses the $15–30/ton crusher-run range from our gravel price guide as a representative rate — sub-base and #57 stone are typically priced separately. Match these to the presets above the calculator."
+          />
+        </Section>
+
         <Section title="The three-layer system">
           <CoverageTable
             headers={["Layer", "Material & depth", "Job"]}

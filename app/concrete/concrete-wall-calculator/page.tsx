@@ -5,10 +5,12 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { WallCalculatorCard } from "@/content/concrete/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock, InfoBlock } from "@/components/blocks/callout";
 import { BarChart } from "@/components/charts/bar-chart";
+import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -108,6 +110,27 @@ export default function WallCalculatorPage() {
         calculator={<WallCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much concrete do I need for a foundation wall?"
+          answer="A 20 ft run of 8-inch foundation wall, 8 ft high, needs about 4.35 yd³ of concrete with a 10% waste allowance — roughly 8 tonnes. Openings like windows and doors subtract directly from this volume before the waste factor is applied."
+          ruleOfThumb="An 8-inch wall uses about 1 cubic yard per 40 ft² of wall face, before waste."
+          formula="Order (yd³) = ((Run × Height − Openings) × Thickness ÷ 27) × (1 + waste)"
+        />
+
+        <Section title="Walls by common run length">
+          <QuickSizeTable
+            headers={["Wall run (8 in × 8 ft high)", "Order (yd³)", "Approx. weight", "Est. material cost"]}
+            rows={[
+              ["20 ft", "4.35 yd³", "8.0 t", "$653–783"],
+              ["40 ft", "8.69 yd³", "16.0 t", "$1,304–1,564"],
+              ["60 ft", "13.04 yd³", "23.9 t", "$1,956–2,347"],
+              ["80 ft", "17.38 yd³", "31.9 t", "$2,607–3,128"],
+              ["100 ft", "21.73 yd³", "39.9 t", "$3,260–3,911"],
+            ]}
+            caption="8 in thick, 8 ft high, no openings, 10% waste included. Cost uses the $150–180/yd³ delivered ready-mix range from our concrete cost guide."
+          />
+        </Section>
+
         <Section title="Wall volume math, with openings">
           <FormulaBlock
             formula="V = (L × H − A₀) × t × (1 + waste)"

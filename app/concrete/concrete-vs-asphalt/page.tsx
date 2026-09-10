@@ -27,7 +27,7 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete vs Asphalt — Cost, Lifespan & Maintenance Compared";
+const title = "Concrete vs Asphalt — Cost & Lifespan";
 const description =
   "A driveway-focused comparison of concrete and asphalt: installed cost, 30-year total cost of ownership, climate performance, maintenance schedules and when each wins.";
 const path = CONCRETE.vsAsphalt;

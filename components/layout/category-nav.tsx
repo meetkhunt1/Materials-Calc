@@ -28,7 +28,7 @@ export function CategoryNav({ active, variant = "grid", className }: CategoryNav
           ) : (
             <Link
               key={category.slug}
-              href={`/${category.slug}`}
+              href={`/${category.slug}/`}
               aria-current={active === category.slug ? "page" : undefined}
               className={cn(
                 "inline-flex items-center rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
@@ -90,7 +90,7 @@ export function CategoryNav({ active, variant = "grid", className }: CategoryNav
         return (
           <Link
             key={category.slug}
-            href={`/${category.slug}`}
+            href={`/${category.slug}/`}
             className="group rounded-xl border p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
           >
             {inner}
