@@ -225,7 +225,7 @@ export default function AsphaltWeightChartPage() {
           variant="inline-strip"
           items={pickLinks(
             weightGuideLinks,
-            ASPHALT.densityExplained,
+            ASPHALT.hotVsColdWeight,
             ASPHALT.tonsVsYards,
             ASPHALT.weightConversion,
           )}

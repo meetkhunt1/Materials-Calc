@@ -270,7 +270,7 @@ export default function ConcreteCalculatorPage() {
           variant="list"
           items={[
             ...pickAsphalt(asphaltCalculatorLinks, ASPHALT.calculator),
-            ...pickAsphalt(asphaltGuides, ASPHALT.vsConcrete),
+            ...pickAsphalt(asphaltGuides, ASPHALT.thickness),
           ]}
         />
 

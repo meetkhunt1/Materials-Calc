@@ -13,6 +13,10 @@ import { articleSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
 import { ASPHALT, drivewayGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import {
+  BAND_500_1000,
+  bandRangePerSqFt,
+} from "@/data/pricing";
 import type { FaqItem } from "@/types";
 
 const title = "Asphalt Driveway FAQs";
@@ -91,7 +95,7 @@ const livingWithItFaqs: FaqItem[] = [
   {
     question: "What does it cost to redo an asphalt driveway?",
     answer:
-      "Full replacement is essentially the new-build price plus demolition: $5–10 per square foot installed, plus $1–3 for removal and hauling — call it $3,500–7,000 for a typical single drive. An overlay, where the base qualifies, runs roughly half that. Get the base assessed before accepting either quote; it is the variable that decides which job you actually need.",
+      `Full replacement is essentially the new-build price plus demolition: ${bandRangePerSqFt(BAND_500_1000)} installed for a 500–1,000 ft² drive, plus $1–3 for removal and hauling — call it $4,000–6,500 for a typical single drive, and more per square foot on anything smaller. An overlay, where the base qualifies, runs roughly half that. Get the base assessed before accepting either quote; it is the variable that decides which job you actually need.`,
   },
 ];
 

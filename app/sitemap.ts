@@ -32,7 +32,6 @@ const CORE_GUIDES = new Set([
   "/gravel/how-to-calculate-gravel/",
   "/concrete/concrete-density-chart/",
   "/asphalt/asphalt-density-chart/",
-  "/asphalt/asphalt-density-explained/",
   "/gravel/gravel-density-chart/",
   "/gravel/gravel-density-database/",
   "/concrete/concrete-coverage-guide/",
@@ -45,7 +44,6 @@ const CORE_GUIDES = new Set([
   "/concrete/concrete-curing-guide/",
   "/asphalt/asphalt-thickness-guide/",
   "/concrete/concrete-vs-asphalt/",
-  "/asphalt/asphalt-vs-concrete/",
   "/gravel/crushed-stone-vs-gravel/",
 ]);
 

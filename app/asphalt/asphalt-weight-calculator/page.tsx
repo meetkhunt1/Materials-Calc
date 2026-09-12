@@ -118,8 +118,8 @@ export default function WeightCalculatorPage() {
             matches the material&apos;s state. Asphalt exists on your job in at least three
             states (loose in the truck, compacted in the pavement, broken in the demo pile),
             and each has its own unit weight. Full numbers and the reasons behind them live in{" "}
-            <a href={ASPHALT.densityExplained} className="font-medium text-primary hover:underline">
-              asphalt density explained
+            <a href={ASPHALT.densityChart} className="font-medium text-primary hover:underline">
+              the asphalt density chart
             </a>{" "}
             and the{" "}
             <a href={ASPHALT.weightChart} className="font-medium text-primary hover:underline">

@@ -4,12 +4,12 @@ import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrum
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { FormulaBlock } from "@/components/blocks/formula-block";
+import { InfoBlock } from "@/components/blocks/callout";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { CostTable } from "@/components/tables/cost-table";
 import { BarChart } from "@/components/charts/bar-chart";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { References } from "@/components/blocks/references";
 import { AuthorBox } from "@/components/author/author-box";
 import { Cta } from "@/components/blocks/cta";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -21,13 +21,19 @@ import {
   costGuideLinks,
   asphaltCalculatorLinks,
   pickLinks,
-  AREFS,
 } from "@/content/asphalt/links";
+import {
+  BAND_UNDER_500,
+  BAND_500_1000,
+  bandRangePerSqFt,
+  basePrepRange,
+  LARGE_JOB_GUIDANCE,
+} from "@/data/pricing";
 import type { FaqItem } from "@/types";
 
 const title = "Asphalt Cost Per Square Foot (Installed)";
 const description =
-  "Installed asphalt costs $2.50–5.00 per square foot at 3 inches in 2026. Ranges by thickness and job size, why small jobs cost double, and the formula behind every contractor bid.";
+  "What installed asphalt really costs per square foot, why the figure falls as the job grows, and the formula behind every contractor bid — with size ranges derived from worked jobs rather than quoted from memory.";
 const path = ASPHALT.costPerSqft;
 const author = getAuthor("materials-team");
 
@@ -43,7 +49,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What does asphalt cost per square foot installed?",
     answer:
-      "For a typical residential job at 3 inches compacted, $2.50–5.00 per square foot in 2026, including material, labor and equipment on a prepared base. Material is only 40–50% of that; the rest is crew, machines and mobilization. Add $0.50–1.50 per square foot if the job needs new gravel base or removal of old pavement.",
+      `It depends far more on how big the job is than on the asphalt. All-in — excavation, base, hot mix, labor and mobilization — a job under 500 ft² works out to ${bandRangePerSqFt(BAND_UNDER_500)}, and a 500–1,000 ft² driveway to ${bandRangePerSqFt(BAND_500_1000)}. Material is only 40–50% of either figure; the rest is crew, machines and the fixed cost of showing up. Working over an existing sound base removes the excavation and gravel, worth about ${basePrepRange(BAND_UNDER_500)} per square foot on a small job.`,
   },
   {
     question: "Why is my small patch quoted at $10 per square foot?",
@@ -58,18 +64,18 @@ const faqItems: FaqItem[] = [
   {
     question: "Does the price include the gravel base?",
     answer:
-      "Usually not, and this is the most common bid-comparison trap. Base gravel runs $18–35 per ton plus grading and compaction, adding $0.50–1.50 per square foot for a new 6–8 inch base. A bid that looks $1 per square foot cheaper may simply exclude base work — make every bidder state base thickness and compaction method in writing.",
+      `Often not, and this is the most common bid-comparison trap. Base gravel runs $18–35 per ton plus grading and compaction. On a small job that excavation-and-base scope works out to about ${basePrepRange(BAND_UNDER_500)} per square foot — on a 480 ft² driveway, $840 of excavation plus $420 of gravel. A bid that looks a dollar per square foot cheaper may simply exclude it, so make every bidder state base thickness and compaction method in writing.`,
   },
   {
     question: "Is commercial paving cheaper per square foot than residential?",
     answer:
-      "Yes, materially. A 20,000 square foot lot lets the crew run the paver continuously and amortizes mobilization to pennies per square foot, landing at $2.50–4.00. Residential driveways involve hand work at edges, small tonnage and the same fixed setup, which is why they price at $4–7 for mid-size jobs.",
+      `Yes, materially — a big lot lets the crew run the paver continuously and spreads mobilization across far more area, while residential driveways carry hand work at the edges, small tonnage and exactly the same fixed setup. We do not publish a per-square-foot figure for large lots: ${LARGE_JOB_GUIDANCE}`,
   },
 ];
 
 const toc = tocFromTitles(
   "The formula behind every bid",
-  "Installed cost by thickness",
+  "What thickness adds",
   "Installed cost by job size",
   "The mobilization curve",
   "Worked example: 300 ft² vs 600 ft²",
@@ -133,29 +139,45 @@ export default function AsphaltCostPerSquareFootPage() {
           </p>
         </Section>
 
-        <Section title="Installed cost by thickness">
-          <CostTable
-            currency="USD"
-            rows={[
-              { item: "2 in compacted (overlay-grade)", unit: "ft²", low: 2.0, high: 3.5, note: "Light duty; overlays over sound pavement" },
-              { item: "3 in compacted (residential standard)", unit: "ft²", low: 2.5, high: 5.0, note: "The default driveway spec" },
-              { item: "4 in compacted (heavy vehicles)", unit: "ft²", low: 3.25, high: 6.0, note: "RVs, trucks, poor subgrade" },
-            ]}
-            caption="Installed on a prepared base, mid-size job (1,000–3,000 ft²), 2026 US ranges. Base construction, removal and steep-access surcharges are extra."
-          />
+        <Section title="What thickness adds">
+          <p className="text-muted-foreground">
+            Thickness moves the price far less than size does, because it changes only the
+            material term: about $0.75–1.10 per square foot for each additional compacted
+            inch, which is roughly 12 lb of mix per square foot per inch at current per-ton
+            prices. Crew and equipment time barely move — a paver places 4 inches nearly as
+            fast as 2 — so on a job that is already mobilized, extra thickness is the cheapest
+            structural upgrade available. Going from the 3 in residential standard to a 4 in
+            heavy-vehicle section adds about a dollar per square foot, not a whole price tier.
+          </p>
         </Section>
 
         <Section title="Installed cost by job size">
           <CostTable
             currency="USD"
             rows={[
-              { item: "Under 500 ft² (patches, pads)", unit: "ft²", low: 6.0, high: 12.0, note: "Mobilization dominates the price" },
-              { item: "500–1,500 ft² (single driveways)", unit: "ft²", low: 4.0, high: 7.0, note: "Fixed costs still 25–40% of total" },
-              { item: "1,500–5,000 ft² (large driveways)", unit: "ft²", low: 3.0, high: 5.0, note: "Crew runs near full productivity" },
-              { item: "5,000+ ft² (lots, lanes)", unit: "ft²", low: 2.5, high: 4.0, note: "Fixed costs fully amortized" },
+              {
+                item: `${BAND_UNDER_500.label} (patches, pads, short drives)`,
+                unit: "ft²",
+                low: BAND_UNDER_500.low,
+                high: BAND_UNDER_500.high,
+                note: "Mobilization dominates the price",
+              },
+              {
+                item: `${BAND_500_1000.label} (single and double driveways)`,
+                unit: "ft²",
+                low: BAND_500_1000.low,
+                high: BAND_500_1000.high,
+                note: "Fixed costs still a large share of the total",
+              },
             ]}
-            caption="All at 3 in compacted on existing base. The material cost per square foot is identical in every row — only the divisor changes."
+            caption="All-in at 3 in compacted: excavation, base, hot mix, labor and mobilization. Both ranges are derived from the worked jobs below, not from quoted averages. Where the existing base is sound and only the surface is being replaced, subtract the excavation-and-base scope."
           />
+          <InfoBlock title="Why there is no row for larger jobs">
+            {LARGE_JOB_GUIDANCE} The direction is certain — every job costed on this site gets
+            cheaper per square foot as it grows — but there is no worked example here above
+            1,200 ft² to put a number to, and inventing one would give a guess the appearance
+            of a measurement.
+          </InfoBlock>
         </Section>
 
         <Section title="The mobilization curve">
@@ -163,18 +185,19 @@ export default function AsphaltCostPerSquareFootPage() {
             title="Typical installed $/ft² at 3 in, by job size"
             unit="USD/ft²"
             data={[
-              { label: "300 ft²", value: 9.0 },
-              { label: "800 ft²", value: 5.5 },
-              { label: "1,500 ft²", value: 4.5 },
-              { label: "3,000 ft²", value: 3.75 },
-              { label: "6,000 ft²", value: 3.25 },
-              { label: "15,000 ft²", value: 2.75 },
+              { label: "300 ft² patch", value: 11.3 },
+              { label: "480 ft² single drive", value: 9.4 },
+              { label: "600 ft² rural", value: 8.1 },
+              { label: "600 ft² metro", value: 5.85 },
             ]}
           />
           <p className="text-muted-foreground">
-            The curve flattens near 3,000 square feet — beyond that, you are paying material
-            plus productive crew time and little else. Below 500 square feet you are mostly
-            renting a crew&apos;s morning, and the asphalt is almost incidental to the bill.
+            Each bar is a job costed line by line elsewhere on this site, not a market
+            average — which is why the curve stops at 600 square feet rather than running out
+            to commercial lots. Below 500 square feet you are mostly renting a crew&apos;s
+            morning, and the asphalt is almost incidental to the bill; by 600 square feet the
+            same fixed costs are spread over twice the area, and geography starts to matter as
+            much as size. {LARGE_JOB_GUIDANCE}
           </p>
         </Section>
 
@@ -203,7 +226,6 @@ export default function AsphaltCostPerSquareFootPage() {
 
         <AuthorBox author={author} datePublished="2026-07-15" />
 
-        <References items={[AREFS.napa]} />
       </ArticleShell>
     </>
   );

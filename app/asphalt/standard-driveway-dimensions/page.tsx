@@ -16,6 +16,11 @@ import { articleSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
 import { ASPHALT, drivewayGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import {
+  BAND_500_1000,
+  bandRangeShort,
+  LARGE_JOB_GUIDANCE_SHORT,
+} from "@/data/pricing";
 import type { FaqItem } from "@/types";
 
 const title = "Standard Driveway Dimensions Guide";
@@ -56,7 +61,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Does a wider driveway cost proportionally more?",
     answer:
-      "Almost exactly, yes — asphalt is priced by area. At the typical $5–10 per square foot installed, widening a 40 ft drive from 10 ft to 12 ft adds 80 ft², roughly $400–800. Mobilization and excavation setup are fixed, so incremental width is the cheap part; add it during initial paving, not as a patched-on strip later.",
+      "Not quite — area drives the bill, but extra width is cheaper per square foot than the job average. Widening a 40 ft drive from 10 ft to 12 ft adds 80 ft², and because mobilization, excavation setup and crew time are already paid for, that increment costs close to material and placement rather than the full installed rate. It is the cheapest pavement you will ever buy on that job — which is why width is worth adding during initial paving, never as a patched-on strip later.",
   },
   {
     question: "How much extra area does a turnaround add?",
@@ -120,7 +125,11 @@ export default function StandardDrivewayDimensionsPage() {
           <p className="text-muted-foreground">
             These are the layouts that survive contact with real vehicles. Every one assumes
             3 in of compacted hot mix over a 6 in aggregate base — thickness is covered
-            separately; this page is purely geometry.
+            separately; this page is purely geometry. Once the footprint is settled, the{" "}
+            <a href={ASPHALT.drivewayInstall} className="font-medium text-primary hover:underline">
+              driveway installation guide
+            </a>{" "}
+            takes it from excavation depth through final roll.
           </p>
           <CoverageTable
             headers={["Configuration", "Width", "Length / geometry"]}
@@ -201,6 +210,20 @@ export default function StandardDrivewayDimensionsPage() {
             itself — is what grinds bumpers and drags hitches. A 14% grade with proper
             transitions drives better than an 8% grade that changes angle abruptly.
           </InfoBlock>
+          <p className="text-muted-foreground">
+            Geometry decided at this stage outlives the pavement itself: a drive that ponds
+            water or forces a three-point turn onto the lawn edge fails early no matter how
+            good the mix was. That link between layout and service life is the subject of the{" "}
+            <a href={ASPHALT.drivewayLifespan} className="font-medium text-primary hover:underline">
+              driveway lifespan guide
+            </a>
+            , and the{" "}
+            <a href={ASPHALT.drivewayFaqs} className="font-medium text-primary hover:underline">
+              driveway FAQs
+            </a>{" "}
+            answer the width, apron and setback questions that come up once you start marking
+            the ground.
+          </p>
         </Section>
 
         <Section title="Worked example: sizing a double drive with turnaround">
@@ -216,8 +239,17 @@ export default function StandardDrivewayDimensionsPage() {
                 work: "1,056 ÷ 53 ≈ 19.9 → order ~22 tons with 10% waste",
               },
             ]}
-            result="About 1,060 ft² of pavement and a 22-ton hot mix order — roughly $5,300–10,600 installed at $5–10/ft²."
+            result={`About 1,060 ft² of pavement and a 22-ton hot mix order. At that size the per-square-foot rate is below the ${bandRangeShort(BAND_500_1000)} a 500–1,000 ft² drive carries, but ${LARGE_JOB_GUIDANCE_SHORT}.`}
           />
+          <p className="text-muted-foreground">
+            That square-footage figure is the input every quote is built on, so it is worth
+            pricing before you call anyone: the{" "}
+            <a href={ASPHALT.costGuide} className="font-medium text-primary hover:underline">
+              asphalt cost guide
+            </a>{" "}
+            breaks the same job into material, labor, mobilization and the fees that only
+            appear on the invoice.
+          </p>
         </Section>
 
         <Faq items={faqItems} variant="list" title="Dimension questions" />

@@ -191,6 +191,18 @@ export default function AsphaltCalculatorPage() {
             ]}
             result="Order 14 tons — one tandem truck plus a small top-up, so ask the plant to load 14 on one truck if legal in your state."
           />
+          <p className="text-muted-foreground">
+            Every line of that example depends on the first one being right. Areas that are
+            not simple rectangles — curved aprons, flares, irregular lots — are handled in the{" "}
+            <a href={ASPHALT.measurement} className="font-medium text-primary hover:underline">
+              asphalt measurement guide
+            </a>
+            , and if the job is a driveway, the{" "}
+            <a href={ASPHALT.drivewayDimensions} className="font-medium text-primary hover:underline">
+              standard driveway dimensions
+            </a>{" "}
+            give workable widths and turnaround sizes before you measure anything at all.
+          </p>
         </Section>
 
         <Section title="Mistakes that blow asphalt orders">
@@ -209,6 +221,20 @@ export default function AsphaltCalculatorPage() {
             estimate during the pour — if you&apos;re at 60% of area but 75% of tonnage, the
             crew is running thick and you&apos;ll be a truck short by the end.
           </TipBlock>
+          <p className="text-muted-foreground">
+            A tonnage figure only becomes a budget once it meets a price, and the questions
+            that follow — what a ton should cost, what drives quotes apart, what is negotiable
+            — are answered in the{" "}
+            <a href={ASPHALT.costFaqs} className="font-medium text-primary hover:underline">
+              asphalt cost FAQs
+            </a>
+            . To sanity-check the order from the other direction, the{" "}
+            <a href={ASPHALT.coverage} className="font-medium text-primary hover:underline">
+              asphalt coverage guide
+            </a>{" "}
+            states what one ton actually covers at each thickness, which catches an order that
+            is off by a factor before the trucks are booked.
+          </p>
         </Section>
 
         <Section

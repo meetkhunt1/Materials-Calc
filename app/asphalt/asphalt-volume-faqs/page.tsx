@@ -192,7 +192,6 @@ export default function AsphaltVolumeFaqsPage() {
             ASPHALT.cubicYardGuide,
             ASPHALT.cubicFootGuide,
             ASPHALT.volumeFormula,
-            ASPHALT.densityAndVolume,
             ASPHALT.measurement,
             ASPHALT.unitConversion,
           )}

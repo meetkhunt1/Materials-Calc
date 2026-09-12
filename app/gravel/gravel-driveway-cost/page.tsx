@@ -61,7 +61,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Is a gravel driveway cheaper than asphalt or concrete?",
     answer:
-      "By a wide margin up front: gravel at $1–3 per ft² versus asphalt at $7–13 and concrete at $8–15. The trade is maintenance — gravel wants regrading every 1–2 years and a top-up every 2–3 — but even with 25 years of top-ups a gravel drive usually stays the cheapest total-cost option for long rural runs.",
+      "By a wide margin up front: gravel runs $1–3 per ft² against several times that for asphalt or concrete on the same drive. The trade is maintenance — gravel wants regrading every 1–2 years and a top-up every 2–3 — but even with 25 years of top-ups a gravel drive usually stays the cheapest total-cost option for long rural runs.",
   },
   {
     question: "How many tons of gravel does a driveway need?",

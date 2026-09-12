@@ -12,14 +12,19 @@ import { CostTable } from "@/components/tables/cost-table";
 import { QuickSizeTable } from "@/components/tables/quick-size-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { References } from "@/components/blocks/references";
 import { AuthorBox } from "@/components/author/author-box";
 import { Cta } from "@/components/blocks/cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { calculatorSchema, webPageSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
-import { ASPHALT, costGuideLinks, asphaltCalculatorLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import { ASPHALT, costGuideLinks, asphaltCalculatorLinks, pickLinks } from "@/content/asphalt/links";
+import {
+  BAND_UNDER_500,
+  BAND_500_1000,
+  bandRangeShort,
+  bandRangePerSqFt,
+} from "@/data/pricing";
 import { CONCRETE, guideLinks as concreteGuides, pickLinks as pickConcrete } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
@@ -41,7 +46,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How much does asphalt cost per ton in 2026?",
     answer:
-      "US hot mix runs $100–150 per ton at the plant, with liquid-binder price swings moving it season to season. Delivered and installed, figure $2.50–5.00 per square foot at 3 inches for typical residential work. The price-per-ton guide tracks what moves these numbers.",
+      `US hot mix runs $100–150 per ton at the plant, with liquid-binder price swings moving it season to season. All-in installed — excavation, base, mix, labor and mobilization — a 500–1,000 ft² driveway lands at ${bandRangePerSqFt(BAND_500_1000)}, and a smaller job well above that. The price-per-ton guide tracks what moves the material half.`,
   },
   {
     question: "Why is my quote so much higher than material cost?",
@@ -107,8 +112,8 @@ export default function CostCalculatorPage() {
       >
         <QuickAnswer
           question="How much does asphalt cost per square foot installed?"
-          answer="At this calculator's defaults ($115/ton hot mix, $2.50/ft² paving labor), a 3-inch driveway runs about $4.79/ft² for material and paving alone — within the typical $2.50–5.00/ft² range for that scope. Excavation, base gravel and mobilization are separate line items, not included here."
-          ruleOfThumb="Budget $2.50–5.00 per square foot for asphalt material and paving labor at 3 inches — add excavation, base and mobilization for the full job cost."
+          answer={`At this calculator's defaults ($115/ton hot mix, $2.50/ft² paving labor), a 3-inch driveway runs about $4.79/ft² for material and paving alone. That is not the installed price: excavation, base gravel and mobilization are separate line items and not included here. Add them and a 500–1,000 ft² driveway reaches ${bandRangePerSqFt(BAND_500_1000)} all-in.`}
+          ruleOfThumb={`This calculator prices material and paving labor only. For the full job add excavation, base and mobilization — all-in, that is ${bandRangeShort(BAND_UNDER_500)} under 500 ft² and ${bandRangeShort(BAND_500_1000)} at 500–1,000 ft².`}
           formula="Total = (Tons × price per ton) + (Area × labor rate per ft²)"
         />
 
@@ -211,7 +216,6 @@ export default function CostCalculatorPage() {
 
         <AuthorBox author={author} datePublished="2026-07-15" />
 
-        <References items={[AREFS.napa, AREFS.ms4]} />
       </CalculatorPageShell>
     </>
   );

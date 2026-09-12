@@ -167,7 +167,6 @@ export default function AsphaltWeightFaqsPage() {
             weightGuideLinks,
             ASPHALT.weightChart,
             ASPHALT.tonsVsYards,
-            ASPHALT.densityExplained,
             ASPHALT.weightConversion,
             ASPHALT.truckCapacity,
             ASPHALT.hotVsColdWeight,

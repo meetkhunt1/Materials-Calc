@@ -62,7 +62,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Gravel vs asphalt driveway — how do costs compare?",
     answer:
-      "Gravel installs at $1–3/ft² versus $2.50–5 for asphalt, but needs top-ups and grading forever. Gravel wins on long rural drives where asphalt's square footage is brutal; asphalt wins on short suburban drives where its maintenance is minimal. Both cost guides run the numbers.",
+      "Gravel installs at $1–3/ft² — a fraction of asphalt at any job size — but needs top-ups and grading forever. Gravel wins on long rural drives where asphalt's square footage is brutal; asphalt wins on short suburban drives where its maintenance is minimal. Both cost guides run the numbers.",
   },
 ];
 

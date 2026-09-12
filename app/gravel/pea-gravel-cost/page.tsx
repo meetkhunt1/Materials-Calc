@@ -62,7 +62,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Is pea gravel cheaper than pavers or concrete?",
     answer:
-      "Dramatically. A pea gravel patio installs for $2–5 per square foot DIY including base and edging, versus $15–30 per square foot for pavers and $8–15 for plain concrete. The trade is maintenance: raking, top-ups and edging repairs that hard surfaces never ask for.",
+      "Dramatically. A pea gravel patio installs for $2–5 per square foot DIY including base and edging, against $15–30 per square foot for pavers and several times the gravel price for plain concrete. The trade is maintenance: raking, top-ups and edging repairs that hard surfaces never ask for.",
   },
 ];
 

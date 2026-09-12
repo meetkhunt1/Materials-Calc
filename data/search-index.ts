@@ -97,7 +97,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "Asphalt Coverage Guide", href: "/asphalt/asphalt-coverage-guide/", category: "Asphalt", keywords: ["coverage", "ton covers", "square feet"] },
   { title: "Asphalt Cost Guide", href: "/asphalt/asphalt-cost-guide/", category: "Asphalt", keywords: ["cost", "price per ton", "installed price"] },
   { title: "Asphalt Thickness Guide", href: "/asphalt/asphalt-thickness-guide/", category: "Asphalt", keywords: ["thickness", "lifts", "base course", "surface"] },
-  { title: "Asphalt vs Concrete", href: "/asphalt/asphalt-vs-concrete/", category: "Asphalt", keywords: ["comparison", "concrete", "driveway", "cost"] },
   { title: "Asphalt FAQs", href: "/asphalt/asphalt-faqs/", category: "Asphalt", keywords: ["questions", "answers", "paving basics"] },
   // ——— Asphalt: driveway series ———
   { title: "Standard Driveway Dimensions", href: "/asphalt/standard-driveway-dimensions/", category: "Asphalt", keywords: ["width", "length", "single car", "double"] },
@@ -110,7 +109,6 @@ export const searchIndex: SearchEntry[] = [
   // ——— Asphalt: weight series ———
   { title: "Asphalt Weight Chart", href: "/asphalt/asphalt-weight-chart/", category: "Asphalt", keywords: ["weight chart", "per yard", "per foot"] },
   { title: "Tons vs Cubic Yards", href: "/asphalt/tons-vs-cubic-yards/", category: "Asphalt", keywords: ["tons", "cubic yards", "convert"] },
-  { title: "Asphalt Density Explained", href: "/asphalt/asphalt-density-explained/", category: "Asphalt", keywords: ["density", "loose", "compacted", "marshall"] },
   { title: "Weight Conversion Guide", href: "/asphalt/weight-conversion-guide/", category: "Asphalt", keywords: ["tons", "tonnes", "pounds", "kilograms"] },
   { title: "Truck Load Capacity", href: "/asphalt/truck-load-capacity/", category: "Asphalt", keywords: ["dump truck", "payload", "tandem", "tri-axle"] },
   { title: "Hot Mix vs Cold Mix Weight", href: "/asphalt/hot-mix-vs-cold-mix-weight/", category: "Asphalt", keywords: ["hot mix", "cold mix", "density difference"] },
@@ -127,7 +125,6 @@ export const searchIndex: SearchEntry[] = [
   { title: "Asphalt Cubic Yard Guide", href: "/asphalt/asphalt-cubic-yard-guide/", category: "Asphalt", keywords: ["cubic yard", "27 cubic feet"] },
   { title: "Asphalt Cubic Foot Guide", href: "/asphalt/asphalt-cubic-foot-guide/", category: "Asphalt", keywords: ["cubic foot", "small batch", "patch"] },
   { title: "Asphalt Volume Formula", href: "/asphalt/asphalt-volume-formula/", category: "Asphalt", keywords: ["formula", "length width depth"] },
-  { title: "Asphalt Density & Volume", href: "/asphalt/asphalt-density-and-volume/", category: "Asphalt", keywords: ["density", "volume", "tons"] },
   { title: "Asphalt Measurement Guide", href: "/asphalt/asphalt-measurement-guide/", category: "Asphalt", keywords: ["measure", "irregular area", "takeoff"] },
   { title: "Asphalt Unit Conversion", href: "/asphalt/asphalt-unit-conversion/", category: "Asphalt", keywords: ["convert", "yards", "meters", "tons"] },
   { title: "Asphalt Volume FAQs", href: "/asphalt/asphalt-volume-faqs/", category: "Asphalt", keywords: ["volume questions"] },

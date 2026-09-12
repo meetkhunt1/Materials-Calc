@@ -4,14 +4,19 @@ import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrum
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { References } from "@/components/blocks/references";
 import { AuthorBox } from "@/components/author/author-box";
 import { Cta } from "@/components/blocks/cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { articleSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
-import { ASPHALT, costGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import { ASPHALT, costGuideLinks, pickLinks } from "@/content/asphalt/links";
+import {
+  BAND_UNDER_500,
+  BAND_500_1000,
+  bandRangePerSqFt,
+  LARGE_JOB_GUIDANCE_SHORT,
+} from "@/data/pricing";
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
@@ -38,7 +43,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What does asphalt cost per square foot installed?",
     answer:
-      "$2.50–5.00 per square foot at 3 inches compacted for a typical residential job on a prepared base. Thinner 2-inch work runs $2.00–3.50; 4-inch heavy-duty runs $3.25–6.00. Job size matters as much as thickness: under 500 square feet expect $6–12 because mobilization dominates, while lots over 5,000 square feet drop to $2.50–4.00.",
+      `Job size decides it more than thickness does. All-in at 3 in compacted, a job under 500 ft² runs ${bandRangePerSqFt(BAND_UNDER_500)} because mobilization dominates, and a 500–1,000 ft² driveway ${bandRangePerSqFt(BAND_500_1000)}. Thickness moves the material term only — about $0.75–1.10 per square foot per additional inch. For anything larger, ${LARGE_JOB_GUIDANCE_SHORT}.`,
   },
   {
     question: "How much does a whole asphalt driveway cost?",
@@ -63,7 +68,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Is asphalt cheaper than concrete?",
     answer:
-      "To install, yes — asphalt at $2.50–5.00 per square foot versus concrete at roughly $6–10 for comparable flatwork, so asphalt wins the up-front bill by 40–50%. Over 30 years the gap narrows: asphalt wants sealcoating every 3–5 years and an overlay around year 15–20, while concrete mostly wants joint sealing. Climate and use decide the winner more than the sticker.",
+      `To install, yes — a 500–1,000 ft² asphalt driveway runs ${bandRangePerSqFt(BAND_500_1000)} all-in, and concrete costs meaningfully more. We are re-sourcing our concrete per-square-foot figures and will not quote a rate until we have one we can stand behind. Over 30 years the gap narrows: asphalt wants sealcoating every 3–5 years and an overlay around year 15–20, while concrete mostly wants joint sealing. Climate and use decide the winner more than the sticker.`,
   },
   {
     question: "What does an overlay cost versus full replacement?",
@@ -140,16 +145,12 @@ export default function AsphaltCostFaqsPage() {
           <a href={ASPHALT.drivewayCost} className="font-medium text-primary hover:underline">
             driveway cost guide
           </a>{" "}
-          for full-project line items. Weighing materials? Read the comparison from both
-          corners:{" "}
-          <a href={ASPHALT.vsConcrete} className="font-medium text-primary hover:underline">
-            asphalt vs concrete
-          </a>{" "}
-          and{" "}
+          for full-project line items. Weighing materials? The{" "}
           <a href={CONCRETE.vsAsphalt} className="font-medium text-primary hover:underline">
-            concrete vs asphalt
-          </a>
-          . For a number specific to your dimensions, the{" "}
+            concrete vs asphalt comparison
+          </a>{" "}
+          puts installed cost, lifespan and maintenance for both pavements side by side. For
+          a number specific to your dimensions, the{" "}
           <a href={ASPHALT.cost} className="font-medium text-primary hover:underline">
             asphalt cost calculator
           </a>{" "}
@@ -180,7 +181,6 @@ export default function AsphaltCostFaqsPage() {
 
         <AuthorBox author={author} datePublished="2026-07-15" />
 
-        <References items={[AREFS.napa]} />
       </ArticleShell>
     </>
   );

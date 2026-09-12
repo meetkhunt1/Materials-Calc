@@ -9,14 +9,13 @@ import { CostTable } from "@/components/tables/cost-table";
 import { BarChart } from "@/components/charts/bar-chart";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { References } from "@/components/blocks/references";
 import { AuthorBox } from "@/components/author/author-box";
 import { Cta } from "@/components/blocks/cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { articleSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
-import { ASPHALT, costGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import { ASPHALT, costGuideLinks, pickLinks } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
 const title = "Regional Asphalt Price Factors — Why Quotes Vary 40%";
@@ -37,7 +36,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Which US region has the cheapest asphalt?",
     answer:
-      "The South generally, at roughly $2.25–4.00 per square foot installed: year-round paving seasons, dense plant networks, competitive labor markets and strong contractor competition. But region is a blunt instrument — a rural site 40 miles from the nearest plant in a cheap state can out-price a competitive metro in an expensive one.",
+      "The South generally: year-round paving seasons, dense plant networks, competitive labor markets and strong contractor competition. We do not publish a per-square-foot figure by region, because region turns out to be a blunt instrument — the worked example below puts the same 600 ft² driveway at $3,500 in a competitive metro and $4,845 at a rural site 40 miles from the nearest plant. Distance to the plant and the crew moves the price more than which state you are in.",
   },
   {
     question: "Why does distance from the plant matter so much?",
@@ -201,7 +200,6 @@ export default function RegionalAsphaltPriceFactorsPage() {
 
         <AuthorBox author={author} datePublished="2026-07-15" />
 
-        <References items={[AREFS.napa, AREFS.fhwa]} />
       </ArticleShell>
     </>
   );

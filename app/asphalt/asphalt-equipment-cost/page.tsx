@@ -8,7 +8,6 @@ import { InfoBlock } from "@/components/blocks/callout";
 import { CostTable } from "@/components/tables/cost-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { References } from "@/components/blocks/references";
 import { AuthorBox } from "@/components/author/author-box";
 import { Cta } from "@/components/blocks/cta";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -20,7 +19,6 @@ import {
   costGuideLinks,
   drivewayGuideLinks,
   pickLinks,
-  AREFS,
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
@@ -178,7 +176,7 @@ export default function AsphaltEquipmentCostPage() {
 
         <Section title="Worked example: equipment share of a $5,000 driveway">
           <ExampleBlock
-            scenario="A 1,000 ft² driveway installed for $5,000 ($5.00/ft², 3 in compacted). Where does the iron sit in that number?"
+            scenario="A 1,000 ft² driveway installed for $5,000, 3 in compacted. Taking that invoice as given, where does the iron sit inside it?"
             steps={[
               { label: "Material (≈45%)", work: "18 tons × ~$125 delivered ≈ $2,250" },
               { label: "Labor (≈25%)", work: "Crew-day ≈ $1,250" },
@@ -201,7 +199,6 @@ export default function AsphaltEquipmentCostPage() {
 
         <AuthorBox author={author} datePublished="2026-07-15" />
 
-        <References items={[AREFS.napa, AREFS.ms4]} />
       </ArticleShell>
     </>
   );

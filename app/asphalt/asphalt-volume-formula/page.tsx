@@ -209,7 +209,7 @@ export default function AsphaltVolumeFormulaPage() {
         <RelatedArticles
           title="Next in the volume series"
           variant="inline-strip"
-          items={pickLinks(volumeGuideLinks, ASPHALT.measurement, ASPHALT.densityAndVolume, ASPHALT.unitConversion)}
+          items={pickLinks(volumeGuideLinks, ASPHALT.measurement, ASPHALT.cubicFootGuide, ASPHALT.unitConversion)}
         />
 
         <AuthorBox author={author} datePublished="2026-07-15" />

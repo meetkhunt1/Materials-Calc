@@ -9,7 +9,6 @@ import { CostTable } from "@/components/tables/cost-table";
 import { BarChart } from "@/components/charts/bar-chart";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { References } from "@/components/blocks/references";
 import { AuthorBox } from "@/components/author/author-box";
 import { Cta } from "@/components/blocks/cta";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -21,8 +20,14 @@ import {
   asphaltCalculatorLinks,
   costGuideLinks,
   pickLinks,
-  AREFS,
 } from "@/content/asphalt/links";
+import {
+  BAND_UNDER_500,
+  BAND_500_1000,
+  bandRangeShort,
+  bandRangePerSqFt,
+  LARGE_JOB_GUIDANCE_SHORT,
+} from "@/data/pricing";
 import {
   CONCRETE,
   guideLinks as concreteGuides,
@@ -32,7 +37,7 @@ import type { FaqItem } from "@/types";
 
 const title = "Asphalt Cost Guide — Per Ton & Sq Ft";
 const description =
-  "What asphalt costs in 2026: $100–150 per ton for hot mix at the plant, $2.50–5 per square foot installed, plus the trucking, mobilization and minimum-load fees that decide small-job pricing.";
+  "What asphalt costs in 2026: $100–150 per ton for hot mix at the plant, installed prices that fall sharply as the job grows, and the trucking, mobilization and minimum-load fees that decide small-job pricing.";
 const path = ASPHALT.costGuide;
 const author = getAuthor("materials-team");
 
@@ -53,7 +58,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How much does asphalt paving cost per square foot?",
     answer:
-      "Installed, $2.50–5 per square foot for typical residential and light commercial work at 2–3 in over a prepared base. Material is only 40–50% of that; the rest is trucking, crew, paver and roller time. Jobs under about 2,000 ft² land at or above the top of the range because mobilization amortizes badly.",
+      `Far more than most tables admit, because job size drives it. All-in — excavation, base, hot mix, labor and mobilization — a job under 500 ft² runs ${bandRangePerSqFt(BAND_UNDER_500)} and a 500–1,000 ft² driveway ${bandRangePerSqFt(BAND_500_1000)}. Material is only 40–50% of either; the rest is trucking, crew, paver and roller time. Above 1,000 ft² we do not publish a rate — ${LARGE_JOB_GUIDANCE_SHORT}.`,
   },
   {
     question: "Why do small asphalt jobs cost so much per square foot?",
@@ -73,7 +78,7 @@ const faqItems: FaqItem[] = [
   {
     question: "How do asphalt and concrete driveway costs compare?",
     answer:
-      "Asphalt installs for $2.50–5/ft² versus roughly $7–12 for concrete — asphalt wins day one by a wide margin. Over 30 years the gap narrows because asphalt needs sealcoating every 3–5 years and an overlay around year 15–20. The full head-to-head is in the asphalt vs concrete comparison.",
+      `Asphalt is cheaper to install — a 500–1,000 ft² asphalt driveway runs ${bandRangePerSqFt(BAND_500_1000)} all-in. We are re-sourcing our concrete per-square-foot figures, so we are not quoting a concrete rate until we have one we can stand behind. What is not in doubt is the shape of the trade: asphalt costs less on day one, then wants sealcoating every 3–5 years and an overlay around year 15–20, while concrete costs more up front and asks for very little afterwards. The full head-to-head is in the concrete vs asphalt comparison.`,
   },
 ];
 
@@ -110,7 +115,7 @@ export default function AsphaltCostGuidePage() {
               description="Per-ton prices are easy to find; what jobs actually cost is decided by fees and fixed costs. Here are the 2026 numbers, line by line."
               stats={[
                 { value: "$100–150", label: "per ton, hot mix at the plant" },
-                { value: "$2.50–5", label: "per ft² installed" },
+                { value: bandRangeShort(BAND_500_1000), label: "per ft², 500–1,000 ft² job" },
                 { value: "40–50%", label: "of installed price is material" },
                 { value: "$1,500+", label: "typical crew mobilization" },
               ]}
@@ -219,7 +224,7 @@ export default function AsphaltCostGuidePage() {
               { label: "Crew, paver and rollers (one day)", work: "≈ $1,540" },
               { label: "Mobilization", work: "≈ $1,200" },
             ]}
-            result="≈ $6,400 installed — about $5.33/ft², at the top of the range because fixed costs amortize over only 1,200 ft². Material share: 43% for the hot mix alone."
+            result="≈ $6,400 installed — about $5.33/ft². That is well below the per-square-foot rate of the smaller jobs on this site precisely because the fixed costs, mobilization above all, are spread over 1,200 ft² instead of a few hundred. Material share: 43% for the hot mix alone."
           />
         </Section>
 
@@ -247,7 +252,6 @@ export default function AsphaltCostGuidePage() {
 
         <AuthorBox author={author} datePublished="2026-07-15" />
 
-        <References items={[AREFS.napa, AREFS.ms4]} />
       </ArticleShell>
     </>
   );

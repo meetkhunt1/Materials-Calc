@@ -9,14 +9,13 @@ import { CostTable } from "@/components/tables/cost-table";
 import { CoverageTable } from "@/components/tables/coverage-table";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { References } from "@/components/blocks/references";
 import { AuthorBox } from "@/components/author/author-box";
 import { Cta } from "@/components/blocks/cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { articleSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
-import { ASPHALT, costGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import { ASPHALT, costGuideLinks, pickLinks } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
 const title = "Asphalt Labor Cost Guide — Crews & Productivity";
@@ -188,7 +187,6 @@ export default function AsphaltLaborCostGuidePage() {
 
         <AuthorBox author={author} datePublished="2026-07-15" />
 
-        <References items={[AREFS.napa]} />
       </ArticleShell>
     </>
   );

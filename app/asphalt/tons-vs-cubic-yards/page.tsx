@@ -121,7 +121,12 @@ export default function TonsVsCubicYardsPage() {
             A ton is what the scale house produces: the truck weighed loaded minus its tare.
             Compacted dense-graded hot mix weighs 145 lb/ft³, so one cubic yard of finished
             mat is 27 × 145 = 3,915 lb — 1.96 US tons. Every conversion on this page is that
-            single density restated.
+            single density restated. What that tonnage is worth in money is a separate
+            question, and a sharper one: the{" "}
+            <a href={ASPHALT.drivewayCost} className="font-medium text-primary hover:underline">
+              asphalt driveway cost guide
+            </a>{" "}
+            turns the same takeoff into an installed budget, line item by line item.
           </p>
         </Section>
 
@@ -171,6 +176,15 @@ export default function TonsVsCubicYardsPage() {
             a quarter of the material. Always state which you mean; when in doubt, work in
             tons, which never change.
           </WarningBlock>
+          <p className="text-muted-foreground">
+            The same 25% gap is why thickness has to be specified as compacted depth before
+            anyone converts anything — and on a driveway, that choice between 2, 3 and 4
+            inches is the one that decides both the tonnage and the lifespan. The{" "}
+            <a href={ASPHALT.drivewayThickness} className="font-medium text-primary hover:underline">
+              right asphalt thickness for a driveway
+            </a>{" "}
+            matches the section to the vehicles that will park on it.
+          </p>
         </Section>
 
         <Section title="From takeoff to order">
@@ -184,6 +198,20 @@ export default function TonsVsCubicYardsPage() {
             ]}
             result="Order 25 US tons — one tri-axle plus one small tandem load, or two tandem loads."
           />
+          <p className="text-muted-foreground">
+            Twenty-five tons is the order; what it costs is the question that actually decides
+            the job. Installed pricing scales with area rather than tonnage, and it falls
+            sharply as the job grows — the{" "}
+            <a href={ASPHALT.costPerSqft} className="font-medium text-primary hover:underline">
+              cost per square foot guide
+            </a>{" "}
+            shows how far, and why a small patch can price at triple the rate of a driveway.
+            To go straight from dimensions to tonnage without doing any of this by hand, the{" "}
+            <a href={ASPHALT.calculator} className="font-medium text-primary hover:underline">
+              asphalt calculator
+            </a>{" "}
+            applies the same 1.96 factor and adds a waste allowance.
+          </p>
         </Section>
 
         <Faq items={faqItems} variant="accordion" />
@@ -200,7 +228,7 @@ export default function TonsVsCubicYardsPage() {
           title="Related guides"
           variant="cards"
           items={[
-            ...pickLinks(weightGuideLinks, ASPHALT.weightChart, ASPHALT.densityExplained),
+            ...pickLinks(weightGuideLinks, ASPHALT.weightChart, ASPHALT.weightConversion),
             ...pickLinks(asphaltCalculatorLinks, ASPHALT.volume),
           ]}
         />

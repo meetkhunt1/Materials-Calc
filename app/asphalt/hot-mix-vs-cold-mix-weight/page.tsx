@@ -150,8 +150,8 @@ export default function HotMixVsColdMixWeightPage() {
             binder lubricates the aggregate so rollers can squeeze air voids down to 7–8%;
             cold binder cannot, so voids stay high and density, strength and life all follow.
             The mechanics are unpacked in{" "}
-            <a href={ASPHALT.densityExplained} className="font-medium text-primary hover:underline">
-              asphalt density explained
+            <a href={ASPHALT.densityChart} className="font-medium text-primary hover:underline">
+              the asphalt density chart
             </a>
             .
           </p>
@@ -243,7 +243,7 @@ export default function HotMixVsColdMixWeightPage() {
           title="Keep reading"
           variant="list"
           items={[
-            ...pickLinks(weightGuideLinks, ASPHALT.densityExplained, ASPHALT.weightChart),
+            ...pickLinks(weightGuideLinks, ASPHALT.weightChart, ASPHALT.tonsVsYards),
             ...pickLinks(coreGuideLinks, ASPHALT.densityChart),
           ]}
         />

@@ -164,7 +164,13 @@ export default function AsphaltThicknessGuidePage() {
           <p className="text-muted-foreground">
             These two constraints bound every real section. They are also why quotes list
             lifts separately: each lift is a full paver-and-roller cycle, and a two-lift job
-            costs more per inch than a one-lift job even at identical tonnage.
+            costs more per inch than a one-lift job even at identical tonnage. What that adds
+            up to on a real driveway is priced line by line in the{" "}
+            <a href={ASPHALT.drivewayCost} className="font-medium text-primary hover:underline">
+              asphalt driveway cost guide
+            </a>{" "}
+            — which also shows why doubling the lifts rarely doubles the price, since
+            mobilization and excavation are already paid for.
           </p>
         </Section>
 
@@ -180,6 +186,23 @@ export default function AsphaltThicknessGuidePage() {
             ]}
             result="A 4-over-8 section, placed in two lifts — one tandem load of hot mix. The extra inch over driveway spec costs ~3.5 tons (~$450) and prevents rutting at the wheel positions where the RV parks for months."
           />
+          <p className="text-muted-foreground">
+            Most people arriving at this page are sizing one specific driveway, and for that
+            the decision narrows quickly: the{" "}
+            <a href={ASPHALT.drivewayThickness} className="font-medium text-primary hover:underline">
+              best asphalt thickness for driveways
+            </a>{" "}
+            matches 2, 3 or 4 inches to the vehicles that will actually park there, while{" "}
+            <a href={ASPHALT.drivewayDimensions} className="font-medium text-primary hover:underline">
+              standard driveway dimensions
+            </a>{" "}
+            settle the width and turning space the section has to cover. With both fixed,
+            the{" "}
+            <a href={ASPHALT.calculator} className="font-medium text-primary hover:underline">
+              asphalt calculator
+            </a>{" "}
+            converts them into tons.
+          </p>
           <Cta
             variant="inline"
             title="Run your own section through the asphalt calculator"

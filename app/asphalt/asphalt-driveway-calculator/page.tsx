@@ -21,6 +21,11 @@ import { calculatorSchema, webPageSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
 import { ASPHALT, drivewayGuideLinks, asphaltCalculatorLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import {
+  BAND_UNDER_500,
+  BAND_500_1000,
+  bandRangeShort,
+} from "@/data/pricing";
 import type { FaqItem } from "@/types";
 
 const title = "Asphalt Driveway Calculator — Tons + Gravel Base";
@@ -120,7 +125,7 @@ export default function DrivewayCalculatorPage() {
               ["12×30 ft, 1-Car", "7.2 tons", "13.8 tons", "$718–1,076"],
               ["20×40 ft, 2-Car", "15.9 tons", "30.8 tons", "$1,595–2,392"],
             ]}
-            caption="3 in asphalt over 6 in base, 10% waste included. Asphalt cost uses the $100–150/ton material range from our driveway cost guide (installed price, including labor and base, runs $5–10/ft²) — confirm with local suppliers. Match these to the presets above the calculator."
+            caption={`3 in asphalt over 6 in base, 10% waste included. Asphalt cost uses the $100–150/ton material range from our driveway cost guide; the all-in installed price, including labor and base, runs ${bandRangeShort(BAND_UNDER_500)} under 500 ft² and ${bandRangeShort(BAND_500_1000)} at 500–1,000 ft² — confirm with local suppliers. Match these to the presets above the calculator.`}
           />
         </Section>
 

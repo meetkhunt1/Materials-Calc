@@ -13,6 +13,12 @@ import { articleSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
 import { ASPHALT, coreGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import {
+  BAND_UNDER_500,
+  BAND_500_1000,
+  bandRangeShort,
+  bandRangePerSqFt,
+} from "@/data/pricing";
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
@@ -82,7 +88,7 @@ const pavingFaqs: FaqItem[] = [
   {
     question: "Should I choose asphalt or concrete?",
     answer:
-      "Freezing climate, tighter upfront budget, or sub-15-year horizon: asphalt, at $2.50–5/ft² installed. Hot climate, decorative finishes, or a 30-year hold: concrete, at $7–12/ft² but 30–40 years of life. Over 30 years total costs nearly converge. The full head-to-head — cost tables, climate physics, pros and cons from both corners — is in the asphalt vs concrete comparison.",
+      `Freezing climate, tighter upfront budget, or sub-15-year horizon: asphalt, at ${bandRangeShort(BAND_500_1000)} installed for a 500–1,000 ft² drive. Hot climate, decorative finishes, or a 30-year hold: concrete, which costs more up front but returns 30–40 years of life. Over 30 years the totals move much closer together. The full head-to-head — spec table, climate physics, pros and cons — is in the concrete vs asphalt comparison.`,
   },
 ];
 
@@ -95,7 +101,7 @@ const costFaqs: FaqItem[] = [
   {
     question: "How much does an asphalt driveway cost installed?",
     answer:
-      "$2.50–5 per square foot for the standard section — 3 in of compacted hot mix over 6 in of aggregate base. A 600 ft² driveway lands around $3,000–3,300; material is only 40–50% of that, with crew, equipment and mobilization making up the rest. Small jobs price above the range because a $1,500+ mobilization amortizes over too few square feet.",
+      `${bandRangePerSqFt(BAND_500_1000)} for the standard section — 3 in of compacted hot mix over 6 in of aggregate base — on a 500–1,000 ft² drive, so roughly $3,500–4,900 for a 600 ft² driveway. Material is only 40–50% of that, with crew, equipment and mobilization making up the rest. Smaller jobs price higher per square foot, ${bandRangeShort(BAND_UNDER_500)} under 500 ft², because a $1,500+ mobilization amortizes over too few square feet.`,
   },
   {
     question: "How often does asphalt need sealcoating?",
@@ -221,7 +227,7 @@ export default function AsphaltFaqsPage() {
             ASPHALT.coverage,
             ASPHALT.costGuide,
             ASPHALT.thickness,
-            ASPHALT.vsConcrete,
+            CONCRETE.vsAsphalt,
           )}
         />
 

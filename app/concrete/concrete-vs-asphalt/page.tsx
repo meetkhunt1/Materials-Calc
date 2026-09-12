@@ -3,11 +3,10 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
-import { InfoBlock } from "@/components/blocks/callout";
+import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { ProsCons } from "@/components/blocks/pros-cons";
 import { ComparisonTable } from "@/components/tables/comparison-table";
 import { CostTable } from "@/components/tables/cost-table";
-import { BarChart } from "@/components/charts/bar-chart";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -25,11 +24,31 @@ import {
   drivewayGuideLinks as asphaltDrivewayGuides,
   pickLinks as pickAsphalt,
 } from "@/content/asphalt/links";
+import { BAND_500_1000, RECURRING_RATES, bandRangePerSqFt } from "@/data/pricing";
 import type { FaqItem } from "@/types";
 
 const title = "Concrete vs Asphalt — Cost & Lifespan";
 const description =
-  "A driveway-focused comparison of concrete and asphalt: installed cost, 30-year total cost of ownership, climate performance, maintenance schedules and when each wins.";
+  "A driveway-focused comparison of concrete and asphalt: service life, climate performance, maintenance schedules, repairability and when each one wins — plus what asphalt actually costs to install and own for 30 years.";
+/**
+ * 30-year ownership, worked for a 600 ft² driveway. Only the asphalt side is
+ * computable: its install cost comes from a derived band and its maintenance
+ * rates are stated consistently sitewide. There is no defensible per-ft²
+ * concrete install figure yet, so the head-to-head chart this page used to
+ * carry has been removed rather than rebuilt on a guess.
+ */
+const AREA_SQFT = 600;
+const SEALCOAT_CYCLES = 6;
+const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
+const installLow = BAND_500_1000.low * AREA_SQFT;
+const installHigh = BAND_500_1000.high * AREA_SQFT;
+const sealLow = RECURRING_RATES.sealcoat.low * AREA_SQFT * SEALCOAT_CYCLES;
+const sealHigh = RECURRING_RATES.sealcoat.high * AREA_SQFT * SEALCOAT_CYCLES;
+const overlayLow = RECURRING_RATES.overlay.low * AREA_SQFT;
+const overlayHigh = RECURRING_RATES.overlay.high * AREA_SQFT;
+const asphalt30Low = installLow + sealLow + overlayLow;
+const asphalt30High = installHigh + sealHigh + overlayHigh;
+
 const path = CONCRETE.vsAsphalt;
 const author = getAuthor("materials-team");
 
@@ -45,7 +64,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Which is cheaper, concrete or asphalt?",
     answer:
-      "Asphalt wins on day one: $5–8/ft² installed versus $7–12 for concrete. Over 30 years the gap closes or reverses — asphalt needs sealcoating every 3–5 years and typically a full overlay around year 15–20, while concrete usually reaches year 30 on joint sealing and occasional panel repairs.",
+      `Asphalt wins on day one — a 500–1,000 ft² asphalt driveway installs at ${bandRangePerSqFt(BAND_500_1000)} all-in, and concrete costs meaningfully more. We are not putting a number on concrete: our per-square-foot concrete figures disagreed with each other and none were traceable to a source, so they have been withdrawn until we have one. What the asphalt side does show is that the day-one saving is not the whole story — over 30 years sealcoating every 3–5 years and an overlay around year 15–20 add roughly as much again, while concrete usually reaches year 30 on joint sealing and occasional panel repairs.`,
   },
   {
     question: "Which lasts longer?",
@@ -63,18 +82,24 @@ const faqItems: FaqItem[] = [
       "Concrete, clearly. Asphalt softens above ~120°F surface temperature (a sunny 95°F day), rutting under parked tires, and its blacktop runs 20–30°F hotter than concrete. Southern US driveways are overwhelmingly concrete for this reason.",
   },
   {
+    question: "How soon can you drive on each?",
+    answer:
+      "Asphalt: 2–3 days after paving (longer in hot weather while the mat stays soft). Concrete: 7 days for vehicle loads while it builds strength, though foot traffic is fine after 24–48 hours. If the driveway is your only access and downtime is critical, asphalt's fast return to service is a genuine advantage.",
+  },
+  {
     question: "Can you pave asphalt over concrete or vice versa?",
     answer:
-      "Asphalt over sound concrete is common (mind the joints reflecting through). Concrete over asphalt — 'whitetopping' — is a real technique at 4+ inches. Both beat full demolition when the existing slab is stable; neither fixes a failed base.",
+      "Asphalt over sound concrete is common — a 1.5–2 in overlay on a stable slab is cheap and quick, though the concrete joints will reflect through as hairline cracks within a couple of years; crews mitigate but rarely eliminate this. Concrete over asphalt — 'whitetopping' — is a real technique at 4+ inches. Both beat full demolition when the existing slab is stable; neither fixes a failed base.",
   },
 ];
 
 const toc = tocFromTitles(
   "The 60-second verdict",
-  "Cost comparison, installed and lifetime",
+  "What each one costs to install and own",
   "Head-to-head specification table",
   "Strengths and weaknesses of each",
   "Climate is the tiebreaker",
+  "When each one is the right call",
 );
 
 export default function ConcreteVsAsphaltPage() {
@@ -100,7 +125,7 @@ export default function ConcreteVsAsphaltPage() {
               eyebrow="Concrete · Comparison"
               variant="standard"
               title="Concrete vs asphalt"
-              description="Both are excellent pavements installed well and disappointments installed badly. This comparison sticks to measurable differences — cost per square foot, service life, maintenance hours — and tells you when each one is the right call."
+              description="Both are excellent pavements installed well and disappointments installed badly. This comparison sticks to measurable differences — service life, climate behavior, maintenance cycles and repairability — and tells you when each one is the right call."
             >
               <AuthorBox author={author} datePublished="2026-07-15" variant="inline" />
             </Hero>
@@ -132,34 +157,62 @@ export default function ConcreteVsAsphaltPage() {
           </InfoBlock>
         </Section>
 
-        <Section title="Cost comparison, installed and lifetime">
+        <Section title="What each one costs to install and own">
           <CostTable
             currency="USD"
             rows={[
-              { item: "Asphalt — installed", unit: "ft²", low: 5, high: 8, note: "2–3 in lift on 6–8 in base" },
-              { item: "Concrete — installed", unit: "ft²", low: 7, high: 12, note: "4–5 in slab, broom finish" },
-              { item: "Concrete — decorative", unit: "ft²", low: 12, high: 22, note: "Stamped, exposed, colored" },
-              { item: "Asphalt sealcoat (recurring)", unit: "ft²", low: 0.2, high: 0.45, note: "Every 3–5 years" },
-              { item: "Asphalt overlay (~yr 15–20)", unit: "ft²", low: 3, high: 5 },
+              {
+                item: "Asphalt — installed, 500–1,000 ft² drive",
+                unit: "ft²",
+                low: BAND_500_1000.low,
+                high: BAND_500_1000.high,
+                note: "All-in: excavation, base, 3 in mix, labor, mobilization",
+              },
+              {
+                item: "Asphalt sealcoat (recurring)",
+                unit: "ft²",
+                low: RECURRING_RATES.sealcoat.low,
+                high: RECURRING_RATES.sealcoat.high,
+                note: "Every 3–5 years",
+              },
+              {
+                item: "Asphalt overlay (~yr 15–20)",
+                unit: "ft²",
+                low: RECURRING_RATES.overlay.low,
+                high: RECURRING_RATES.overlay.high,
+              },
               { item: "Concrete joint reseal (~yr 10)", unit: "ft²", low: 0.15, high: 0.3 },
             ]}
-            caption="US national ranges, mid-2026, typical residential driveways. Regional labor swings these ±25%."
+            caption="Asphalt installed cost is derived from a driveway costed line by line in our driveway cost guide; maintenance rates are US national ranges for mid-2026. Concrete install and repair prices are deliberately absent — see below."
           />
-          <BarChart
-            title="30-year cost of ownership, 600 ft² driveway"
-            unit="USD"
-            monochrome={false}
-            data={[
-              { label: "Asphalt: install + 6 sealcoats + 1 overlay", value: 8300, color: "var(--chart-3)" },
-              { label: "Concrete: install + resealing + minor repair", value: 7400, color: "var(--chart-1)" },
-            ]}
-          />
+          <WarningBlock title="We have withdrawn our concrete price per square foot">
+            This page used to put concrete at $7–12/ft² installed. Elsewhere the same site
+            said $6–10 and $8–15, none of the three traced to a source, and none were
+            calculated from a worked job the way the asphalt figures are. Rather than pick the
+            most plausible one and present it as fact, we have removed all three and will
+            publish a concrete rate again when we have one we can show our working for. The
+            non-price comparison below — service life, climate behavior, maintenance cycles,
+            repairability — is unaffected.
+          </WarningBlock>
           <p className="text-muted-foreground">
-            The lifetime chart surprises people: asphalt&apos;s recurring maintenance quietly
-            overtakes concrete&apos;s higher day-one price somewhere around year 18–22. Current
-            per-yard concrete pricing behind that estimate is in the{" "}
+            Half of the 30-year picture can still be built. On a {AREA_SQFT} ft² driveway,
+            asphalt costs {usd(installLow)}–{usd(installHigh)} to install, roughly{" "}
+            {usd(sealLow)}–{usd(sealHigh)} across six sealcoat cycles, and{" "}
+            {usd(overlayLow)}–{usd(overlayHigh)} for one overlay around year 15–20 — about{" "}
+            {usd(asphalt30Low)}–{usd(asphalt30High)} over thirty years, of which maintenance
+            is very roughly as much again as the original paving. That is the number worth
+            carrying: asphalt&apos;s day-one saving is real, and so is the recurring bill that
+            follows it.
+          </p>
+          <p className="text-muted-foreground">
+            We are not publishing the other half. Comparing lifetime totals needs a concrete
+            install price, and ours is withdrawn — so the head-to-head chart this section used
+            to show has been removed rather than rebuilt around a guess. It previously claimed
+            asphalt overtakes concrete somewhere around year 18–22; that conclusion rested
+            entirely on the figures above, and we are not standing behind it until the concrete
+            side is sourced. Per-cubic-yard concrete pricing, which is unaffected, is in the{" "}
             <a href={CONCRETE.cost} className="font-medium text-primary hover:underline">
-              cost guide
+              concrete cost guide
             </a>
             .
           </p>
@@ -180,6 +233,7 @@ export default function ConcreteVsAsphaltPage() {
               { feature: "Repairs", values: { concrete: "Panel replacement — visible", asphalt: "Patch + sealcoat — blends in" } },
               { feature: "Finish options", values: { concrete: "Broom, stamped, colored, exposed", asphalt: "Black. That's the option." } },
               { feature: "Load capacity (equal base)", values: { concrete: "Rigid — spreads loads", asphalt: "Flexible — rutting under point loads" } },
+              { feature: "Renewal option", values: { concrete: "None short of replacement", asphalt: "Overlay restores to near-new" } },
             ]}
             caption="Typical residential performance; commercial designs change the numbers but rarely the direction."
           />
@@ -236,6 +290,26 @@ export default function ConcreteVsAsphaltPage() {
           </p>
         </Section>
 
+        <Section title="When each one is the right call">
+          <p className="text-muted-foreground">
+            Choose asphalt when the climate freezes, the budget is upfront-constrained, the
+            ownership horizon is under ~15 years, or the pavement will one day be trenched
+            for utilities — patches disappear under the next sealcoat. Choose concrete for
+            hot climates, decorative finishes, or a set-and-forget 30-year hold. Either way
+            the base layer decides more than the surface material: 6 in of properly compacted
+            aggregate under a budget surface outlasts a premium surface on mud, every time.
+            If asphalt is winning your case, the{" "}
+            <a href={ASPHALT.thickness} className="font-medium text-primary hover:underline">
+              asphalt thickness guide
+            </a>{" "}
+            sets the lift depths and the{" "}
+            <a href={ASPHALT.drivewayCost} className="font-medium text-primary hover:underline">
+              driveway cost guide
+            </a>{" "}
+            prices the job line by line.
+          </p>
+        </Section>
+
         <Faq items={faqItems} variant="accordion" />
 
         <Cta
@@ -256,10 +330,10 @@ export default function ConcreteVsAsphaltPage() {
         />
 
         <RelatedArticles
-          title="The same comparison, from asphalt's corner"
+          title="If asphalt is winning your case"
           variant="inline-strip"
           items={[
-            ...pickAsphalt(asphaltCoreGuides, ASPHALT.vsConcrete),
+            ...pickAsphalt(asphaltCoreGuides, ASPHALT.thickness),
             ...pickAsphalt(asphaltCalculatorLinks, ASPHALT.calculator),
             ...pickAsphalt(asphaltDrivewayGuides, ASPHALT.drivewayCost),
           ]}

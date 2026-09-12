@@ -23,6 +23,10 @@ import {
   pickLinks,
   AREFS,
 } from "@/content/asphalt/links";
+import {
+  BAND_500_1000,
+  bandRangeShort,
+} from "@/data/pricing";
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
@@ -69,7 +73,7 @@ const faqItems: FaqItem[] = [
   {
     question: "When should I replace instead of repair?",
     answer:
-      "Replace when the structure, not the surface, has failed: alligator cracking over large areas, ruts deeper than about 1 in, base pumping fines up through cracks, or a surface past 20–25 years that has already had an overlay. At that point patches and sealer are cosmetic — every dollar spent on them is a dollar not saved toward the $5–10/ft² rebuild.",
+      `Replace when the structure, not the surface, has failed: alligator cracking over large areas, ruts deeper than about 1 in, base pumping fines up through cracks, or a surface past 20–25 years that has already had an overlay. At that point patches and sealer are cosmetic — every dollar spent on them is a dollar not saved toward the ${bandRangeShort(BAND_500_1000)} rebuild.`,
   },
 ];
 
@@ -182,16 +186,11 @@ export default function DrivewayLifespanPage() {
             chart spans 8 to 25+ years for what is nominally the same product.
           </InfoBlock>
           <p className="text-muted-foreground">
-            Deciding between materials on longevity? Both sides of this site argue their
-            case — the{" "}
-            <a href={ASPHALT.vsConcrete} className="font-medium text-primary hover:underline">
-              asphalt vs concrete comparison
-            </a>{" "}
-            from the asphalt corner, and the{" "}
+            Deciding between materials on longevity? The{" "}
             <a href={CONCRETE.vsAsphalt} className="font-medium text-primary hover:underline">
-              concrete vs asphalt guide
+              concrete vs asphalt comparison
             </a>{" "}
-            from the other. Short version: concrete lives longer, asphalt costs less
+            runs both cases side by side. Short version: concrete lives longer, asphalt costs less
             upfront and is far cheaper to resurface at mid-life.
           </p>
         </Section>
