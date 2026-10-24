@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { InfoBlock, TipBlock } from "@/components/blocks/callout";
 import { CostTable } from "@/components/tables/cost-table";
 import { BarChart } from "@/components/charts/bar-chart";
@@ -20,12 +21,13 @@ import { GRAVEL, costGuideLinks, pickLinks, GREFS } from "@/content/gravel/links
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-price-guide";
-const title = "Gravel Price Guide — 2026 Prices by Type";
+const title = "Gravel Prices 2026: $15–200 per Ton by Type";
 const description =
-  "The 2026 master gravel price table: crusher run $15–30/ton, #57 stone $25–45, pea gravel $30–60, river rock $45–130, decorative stone $50–200 — plus the three factors that decide where your quote lands.";
+  "Gravel costs $15–30 a ton for crusher run, $25–45 for #57 stone, $30–60 for pea gravel and $45–130 for river rock in 2026. See the full price table.";
 const path = GRAVEL.priceGuide;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
+const dateModified = "2026-10-24";
 
 // Deterministic per-slug variation (see lib/variation.ts)
 const heroVariant = pick(slug, HERO_VARIANTS); // "stat-strip"
@@ -40,38 +42,39 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: dateModified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much does gravel cost in 2026?",
     answer:
-      "Bulk gravel runs $15–200 per ton depending entirely on type. Construction workhorses sit at the bottom — crusher run $15–30, #57 stone $25–45 — while landscape stone climbs: pea gravel $30–60, river rock $45–130, and specialty decorative stone $50–200 per ton. Delivery adds a $50–150 flat fee on top.",
+      "Bulk gravel costs $15–200 per ton depending entirely on type. Construction workhorses sit at the bottom (crusher run $15–30, #57 stone $25–45), while landscape stone climbs: pea gravel $30–60, river rock $45–130, and specialty decorative stone $50–200 per ton. Delivery adds a $50–150 flat fee on top.",
   },
   {
     question: "What is the cheapest gravel?",
     answer:
-      "Recycled concrete aggregate at $10–20 per ton, followed by crusher run and stone screenings at $12–30. All three are crushed, angular products that compact hard — ideal for bases and driveways. Anything cheap and pretty does not exist; appearance is exactly what you pay for above $45 per ton.",
+      "Recycled concrete aggregate at $10–20 per ton, followed by crusher run and stone screenings at $12–30. All three are crushed, angular products that compact hard, ideal for bases and driveways. Cheap and pretty does not exist; appearance is exactly what you pay for above $45 per ton.",
   },
   {
     question: "Why is river rock three times the price of crusher run?",
     answer:
-      "Crusher run is made at thousands of local quarries from whatever rock is nearby, so it barely travels. River rock comes from specific alluvial deposits, is screened and washed for appearance, and often ships hundreds of miles. Freight is the multiplier: gravel is cheap to make and expensive to move.",
+      "Freight. Crusher run is made at thousands of local quarries from whatever rock is nearby, so it barely travels. River rock comes from specific alluvial deposits, is screened and washed for appearance, and often ships hundreds of miles. Gravel is cheap to make and expensive to move.",
   },
   {
     question: "How much does a gravel driveway's material cost?",
     answer:
-      "A 16 × 50 ft single-car drive needs roughly 20–25 tons across an 8–10 inch layered build. At crusher run and #57 prices that is $400–900 of stone plus delivery — figure $500–1,100 in material. Labor and grading roughly double it installed; see the gravel driveway cost guide for full line items.",
+      "About $700–1,200 of delivered stone for a 12 × 50 ft single-car drive, which needs roughly 28 tons for a standard 8 inch, two-layer build of #57 and crusher run. Labor and grading roughly double it installed; the gravel driveway cost guide has the full line items.",
   },
   {
     question: "Do gravel prices include delivery?",
     answer:
-      "Almost never. Quarries and landscape yards quote a gate (pickup) price, then add a $50–150 flat delivery fee per trip within their radius. On a 3-ton order a $100 fee adds $33 per ton — which is why small-job comparisons should always be made on the delivered total, not the per-ton sticker.",
+      "Almost never. Quarries and landscape yards quote a gate (pickup) price, then add a $50–150 flat delivery fee per trip within their radius. On a 3-ton order a $100 fee adds $33 per ton, which is why small-job comparisons should always be made on the delivered total, not the per-ton sticker.",
   },
   {
     question: "Are gravel prices rising?",
     answer:
-      "Slowly and steadily. USGS data shows US crushed stone prices climbing roughly 3–7% per year through the 2020s, driven by diesel, labor and permitting costs rather than the rock itself. The bigger swing is always geographic: the same #57 stone can differ 50% between a quarry-dense region and one where stone is barged or railed in.",
+      "Yes, slowly and steadily. USGS data shows US crushed stone prices climbing roughly 3–7% per year through the 2020s, driven by diesel, labor and permitting costs rather than the rock itself. The bigger swing is always geographic: the same #57 stone can differ 50% between a quarry-dense region and one where stone is barged or railed in.",
   },
 ];
 
@@ -92,6 +95,7 @@ export default function GravelPriceGuidePage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified,
           author,
         })}
       />
@@ -104,7 +108,7 @@ export default function GravelPriceGuidePage() {
               eyebrow="Gravel · Cost Series"
               variant={heroVariant}
               title="Gravel price guide (2026)"
-              description="Every common gravel type, one honest price table. The spread is wider than most people expect — a ton of stone costs anywhere from $10 to $200 depending on what it is and how far it traveled."
+              description="Every common gravel type, one honest price table. The spread is wider than most people expect: a ton of stone costs anywhere from $10 to $200 depending on what it is and how far it traveled."
               stats={[
                 { value: "$15–30", label: "crusher run, per ton" },
                 { value: "$25–45", label: "#57 stone, per ton" },
@@ -123,25 +127,33 @@ export default function GravelPriceGuidePage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much does gravel cost per ton?"
+          answer="Bulk gravel costs about $15–30 per ton for crusher run, $25–45 for #57 crushed stone, $30–60 for pea gravel, $45–130 for river rock and up to $200 for decorative stone (2026 US gate prices). Delivery usually adds a flat $50–150 per trip, so always compare delivered totals."
+          ruleOfThumb="Put cheap crusher run underneath and pay for looks only in the top 2 in."
+          formula="Delivered cost = tons × price per ton + delivery fee"
+        />
+
         <Section title="The 2026 master price table">
           <CostTable
             rows={[
               { item: "Recycled concrete aggregate (RCA)", unit: "per ton", low: 10, high: 20, note: "Crushed demolition concrete; base use only" },
               { item: "Stone dust / screenings", unit: "per ton", low: 12, high: 25, note: "Fines for paver bedding and path topping" },
               { item: "Bank run / pit gravel", unit: "per ton", low: 12, high: 25, note: "Unprocessed sand-and-gravel mix; fill and sub-base" },
-              { item: "Crusher run (dense-grade base)", unit: "per ton", low: 15, high: 30, note: "Stone + fines; compacts hard — the base workhorse" },
+              { item: "Crusher run (dense-grade base)", unit: "per ton", low: 15, high: 30, note: "Stone + fines; compacts hard, the base workhorse" },
               { item: "Road base / item 4", unit: "per ton", low: 18, high: 35, note: "Spec'd blend for drives and lanes" },
               { item: "#57 crushed stone", unit: "per ton", low: 25, high: 45, note: "Clean 3/4–1 in; drainage and top layers" },
               { item: "Pea gravel", unit: "per ton", low: 30, high: 60, note: "Rounded 3/8 in; paths, patios, play areas" },
               { item: "River rock (1–3 in)", unit: "per ton", low: 45, high: 130, note: "Washed, rounded; beds and dry creeks" },
-              { item: "Decorative stone (marble, lava, polished)", unit: "per ton", low: 50, high: 200, note: "Specialty deposits, long freight — accent use" },
+              { item: "Decorative stone (marble, lava, polished)", unit: "per ton", low: 50, high: 200, note: "Specialty deposits, long freight; accent use" },
             ]}
             caption="US bulk gate prices, mid-2026, before delivery. Quarry-dense regions sit at the low end; stone-poor regions at the high end."
           />
           <p className="text-muted-foreground">
-            Read the table from the bottom up when planning a project: the expensive stone
+            Gravel prices climb with looks, so read the table from the bottom up when
+            planning a project: the expensive stone
             only ever needs to be the top two inches. Everything underneath can be crusher
-            run at a fraction of the price — that single design decision is worth more than
+            run at a fraction of the price. That single design decision is worth more than
             any negotiation, and the{" "}
             <a href={GRAVEL.costPerTon} className="font-medium text-primary hover:underline">
               cost-per-ton guide
@@ -179,17 +191,17 @@ export default function GravelPriceGuidePage() {
           <p className="text-muted-foreground">
             Three factors set nearly every quote. First, <strong>hauling distance</strong>:
             rock leaves the quarry at $10–20 a ton, and trucking adds roughly $0.15–0.30 per
-            ton-mile — 30 miles of haul can double the price of cheap stone. Second,{" "}
+            ton-mile, so 30 miles of haul can double the price of cheap stone. Second,{" "}
             <strong>region</strong>: areas sitting on good limestone or granite have quarries
             every 20 miles and cheap stone; coastal plains and stone-poor states import by
             barge or rail and pay 30–50% more for identical material. Third,{" "}
             <strong>volume</strong>: quarries quote tiered prices, and a 20-ton tandem load
             routinely prices 15–25% under the 3-ton minimum-order rate per ton.
           </p>
-          <InfoBlock title="The rock is cheap — moving it is not">
+          <InfoBlock title="The rock is cheap; moving it is not">
             USGS pegs the average US crushed stone value at the plant near $17 per ton. Every
             dollar above that in your quote is freight, handling and margin, which is why the
-            single best predictor of your price is the distance to the nearest quarry — and
+            single best predictor of your price is the distance to the nearest quarry, and
             why shopping two more suppliers routinely beats haggling with one.
           </InfoBlock>
         </Section>
@@ -197,7 +209,7 @@ export default function GravelPriceGuidePage() {
         <Section title="Turning a table price into a local quote">
           <p className="text-muted-foreground">
             Use this table to budget, not to order. Call two quarries and one landscape yard
-            with your tonnage and address, and ask for the delivered total — gate price,
+            with your tonnage and address, and ask for the delivered total: gate price,
             delivery fee and tax in one number. If a quote lands outside these ranges, ask
             why: an honest answer is usually freight distance or a minimum-order surcharge,
             both of which the{" "}
@@ -225,7 +237,7 @@ export default function GravelPriceGuidePage() {
           items={pickLinks(costGuideLinks, GRAVEL.costPerTon, GRAVEL.deliveryCost, GRAVEL.budgetTips)}
         />
 
-        <AuthorBox author={author} datePublished={datePublished} />
+        <AuthorBox author={author} datePublished={datePublished} dateModified={dateModified} />
 
         <References items={[GREFS.usgs, GREFS.nssga]} />
       </ArticleShell>

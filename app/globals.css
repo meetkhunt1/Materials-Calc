@@ -192,7 +192,7 @@
 }
 
 @layer components {
-  /* Article prose — tuned typography for long-form guides */
+  /* Article prose: tuned typography for long-form guides */
   .prose-article {
     @apply prose prose-neutral dark:prose-invert max-w-none
       prose-headings:font-semibold prose-headings:tracking-tight prose-headings:scroll-mt-24
@@ -236,7 +236,7 @@
   }
 }
 
-/* Print — used by calculator "Print results" */
+/* Print: used by calculator "Print results" */
 @media print {
   header,
   footer,

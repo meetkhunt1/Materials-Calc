@@ -11,7 +11,7 @@ interface CategoryNavProps {
   className?: string;
 }
 
-/** Category navigation — card grid for hubs, pill row for in-page nav. */
+/** Category navigation: card grid for hubs, pill row for in-page nav. */
 export function CategoryNav({ active, variant = "grid", className }: CategoryNavProps) {
   if (variant === "pills") {
     return (

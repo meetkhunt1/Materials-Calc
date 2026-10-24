@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/footer";
 
 /**
  * Skips the site Header/Footer for /embed/* routes. Layouts can only add
- * chrome, never strip an ancestor's — so the header/footer live in the root
+ * chrome, never strip an ancestor's: so the header/footer live in the root
  * layout and this component decides, per route, whether to render them.
  */
 export function SiteChrome({ children }: { children: React.ReactNode }) {

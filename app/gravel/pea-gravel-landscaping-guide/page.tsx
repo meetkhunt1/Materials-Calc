@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ProsCons } from "@/components/blocks/pros-cons";
 import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { Faq } from "@/components/faq/faq";
@@ -19,12 +20,13 @@ import { GRAVEL, peaGuideLinks, stoneGuideLinks, pickLinks, GREFS } from "@/cont
 import type { FaqItem } from "@/types";
 
 const slug = "pea-gravel-landscaping-guide";
-const title = "Pea Gravel Landscaping Guide — Paths, Patios, Xeriscape & More";
+const title = "Pea Gravel Landscaping: Paths, Patios and Beds";
 const description =
-  "Where pea gravel earns its place in a landscape: paths, patios, xeriscapes, paver joints, dog runs and drainage strips — with honest pros and cons per use, edging and plant pairings, and the jobs it should never get.";
+  "Pea gravel works best for paths, patios, xeriscape beds, dog runs and drainage strips at 2–3 in deep, but not on driveways or slopes. Pros, cons, plants.";
 const path = GRAVEL.peaLandscaping;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
+const dateModified = "2026-10-24";
 
 const heroVariant = pick(slug, HERO_VARIANTS);
 const tocPosition = pick(slug, ["toc-right", "toc-left"] as const);
@@ -38,23 +40,24 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: dateModified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "Is pea gravel better than mulch for landscaping beds?",
     answer:
-      "Different tools. Pea gravel never decomposes, never blows away and never feeds termites — but it also adds no organic matter and gets hot in full sun. Use it around drought-tolerant and Mediterranean plants; keep bark mulch around moisture-loving shrubs and vegetable beds where soil building matters.",
+      "Better for dry, sunny beds; worse where soil building matters. Pea gravel never decomposes, never blows away and never feeds termites, but it also adds no organic matter and gets hot in full sun. Use it around drought-tolerant and Mediterranean plants; keep bark mulch around moisture-loving shrubs and vegetable beds where soil building matters.",
   },
   {
     question: "Can I put pea gravel between pavers or stepping stones?",
     answer:
-      "Yes — it is one of the best-looking joint fills for wide gaps of 2 inches or more. Use the small 1/4 inch grade so it settles into joints, and set stepping stones proud by about half an inch so the gravel does not wash over them. For tight paver joints under 1 inch, angular stone dust locks better.",
+      "Yes, and it is one of the best-looking joint fills for wide gaps of 2 inches or more. Use the small 1/4 inch grade so it settles into joints, and set stepping stones proud by about half an inch so the gravel does not wash over them. For tight paver joints under 1 inch, angular stone dust locks better.",
   },
   {
     question: "Does pea gravel work on a slope?",
     answer:
-      "Poorly beyond a gentle 5% or so grade. Rounded stones roll, so gravity plus rain slowly conveys the surface downhill. On mild slopes, cross the fall line with buried edging every few feet or use gravel stabilization grids; past that, switch to angular crushed stone or terraced beds.",
+      "Not well beyond a gentle 5% or so grade. Rounded stones roll, so gravity plus rain slowly conveys the surface downhill. On mild slopes, cross the fall line with buried edging every few feet or use gravel stabilization grids; past that, switch to angular crushed stone or terraced beds.",
   },
   {
     question: "Is pea gravel safe around a fire pit?",
@@ -64,12 +67,12 @@ const faqItems: FaqItem[] = [
   {
     question: "What plants pair well with pea gravel?",
     answer:
-      "Drought-lovers that appreciate the gravel's fast drainage and reflected warmth: lavender, rosemary, sedums, ornamental grasses, yucca, thyme and creeping groundcovers that spill over the stone. Avoid shallow-rooted moisture lovers — the gravel layer keeps rain moving down and away from them.",
+      "Drought-loving plants that appreciate the gravel's fast drainage and reflected warmth: lavender, rosemary, sedums, ornamental grasses, yucca, thyme and creeping groundcovers that spill over the stone. Avoid shallow-rooted moisture lovers, because the gravel layer keeps rain moving down and away from them.",
   },
   {
     question: "Will pea gravel attract snakes or pests?",
     answer:
-      "No more than any other ground cover, and less than organic mulch — there is nothing to eat in it and it holds no moisture. It will not harbor termites, fungus or mold. The one honest nuisance is leaf litter: leaves work into the stone and are tedious to blow out in fall.",
+      "No more than any other ground cover, and less than organic mulch: there is nothing to eat in it and it holds no moisture. It will not harbor termites, fungus or mold. The one honest nuisance is leaf litter: leaves work into the stone and are tedious to blow out in fall.",
   },
 ];
 
@@ -92,6 +95,7 @@ export default function PeaGravelLandscapingGuidePage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified,
           author,
         })}
       />
@@ -104,7 +108,7 @@ export default function PeaGravelLandscapingGuidePage() {
               eyebrow="Gravel · Pea Gravel"
               variant={heroVariant}
               title="Pea gravel landscaping guide"
-              description="The most versatile decorative stone in the yard — and the most misused. Where pea gravel genuinely belongs, what each use trades away, and the two jobs it should always refuse."
+              description="The most versatile decorative stone in the yard, and the most misused. Where pea gravel genuinely belongs, what each use trades away, and the two jobs it should always refuse."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -117,10 +121,16 @@ export default function PeaGravelLandscapingGuidePage() {
           </>
         }
       >
+        <QuickAnswer
+          question="Where should you use pea gravel in landscaping?"
+          answer="Pea gravel works best for garden paths (2 inches over a compacted base), patios (2–3 inches), xeriscape beds and ground cover over woven fabric, dog runs (about 4 inches) and drainage strips. Avoid it on driveways with real traffic, slopes steeper than about 5%, and as a load-bearing base, because rounded stones never interlock."
+          ruleOfThumb="Use pea gravel as a finish layer only, never as the base."
+        />
+
         <Section title="Paths and walkways">
           <p className="text-muted-foreground">
-            The signature use. A 2 in layer of 3/8 in pea gravel over a compacted crusher
-            run base makes the classic crunching garden path — instantly permeable, softer
+            Paths are the signature use. A 2 in layer of 3/8 in pea gravel over a compacted crusher
+            run base makes the classic crunching garden path: instantly permeable, softer
             underfoot than any paver, and cheaper per foot than every hard alternative. The
             crunch itself is a feature: you hear visitors arrive. Keep the profile at
             2 inches; deeper feels like walking on a beach.
@@ -128,14 +138,14 @@ export default function PeaGravelLandscapingGuidePage() {
           <ProsCons
             subject="Pea gravel paths"
             pros={[
-              "Cheapest walkable surface per square foot — $2–5/ft² DIY including base and edging",
+              "Cheapest walkable surface per square foot: $2–5/ft² DIY including base and edging",
               "Drains instantly; no puddles, no ice sheet, permeable for stormwater rules",
-              "Curves cost nothing — no cutting, no pattern math, any shape you can rake",
+              "Curves cost nothing: no cutting, no pattern math, any shape you can rake",
               "Repairs are a bag and a rake, not a mason",
             ]}
             cons={[
               "Migrates without continuous edging on both sides",
-              "Hostile to wheelbarrows, strollers and wheelchairs — wheels plow, not roll",
+              "Hostile to wheelbarrows, strollers and wheelchairs; wheels plow, not roll",
               "Tracks indoors in shoe treads; keep it away from door thresholds",
               "Needs raking and a top-up roughly every 2–3 years",
             ]}
@@ -147,20 +157,20 @@ export default function PeaGravelLandscapingGuidePage() {
             A pea gravel patio is the budget path to a large outdoor room: 2–3 inches
             screeded flat over a compacted base, rigid edging all around, furniture on top.
             Chairs sink slightly unless you set flagstones or pavers as landing pads under
-            the table — the best patios mix the two, hard pads where furniture lives and
+            the table. The best patios mix the two, hard pads where furniture lives and
             gravel everywhere else.
           </p>
           <ProsCons
             subject="Pea gravel patios"
             pros={[
-              "A fraction of paver cost — big patios become affordable ($15–30/ft² for pavers vs $2–5)",
+              "A fraction of paver cost, so big patios become affordable ($15–30/ft² for pavers vs $2–5)",
               "Screeds genuinely flat; reads as a designed surface, not a gravel pile",
               "No frost heave, no cracked slabs, no polymeric sand maintenance",
               "Combines beautifully with flagstone pads and steel edging",
             ]}
             cons={[
               "Chair and table legs sink without pads under them",
-              "Not barefoot-perfect for everyone — fine for most, tender-footed guests notice",
+              "Not barefoot-perfect for everyone: fine for most, tender-footed guests notice",
               "Snow shoveling scoops stone along with the snow",
               "Spilled food and leaf litter are harder to clean off than off pavers",
             ]}
@@ -174,11 +184,11 @@ export default function PeaGravelLandscapingGuidePage() {
             irrigation for the covered area, and reflects gentle warmth up into
             Mediterranean plantings. Between pavers and stepping stones, the small 1/4 in
             grade settles into wide joints and stays put better than it does in the open.
-            It also makes a clean maintenance strip against foundations — a 12–18 in
+            It also makes a clean maintenance strip against foundations: a 12–18 in
             gravel band keeps soil (and rot) off siding and mulch away from termite
             inspectors&apos; sightlines.
           </p>
-          <InfoBlock title="Fabric under decorative gravel — yes, here">
+          <InfoBlock title="Fabric under decorative gravel: yes, here">
             Under walked surfaces, landscape fabric is debatable. Under ornamental beds it
             is not: a woven geotextile under 2–3 in of stone is the difference between an
             annual five-minute weed patrol and a perennial weeding job, and it stops the
@@ -191,7 +201,7 @@ export default function PeaGravelLandscapingGuidePage() {
           <p className="text-muted-foreground">
             Rounded stone is the pet-friendly aggregate: easy on paws where crushed stone
             is not, and a 4 in bed over free-draining soil lets urine flush through with a
-            weekly hose-down instead of pooling. Use the 1/2 in grade — big enough to
+            weekly hose-down instead of pooling. Use the 1/2 in grade: big enough to
             drain fast, small enough to trot on comfortably. The same free-draining
             property makes pea gravel the standard dressing for drainage strips: downspout
             splash zones, French drain tops, and dry creek beds that carry roof water away
@@ -214,7 +224,7 @@ export default function PeaGravelLandscapingGuidePage() {
             visually; aluminum does the same without rust; concrete or brick soldier
             courses read traditional and double as a mowing strip; timber suits cottage
             paths but rots on the schedule timber rots. Set any of them about an inch
-            proud of the finished gravel — flush edging is decorative, not functional.
+            proud of the finished gravel, because flush edging is decorative, not functional.
             Plant partners that earn their place: lavender, rosemary, ornamental grasses
             and sedums love the drainage; creeping thyme softens edges and forgives being
             walked on; small multi-stem trees rising out of a gravel plane is the signature
@@ -227,11 +237,11 @@ export default function PeaGravelLandscapingGuidePage() {
             <p>
               <strong>Driveways under real traffic.</strong> Rounded stones never
               interlock, so tires rut, spin and spray them off the edges. Driveways want
-              angular crushed stone — see{" "}
+              angular crushed stone (see{" "}
               <a href={GRAVEL.drivewayTypes} className="font-medium underline">
                 best gravel for driveways
               </a>
-              . A pea gravel drive is a rake-forever commitment.
+              ). A pea gravel drive is a rake-forever commitment.
             </p>
             <p>
               <strong>Slopes.</strong> Anything past a gentle grade turns the surface into
@@ -241,7 +251,7 @@ export default function PeaGravelLandscapingGuidePage() {
             <p>
               <strong>Load-bearing base layers.</strong> Under pavers, slabs or sheds,
               rounded stone acts like ball bearings and never compacts to refusal. Bases
-              are crusher run territory — pea gravel is a finish material, full stop.
+              are crusher run territory; pea gravel is a finish material, full stop.
             </p>
           </WarningBlock>
         </Section>
@@ -250,7 +260,7 @@ export default function PeaGravelLandscapingGuidePage() {
 
         <Cta
           variant={ctaVariant}
-          title="Design settled — now quantity"
+          title="Design settled? Now get the quantity"
           description="Measure each area, pick a depth, and the calculator returns tons, yards and bags per zone."
           href={GRAVEL.pea}
           buttonLabel="Open the Pea Gravel Calculator"
@@ -265,7 +275,7 @@ export default function PeaGravelLandscapingGuidePage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished={datePublished} />
+        <AuthorBox author={author} datePublished={datePublished} dateModified={dateModified} />
 
         <References items={[GREFS.nssga, GREFS.astmD448]} />
       </ArticleShell>

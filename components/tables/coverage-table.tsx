@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 interface CoverageTableProps {
   rows: CoverageRow[];
   caption?: string;
-  /** Column headers — override for context, e.g. ["Bag size", "Yield", "Coverage @ 4 in"] */
+  /** Column headers: override for context, e.g. ["Bag size", "Yield", "Coverage @ 4 in"] */
   headers?: [string, string, string];
   className?: string;
 }

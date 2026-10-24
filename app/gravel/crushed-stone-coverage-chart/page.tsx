@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock } from "@/components/blocks/callout";
@@ -27,9 +28,9 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "crushed-stone-coverage-chart";
-const title = "Crushed Stone Coverage Chart — Per Ton at 1–12 Inches";
+const title = "Crushed Stone Coverage Chart: 80 ft² Per Ton";
 const description =
-  "How far a ton of crushed stone goes: 240 ft² at 1 inch down to 20 ft² at 12 inches for #57, with a separate compacted crusher run table, the compaction allowance, and a worked driveway example.";
+  "One ton of #57 crushed stone covers about 80 ft² at 3 inches deep and 60 ft² at 4 inches. Charts for 1–12 in depths, compacted crusher run and a worked example.";
 const path = GRAVEL.stoneCoverage;
 const author = getAuthor("materials-team");
 
@@ -45,38 +46,44 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-16",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much area does a ton of crushed stone cover?",
     answer:
-      "For clean #57 stone at 100 lb/ft³ loose: about 240 ft² at 1 inch deep, 120 ft² at 2 inches, 80 ft² at 3 inches and 60 ft² at 4 inches. Halve the depth, double the coverage — the relationship is exactly inverse.",
+      "About 80 ft² at 3 inches deep for clean #57 stone. At 100 lb/ft³ loose, a ton covers about 240 ft² at 1 inch deep, 120 ft² at 2 inches, 80 ft² at 3 inches and 60 ft² at 4 inches. Halve the depth, double the coverage: the relationship is exactly inverse.",
   },
   {
     question: "Why does crusher run cover less than #57 per ton?",
     answer:
-      "It is denser. Compacted crusher run packs about 140 lb of stone into each cubic foot versus 100 for loose #57, so the same 2,000 lb ton makes about 30% less volume — 43 ft² at 4 inches compacted versus 60 ft² of loose #57. Per ton it covers less; per finished driveway it is still the cheaper layer.",
+      "It is denser. Compacted crusher run packs about 140 lb of stone into each cubic foot versus 100 for loose #57, so the same 2,000 lb ton makes about 30% less volume: 43 ft² at 4 inches compacted versus 60 ft² of loose #57. Per ton it covers less; per finished driveway it is still the cheaper layer.",
   },
   {
     question: "How much extra should I order for compaction?",
     answer:
-      "For layers that will be compacted, order 15–20% more than the compacted-volume math suggests — roughly 10% for the volume lost to compaction plus 5–10% normal waste. For loose decorative layers that only settle underfoot, 10% total is enough.",
+      "15–20% more than the compacted-volume math suggests for layers that will be compacted: roughly 10% for the volume lost to compaction plus 5–10% normal waste. For loose decorative layers that only settle underfoot, 10% total is enough.",
   },
   {
     question: "How many square feet does 5 tons of crushed stone cover?",
     answer:
-      "Multiply the per-ton figure: 5 tons of #57 covers about 600 ft² at 2 inches, 400 ft² at 3 inches or 300 ft² at 4 inches, loose. As compacted crusher run, 5 tons covers about 215 ft² at a finished 4 inch depth.",
+      "About 400 ft² at 3 inches deep. Multiply the per-ton figure: 5 tons of #57 covers about 600 ft² at 2 inches, 400 ft² at 3 inches or 300 ft² at 4 inches, loose. As compacted crusher run, 5 tons covers about 215 ft² at a finished 4 inch depth.",
+  },
+  {
+    question: "How many tons of crushed stone do I need for 1,000 square feet?",
+    answer:
+      "About 13.8 tons of #57 at 3 inches deep or 18.3 tons at 4 inches, including 10% waste. For a compacted crusher run base 4 inches thick, plan on about 27 tons including a 15% compaction and waste allowance.",
   },
   {
     question: "What depth should I use for the lookup?",
     answer:
-      "Decorative dressing over fabric: 2 inches. Walkable surface: 2–3 inches. Driveway top course: 3–4 inches. Base lifts: 4 inches compacted each. Drainage stone around pipe: 3 inches all sides. Using the intended finished depth — not the loose dumped depth — is what the compaction allowance is for.",
+      "Use the finished depth for the job. Decorative dressing over fabric: 2 inches. Walkable surface: 2–3 inches. Driveway top course: 3–4 inches. Base lifts: 4 inches compacted each. Drainage stone around pipe: 3 inches all sides. Using the intended finished depth, not the loose dumped depth, is what the compaction allowance is for.",
   },
   {
     question: "Does coverage change with rock type?",
     answer:
-      "Slightly — limestone at 97 lb/ft³ covers about 3% more per ton than the chart, granite at 103 about 3% less. The 10% swing between rock types is smaller than the waste allowance, so the #57 table works for any clean stone; only fines-heavy products need their own column.",
+      "Only slightly. Limestone at 97 lb/ft³ covers about 3% more per ton than the chart, granite at 103 about 3% less. The 10% swing between rock types is smaller than the waste allowance, so the #57 table works for any clean stone; only fines-heavy products need their own column.",
   },
 ];
 
@@ -84,7 +91,7 @@ const toc = tocFromTitles(
   "Coverage per ton: clean #57 stone",
   "Coverage per ton: compacted crusher run",
   "The coverage formula",
-  "Compaction allowance",
+  "How much extra stone to order for compaction",
   "Worked example: parking pad",
 );
 
@@ -98,6 +105,7 @@ export default function CrushedStoneCoverageChartPage() {
           path,
           category: "Gravel",
           datePublished: "2026-07-16",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -110,7 +118,7 @@ export default function CrushedStoneCoverageChartPage() {
               eyebrow="Gravel · Reference Chart"
               variant={heroVariant}
               title="Crushed stone coverage chart"
-              description="One number answers the whole page: a ton of clean #57 makes 20 cubic feet of stone, and depth decides how far that spreads. Look it up here for 1 to 12 inches — loose stone and compacted base in separate tables."
+              description="One number answers the whole page: a ton of clean #57 makes 20 cubic feet of stone, and depth decides how far that spreads. Look it up here for 1 to 12 inches, with loose stone and compacted base in separate tables."
               stats={[
                 { value: "240 ft²", label: "per ton at 1 in (#57)" },
                 { value: "80 ft²", label: "per ton at 3 in (#57)" },
@@ -129,11 +137,18 @@ export default function CrushedStoneCoverageChartPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much does a ton of crushed stone cover?"
+          answer="One ton of clean #57 crushed stone covers about 80 square feet at 3 inches deep, 120 ft² at 2 inches and 60 ft² at 4 inches, measured loose at 100 lb/ft³. Compacted crusher run is denser, so one ton covers only about 43 ft² at a finished 4 inch depth."
+          ruleOfThumb="#57 coverage per ton ≈ 240 ÷ depth in inches (ft²)."
+          formula="Coverage (ft²/ton) = 2,000 ÷ (density × depth ÷ 12)"
+        />
+
         <Section title="Coverage per ton: clean #57 stone">
           <CoverageTable
             headers={["Depth", "Coverage per ton", "Coverage per 5 tons"]}
             rows={[
-              { label: "1 in", spec: "240 ft²", coverage: "1,200 ft²", note: "Too thin for most jobs — fabric shows through" },
+              { label: "1 in", spec: "240 ft²", coverage: "1,200 ft²", note: "Too thin for most jobs; fabric shows through" },
               { label: "2 in", spec: "120 ft²", coverage: "600 ft²", note: "Decorative dressing minimum" },
               { label: "3 in", spec: "80 ft²", coverage: "400 ft²", note: "Walkways, drainage surround" },
               { label: "4 in", spec: "60 ft²", coverage: "300 ft²", note: "Driveway top course" },
@@ -142,7 +157,7 @@ export default function CrushedStoneCoverageChartPage() {
               { label: "10 in", spec: "24 ft²", coverage: "120 ft²" },
               { label: "12 in", spec: "20 ft²", coverage: "100 ft²", note: "Dry wells, infiltration beds" },
             ]}
-            caption="Clean #57 at 100 lb/ft³ loose (1.35 tons/yd³). Any clean crushed size — #2, #3, #8 — reads within a few percent of this table."
+            caption="Clean #57 at 100 lb/ft³ loose (1.35 tons/yd³). Any clean crushed size (#2, #3, #8) reads within a few percent of this table."
           />
         </Section>
 
@@ -155,10 +170,10 @@ export default function CrushedStoneCoverageChartPage() {
               { label: "3 in", spec: "57 ft²", coverage: "286 ft²" },
               { label: "4 in", spec: "43 ft²", coverage: "214 ft²", note: "One standard base lift" },
               { label: "6 in", spec: "29 ft²", coverage: "143 ft²" },
-              { label: "8 in", spec: "21 ft²", coverage: "107 ft²", note: "Two lifts — light-duty driveway total" },
-              { label: "12 in", spec: "14 ft²", coverage: "71 ft²", note: "Three lifts — full new-build driveway" },
+              { label: "8 in", spec: "21 ft²", coverage: "107 ft²", note: "Two lifts: light-duty driveway total" },
+              { label: "12 in", spec: "14 ft²", coverage: "71 ft²", note: "Three lifts: full new-build driveway" },
             ]}
-            caption="Crusher run at 140 lb/ft³ compacted (1.89 tons/yd³). Depths are finished, rolled depths — the allowance below covers the difference."
+            caption="Crusher run at 140 lb/ft³ compacted (1.89 tons/yd³). Depths are finished, rolled depths; the allowance below covers the difference."
           />
         </Section>
 
@@ -166,19 +181,23 @@ export default function CrushedStoneCoverageChartPage() {
           <FormulaBlock
             formula="Coverage (ft² per ton) = 2,000 ÷ (density × depth ÷ 12)"
             variables={[
-              { symbol: "density", meaning: "Unit weight — 100 loose clean stone, 140 compacted crusher run", unit: "lb/ft³" },
+              { symbol: "density", meaning: "Unit weight: 100 loose clean stone, 140 compacted crusher run", unit: "lb/ft³" },
               { symbol: "depth", meaning: "Layer thickness", unit: "inches" },
             ]}
             note="Shortcut for #57: 240 ÷ depth-in-inches. For compacted crusher run: 171 ÷ depth. Densities for every product are in the crushed stone weight guide."
           />
         </Section>
 
-        <Section title="Compaction allowance">
+        <Section title="How much extra stone to order for compaction">
+          <p className="text-muted-foreground">
+            Order 15–20% extra for compacted base layers and 10% for loose decorative
+            layers.
+          </p>
           <InfoBlock title="Order for the finished depth, not the dumped depth">
             <p>
               A ton is a ton, but a compacted layer holds more tons per inch than a loose
               one. If you compute a base from the crusher run table and order exactly that,
-              the roller will leave you thin. Add 15–20% — about 10% for the volume the
+              the roller will leave you thin. Add 15–20%: about 10% for the volume the
               compactor removes plus 5–10% ordinary waste. Loose decorative layers that only
               settle underfoot need just 10% total. When comparing quotes, also confirm
               whether the supplier&apos;s own coverage chart assumes loose or compacted
@@ -196,7 +215,7 @@ export default function CrushedStoneCoverageChartPage() {
               { label: "Top course lookup", work: "400 ft² ÷ 120 ft²/ton (2 in loose #57) = 3.3 tons" },
               { label: "Top with 10% allowance", work: "3.3 × 1.10 = 3.7 → order 4 tons" },
             ]}
-            result="11 tons of crusher run plus 4 tons of #57 — one delivery, two dump piles, and the pad finishes at its designed depths."
+            result="11 tons of crusher run plus 4 tons of #57: one delivery, two dump piles, and the pad finishes at its designed depths."
           />
           <Cta
             variant={ctaVariant}

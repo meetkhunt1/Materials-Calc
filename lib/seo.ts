@@ -4,7 +4,7 @@ import { absoluteUrl, canonicalUrl, siteConfig } from "@/lib/site";
 interface BuildMetadataOptions {
   title: string;
   description: string;
-  /** Site-relative path beginning with "/" — canonical is derived from it */
+  /** Site-relative path beginning with "/": canonical is derived from it */
   path: string;
   /** Social image path or absolute URL. Falls back to the site default. */
   image?: string;
@@ -77,11 +77,11 @@ export function buildMetadata(options: BuildMetadataOptions): Metadata {
   };
 }
 
-/** Root-layout defaults — merged by Next with per-page metadata. */
+/** Root-layout defaults: merged by Next with per-page metadata. */
 export const rootMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Construction Material Calculators`,
+    default: `${siteConfig.name}: Construction Material Calculators`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,

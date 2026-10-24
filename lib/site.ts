@@ -7,7 +7,7 @@ export const siteConfig = {
   shortName: "MaterialsCalc",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://materialscalc.com",
   description:
-    "Free construction material calculators, density charts, cost guides and coverage tables — concrete, asphalt, gravel, sand and more.",
+    "Free construction material calculators, density charts, cost guides and coverage tables for asphalt, gravel, concrete, sand and more.",
   locale: "en_US",
   twitterHandle: "@materialscalc",
   organization: {
@@ -24,7 +24,7 @@ export function absoluteUrl(path: string): string {
 }
 
 /**
- * Canonical page URL — always trailing-slash-terminated to match
+ * Canonical page URL: always trailing-slash-terminated to match
  * next.config.ts's `trailingSlash: true`, so it never 301-redirects.
  * Use this (not `absoluteUrl`) for any URL that points at an app route
  * (canonical tags, JSON-LD `url`/`@id`/breadcrumb links). Keep using

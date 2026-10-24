@@ -50,12 +50,12 @@ export const footingCalculator = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — formed both sides" },
-        { value: "10", label: "10% — one formed side (recommended)" },
-        { value: "15", label: "15% — poured against trench walls" },
+        { value: "5", label: "5%: formed both sides" },
+        { value: "10", label: "10%: one formed side (recommended)" },
+        { value: "15", label: "15%: poured against trench walls" },
       ],
       defaultValue: "10",
-      hint: "Trench pours lose concrete to irregular earth walls — allow more.",
+      hint: "Trench pours lose concrete to irregular earth walls, so allow more.",
     },
   ],
   compute: (inputs) => {
@@ -89,5 +89,5 @@ export const footingCalculator = defineCalculator({
     ];
   },
   disclaimer:
-    "Footing width and depth are structural decisions — verify against IRC Table R403.1(1) or your engineer's drawings, and check local frost-depth requirements before excavating.",
+    "Footing width and depth are structural decisions. Verify against IRC Table R403.1(1) or your engineer's drawings, and check local frost-depth requirements before excavating.",
 });

@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { TipBlock, WarningBlock } from "@/components/blocks/callout";
@@ -25,9 +26,9 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "How to Calculate Concrete (Step-by-Step Method)";
+const title = "How to Calculate Concrete: (L × W × D) ÷ 27";
 const description =
-  "The estimator's method for concrete takeoffs: measure, convert units, compute volume, add waste, convert to yards or bags. With worked examples for slabs, footings and odd shapes.";
+  "To calculate concrete, multiply length × width × depth in feet, divide by 27 for cubic yards and add 10% waste. Five steps with worked slab and post examples.";
 const path = CONCRETE.howTo;
 const author = getAuthor("materials-team");
 
@@ -37,6 +38,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const steps = [
@@ -44,7 +46,7 @@ const steps = [
   { name: "Convert to one unit", text: "Convert every dimension to feet (or meters) before multiplying. 4 inches = 0.333 ft, not 0.4." },
   { name: "Compute the volume", text: "Multiply length × width × depth. For irregular shapes, split the pour into rectangles and sum them." },
   { name: "Add a waste allowance", text: "Multiply by 1.05–1.15: 5% for formed pours on a laser-leveled base, 10% typical, 15% for earth-formed trenches or hand mixing." },
-  { name: "Convert to order units", text: "Divide cubic feet by 27 for cubic yards, or use cubic meters directly. Round up to the supplier's increment — 0.25 yd³ for ready-mix, whole bags for site mixing." },
+  { name: "Convert to order units", text: "Divide cubic feet by 27 for cubic yards, or use cubic meters directly. Round up to the supplier's increment: 0.25 yd³ for ready-mix, whole bags for site mixing." },
 ];
 
 const faqItems: FaqItem[] = [
@@ -56,7 +58,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Why divide by 27 for cubic yards?",
     answer:
-      "A yard is 3 feet, so a cubic yard is 3 × 3 × 3 = 27 cubic feet. It's the single most-used constant in US concrete estimating.",
+      "Because one cubic yard holds 27 cubic feet. A yard is 3 feet, so a cubic yard is 3 × 3 × 3 = 27 cubic feet. It's the single most-used constant in US concrete estimating.",
   },
   {
     question: "How do I calculate concrete for an L-shaped slab?",
@@ -66,12 +68,22 @@ const faqItems: FaqItem[] = [
   {
     question: "How accurate do my measurements need to be?",
     answer:
-      "Plan dimensions to the nearest inch are fine; depth is the sensitive one. A quarter-inch depth error on a 4-inch slab is a 6% volume error — measure depth at five or more points and average.",
+      "Plan dimensions to the nearest inch are fine; depth is the sensitive one. A quarter-inch depth error on a 4-inch slab is a 6% volume error, so measure depth at five or more points and average.",
   },
   {
     question: "Is it better to over-order or under-order?",
     answer:
       "Over-order, always. Excess concrete costs the per-yard price of the overage; running short costs a short-load fee ($50–150), an hour of scramble, and a cold joint that permanently weakens the pour. The 10% waste factor exists because shorting is the expensive failure.",
+  },
+  {
+    question: "How do I work out cubic meters of concrete?",
+    answer:
+      "Multiply length × width × depth, all in meters. A 5 × 4 m slab at 100 mm (0.10 m) thick is 5 × 4 × 0.10 = 2 m³; add 10% waste and order 2.2 m³. Convert millimeters to meters first by dividing by 1,000.",
+  },
+  {
+    question: "How much cement, sand and stone are in 1 m³ of concrete?",
+    answer:
+      "For a 1:2:4 mix, 1 m³ of concrete takes about 6.3 bags (50 kg) of cement, 0.44 m³ of sand and 0.88 m³ of 20 mm aggregate. Richer mixes need more cement: about 8 bags per m³ for 1:1.5:3. The mix ratio guide lists every common ratio.",
   },
 ];
 
@@ -94,6 +106,7 @@ export default function HowToCalculateConcretePage() {
             path,
             category: "Concrete",
             datePublished: "2026-07-15",
+            dateModified: "2026-10-24",
             author,
           }),
           howToSchema({
@@ -139,7 +152,17 @@ export default function HowToCalculateConcretePage() {
           />
         }
       >
+        <QuickAnswer
+          question="How do you calculate concrete?"
+          answer="To calculate concrete, measure length, width and depth, convert all three to feet, and multiply them to get cubic feet. Divide by 27 for cubic yards, then add 10% for waste. In metric, multiply the meters together for cubic meters directly. A 10 × 10 ft slab at 4 inches is 33.3 ft³, or 1.23 yd³ before waste."
+          formula="Order (yd³) = (L × W × D) ÷ 27 × 1.10"
+        />
+
         <Section title="The five-step method">
+          <p className="text-muted-foreground">
+            Measure, convert to one unit, multiply, add waste, then convert to the unit your
+            supplier sells.
+          </p>
           <ol className="space-y-4">
             {steps.map((step, index) => (
               <li id={`step-${index + 1}`} key={step.name} className="flex gap-4 rounded-xl border p-4">
@@ -160,6 +183,10 @@ export default function HowToCalculateConcretePage() {
         </Section>
 
         <Section title="Unit conversions you actually need">
+          <p className="text-muted-foreground">
+            Five conversions cover almost every job, and dividing cubic feet by 27 is the one
+            you will use most.
+          </p>
           <CoverageTable
             headers={["From", "To", "Multiply / divide by"]}
             rows={[
@@ -173,7 +200,7 @@ export default function HowToCalculateConcretePage() {
           />
           <TipBlock title="Convert first, multiply second">
             Every short pour we&apos;ve investigated traces to the same slip: multiplying feet by
-            inches. Write all three dimensions in feet before touching the multiplication —
+            inches. Write all three dimensions in feet before touching the multiplication,
             or use decimals of a meter and never think about it again.
           </TipBlock>
         </Section>
@@ -201,25 +228,25 @@ export default function HowToCalculateConcretePage() {
               { label: "All twelve holes", work: "1.15 × 12 = 13.8 ft³" },
               { label: "As 80 lb bags with 10% waste", work: "13.8 × 1.10 ÷ 0.60 = 25.3" },
             ]}
-            result="26 bags of 80 lb mix — about two bags per post, the rule of thumb confirmed."
+            result="26 bags of 80 lb mix: about two bags per post, which confirms the rule of thumb."
           />
         </Section>
 
         <Section title="Odd shapes: circles, slopes and steps">
           <p className="text-muted-foreground">
-            Circles use π × r² × depth — that&apos;s the whole trick, and the{" "}
+            Circles use π × r² × depth. That&apos;s the whole trick, and the{" "}
             <a href={CONCRETE.column} className="font-medium text-primary hover:underline">
               column calculator
             </a>{" "}
             does it for you. Sloped slabs use the average of the high-side and low-side
             thickness. Steps decompose into stacked rectangles: each tread is a small slab
             sitting on the one below, so a 3-step stoop is three volumes summed. Voids
-            (pipe sleeves, blockouts) only matter above about 2% of the pour — smaller ones
+            (pipe sleeves, blockouts) only matter above about 2% of the pour; smaller ones
             live inside the waste factor.
           </p>
           <WarningBlock title="Don't calculate what you should measure">
-            For overlays and toppings on existing concrete, calculated depth is fiction — old
-            slabs undulate. Grid the surface at 3 ft spacing, shoot elevations against the
+            For overlays and toppings on existing concrete, calculated depth is fiction because
+            old slabs undulate. Grid the surface at 3 ft spacing, shoot elevations against the
             finished plane, and average the true depths. Crews that skip this routinely order
             30% light on toppings.
           </WarningBlock>
@@ -256,7 +283,7 @@ export default function HowToCalculateConcretePage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[REFS.pca, REFS.astmC94]} />
       </ArticleShell>

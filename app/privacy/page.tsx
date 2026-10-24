@@ -6,8 +6,9 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { webPageSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 
-const title = "Privacy Policy";
-const description = "How MaterialsCalc handles your data — which is to say, barely at all.";
+const title = "Privacy Policy: How MaterialsCalc Uses Data";
+const description =
+  "MaterialsCalc collects almost no data: calculator inputs stay in your browser and never reach our servers. See which analytics we use and how to reach us.";
 const path = "/privacy";
 
 export const metadata = buildMetadata({ title, description, path, noIndex: false });
@@ -27,7 +28,7 @@ export default function PrivacyPage() {
       <Container size="narrow" className="space-y-10 py-12">
         <Section title="What we collect">
           <p className="text-muted-foreground">
-            Calculator inputs are processed entirely in your browser — dimensions, prices and
+            Calculator inputs are processed entirely in your browser. Dimensions, prices and
             results are never transmitted to or stored on our servers. If you subscribe to the
             newsletter, we store the email address you provide, used solely to send the
             updates you requested.

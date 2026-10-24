@@ -5,6 +5,7 @@ import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell"
 import { VolumeCalculatorCard } from "@/content/asphalt/calculators/cards";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { InlineToc } from "@/components/toc/table-of-contents";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { TipBlock } from "@/components/blocks/callout";
@@ -22,9 +23,9 @@ import { ASPHALT, volumeGuideLinks, asphaltCalculatorLinks, pickLinks, AREFS } f
 import { CONCRETE, guideLinks as concreteGuides, pickLinks as pickConcrete } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Volume Calculator — Cubic Yards, Feet & Meters";
+const title = "Asphalt Volume Calculator: Cubic Yards to Tons";
 const description =
-  "Pure geometric volume from plan dimensions, in every unit — plus the equivalent hot-mix tonnage at standard density.";
+  "Asphalt volume = length × width × compacted depth; cubic feet ÷ 27 = cubic yards, and 1 yd³ of hot mix weighs 1.96 tons. Get yd³, ft³, m³ and tons at once.";
 const path = ASPHALT.volume;
 const author = getAuthor("materials-team");
 
@@ -34,33 +35,34 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How do I calculate asphalt volume?",
     answer:
-      "Length × width × compacted depth, all in one unit system. In feet, divide the cubic-foot result by 27 for cubic yards. The volume formula guide walks every step with the unit traps flagged.",
+      "Multiply length × width × compacted depth, all in one unit system. In feet, divide the cubic-foot result by 27 for cubic yards. The volume formula guide walks every step with the unit traps flagged.",
   },
   {
-    question: "How many cubic feet in a ton of asphalt?",
+    question: "How much space does a ton of asphalt take up, loose vs compacted?",
     answer:
-      "Compacted hot mix: 2,000 ÷ 145 = 13.8 ft³ per ton. Loose in the truck it's about 17 ft³ per ton. Divide any volume by those figures to convert to order tons.",
+      "About 13.8 ft³ compacted (2,000 ÷ 145) and about 17 ft³ loose. Divide any volume by those figures to convert to order tons.",
   },
   {
     question: "Should I calculate volume loose or compacted?",
     answer:
-      "Compacted — that's what drawings specify and what ends up in the pavement. The paver's screed lays material about 25% thicker, then rollers bring it down; plants and crews handle that internally.",
+      "Compacted, because that's what drawings specify and what ends up in the pavement. The paver's screed lays material about 25% thicker, then rollers bring it down; plants and crews handle that internally.",
   },
   {
     question: "Why does this calculator show tons at all?",
     answer:
-      "Because pure volume is almost never the final answer in asphalt — plants sell weight. The tons line uses the standard 145 lb/ft³ so you can go straight to ordering; for other mixes use the weight calculator with the right density.",
+      "Because pure volume is almost never the final answer in asphalt: plants sell weight. The tons line uses the standard 145 lb/ft³ so you can go straight to ordering; for other mixes use the weight calculator with the right density.",
   },
   {
     question: "How do I handle multiple areas?",
     answer:
-      "Either sum the areas first (if thickness is uniform) or use the identical-sections field for repeats. Different thicknesses — a drive at 3 in plus a pad at 4 in — must be computed separately and the tons summed.",
+      "Sum the areas first (if thickness is uniform) or use the identical-sections field for repeats. Different thicknesses (a drive at 3 in plus a pad at 4 in) must be computed separately and the tons summed.",
   },
 ];
 
@@ -75,7 +77,7 @@ export default function VolumeCalculatorPage() {
     <>
       <JsonLd
         data={[
-          webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
+          webPageSchema({ title, description, path, datePublished: "2026-07-15", dateModified: "2026-10-24" }),
           calculatorSchema({ name: "Asphalt Volume Calculator", description, path }),
         ]}
       />
@@ -87,7 +89,7 @@ export default function VolumeCalculatorPage() {
               eyebrow="Asphalt · Volume"
               variant="centered"
               title="Asphalt Volume Calculator"
-              description="Sometimes you just need the geometry. Cubic yards, cubic feet, cubic meters and liters from plan dimensions — with tonnage as the final line because that's what you'll order."
+              description="Sometimes you just need the geometry. Cubic yards, cubic feet, cubic meters and liters from plan dimensions, with tonnage as the final line because that's what you'll order."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -112,15 +114,25 @@ export default function VolumeCalculatorPage() {
       >
         <InlineToc items={toc} />
 
+        <QuickAnswer
+          question="How do I calculate asphalt volume?"
+          answer="Multiply length × width × compacted depth, all in feet, to get cubic feet, then divide by 27 for cubic yards. A 20 × 30 ft area at 3 inches is 150 ft³, or 5.6 yd³. Multiply cubic yards by 1.96 to get tons of compacted hot mix asphalt, about 10.9 tons here before waste."
+          formula="yd³ = L × W × D (ft) ÷ 27; tons = yd³ × 1.96"
+        />
+
         <Section title="The volume formula">
+          <p className="text-muted-foreground">
+            Asphalt volume is length times width times compacted depth, times the number of
+            identical sections.
+          </p>
           <FormulaBlock
             formula="V = L × W × D × N"
             variables={[
               { symbol: "L, W", meaning: "plan dimensions", unit: "ft or m" },
-              { symbol: "D", meaning: "compacted depth", unit: "ft or m — convert inches first" },
+              { symbol: "D", meaning: "compacted depth", unit: "ft or m (convert inches first)" },
               { symbol: "N", meaning: "identical sections" },
             ]}
-            note="Identical to the concrete volume formula — the materials differ, the geometry doesn't. Waste is NOT included here; add 5–15% at ordering time."
+            note="Identical to the concrete volume formula: the materials differ, the geometry doesn't. Waste is NOT included here; add 5–15% at ordering time."
           />
           <p className="text-muted-foreground">
             The formula, its unit conversions and irregular-shape decomposition are covered in
@@ -139,12 +151,16 @@ export default function VolumeCalculatorPage() {
             guides. The same method drives our{" "}
             <a href={CONCRETE.howTo} className="font-medium text-primary hover:underline">
               concrete calculation guide
-            </a>{" "}
-            — learn it once, use it for every material on site.
+            </a>
+            : learn it once, use it for every material on site.
           </p>
         </Section>
 
         <Section title="Volume-to-tons cheat sheet">
+          <p className="text-muted-foreground">
+            One cubic yard of compacted hot mix weighs 1.96 tons and one cubic meter 2.32
+            tonnes.
+          </p>
           <CoverageTable
             headers={["Volume", "Compacted hot mix", "Loose hot mix"]}
             rows={[
@@ -188,7 +204,7 @@ export default function VolumeCalculatorPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[AREFS.ms4, AREFS.napa]} />
       </CalculatorPageShell>

@@ -7,8 +7,9 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { webPageSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 
-const title = "Terms of Use";
-const description = "The terms that govern use of MaterialsCalc's calculators and guides.";
+const title = "Terms of Use for MaterialsCalc Calculators";
+const description =
+  "MaterialsCalc calculators give planning estimates, not engineering advice. These terms cover acceptable use, quoting our tables and warranty limits.";
 const path = "/terms";
 
 export const metadata = buildMetadata({ title, description, path });
@@ -27,7 +28,7 @@ export default function TermsPage() {
       </Hero>
       <Container size="narrow" className="space-y-10 py-12">
         <WarningBlock title="Estimates, not engineering">
-          Everything on this site — calculators, tables, guides — provides planning
+          Everything on this site (calculators, tables, guides) provides planning
           estimates for material quantities and budgets. It is not engineering,
           architectural, or professional construction advice. Structural decisions must
           follow your local building code and, where required, a licensed professional.
@@ -46,7 +47,7 @@ export default function TermsPage() {
             Content is provided &quot;as is.&quot; We work hard to keep formulas correct and
             data current, but we make no warranty of accuracy, completeness, or fitness for
             a particular purpose, and we accept no liability for losses arising from use of
-            the site — including ordering errors. Densities, prices and coverage rates vary
+            the site, including ordering errors. Densities, prices and coverage rates vary
             by region, supplier and product; the numbers on your delivery ticket govern.
           </p>
         </Section>

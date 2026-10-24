@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock } from "@/components/blocks/callout";
@@ -17,13 +18,15 @@ import { articleSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 import { getAuthor } from "@/data/authors";
 import { ASPHALT, drivewayGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
+import { BAND_UNDER_500, BAND_500_1000, bandTotal } from "@/data/pricing";
 import type { FaqItem } from "@/types";
 
-const title = "Best Asphalt Thickness for Driveways";
+const title = "Best Asphalt Thickness for Driveways: 3 Inches";
 const description =
-  "2, 3 or 4 inches of asphalt for a driveway? The engineering answer: 3 in compacted hot mix in two lifts over 6 in of aggregate base for cars and pickups — with the tonnage, cost and lifespan numbers for each option.";
+  "The best asphalt driveway thickness is 3 in compacted over a 6 in gravel base; 2 in suits only light cars. Compare 2, 3 and 4 in by tonnage, cost and life.";
 const path = ASPHALT.drivewayThickness;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -31,43 +34,54 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "Is 2 inches of asphalt enough for a driveway?",
     answer:
-      "Only for light passenger cars on an excellent, well-drained 6 in base — and even then it is the economy option, not the recommended one. Two inches leaves no reserve for a loaded pickup, a moving truck or a concrete delivery, and it typically gives up 5–10 years of life versus a 3 in section. The savings are small; the downside is not.",
+      "Usually no: 2 inches of asphalt is enough only for light passenger cars on an excellent, well-drained 6 in base, and even then it is the economy option. Two inches leaves no reserve for a loaded pickup, a moving truck or a concrete delivery, and it typically gives up 5–10 years of life versus a 3 in section. The savings are small; the downside is not.",
   },
   {
     question: "Why is 3 inches the standard driveway thickness?",
     answer:
-      "Three inches compacted, placed as a 2 in binder lift plus a 1–1.5 in surface lift over 6 in of aggregate base, handles cars, SUVs and occasional heavy service vehicles with a 15–25 year design life. It is the point where added thickness stops buying meaningful life for residential loads — the sweet spot NAPA design guidance lands on for driveways.",
+      "Three inches is standard because it is the point where added thickness stops buying meaningful life for residential loads. Three inches compacted, placed as a 2 in binder lift plus a 1–1.5 in surface lift over 6 in of aggregate base, handles cars, SUVs and occasional heavy service vehicles with a 15–25 year design life, the sweet spot NAPA design guidance lands on for driveways.",
   },
   {
     question: "Is thickness measured before or after compaction?",
     answer:
-      "Always compacted (in-place) thickness. Hot mix compresses about 20–25% under the roller, so a crew must lay roughly 4 in loose to finish at 3 in compacted. When comparing quotes, make contractors state compacted thickness in writing — quoting loose thickness is the oldest trick in residential paving.",
+      "Driveway thickness is always measured after compaction (in-place thickness). Hot mix compresses about 20–25% under the roller, so a crew must lay roughly 4 in loose to finish at 3 in compacted. When comparing quotes, make contractors state compacted thickness in writing, because quoting loose thickness is the oldest trick in residential paving.",
   },
   {
     question: "When is 4 inches of asphalt worth it?",
     answer:
-      "When the driveway regularly carries heavy loads: an RV or boat trailer, a work truck with equipment, or frequent deliveries. Four inches (placed in two lifts) over a proper base behaves like light commercial pavement. It is also cheap insurance on marginal subgrades — though on true clay, upgrading the base to 8 in matters more than the extra asphalt.",
+      "4 inches is worth it when the driveway regularly carries heavy loads: an RV or boat trailer, a work truck with equipment, or frequent deliveries. Four inches (placed in two lifts) over a proper base behaves like light commercial pavement. It is also cheap insurance on marginal subgrades, though on true clay upgrading the base to 8 in matters more than the extra asphalt.",
   },
   {
     question: "Does a thicker driveway need a thicker gravel base?",
     answer:
-      "The base is set by the soil, not the asphalt. Standard is 6 in of compacted aggregate; go to 8 in over clay or poorly drained subgrade regardless of asphalt thickness. Asphalt spreads the wheel load, but the base carries it — 4 in of hot mix on 3 in of gravel will fail before 3 in of hot mix on a proper 6 in base.",
+      "No. The base is set by the soil, not the asphalt. Standard is 6 in of compacted aggregate; go to 8 in over clay or poorly drained subgrade regardless of asphalt thickness. Asphalt spreads the wheel load, but the base carries it: 4 in of hot mix on 3 in of gravel will fail before 3 in of hot mix on a proper 6 in base.",
   },
   {
     question: "How many tons of asphalt do I need per inch of thickness?",
     answer:
-      "At the standard compacted density of 145 lb/ft³, each inch of thickness weighs about 12.1 lb/ft² — roughly 3.6 tons per 600 ft² per inch. At the standard 3 in, one ton covers about 53 ft². Run your exact footprint through the driveway calculator to get tonnage with waste included.",
+      "Each inch of compacted asphalt needs about 3.6 tons per 600 ft² (12.1 lb/ft² at the standard 145 lb/ft³ density). At the standard 3 in, one ton covers about 53 ft². Run your exact footprint through the driveway calculator to get tonnage with waste included.",
+  },
+  {
+    question: "What is the average thickness of an asphalt driveway?",
+    answer:
+      "The average residential asphalt driveway is 2–3 inches of compacted hot mix, with 3 inches the recommended standard over a 6 in aggregate base. Older or budget driveways are often 2 inches, while drives that carry RVs, trailers or work trucks are built at 4 inches.",
+  },
+  {
+    question: "Is 1.5 inches of asphalt enough for a driveway?",
+    answer:
+      "No, not for a new driveway. 1.5–2 inches is an overlay thickness, laid over existing asphalt that is still structurally sound. On a new base it leaves too little material to carry loaded vehicles, and a single thin lift cools too fast to compact well.",
   },
 ];
 
 const toc = tocFromTitles(
-  "2 vs 3 vs 4 inches compared",
+  "How thick should an asphalt driveway be?",
   "What each thickness weighs and costs",
   "Why the base decides everything",
   "Worked example: upgrading 2 in to 3 in",
@@ -83,6 +97,7 @@ export default function DrivewayThicknessPage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -95,7 +110,7 @@ export default function DrivewayThicknessPage() {
               eyebrow="Asphalt · Driveway Guide"
               variant="centered"
               title="Best asphalt thickness for driveways"
-              description="The short answer is 3 inches compacted — a 2 in binder lift plus a 1–1.5 in surface lift over 6 in of aggregate base. The long answer is knowing when 2 or 4 inches is the right call instead."
+              description="The short answer is 3 inches compacted: a 2 in binder lift plus a 1–1.5 in surface lift over 6 in of aggregate base. The long answer is knowing when 2 or 4 inches is the right call instead."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -108,9 +123,20 @@ export default function DrivewayThicknessPage() {
           </>
         }
       >
-        <Section title="2 vs 3 vs 4 inches compared">
+        <QuickAnswer
+          question="Is 2 inches of asphalt enough for a driveway?"
+          answer="Two inches of asphalt is enough only for light passenger cars on a flawless, well-drained 6 in gravel base, and it typically lasts 8–15 years. The recommended residential thickness is 3 inches compacted, placed in two lifts over 6 in of aggregate base, which handles pickups and occasional trucks for 15–25 years."
+          ruleOfThumb="3 in of asphalt over 6 in of base; 4 in for RVs, trailers and work trucks."
+        />
+
+        <Section title="How thick should an asphalt driveway be?">
+          <p className="text-muted-foreground">
+            An asphalt driveway should be 3 inches thick after compaction for cars, SUVs and
+            pickups, 4 inches for regular heavy vehicles, and 2 inches only as a light-duty
+            economy option.
+          </p>
           <ComparisonTable
-            caption="Compacted thickness over a properly compacted aggregate base. Tonnage at 145 lb/ft³, geometric — add 5–15% waste when ordering."
+            caption="Compacted thickness over a properly compacted aggregate base. Tonnage at 145 lb/ft³, geometric; add 5–15% waste when ordering."
             columns={[
               { key: "two", label: "2 in" },
               { key: "three", label: "3 in (recommended)", highlight: true },
@@ -170,27 +196,29 @@ export default function DrivewayThicknessPage() {
             ]}
           />
           <p className="text-muted-foreground">
-            Each extra inch adds about 3.6 tons per 600 ft². At typical hot mix pricing of
+            Each extra inch of asphalt adds about 3.6 tons per 600 ft². At typical hot mix pricing of
             $100–150 per ton delivered, the material for the 2-to-3 in upgrade on this
-            driveway is $360–540 — a rounding error against the $3,000–6,000 total project,
+            driveway is $360–540. That is a rounding error against the{" "}
+            {bandTotal(BAND_500_1000, 600)} total project,
             and the cheapest decade of pavement life money can buy.
           </p>
         </Section>
 
         <Section title="Why the base decides everything">
           <WarningBlock title="Thin asphalt over a weak base always fails the same way">
-            Alligator cracking — the interconnected fatigue pattern that looks like reptile
-            skin — is a base failure, not a surface failure, and no asphalt thickness
+            Alligator cracking (the interconnected fatigue pattern that looks like reptile
+            skin) is a base failure, not a surface failure, and no asphalt thickness
             prevents it over soft or saturated ground. If the subgrade pumps or the base is
             under-compacted, 4 in cracks just like 2 in, only more expensively. Spend on
             6 in of compacted aggregate (8 in on clay) and drainage before spending on a
             fourth inch of asphalt.
           </WarningBlock>
           <p className="text-muted-foreground">
-            The asphalt layer distributes wheel loads; the base carries them and drains
+            The base decides driveway life because the asphalt layer only distributes wheel
+            loads; the base carries them and drains
             water away from the subgrade. Per FHWA mix-selection guidance, surface and
             binder lifts should each be at least three times the mix&apos;s maximum aggregate
-            size — one reason driveways use two lifts rather than one thick pass.
+            size, which is one reason driveways use two lifts rather than one thick pass.
           </p>
         </Section>
 
@@ -209,10 +237,10 @@ export default function DrivewayThicknessPage() {
               },
               {
                 label: "Extra placement cost",
-                work: "Same crew, same day, one slightly thicker binder lift — typically $100–200 more in labor",
+                work: "Same crew, same day, one slightly thicker binder lift: typically $100–200 more in labor",
               },
             ]}
-            result="Roughly $400–650 extra on a ~$3,500 project buys an expected life of 15–25 years instead of 8–15. Take the upgrade."
+            result={`Roughly $400–650 extra on a ${bandTotal(BAND_UNDER_500, 480)} project buys an expected life of 15–25 years instead of 8–15. Take the upgrade.`}
           />
         </Section>
 
@@ -237,7 +265,7 @@ export default function DrivewayThicknessPage() {
           )}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.napa, AREFS.fhwa]} />
       </ArticleShell>

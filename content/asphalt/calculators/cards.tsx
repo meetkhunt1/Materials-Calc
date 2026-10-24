@@ -2,7 +2,7 @@
 
 /**
  * Client-side bindings for asphalt calculator definitions.
- * (CalculatorDefinition.compute can't cross the RSC boundary — see CLAUDE.md.)
+ * (CalculatorDefinition.compute can't cross the RSC boundary; see CLAUDE.md.)
  */
 import { CalculatorCard } from "@/components/calculator/calculator-card";
 import { asphaltCalculator } from "./asphalt";

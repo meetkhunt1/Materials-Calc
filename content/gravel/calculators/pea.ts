@@ -10,7 +10,7 @@ export const peaGravelCalculator = defineCalculator({
   id: "pea-gravel-calculator",
   name: "Pea Gravel Calculator",
   description:
-    "Paths, patios, play areas and drainage — tons, cubic yards and 0.5 ft³ retail bags in one result.",
+    "Pea gravel for paths, patios, play areas and drainage: tons, cubic yards and 0.5 ft³ retail bags in one result.",
   fields: [
     {
       id: "length",
@@ -39,22 +39,22 @@ export const peaGravelCalculator = defineCalculator({
       label: "Depth",
       type: "select",
       options: [
-        { value: "0.0508", label: '2 in — walkways over a firm base' },
-        { value: "0.0762", label: '3 in — patios and seating areas (typical)' },
-        { value: "0.1016", label: '4 in — play areas, loose-fill zones' },
-        { value: "0.1524", label: '6 in — playground fall zones (CPSC minimum 9 in loose-fill for equipment)' },
-        { value: "0.2286", label: '9 in — full playground fall-protection depth' },
+        { value: "0.0508", label: '2 in: walkways over a firm base' },
+        { value: "0.0762", label: '3 in: patios and seating areas (typical)' },
+        { value: "0.1016", label: '4 in: play areas, loose-fill zones' },
+        { value: "0.1524", label: '6 in: playground fall zones (CPSC minimum 9 in loose-fill for equipment)' },
+        { value: "0.2286", label: '9 in: full playground fall-protection depth' },
       ],
       defaultValue: "0.0762",
-      hint: "Deeper than 3 in gets hard to walk on — pea gravel shifts underfoot.",
+      hint: "Deeper than 3 in gets hard to walk on because pea gravel shifts underfoot.",
     },
     {
       id: "waste",
       label: "Waste / settling allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — edged and contained" },
-        { value: "10", label: "10% — typical (recommended)" },
+        { value: "5", label: "5%: edged and contained" },
+        { value: "10", label: "10%: typical (recommended)" },
       ],
       defaultValue: "10",
     },
@@ -84,12 +84,12 @@ export const peaGravelCalculator = defineCalculator({
         label: "0.5 ft³ retail bags",
         value: bags,
         precision: 0,
-        note: "Bags cost 3–5× bulk per volume — compare above ~15 bags.",
+        note: "Bags cost 3–5× bulk per volume, so compare prices above ~15 bags.",
       },
       { id: "kg", label: "Weight", value: kg, unit: "kg", precision: 0 },
       { id: "area", label: "Covered area", value: fromBase(l * w, "ft2"), unit: "ft²", precision: 0 },
     ];
   },
   disclaimer:
-    "Pea gravel at 96 lb/ft³ loose. It migrates — plan solid edging into every install (see the installation guide).",
+    "Pea gravel at 96 lb/ft³ loose (about 1.3 tons per cubic yard). It migrates, so plan solid edging into every install (see the installation guide).",
 });

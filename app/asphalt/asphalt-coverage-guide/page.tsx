@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { TipBlock } from "@/components/blocks/callout";
@@ -26,9 +27,9 @@ import {
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Coverage Guide — What One Ton Covers";
+const title = "Asphalt Coverage per Ton: 80 ft² at 2 Inches";
 const description =
-  "Coverage tables for asphalt: one ton covers 80 ft² at 2 in, 53 ft² at 3 in, 40 ft² at 4 in. Per-ton and per-truckload coverage at every common thickness, with the formula behind the numbers.";
+  "One ton of compacted hot mix asphalt covers about 80 ft² at 2 in, 53 ft² at 3 in and 40 ft² at 4 in. Per-ton and per-truckload tables plus the formula.";
 const path = ASPHALT.coverage;
 const author = getAuthor("materials-team");
 
@@ -38,13 +39,14 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
-    question: "How much area does 1 ton of asphalt cover?",
+    question: "How many square feet does a ton of asphalt cover?",
     answer:
-      "At 2 inches compacted — the most common overlay thickness — one ton covers about 80 square feet. At 1 inch it stretches to 160 ft²; at 3 inches (standard driveway surface) it drops to 53 ft²; at 4 inches, 40 ft². Coverage is inversely proportional to thickness, so the arithmetic scales cleanly.",
+      "About 80 square feet at 2 inches compacted, the most common overlay thickness. At 1 inch it stretches to 160 ft²; at 3 inches (standard driveway surface) it drops to 53 ft²; at 4 inches, 40 ft². Coverage is inversely proportional to thickness, so the arithmetic scales cleanly.",
   },
   {
     question: "How many tons of asphalt do I need for 1,000 square feet?",
@@ -52,9 +54,19 @@ const faqItems: FaqItem[] = [
       "Divide area by coverage: at 2 in, 1,000 ÷ 80 = 12.5 tons; at 3 in, 1,000 ÷ 53 = 18.9 tons; at 4 in, 1,000 ÷ 40 = 25 tons. Add 5–10% waste and round to the plant's half-ton increment. A calculator saves the division but not the thickness decision.",
   },
   {
+    question: "How much does 1 ton of asphalt cover at 4 inches thick?",
+    answer:
+      "About 40 square feet. A ton of hot mix is 13.8 ft³ once compacted, and 13.8 ÷ (4 ÷ 12) ≈ 41 ft², quoted as 40 with a small yield allowance. That is the thickness used for parking lots and heavier driveways, so a 400 ft² pad at 4 inches needs about 10 tons.",
+  },
+  {
+    question: "How many square yards does a ton of asphalt cover?",
+    answer:
+      "About 9 square yards at 2 inches, 6 square yards at 3 inches and 4.5 square yards at 4 inches. Pavers get there with the 110 rule: one square yard at 1 inch compacted weighs about 110 lb, so a 2,000 lb ton covers 2,000 ÷ (110 × thickness) square yards.",
+  },
+  {
     question: "How much does one truckload of asphalt cover?",
     answer:
-      "A tandem dump truck legally hauls about 14 tons, which covers roughly 1,120 ft² at 2 in or 745 ft² at 3 in. A typical 600 ft² residential driveway at 3 in therefore fits in a single tandem load with a modest margin — one reason plants quote small jobs around whole trucks.",
+      "A tandem dump truck legally hauls about 14 tons, which covers roughly 1,120 ft² at 2 in or 745 ft² at 3 in. A typical 600 ft² residential driveway at 3 in therefore fits in a single tandem load with a modest margin, which is one reason plants quote small jobs around whole trucks.",
   },
   {
     question: "Does the coverage number include compaction?",
@@ -64,17 +76,17 @@ const faqItems: FaqItem[] = [
   {
     question: "Why does my contractor's coverage figure differ slightly?",
     answer:
-      "Rules of thumb round differently. The raw math at 2 in gives 82.8 ft² per ton; quoting 80 builds in a small yield allowance for subgrade irregularity and edge handwork. Some crews use the 110 lb per yd² per inch rule instead, which lands within a few percent. Differences beyond ~10% mean someone is using loose density by mistake.",
+      "Because rules of thumb round differently. The raw math at 2 in gives 82.8 ft² per ton; quoting 80 builds in a small yield allowance for subgrade irregularity and edge handwork. Some crews use the 110 lb per yd² per inch rule instead, which lands within a few percent. Differences beyond ~10% mean someone is using loose density by mistake.",
   },
   {
     question: "Does coverage change for cold mix or millings?",
     answer:
-      "Yes, because density does. Cold patch compacts to about 2,200 kg/m³ (5% lighter than hot mix), so a ton stretches about 5% further. Loose millings at 1,650 kg/m³ cover roughly 40% more area per ton than hot mix at the same depth — before compaction tightens them up.",
+      "Yes, because density changes. Cold patch compacts to about 2,200 kg/m³ (5% lighter than hot mix), so a ton stretches about 5% further. Loose millings at 1,650 kg/m³ cover roughly 40% more area per ton than hot mix at the same depth, before compaction tightens them up.",
   },
 ];
 
 const toc = tocFromTitles(
-  "Coverage per ton",
+  "How much does a ton of asphalt cover?",
   "Coverage per truckload",
   "The coverage formula",
   "Worked example: sizing an order from coverage",
@@ -90,6 +102,7 @@ export default function AsphaltCoverageGuidePage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -102,7 +115,7 @@ export default function AsphaltCoverageGuidePage() {
               eyebrow="Asphalt · Coverage Guide"
               variant="standard"
               title="What one ton of asphalt covers"
-              description="Coverage is the bridge between the plant's unit (tons) and yours (square feet). One number to memorize — 80 ft² per ton at 2 inches — and two tables for everything else."
+              description="Coverage is the bridge between the plant's unit (tons) and yours (square feet). One number to memorize (80 ft² per ton at 2 inches) and two tables for everything else."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -122,7 +135,18 @@ export default function AsphaltCoverageGuidePage() {
           />
         }
       >
-        <Section title="Coverage per ton">
+        <QuickAnswer
+          question="How many square feet does a ton of asphalt cover?"
+          answer="One ton of hot mix asphalt covers about 80 square feet at 2 inches of compacted thickness. The same ton covers 160 ft² at 1 inch, about 53 ft² at 3 inches and about 40 ft² at 4 inches. These figures assume compacted hot mix at 145 lb/ft³, and coverage halves every time the thickness doubles."
+          ruleOfThumb="Divide 160 by the compacted thickness in inches to get square feet per ton."
+          formula="Coverage (ft²/ton) = 2,000 ÷ (145 × t ÷ 12)"
+        />
+
+        <Section title="How much does a ton of asphalt cover?">
+          <p className="text-muted-foreground">
+            A ton of asphalt covers 80 ft² at 2 inches and 53 ft² at 3 inches. The table
+            lists coverage at every common compacted thickness.
+          </p>
           <CoverageTable
             headers={["Compacted thickness", "Typical use", "Coverage per ton"]}
             rows={[
@@ -137,7 +161,7 @@ export default function AsphaltCoverageGuidePage() {
           />
           <p className="text-muted-foreground">
             Concrete coverage works the same way but is quoted per cubic yard instead of per
-            ton — the{" "}
+            ton. The{" "}
             <a href={CONCRETE.coverage} className="font-medium text-primary hover:underline">
               concrete coverage guide
             </a>{" "}
@@ -146,6 +170,10 @@ export default function AsphaltCoverageGuidePage() {
         </Section>
 
         <Section title="Coverage per truckload">
+          <p className="text-muted-foreground">
+            A 14-ton tandem truckload of asphalt covers about 1,120 ft² at 2 inches or 745 ft²
+            at 3 inches.
+          </p>
           <CoverageTable
             headers={["Compacted thickness", "Tandem load (14 tons)", "What that means"]}
             rows={[
@@ -167,6 +195,10 @@ export default function AsphaltCoverageGuidePage() {
         </Section>
 
         <Section title="The coverage formula">
+          <p className="text-muted-foreground">
+            Coverage per ton equals 2,000 lb divided by the weight of one square foot of mat
+            at your thickness.
+          </p>
           <FormulaBlock
             formula="Coverage (ft²/ton) = 2,000 ÷ (145 × t ÷ 12)"
             variables={[
@@ -187,7 +219,7 @@ export default function AsphaltCoverageGuidePage() {
               { label: "Tonnage", work: "864 ÷ 40 = 21.6 tons" },
               { label: "Waste at 5%", work: "21.6 × 1.05 = 22.7 tons" },
             ]}
-            result="Order 23 tons — a tri-axle (17 t) plus a small second load, or two tandems with a little left for the approach."
+            result="Order 23 tons: a tri-axle (17 t) plus a small second load, or two tandems with a little left for the approach."
           />
         </Section>
 
@@ -207,7 +239,7 @@ export default function AsphaltCoverageGuidePage() {
           items={pickLinks(coreGuideLinks, ASPHALT.howTo, ASPHALT.densityChart, ASPHALT.thickness)}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[AREFS.ms4, AREFS.napa]} />
       </ArticleShell>

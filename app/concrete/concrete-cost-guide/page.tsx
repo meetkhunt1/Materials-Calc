@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock, TipBlock } from "@/components/blocks/callout";
 import { CostTable } from "@/components/tables/cost-table";
@@ -25,9 +26,9 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete Cost Guide — Ready-Mix, Bags & Delivered Prices";
+const title = "Concrete Cost per Yard: $150–180 Ready-Mix";
 const description =
-  "What concrete really costs in 2026: per-yard ready-mix prices, bag economics, delivery and short-load fees, and the crossover point where trucks beat bags.";
+  "Ready-mix concrete costs $150–180 per cubic yard delivered in 2026; 80 lb bags run $6–7 each. See fee tables, a bags vs truck chart and a priced driveway.";
 const path = CONCRETE.cost;
 const author = getAuthor("materials-team");
 
@@ -37,6 +38,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
@@ -48,33 +50,43 @@ const faqItems: FaqItem[] = [
   {
     question: "Is it cheaper to mix concrete yourself?",
     answer:
-      "Per cubic yard, bagged mix costs $250–320 (45 bags × $6–7) versus roughly $165 delivered — bags lose badly on material alone above about one yard. Under half a yard, bags win because you skip the short-load fee. Between those, the deciding factor is your labor: mixing 45 bags is a hard half-day for two people.",
+      "No, not above about one yard. Per cubic yard, bagged mix costs $250–320 (45 bags × $6–7) versus roughly $165 delivered, so bags lose badly on material alone. Under half a yard, bags win because you skip the short-load fee. Between those, the deciding factor is your labor: mixing 45 bags is a hard half-day for two people.",
   },
   {
     question: "What is a short-load fee?",
     answer:
-      "Plants price trucks assuming full 8–10 yard loads. Orders below roughly 4–5 yards get a per-yard surcharge or flat fee ($50–150) to cover the truck's fixed trip cost. It's why combining your slab, footing and pier pours into one order saves real money.",
+      "A short-load fee is a $50–150 surcharge for ready-mix orders below roughly 4–5 yards. Plants price trucks assuming full 8–10 yard loads, and orders below that get a per-yard surcharge or flat fee ($50–150) to cover the truck's fixed trip cost. It's why combining your slab, footing and pier pours into one order saves real money.",
   },
   {
-    question: "Does higher-strength concrete cost much more?",
+    question: "How much does 4,000 psi concrete cost per yard?",
     answer:
-      "Roughly $5–10 per yard per 500 psi step. Going from 3,000 to 4,000 psi adds about $10–20/yd³ — cheap insurance for driveways in freeze-thaw climates, where the higher cement content also improves scaling resistance.",
+      "4,000 psi exterior mix runs about $155–185 per cubic yard before delivery fees, roughly $10–20 more than 3,000 psi. Each 500 psi step adds about $5–10 per yard. That is cheap insurance for driveways in freeze-thaw climates, where the higher cement content also improves scaling resistance.",
+  },
+  {
+    question: "How much does concrete cost per cubic foot?",
+    answer:
+      "Ready-mix works out to about $5.50–6.70 per cubic foot ($150–180 ÷ 27). Bagged concrete costs far more per cubic foot: an 80 lb bag yields 0.60 ft³ for $5.50–7.50, or roughly $9–12.50 per cubic foot.",
+  },
+  {
+    question: "How much do 3 yards of concrete cost?",
+    answer:
+      "3 cubic yards of ready-mix cost about $450–540 in material, plus delivery and usually a short-load fee, so budget roughly $540–780 delivered. The same 3 yards from bags (135 × 80 lb) would run close to $900 before mixer rental.",
   },
   {
     question: "What add-ons increase the ready-mix price?",
     answer:
-      "Fiber reinforcement (+$8–15/yd³), accelerator for cold weather (+$5–10), mid-range water reducer (+$4–8), air entrainment (usually included where freeze-thaw requires it), and winter hot-water batching (+$5–10). Pumping is separate: $180–220/hr or ~$900–1,200/day for a boom pump.",
+      "Fiber, admixtures and pumping are the main add-ons: fiber reinforcement (+$8–15/yd³), accelerator for cold weather (+$5–10), mid-range water reducer (+$4–8), air entrainment (usually included where freeze-thaw requires it), and winter hot-water batching (+$5–10). Pumping is separate: $180–220/hr or ~$900–1,200/day for a boom pump.",
   },
   {
     question: "How do I avoid standby charges?",
     answer:
-      "Most plants include 4–7 minutes of unload time per yard; past that, standby runs $2–3 per minute. Have forms done, crew ready, and wheelbarrows or the pump staged before the truck arrives — a disorganized 27-yard wall pour can quietly add $200 in standby.",
+      "Be fully ready before the truck arrives. Most plants include 4–7 minutes of unload time per yard; past that, standby runs $2–3 per minute. Have forms done, crew ready, and wheelbarrows or the pump staged, because a disorganized 27-yard wall pour can quietly add $200 in standby.",
   },
 ];
 
 const toc = tocFromTitles(
   "Ready-mix prices per cubic yard",
-  "Bagged concrete economics",
+  "How much does bagged concrete cost?",
   "The bags vs ready-mix crossover",
   "Fees that surprise first-time buyers",
   "Worked example: pricing a driveway",
@@ -90,6 +102,7 @@ export default function CostGuidePage() {
           path,
           category: "Concrete",
           datePublished: "2026-07-15",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -102,7 +115,7 @@ export default function CostGuidePage() {
               eyebrow="Concrete · Cost Guide"
               variant="stat-strip"
               title="What concrete actually costs"
-              description="Quotes only make sense when you know the fee structure behind them. Here are the 2026 numbers — material, delivery, and the surcharges plants don't volunteer."
+              description="Quotes only make sense when you know the fee structure behind them. Here are the 2026 numbers for material, delivery, and the surcharges plants don't volunteer."
               stats={[
                 { value: "$150–180", label: "per yd³ ready-mix, delivered" },
                 { value: "$6–7", label: "per 80 lb bag" },
@@ -128,7 +141,18 @@ export default function CostGuidePage() {
           />
         }
       >
+        <QuickAnswer
+          question="How much does a yard of concrete cost?"
+          answer="A cubic yard of ready-mix concrete costs about $150–180 delivered in the US in 2026 for a standard 3,000–4,000 psi mix. Orders under about 4 yards add a $50–150 short-load fee. Mixing the same yard from 45 bags of 80 lb concrete costs roughly $250–320, so bags only make sense for pours under about one yard."
+          ruleOfThumb="Under 1 yd³, buy bags. Over 1 yd³, order a truck."
+          formula="Cost = yd³ × price per yd³ + delivery + short-load fee"
+        />
+
         <Section title="Ready-mix prices per cubic yard">
+          <p className="text-muted-foreground">
+            Standard 3,000 psi ready-mix runs $145–170 per cubic yard and 4,000 psi exterior
+            mix runs $155–185, before delivery fees.
+          </p>
           <CostTable
             currency="USD"
             rows={[
@@ -142,7 +166,11 @@ export default function CostGuidePage() {
           />
         </Section>
 
-        <Section title="Bagged concrete economics">
+        <Section title="How much does bagged concrete cost?">
+          <p className="text-muted-foreground">
+            An 80 lb bag costs $5.50–7.50 and yields 0.60 ft³, which makes it the best value of
+            the bag sizes. It still takes 45 of them to make one cubic yard.
+          </p>
           <CostTable
             currency="USD"
             rows={[
@@ -152,11 +180,11 @@ export default function CostGuidePage() {
               { item: "High-early (fast-set) 50 lb", unit: "bag", low: 6.5, high: 9, note: "Fence posts; sets in 20–40 min" },
               { item: "Mixer rental (towable)", unit: "day", low: 60, high: 110 },
             ]}
-            caption="Big-box retail pricing. A cubic yard needs 45 × 80 lb bags — compare that line item to one delivered yard before committing your back."
+            caption="Big-box retail pricing. A cubic yard needs 45 × 80 lb bags, so compare that line item to one delivered yard before committing your back."
           />
           <TipBlock title="The bag math nobody does">
             45 bags × $6.50 = $292.50 per yard of concrete, plus mixer rental, plus water, plus
-            4–6 crew-hours. Ready-mix at $165 + $75 short-load fee = $240 — cheaper and cured
+            4–6 crew-hours. Ready-mix at $165 + $75 short-load fee = $240: cheaper, and cured
             more consistently. Bags win only when the pour is small, scattered, or truck access
             is impossible.
           </TipBlock>
@@ -168,12 +196,12 @@ export default function CostGuidePage() {
             unit="USD"
             monochrome={false}
             data={[
-              { label: "0.25 yd³ — bags", value: 75, color: "var(--chart-1)" },
-              { label: "0.25 yd³ — ready-mix + fee", value: 190, color: "var(--chart-3)" },
-              { label: "1 yd³ — bags", value: 295, color: "var(--chart-1)" },
-              { label: "1 yd³ — ready-mix + fee", value: 240, color: "var(--chart-3)" },
-              { label: "3 yd³ — bags", value: 880, color: "var(--chart-1)" },
-              { label: "3 yd³ — ready-mix", value: 540, color: "var(--chart-3)" },
+              { label: "0.25 yd³: bags", value: 75, color: "var(--chart-1)" },
+              { label: "0.25 yd³: ready-mix + fee", value: 190, color: "var(--chart-3)" },
+              { label: "1 yd³: bags", value: 295, color: "var(--chart-1)" },
+              { label: "1 yd³: ready-mix + fee", value: 240, color: "var(--chart-3)" },
+              { label: "3 yd³: bags", value: 880, color: "var(--chart-1)" },
+              { label: "3 yd³: ready-mix", value: 540, color: "var(--chart-3)" },
             ]}
           />
           <p className="text-muted-foreground">
@@ -188,6 +216,10 @@ export default function CostGuidePage() {
         </Section>
 
         <Section title="Fees that surprise first-time buyers">
+          <p className="text-muted-foreground">
+            On a small order, delivery ($30–90) and short-load ($50–150) fees can rival the
+            price of the concrete itself, so ask for every fee before you book the truck.
+          </p>
           <CostTable
             currency="USD"
             rows={[
@@ -198,11 +230,11 @@ export default function CostGuidePage() {
               { item: "Boom pump (when chute can't reach)", unit: "day", low: 900, high: 1200, note: "Or ~$180–220/hr with minimums" },
               { item: "Returned concrete disposal", unit: "yd³", low: 20, high: 40, note: "Some plants charge to take back overage" },
             ]}
-            caption="Ask the dispatcher for every line item before ordering — plants quote the per-yard price and mention fees only if you ask."
+            caption="Ask the dispatcher for every line item before ordering. Plants quote the per-yard price and mention fees only if you ask."
           />
           <InfoBlock title="Chute reach decides the pump question">
             A mixer chute reaches 12–16 ft from the truck&apos;s parking spot. If any part of the
-            pour is beyond that — behind a house, over a foundation wall — you&apos;re renting a
+            pour is beyond that (behind a house, over a foundation wall), you&apos;re renting a
             pump or a crew of wheelbarrows. Factor it in before comparing contractor bids that
             already include pumping.
           </InfoBlock>
@@ -227,7 +259,7 @@ export default function CostGuidePage() {
         <Cta
           variant="banner"
           title="Price your own pour"
-          description="Get the exact volume first — every dollar figure above keys off cubic yards."
+          description="Get the exact volume first, because every dollar figure above keys off cubic yards."
           href={CONCRETE.calculator}
           buttonLabel="Concrete Calculator"
         />
@@ -247,7 +279,7 @@ export default function CostGuidePage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[REFS.astmC94, REFS.pca]} />
       </ArticleShell>

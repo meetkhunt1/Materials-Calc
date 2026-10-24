@@ -8,7 +8,7 @@ import { searchIndex } from "@/data/search-index";
 import { searchSite } from "@/lib/search";
 import { cn } from "@/lib/utils";
 
-/** Header search — opens a dialog, filters the static index as you type. */
+/** Header search: opens a dialog, filters the static index as you type. */
 export function SiteSearch({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");

@@ -14,8 +14,8 @@ export const columnCalculator = defineCalculator({
       label: "Column shape",
       type: "select",
       options: [
-        { value: "round", label: "Round — sonotube / cardboard form" },
-        { value: "square", label: "Square — built form" },
+        { value: "round", label: "Round (sonotube / cardboard form)" },
+        { value: "square", label: "Square (built form)" },
       ],
       defaultValue: "round",
     },
@@ -55,8 +55,8 @@ export const columnCalculator = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — tube forms (recommended)" },
-        { value: "10", label: "10% — site-built forms" },
+        { value: "5", label: "5%: tube forms (recommended)" },
+        { value: "10", label: "10%: site-built forms" },
       ],
       defaultValue: "5",
     },
@@ -103,5 +103,5 @@ export const columnCalculator = defineCalculator({
     ];
   },
   disclaimer:
-    "Structural columns need vertical rebar with ties per ACI 318 §10.7 (or IS 456 §26.5.3) — this tool estimates concrete volume only.",
+    "Structural columns need vertical rebar with ties per ACI 318 §10.7 (or IS 456 §26.5.3). This tool estimates concrete volume only.",
 });

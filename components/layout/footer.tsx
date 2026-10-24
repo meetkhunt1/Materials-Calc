@@ -14,7 +14,7 @@ const legalLinks = [
   { label: "Terms of Use", href: "/terms/" },
 ];
 
-/** Direct links to the highest-search-volume calculators — footer appears on every page. */
+/** Direct links to the highest-search-volume calculators: footer appears on every page. */
 const popularCalculatorLinks = [
   { label: "Concrete Slab Calculator", href: CONCRETE.slab },
   { label: "Concrete Footing Calculator", href: CONCRETE.footing },

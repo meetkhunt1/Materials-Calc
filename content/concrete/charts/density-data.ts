@@ -11,11 +11,11 @@ export const concreteDensities: DensityRow[] = [
   { material: "Fresh (wet) concrete", kgPerM3: 2450, note: "Slightly heavier than cured" },
 ];
 
-/** Unit weights of concrete ingredients — useful for hand-batching. */
+/** Unit weights of concrete ingredients, useful for hand-batching. */
 export const ingredientDensities: DensityRow[] = [
   { material: "Portland cement (bulk)", kgPerM3: 1440, note: "ASTM C150; a 94 lb US bag ≈ 1 ft³" },
   { material: "Sand (dry, loose)", kgPerM3: 1600 },
-  { material: "Sand (wet)", kgPerM3: 1900, note: "Bulking — batch by weight when possible" },
+  { material: "Sand (wet)", kgPerM3: 1900, note: "Bulks up in volume; batch by weight when possible" },
   { material: "Coarse aggregate 20 mm (¾ in)", kgPerM3: 1550 },
   { material: "Crushed stone base (compacted)", kgPerM3: 2000 },
   { material: "Water", kgPerM3: 1000 },

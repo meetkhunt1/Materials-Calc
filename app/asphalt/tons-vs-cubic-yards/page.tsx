@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { WarningBlock } from "@/components/blocks/callout";
 import { ExampleBlock } from "@/components/blocks/example-block";
@@ -25,11 +26,12 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Tons vs Cubic Yards — Converting Asphalt Units";
+const title = "Tons vs Cubic Yards: 1 Ton of Asphalt = 0.51 yd³";
 const description =
-  "Plants sell asphalt by the ton; takeoffs come out in cubic yards. The conversion is 1.96 US tons per compacted cubic yard — here is the formula both ways, a quick-convert table and a worked ordering example.";
+  "One ton of compacted asphalt is 0.51 cubic yards, and one cubic yard weighs 1.96 tons (3,915 lb). Get the formula both ways, a conversion table and an example.";
 const path = ASPHALT.tonsVsYards;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -37,44 +39,60 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How many tons is a cubic yard of asphalt?",
     answer:
-      "1.96 US tons compacted — 27 ft³ × 145 lb/ft³ = 3,915 lb. Rounding to 2 tons per yard overstates the order by about 2%, which is usually harmless and often useful as built-in waste. Loose material in the truck is only about 1.58 tons per cubic yard.",
+      "One cubic yard of compacted asphalt weighs 1.96 US tons: 27 ft³ × 145 lb/ft³ = 3,915 lb. Rounding to 2 tons per yard overstates the order by about 2%, which is usually harmless and often useful as built-in waste. Loose material in the truck is only about 1.58 tons per cubic yard.",
   },
   {
     question: "How many cubic yards is a ton of asphalt?",
     answer:
-      "0.51 compacted cubic yards — one ton divided by 1.96 tons/yd³. In coverage terms, a ton placed 3 inches thick compacted covers about 55 ft². Twenty tons, a typical tandem-plus load, therefore builds roughly 10.2 yd³ of finished mat.",
+      "One ton of asphalt is 0.51 compacted cubic yards (1 ton ÷ 1.96 tons/yd³). In coverage terms, a ton placed 3 inches thick compacted covers about 53 ft².",
+  },
+  {
+    question: "Is a ton more than a cubic yard?",
+    answer:
+      "For asphalt, a cubic yard is more than a ton: one compacted cubic yard weighs 1.96 tons, so a ton fills only about half a yard. The two are different kinds of unit (a yard measures space, a ton measures weight), so the comparison only works once you know the material's density.",
+  },
+  {
+    question: "How many yards is 2 tons of asphalt?",
+    answer:
+      "2 tons of asphalt is about 1.02 compacted cubic yards. That is enough to pave roughly 106 ft² at 3 inches compacted, which suits a pothole run or a small walkway patch.",
+  },
+  {
+    question: "How many yards is 20 tons of asphalt?",
+    answer:
+      "20 tons of asphalt is about 10.2 compacted cubic yards (20 ÷ 1.96). Twenty tons is a typical tandem-plus truckload, and at 3 inches compacted it paves about 1,060 ft².",
   },
   {
     question: "Why do asphalt plants sell by the ton instead of by the yard?",
     answer:
-      "Because weight is unambiguous. Volume changes with temperature, handling and compaction — the same ton occupies about 25% more space loose than rolled — but the scale ticket reads the same regardless. Plants batch by weight, trucks are weighed loaded and empty, and you pay for the difference.",
+      "Plants sell by the ton because weight is unambiguous. Volume changes with temperature, handling and compaction (the same ton occupies about 25% more space loose than rolled), but the scale ticket reads the same regardless. Plants batch by weight, trucks are weighed loaded and empty, and you pay for the difference.",
   },
   {
     question: "Should I convert loose or compacted yards to tons?",
     answer:
-      "Compacted, almost always. Your takeoff (area × thickness) describes the finished, rolled mat, so multiply by 1.96 tons/yd³. Only use the loose factor (~1.58 tons/yd³) when you are sizing truck volume or estimating a stockpile — never for ordering against plan dimensions.",
+      "Convert compacted yards, almost always. Your takeoff (area × thickness) describes the finished, rolled mat, so multiply by 1.96 tons/yd³. Only use the loose factor (about 1.58 tons/yd³) when you are sizing truck volume or estimating a stockpile, never for ordering against plan dimensions.",
   },
   {
     question: "How much extra should I add when converting a takeoff to an order?",
     answer:
-      "5% covers handbook waste on straightforward geometry — handwork around structures, yield variation and cleanup. Irregular edges, many penetrations or thin variable-depth leveling courses justify 7–10%. Then round up to the plant's sale increment, typically the half ton or full ton.",
+      "Add 5% for handbook waste on straightforward geometry: handwork around structures, yield variation and cleanup. Irregular edges, many penetrations or thin variable-depth leveling courses justify 7–10%. Then round up to the plant's sale increment, typically the half ton or full ton.",
   },
   {
     question: "Does the 1.96 factor change with mix type?",
     answer:
-      "A little. It is built on 145 lb/ft³ dense-graded hot mix; cold mix compacts nearer 137 lb/ft³ (1.85 tons/yd³) and compacted millings about 122 lb/ft³ (1.65 tons/yd³). If the mix design sheet lists a different maximum density, derive the factor from that instead of the table value.",
+      "Yes, a little. It is built on 145 lb/ft³ dense-graded hot mix; cold mix compacts nearer 137 lb/ft³ (1.85 tons/yd³) and compacted millings about 122 lb/ft³ (1.65 tons/yd³). If the mix design sheet lists a different maximum density, derive the factor from that instead of the table value.",
   },
 ];
 
 const toc = tocFromTitles(
   "Two units, one material",
-  "The conversion, both directions",
+  "How do you convert tons to cubic yards?",
   "Quick-convert table",
   "Loose vs compacted yards",
   "From takeoff to order",
@@ -90,6 +108,7 @@ export default function TonsVsCubicYardsPage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -102,7 +121,7 @@ export default function TonsVsCubicYardsPage() {
               eyebrow="Asphalt · Unit Conversion"
               variant="centered"
               title="Tons vs cubic yards"
-              description="You measure the job in cubic yards; the plant sells it in tons. One factor — 1.96 US tons per compacted cubic yard — links the two, and getting it backwards is the most expensive unit mistake in paving."
+              description="You measure the job in cubic yards; the plant sells it in tons. One factor links the two (1.96 US tons per compacted cubic yard), and getting it backwards is the most expensive unit mistake in paving."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -115,14 +134,22 @@ export default function TonsVsCubicYardsPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How many cubic yards are in a ton of asphalt?"
+          answer="One US ton of compacted hot mix asphalt equals about 0.51 cubic yards, and one compacted cubic yard weighs 1.96 tons (3,915 lb), based on a density of 145 lb/ft³. So 2 tons is about 1.02 yd³, 10 tons is 5.1 yd³ and 20 tons is 10.2 yd³ of finished mat."
+          ruleOfThumb="A cubic yard of compacted asphalt weighs about 2 tons; a ton fills about half a yard."
+          formula="yd³ = tons ÷ 1.96   |   tons = yd³ × 1.96"
+        />
+
         <Section title="Two units, one material">
           <p className="text-muted-foreground">
-            A cubic yard is what your tape measure produces: area times compacted thickness.
-            A ton is what the scale house produces: the truck weighed loaded minus its tare.
-            Compacted dense-graded hot mix weighs 145 lb/ft³, so one cubic yard of finished
-            mat is 27 × 145 = 3,915 lb — 1.96 US tons. Every conversion on this page is that
-            single density restated. What that tonnage is worth in money is a separate
-            question, and a sharper one: the{" "}
+            A cubic yard measures volume and a ton measures weight, and for asphalt one
+            compacted cubic yard weighs 1.96 tons. A cubic yard is what your tape measure
+            produces: area times compacted thickness. A ton is what the scale house produces:
+            the truck weighed loaded minus its tare. Compacted dense-graded hot mix weighs
+            145 lb/ft³, so one cubic yard of finished mat is 27 × 145 = 3,915 lb, or 1.96 US
+            tons. Every conversion on this page is that single density restated. What that
+            tonnage is worth in money is a separate question, and a sharper one: the{" "}
             <a href={ASPHALT.drivewayCost} className="font-medium text-primary hover:underline">
               asphalt driveway cost guide
             </a>{" "}
@@ -130,7 +157,11 @@ export default function TonsVsCubicYardsPage() {
           </p>
         </Section>
 
-        <Section title="The conversion, both directions">
+        <Section title="How do you convert tons to cubic yards?">
+          <p className="text-muted-foreground">
+            Divide tons by 1.96 to get compacted cubic yards, and multiply cubic yards by 1.96
+            to get tons.
+          </p>
           <div className="grid gap-4 sm:grid-cols-2">
             <FormulaBlock
               formula="Tons = yd³ × 1.96"
@@ -153,7 +184,7 @@ export default function TonsVsCubicYardsPage() {
 
         <Section
           title="Quick-convert table"
-          lead="Common takeoff volumes converted at 1.96 tons per compacted cubic yard, with the reverse check alongside."
+          lead="Common takeoff volumes converted at 1.96 tons per compacted cubic yard, with common truck tonnages converted back to yards."
         >
           <CoverageTable
             headers={["Compacted volume", "Weight in US tons", "Reverse: tons → yd³"]}
@@ -166,20 +197,32 @@ export default function TonsVsCubicYardsPage() {
             ]}
             caption="Compacted dense-graded hot mix at 145 lb/ft³. Add waste before rounding to the plant's sale increment."
           />
+          <CoverageTable
+            headers={["Asphalt tons", "Compacted cubic yards", "Area at 3 in compacted"]}
+            rows={[
+              { label: "1 ton", spec: "0.51 yd³", coverage: "≈ 53 ft²" },
+              { label: "2 tons", spec: "1.02 yd³", coverage: "≈ 106 ft²" },
+              { label: "5 tons", spec: "2.55 yd³", coverage: "≈ 265 ft²" },
+              { label: "10 tons", spec: "5.1 yd³", coverage: "≈ 530 ft²" },
+              { label: "20 tons", spec: "10.2 yd³", coverage: "≈ 1,060 ft²" },
+              { label: "25 tons", spec: "12.8 yd³", coverage: "≈ 1,325 ft²" },
+            ]}
+            caption="Tons divided by 1.96 tons/yd³. Area uses 53 ft² per ton at 3 in compacted, which carries a small practical allowance."
+          />
         </Section>
 
         <Section title="Loose vs compacted yards">
           <WarningBlock title="A loose yard and a compacted yard differ by 25%">
-            Hot mix fluffs from 145 lb/ft³ in the mat to about 117 lb/ft³ in the truck bed —
-            so a loose cubic yard is only ~1.58 tons, not 1.96. Quotes, delivery tickets and
-            takeoffs that say &quot;yards&quot; without stating the condition are ambiguous by
-            a quarter of the material. Always state which you mean; when in doubt, work in
+            Hot mix fluffs from 145 lb/ft³ in the mat to about 117 lb/ft³ in the truck bed,
+            so a loose cubic yard is only about 1.58 tons, not 1.96. Quotes, delivery tickets
+            and takeoffs that say &quot;yards&quot; without stating the condition are ambiguous
+            by a quarter of the material. Always state which you mean; when in doubt, work in
             tons, which never change.
           </WarningBlock>
           <p className="text-muted-foreground">
             The same 25% gap is why thickness has to be specified as compacted depth before
-            anyone converts anything — and on a driveway, that choice between 2, 3 and 4
-            inches is the one that decides both the tonnage and the lifespan. The{" "}
+            anyone converts anything. On a driveway, the choice between 2, 3 and 4 inches is
+            the one that decides both the tonnage and the lifespan. The{" "}
             <a href={ASPHALT.drivewayThickness} className="font-medium text-primary hover:underline">
               right asphalt thickness for a driveway
             </a>{" "}
@@ -196,12 +239,12 @@ export default function TonsVsCubicYardsPage() {
               { label: "Add 5% waste for handwork and yield", work: "23.5 × 1.05 = 24.7 tons" },
               { label: "Round up to the sale increment", work: "24.7 → 25 tons" },
             ]}
-            result="Order 25 US tons — one tri-axle plus one small tandem load, or two tandem loads."
+            result="Order 25 US tons: one tri-axle plus one small tandem load, or two tandem loads."
           />
           <p className="text-muted-foreground">
             Twenty-five tons is the order; what it costs is the question that actually decides
             the job. Installed pricing scales with area rather than tonnage, and it falls
-            sharply as the job grows — the{" "}
+            sharply as the job grows. The{" "}
             <a href={ASPHALT.costPerSqft} className="font-medium text-primary hover:underline">
               cost per square foot guide
             </a>{" "}
@@ -219,7 +262,7 @@ export default function TonsVsCubicYardsPage() {
         <Cta
           variant="banner"
           title="Convert your exact takeoff"
-          description="The weight calculator applies the right density — compacted or loose — and returns tons ready to phone in."
+          description="The weight calculator applies the right density (compacted or loose) and returns tons ready to phone in."
           href={ASPHALT.weight}
           buttonLabel="Asphalt Weight Calculator"
         />
@@ -233,7 +276,7 @@ export default function TonsVsCubicYardsPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.ms4]} />
       </ArticleShell>

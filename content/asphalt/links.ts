@@ -113,7 +113,7 @@ export const asphaltCalculatorLinks: RelatedArticle[] = [
 ];
 
 export const coreGuideLinks: RelatedArticle[] = [
-  { title: "How to Calculate Asphalt", href: ASPHALT.howTo, description: "Area × depth × density — the full takeoff method.", category: "Guide", icon: BookOpen },
+  { title: "How to Calculate Asphalt", href: ASPHALT.howTo, description: "Area × depth × density: the full takeoff method.", category: "Guide", icon: BookOpen },
   { title: "Asphalt Density Chart", href: ASPHALT.densityChart, description: "Unit weights for hot mix, cold mix and millings.", category: "Chart", icon: Scale },
   { title: "Asphalt Coverage Guide", href: ASPHALT.coverage, description: "What one ton covers at every thickness.", category: "Guide", icon: Grid3x3 },
   { title: "Asphalt Cost Guide", href: ASPHALT.costGuide, description: "Per-ton and installed pricing, fees included.", category: "Guide", icon: DollarSign },
@@ -124,7 +124,7 @@ export const coreGuideLinks: RelatedArticle[] = [
 
 export const drivewayGuideLinks: RelatedArticle[] = [
   { title: "Standard Driveway Dimensions", href: ASPHALT.drivewayDimensions, description: "Widths, lengths and turning space that work.", category: "Guide", icon: Ruler },
-  { title: "Best Asphalt Thickness for Driveways", href: ASPHALT.drivewayThickness, description: "2, 3 or 4 inches — matched to your vehicles.", category: "Guide", icon: Pencil },
+  { title: "Best Asphalt Thickness for Driveways", href: ASPHALT.drivewayThickness, description: "2, 3 or 4 inches, matched to your vehicles.", category: "Guide", icon: Pencil },
   { title: "Driveway Installation Guide", href: ASPHALT.drivewayInstall, description: "From excavation to final roll, step by step.", category: "Guide", icon: Wrench },
   { title: "Driveway Cost Guide", href: ASPHALT.drivewayCost, description: "Installed pricing with real line items.", category: "Guide", icon: DollarSign },
   { title: "Driveway Maintenance", href: ASPHALT.drivewayMaintenance, description: "Sealcoating, crack filling and the schedule.", category: "Guide", icon: Wrench },
@@ -146,7 +146,7 @@ export const costGuideLinks: RelatedArticle[] = [
   { title: "Cost Per Square Foot", href: ASPHALT.costPerSqft, description: "Installed $/ft² by thickness and job size.", category: "Guide", icon: Grid3x3 },
   { title: "Labor Cost Guide", href: ASPHALT.laborCost, description: "Crew composition and productivity rates.", category: "Guide", icon: Wrench },
   { title: "Equipment Cost", href: ASPHALT.equipmentCost, description: "Pavers, rollers and what they add per job.", category: "Guide", icon: Truck },
-  { title: "Cost Saving Tips", href: ASPHALT.costSaving, description: "Where to save — and where never to.", category: "Guide", icon: PiggyBank },
+  { title: "Cost Saving Tips", href: ASPHALT.costSaving, description: "Where to save, and where never to.", category: "Guide", icon: PiggyBank },
   { title: "Regional Price Factors", href: ASPHALT.regionalPrices, description: "Why the same driveway varies 40% by state.", category: "Guide", icon: MapPin },
   { title: "Asphalt Cost FAQs", href: ASPHALT.costFaqs, description: "Budget questions, straight answers.", category: "FAQ", icon: HelpCircle },
 ];
@@ -156,7 +156,7 @@ export const volumeGuideLinks: RelatedArticle[] = [
   { title: "Cubic Foot Guide", href: ASPHALT.cubicFootGuide, description: "Small-batch math for repairs and patches.", category: "Guide", icon: Box },
   { title: "Volume Formula", href: ASPHALT.volumeFormula, description: "Area × depth, with every unit trap flagged.", category: "Guide", icon: BookOpen },
   { title: "Measurement Guide", href: ASPHALT.measurement, description: "Measuring irregular areas without a survey crew.", category: "Guide", icon: Ruler },
-  { title: "Unit Conversion", href: ASPHALT.unitConversion, description: "Yards, feet, meters, tons — one reference table.", category: "Guide", icon: ArrowLeftRight },
+  { title: "Unit Conversion", href: ASPHALT.unitConversion, description: "Yards, feet, meters and tons in one reference table.", category: "Guide", icon: ArrowLeftRight },
   { title: "Asphalt Volume FAQs", href: ASPHALT.volumeFaqs, description: "Volume questions answered in plain numbers.", category: "FAQ", icon: HelpCircle },
 ];
 
@@ -168,7 +168,7 @@ export const allAsphaltGuides: RelatedArticle[] = [
   ...volumeGuideLinks,
 ];
 
-/** Pick a subset of links by href — keeps per-page related lists short and curated. */
+/** Pick a subset of links by href; keeps per-page related lists short and curated. */
 export function pickLinks(from: RelatedArticle[], ...hrefs: string[]): RelatedArticle[] {
   return hrefs
     .map((href) => from.find((l) => l.href === href))

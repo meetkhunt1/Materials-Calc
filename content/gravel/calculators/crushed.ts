@@ -10,7 +10,7 @@ export const crushedStoneCalculator = defineCalculator({
   id: "crushed-stone-calculator",
   name: "Crushed Stone Calculator",
   description:
-    "Angular crushed stone by size number. Enter finished (in-place) dimensions — the result includes the loose volume that will arrive on the truck.",
+    "Angular crushed stone by size number. Enter finished (in-place) dimensions. The result includes the loose volume that will arrive on the truck.",
   fields: [
     {
       id: "length",
@@ -50,27 +50,27 @@ export const crushedStoneCalculator = defineCalculator({
       options: [
         {
           value: "57",
-          label: "#57 (3/4–1 in) — drainage, concrete, driveways",
+          label: "#57 (3/4–1 in): drainage, concrete, driveways",
           data: { placed: 1750, loose: 1600 },
         },
         {
           value: "crusher",
-          label: "Crusher run — compacted bases",
+          label: "Crusher run: compacted bases",
           data: { placed: 2240, loose: 2000 },
         },
         {
           value: "2",
-          label: "#2 (2–3 in) — sub-base, mud control",
+          label: "#2 (2–3 in): sub-base, mud control",
           data: { placed: 1700, loose: 1600 },
         },
         {
           value: "8",
-          label: "#8 (3/8 in) — pipe bedding, chip seal",
+          label: "#8 (3/8 in): pipe bedding, chip seal",
           data: { placed: 1650, loose: 1550 },
         },
         {
           value: "dust",
-          label: "Stone dust / screenings — paver setting beds",
+          label: "Stone dust / screenings: paver setting beds",
           data: { placed: 1750, loose: 1600 },
         },
       ],
@@ -81,9 +81,9 @@ export const crushedStoneCalculator = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — contained placement" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — soft subgrade, first load disappears" },
+        { value: "5", label: "5%: contained placement" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: soft subgrade, first load disappears" },
       ],
       defaultValue: "10",
     },
@@ -122,11 +122,11 @@ export const crushedStoneCalculator = defineCalculator({
         value: fromBase(looseVolume, "yd3"),
         unit: "yd³",
         precision: 2,
-        note: "Compaction shrinks the pile — this is why the delivery looks bigger than the job.",
+        note: "Compaction shrinks the pile, which is why the delivery looks bigger than the job.",
       },
       { id: "tonnes", label: "Metric tonnes", value: kg / 1000, unit: "t", precision: 2 },
     ];
   },
   disclaimer:
-    "Sizes per ASTM D448 / AASHTO M 43. Base courses must be compacted in lifts of 4 in or less — see the crushed stone best uses guide.",
+    "Sizes per ASTM D448 / AASHTO M 43. Base courses must be compacted in lifts of 4 in or less (see the crushed stone best uses guide).",
 });

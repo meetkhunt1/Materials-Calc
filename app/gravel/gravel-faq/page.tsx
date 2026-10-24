@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Faq } from "@/components/faq/faq";
 import { RelatedArticles } from "@/components/blocks/related-articles";
 import { References } from "@/components/blocks/references";
@@ -23,12 +24,13 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-faq";
-const title = "Gravel FAQ — The Questions Everyone Asks Before Ordering";
+const title = "Tons of Gravel per Cubic Yard: 1.42 Tons";
 const description =
-  "Fifteen substantive answers on gravel: what a ton covers, tons vs yards, depth by application, landscape fabric, compaction, delivery logistics and the best gravel type for every job.";
+  "One cubic yard of common gravel weighs about 1.42 tons, so 1 ton is roughly 0.7 cubic yards. Plus 16 more answers on coverage, depth, fabric, cost and types.";
 const path = GRAVEL.faq;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
+const dateModified = "2026-10-24";
 
 const heroVariant = pick(slug, HERO_VARIANTS);
 const tocPosition = pick(slug, ["toc-right", "toc-left"] as const);
@@ -42,33 +44,44 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: dateModified,
 });
 
 const buyingItems: FaqItem[] = [
   {
+    question: "How many tons of gravel are in a cubic yard?",
+    answer:
+      "About 1.42 US tons (roughly 2,835 lb) for common gravel, loose. Pea gravel runs 1.3 tons per yard, #57 stone 1.35, and crusher run 1.69 loose or 1.89 compacted. The spread is nearly 50% from lightest to heaviest, so never reuse a conversion factor across different materials.",
+  },
+  {
+    question: "How many cubic yards are in a ton of gravel?",
+    answer:
+      "About 0.7 cubic yards. One ton is 2,000 lb, and a cubic yard of common gravel weighs about 2,835 lb loose, so 2,000 ÷ 2,835 = 0.71 yd³. Lighter pea gravel gives about 0.77 yd³ per ton; heavier compacted crusher run gives about 0.53 yd³ per ton.",
+  },
+  {
+    question: "How many yards of dirt or sand are in a ton?",
+    answer:
+      "Divide 2,000 lb by the material's weight per cubic yard. Dry loose sand at about 100 lb/ft³ (2,700 lb per yard) gives roughly 0.74 yd³ per ton. Dirt and topsoil vary too much with moisture and organic content for one number, so ask the supplier for their weight per yard before converting.",
+  },
+  {
     question: "How much does a ton of gravel cover?",
     answer:
-      "About 114 ft² at 2 inches deep for common gravel (105 lb/ft³ loose), 76 ft² at 3 inches, and 57 ft² at 4 inches. The trade rule of thumb — 100 ft² per ton at 2 inches — is the same math with a settling margin built in. Lighter pea gravel stretches to about 125 ft² at 2 inches; dense compacted crusher run drops to 86.",
+      "About 114 ft² at 2 inches deep for common gravel (105 lb/ft³ loose), 76 ft² at 3 inches, and 57 ft² at 4 inches. The trade rule of thumb of 100 ft² per ton at 2 inches is the same math with a settling margin built in. Lighter pea gravel stretches to about 125 ft² at 2 inches; dense compacted crusher run drops to 86.",
   },
   {
     question: "Should I order gravel in tons or cubic yards?",
     answer:
-      "Order in whatever unit your supplier actually measures: quarries weigh trucks and sell by the ton; landscape yards fill loaders and sell by the cubic yard. Compute both before calling — one cubic yard of common gravel is about 1.42 tons loose — and quote both numbers. If the dispatcher's conversion disagrees with yours, someone has the wrong density, and it's better to find out on the phone.",
-  },
-  {
-    question: "How many tons of gravel are in a cubic yard?",
-    answer:
-      "About 1.42 US tons (2,800 lb) for common gravel, loose. Pea gravel runs 1.3 tons per yard, #57 stone 1.35, and crusher run 1.69 loose or 1.89 compacted. The spread is nearly 50% from lightest to heaviest, so never reuse a conversion factor across different materials.",
+      "Order in whatever unit your supplier actually measures. Quarries weigh trucks and sell by the ton; landscape yards fill loaders and sell by the cubic yard. Compute both before calling (one cubic yard of common gravel is about 1.42 tons loose) and quote both numbers. If the dispatcher's conversion disagrees with yours, someone has the wrong density, and it's better to find out on the phone.",
   },
   {
     question: "How much does gravel cost?",
     answer:
-      "Bulk prices in 2026 run roughly $15–35 per ton for crusher run and common gravel, $30–60 for pea gravel and #57 stone, and $50–120+ for decorative rock — plus a $50–150 flat delivery fee per trip. Bagged gravel works out 4–6 times the bulk price per ton, which is why bags only make sense under about 15 bags' worth of stone.",
+      "Bulk gravel costs roughly $15–35 per ton in 2026 for crusher run and common gravel, $25–45 for #57 stone, $30–60 for pea gravel, and $50–120+ for decorative rock, plus a $50–150 flat delivery fee per trip. Bagged gravel works out 4–6 times the bulk price per ton, which is why bags only make sense under about 15 bags' worth of stone.",
   },
   {
     question: "How much extra gravel should I order?",
     answer:
-      "Add 10% to the calculated quantity as standard, or 15% when the stone will be compacted (any crusher run base), the subgrade is soft or uneven, or the shape has a lot of edge for its area. Then round up to the supplier's half-ton increment. A slightly generous order costs a few dollars; a short one costs a second delivery fee.",
+      "Order 10% extra as standard, or 15% when the stone will be compacted (any crusher run base), the subgrade is soft or uneven, or the shape has a lot of edge for its area. Then round up to the supplier's half-ton increment. A slightly generous order costs a few dollars; a short one costs a second delivery fee.",
   },
 ];
 
@@ -81,12 +94,12 @@ const depthItems: FaqItem[] = [
   {
     question: "Do I need landscape fabric under gravel?",
     answer:
-      "Under decorative gravel and paths, yes — a woven geotextile stops stone from disappearing into the soil and slows weeds without blocking drainage. Under driveways, use a heavier woven road fabric for separation and strength, not weed cloth. Skip fabric only inside French drains wrapped elsewhere, and never use solid plastic sheeting: it traps water and turns the bed into a bathtub.",
+      "Yes under decorative gravel and paths, where a woven geotextile stops stone from disappearing into the soil and slows weeds without blocking drainage. Under driveways, use a heavier woven road fabric for separation and strength, not weed cloth. Skip fabric only inside French drains wrapped elsewhere, and never use solid plastic sheeting: it traps water and turns the bed into a bathtub.",
   },
   {
     question: "Does gravel need to be compacted?",
     answer:
-      "Any gravel that carries load does. Compact crusher run and other fines-bearing stone in lifts of 3–4 inches with a plate compactor — it gains about 12% density and locks into a near-solid mat. Clean rounded stone like pea gravel barely compacts at all; it just displaces, which is exactly why it never belongs in a base layer.",
+      "Any gravel that carries load does. Compact crusher run and other fines-bearing stone in lifts of 3–4 inches with a plate compactor; it gains about 12% density and locks into a near-solid mat. Clean rounded stone like pea gravel barely compacts at all; it just displaces, which is exactly why it never belongs in a base layer.",
   },
   {
     question: "What goes under a gravel driveway?",
@@ -96,7 +109,7 @@ const depthItems: FaqItem[] = [
   {
     question: "How do I keep gravel from spreading everywhere?",
     answer:
-      "Edging — there is no other answer. Steel, aluminum, concrete or timber borders set about an inch above grade contain the stone; without them, gravel migrates into lawns and down slopes on a schedule measured in months. Rounded stone migrates fastest, angular stone slowest, and on grades over a few percent consider geocell grids that pocket the stone in place.",
+      "Install edging; there is no other answer. Steel, aluminum, concrete or timber borders set about an inch above grade contain the stone; without them, gravel migrates into lawns and down slopes on a schedule measured in months. Rounded stone migrates fastest, angular stone slowest, and on grades over a few percent consider geocell grids that pocket the stone in place.",
   },
 ];
 
@@ -104,7 +117,7 @@ const typesItems: FaqItem[] = [
   {
     question: "What is the best gravel for a driveway?",
     answer:
-      "Crusher run (crushed stone with fines) for the base and middle layers — it compacts into a hard, interlocked mat. For the surface, either more crusher run or #57 stone if you prefer a cleaner look. Avoid pea gravel and rounded river rock anywhere on a driveway: round stones never lock together, so tires rut and scatter them.",
+      "Crusher run (crushed stone with fines) is best for the base and middle layers because it compacts into a hard, interlocked mat. For the surface, either more crusher run or #57 stone if you prefer a cleaner look. Avoid pea gravel and rounded river rock anywhere on a driveway: round stones never lock together, so tires rut and scatter them.",
   },
   {
     question: "What is the difference between crushed stone and gravel?",
@@ -114,12 +127,12 @@ const typesItems: FaqItem[] = [
   {
     question: "What gravel is best for drainage?",
     answer:
-      "Clean, washed, single-size angular stone — #57 (about 1 inch) is the standard for French drains and foundation drains. The key word is clean: no fines. Fines are what make crusher run compact so well, and exactly what clogs the voids that drainage depends on. Wrap the trench in geotextile to keep surrounding soil from doing the same job fines would.",
+      "Clean, washed, single-size angular stone drains best, and #57 (about 1 inch) is the standard for French drains and foundation drains. The key word is clean: no fines. Fines are what make crusher run compact so well, and exactly what clogs the voids that drainage depends on. Wrap the trench in geotextile to keep surrounding soil from doing the same job fines would.",
   },
   {
     question: "What is the best gravel for walking paths?",
     answer:
-      "Two proven recipes: pea gravel over a compacted stone-dust base — soft underfoot, good drainage, needs edging — or 3/8-inch minus crushed fines (decomposed granite style) that compact into a firm, wheelchair- and stroller-friendly surface. Pure loose crushed stone larger than 1/2 inch is tiring to walk on; save it for drainage and driveways.",
+      "Two recipes work best: pea gravel over a compacted stone-dust base (soft underfoot, good drainage, needs edging), or 3/8-inch minus crushed fines (decomposed granite style) that compact into a firm, wheelchair- and stroller-friendly surface. Pure loose crushed stone larger than 1/2 inch is tiring to walk on; save it for drainage and driveways.",
   },
   {
     question: "Can I put gravel straight over grass or dirt?",
@@ -147,6 +160,7 @@ export default function GravelFaqPage() {
             path,
             category: "Gravel",
             datePublished,
+            dateModified,
             author,
           }),
           faqSchema(allFaqItems),
@@ -161,7 +175,7 @@ export default function GravelFaqPage() {
               eyebrow="Gravel · FAQ Hub"
               variant={heroVariant}
               title="Gravel FAQ"
-              description="Fifteen questions that come up before nearly every gravel order — coverage, units, depth, fabric, compaction and type selection — answered with the numbers estimators actually use."
+              description="Seventeen questions that come up before nearly every gravel order (coverage, tons vs yards, depth, fabric, compaction and type selection), answered with the numbers estimators actually use."
               stats={[
                 { value: "1.42 t", label: "per yd³, common gravel" },
                 { value: "≈100 ft²", label: "one ton at 2 in" },
@@ -187,6 +201,13 @@ export default function GravelFaqPage() {
           />
         }
       >
+        <QuickAnswer
+          question="How many tons of gravel are in a cubic yard?"
+          answer="One cubic yard of common loose gravel weighs about 1.42 US tons (roughly 2,835 lb, from 105 lb/ft³ × 27 ft³). Flip it and 1 ton of gravel is about 0.7 cubic yards. Pea gravel is lighter at 1.3 tons per yard, while compacted crusher run reaches about 1.89 tons per yard."
+          ruleOfThumb="1 cubic yard of gravel ≈ 1.4 tons; 1 ton ≈ 0.7 cubic yards."
+          formula="Tons = cubic yards × 27 × lb/ft³ ÷ 2,000"
+        />
+
         <p className="text-muted-foreground">
           Every answer below stands alone, but three guides carry the working math if
           you want the derivations: the{" "}
@@ -201,7 +222,7 @@ export default function GravelFaqPage() {
           <a href={GRAVEL.densityChart} className="font-medium text-primary hover:underline">
             density chart
           </a>
-          . Type-specific questions have their own hub — see the{" "}
+          . Type-specific questions have their own hub: see the{" "}
           <a href={GRAVEL.peaFaq} className="font-medium text-primary hover:underline">
             pea gravel FAQ
           </a>
@@ -235,7 +256,7 @@ export default function GravelFaqPage() {
         <Cta
           variant={ctaVariant}
           title="Numbers for your specific project"
-          description="Tons, cubic yards, bags and cost from your dimensions — with the right density for every gravel type."
+          description="Tons, cubic yards, bags and cost from your dimensions, with the right density for every gravel type."
           href={GRAVEL.calculator}
           buttonLabel="Gravel Calculator"
         />
@@ -252,7 +273,7 @@ export default function GravelFaqPage() {
           )}
         />
 
-        <AuthorBox author={author} datePublished={datePublished} />
+        <AuthorBox author={author} datePublished={datePublished} dateModified={dateModified} />
 
         <References items={[GREFS.astmC29, GREFS.fhwaGravel, GREFS.usgs, GREFS.nssga]} />
       </ArticleShell>

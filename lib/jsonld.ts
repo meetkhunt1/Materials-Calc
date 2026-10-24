@@ -8,7 +8,7 @@ import { absoluteUrl, canonicalUrl, siteConfig } from "@/lib/site";
 
 type Schema = Record<string, unknown>;
 
-// Actual dimensions of the static assets referenced below — keep in sync if
+// Actual dimensions of the static assets referenced below: keep in sync if
 // public/logo.png or public/og-default.png are replaced.
 const LOGO_DIMENSIONS = { width: 436, height: 90 };
 const OG_IMAGE_DIMENSIONS = { width: 1200, height: 630 };
@@ -99,7 +99,7 @@ export function articleSchema(meta: ArticleMeta): Schema {
     publisher: { "@id": canonicalUrl("/#organization") },
     mainEntityOfPage: canonicalUrl(meta.path),
     // "h1" is present on every article; ".quick-answer" only matches on pages
-    // that include <QuickAnswer> — harmless no-op on the rest.
+    // that include <QuickAnswer>: harmless no-op on the rest.
     speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".quick-answer"] },
     ...(meta.image && { image: absoluteUrl(meta.image) }),
     ...(meta.keywords?.length && { keywords: meta.keywords.join(", ") }),
@@ -185,7 +185,7 @@ export function howToSchema(options: {
   tools?: string[];
   /**
    * Only set this when the page also renders a matching `id={`step-${n}`}`
-   * on each visible step — otherwise the deep link points at nothing.
+   * on each visible step: otherwise the deep link points at nothing.
    */
   deepLinkSteps?: boolean;
 }): Schema {

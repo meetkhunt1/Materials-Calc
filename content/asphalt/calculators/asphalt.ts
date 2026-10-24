@@ -9,7 +9,7 @@ export const asphaltCalculator = defineCalculator({
   id: "asphalt-calculator",
   name: "Asphalt Calculator",
   description:
-    "Tons and cubic yards for any paving area. Uses compacted thickness — the thickness after rolling, which is what plans specify.",
+    "Tons and cubic yards for any paving area. Uses compacted thickness, meaning the thickness after rolling, which is what plans specify.",
   embedPath: "/asphalt/asphalt-calculator/",
   fields: [
     {
@@ -51,10 +51,10 @@ export const asphaltCalculator = defineCalculator({
       label: "Mix type",
       type: "select",
       options: [
-        { value: "hma", label: "Hot mix asphalt — 145 lb/ft³", data: { density: 2322 } },
-        { value: "warm", label: "Warm mix — 144 lb/ft³", data: { density: 2300 } },
-        { value: "cold", label: "Cold mix / patch — 137 lb/ft³", data: { density: 2200 } },
-        { value: "millings", label: "Millings, compacted — 122 lb/ft³", data: { density: 1950 } },
+        { value: "hma", label: "Hot mix asphalt (145 lb/ft³)", data: { density: 2322 } },
+        { value: "warm", label: "Warm mix (144 lb/ft³)", data: { density: 2300 } },
+        { value: "cold", label: "Cold mix / patch (137 lb/ft³)", data: { density: 2200 } },
+        { value: "millings", label: "Millings, compacted (122 lb/ft³)", data: { density: 1950 } },
       ],
       defaultValue: "hma",
     },
@@ -63,9 +63,9 @@ export const asphaltCalculator = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — simple rectangle, machine laid" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — irregular edges, hand work" },
+        { value: "5", label: "5%: simple rectangle, machine laid" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: irregular edges, hand work" },
       ],
       defaultValue: "10",
     },
@@ -89,7 +89,7 @@ export const asphaltCalculator = defineCalculator({
         unit: "US tons",
         precision: 2,
         primary: true,
-        note: "Plants sell by the ton — this is your order quantity.",
+        note: "Plants sell by the ton, so this is your order quantity.",
       },
       { id: "tonnes", label: "Metric tonnes", value: weightKg / 1000, unit: "t", precision: 2 },
       { id: "yd3", label: "Compacted volume", value: fromBase(volume, "yd3"), unit: "yd³", precision: 2 },
@@ -98,5 +98,5 @@ export const asphaltCalculator = defineCalculator({
     ];
   },
   disclaimer:
-    "Densities are typical compacted values (ASTM D2726 varies by mix design). Confirm the plant's mix density on the ticket — jobs are paid by delivered tons.",
+    "Densities are typical compacted values (ASTM D2726 varies by mix design). Confirm the plant's mix density on the ticket, because jobs are paid by delivered tons.",
 });

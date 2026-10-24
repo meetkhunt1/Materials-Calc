@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 
 interface QuickSizeTableProps {
-  /** Column headers — first is always the project size label. */
+  /** Column headers: first is always the project size label. */
   headers: string[];
   /** Each row's cells, in the same order as `headers`. */
   rows: string[][];
@@ -17,7 +17,7 @@ interface QuickSizeTableProps {
 }
 
 /**
- * Pre-calculated reference table for common project sizes — answers
+ * Pre-calculated reference table for common project sizes: answers
  * "how much X for a Y×Y Z" queries directly in a crawlable HTML table.
  * Figures must be derived from the same constants the live calculator uses.
  */

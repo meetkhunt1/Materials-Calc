@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { TipBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
@@ -24,9 +25,9 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "How to Measure for Asphalt — Irregular Areas Included";
+const title = "How to Measure an Area for Asphalt Paving";
 const description =
-  "Field measurement for paving takeoffs: which tools hit ±0.5% versus ±5%, the offset method for curved edges, and how to decompose any footprint into shapes you can calculate.";
+  "Measure asphalt areas to ±0.5% with a steel tape or wheel, average widths for curved edges, and split odd shapes into rectangles. With a worked example.";
 const path = ASPHALT.measurement;
 const author = getAuthor("materials-team");
 
@@ -36,13 +37,14 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "What is the most accurate way to measure a paving area?",
     answer:
-      "A steel tape or calibrated measuring wheel, run twice, gets you to ±0.5% — better than the waste factor you will apply anyway. Phone GPS apps drift ±2–5% and satellite tools ±1–3%, fine for a budget number but not for the order. Measure the final quantity on the ground.",
+      "A steel tape or calibrated measuring wheel, run twice, gets you to ±0.5%, better than the waste factor you will apply anyway. Phone GPS apps drift ±2–5% and satellite tools ±1–3%, fine for a budget number but not for the order. Measure the final quantity on the ground.",
   },
   {
     question: "How do I measure a driveway with curved edges?",
@@ -57,17 +59,17 @@ const faqItems: FaqItem[] = [
   {
     question: "Can I measure my driveway from satellite imagery?",
     answer:
-      "For a first estimate, yes — mapping tools that trace polygons on aerial photos land within ±1–3% when the edges are visible and unshaded. Tree cover, shadows and lens distortion push errors higher. Use satellite for the budget, then tape the site before you place the order.",
+      "For a first estimate, yes. Mapping tools that trace polygons on aerial photos land within ±1–3% when the edges are visible and unshaded. Tree cover, shadows and lens distortion push errors higher. Use satellite for the budget, then tape the site before you place the order.",
   },
   {
     question: "How do I handle a paving area with multiple shapes?",
     answer:
-      "Decompose it: split the footprint into rectangles, triangles and circle pieces at natural break lines, measure each piece, and sum the areas before multiplying by depth. Sketch the site first and label each piece — the sketch, not the math, is where errors hide.",
+      "Split the footprint into rectangles, triangles and circle pieces at natural break lines, measure each piece, and sum the areas before multiplying by depth. Sketch the site first and label each piece; the sketch, not the math, is where errors hide.",
   },
   {
     question: "How accurate does depth measurement need to be?",
     answer:
-      "More accurate than the plan area. On a 3-inch pavement, a quarter-inch depth error is an 8% volume error — larger than any plausible area mistake. Confirm the compacted design thickness with the contractor and check the base is graded uniformly before trusting one depth number.",
+      "More accurate than the plan area. On a 3-inch pavement, a quarter-inch depth error is an 8% volume error, larger than any plausible area mistake. Confirm the compacted design thickness with the contractor and check the base is graded uniformly before trusting one depth number.",
   },
 ];
 
@@ -88,6 +90,7 @@ export default function AsphaltMeasurementGuidePage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -100,7 +103,7 @@ export default function AsphaltMeasurementGuidePage() {
               eyebrow="Asphalt · Volume Guide"
               variant="compact"
               title="How to measure for asphalt"
-              description="Every takeoff is only as good as the numbers walked off the site. Here is how to get survey-adjacent accuracy with a tape, a wheel and a method — curved edges included."
+              description="Every takeoff is only as good as the numbers walked off the site. Here is how to get survey-adjacent accuracy with a tape, a wheel and a method, curved edges included."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -113,7 +116,17 @@ export default function AsphaltMeasurementGuidePage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How do you measure an area for asphalt?"
+          answer="Measure length and width with a steel tape or calibrated measuring wheel, which is accurate to about ±0.5%. For curved edges, tape the width every 10 ft along a centerline and multiply the average width by the length. Split L-shapes and flares into rectangles and triangles, sum the areas, then multiply by the compacted depth in feet."
+          formula="Area = average width × centerline length"
+        />
+
         <Section title="Tools and their real accuracy">
+          <p className="text-muted-foreground">
+            A steel tape or measuring wheel is accurate to ±0.5%; phone and satellite tools
+            are only good for budgets.
+          </p>
           <CoverageTable
             headers={["Method", "Typical accuracy", "Best use"]}
             rows={[
@@ -126,17 +139,18 @@ export default function AsphaltMeasurementGuidePage() {
           />
           <p className="text-muted-foreground">
             The pattern to notice: a tape costs nothing extra and beats every electronic
-            shortcut by a factor of four. Estimate remotely if you must — measure physically
+            shortcut by a factor of four. Estimate remotely if you must, but measure physically
             before money changes hands.
           </p>
         </Section>
 
         <Section title="The offset method for irregular edges">
           <p className="text-muted-foreground">
+            Measure a curved area by averaging widths taken every 10 ft along a centerline.
             Curved and wandering edges defeat the length × width instinct, but they fall to
             the offset method: establish a straight centerline down the area with a tape or
-            string, then measure the full width perpendicular to it at fixed stations —
-            every 10 ft is standard. Average the widths and multiply by the centerline
+            string, then measure the full width perpendicular to it at fixed stations
+            (every 10 ft is standard). Average the widths and multiply by the centerline
             length. That is the trapezoidal rule in work boots, and with stations every 10
             ft it captures typical driveway curvature within 1–2%. Where the edge swings
             hard, add intermediate stations; where it runs straight, the extra readings cost
@@ -146,7 +160,8 @@ export default function AsphaltMeasurementGuidePage() {
 
         <Section title="Decomposing shapes">
           <p className="text-muted-foreground">
-            Footprints that are irregular in plan — an L, a T, a drive with a flared apron —
+            Any irregular footprint can be split into rectangles, triangles and circles.
+            Footprints that are irregular in plan (an L, a T, a drive with a flared apron)
             are just simple shapes wearing a trench coat. Split at the inside corners into
             rectangles; treat tapers and flares as triangles (½ × base × height); handle
             turnarounds as circles or fractions of one. Sum the piece areas, then multiply
@@ -166,11 +181,11 @@ export default function AsphaltMeasurementGuidePage() {
               { label: "Volume at 3 in (0.25 ft)", work: "448 × 0.25 = 112 ft³" },
               { label: "Cubic yards", work: "112 ÷ 27 = 4.1 yd³" },
             ]}
-            result="4.1 yd³, about 8.1 tons compacted — order 8.5 tons with waste."
+            result="4.1 yd³, about 8.1 tons compacted: order 8.5 tons with waste."
           />
           <TipBlock title="Measure twice, sketch always">
             Take every critical dimension twice and keep the pair that agrees. Sketch the
-            site with dimensions written on it, then photograph the sketch — the photo
+            site with dimensions written on it, then photograph the sketch. The photo
             survives rain, truck cabs and the three weeks between measuring and paving.
           </TipBlock>
         </Section>
@@ -179,7 +194,7 @@ export default function AsphaltMeasurementGuidePage() {
 
         <Cta
           variant="banner"
-          title="Measurements done — now the math"
+          title="Measurements done? Now the math"
           description="Feed your field dimensions to the volume calculator and get yards, feet and meters in one pass."
           href={ASPHALT.volume}
           buttonLabel="Asphalt Volume Calculator"
@@ -194,7 +209,7 @@ export default function AsphaltMeasurementGuidePage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[AREFS.ms4]} />
       </ArticleShell>

@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
@@ -26,11 +27,12 @@ import {
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "How to Calculate Asphalt (Tons & Square Feet)";
+const title = "How to Calculate Tons of Asphalt: Formula";
 const description =
-  "The estimator's method for asphalt takeoffs: measure the area, convert thickness to feet, compute volume, apply the 145 lb/ft³ compacted density, and add waste. Worked examples in tons and tonnes.";
+  "Tons of asphalt = ft² × (inches ÷ 12) × 145 ÷ 2,000, plus 5–10% waste: a 600 ft² drive at 3 in needs about 11.4 tons. Step-by-step US and metric examples.";
 const path = ASPHALT.howTo;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -38,16 +40,17 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const steps = [
   {
     name: "Measure the area",
-    text: "Measure length and width in feet and multiply for square feet. Split L-shapes and flares at driveways into rectangles and sum them. Measure at the widest points — pavers cannot lay a taper narrower than the screed.",
+    text: "Measure length and width in feet and multiply for square feet. Split L-shapes and flares at driveways into rectangles and sum them. Measure at the widest points, because pavers cannot lay a taper narrower than the screed.",
   },
   {
     name: "Convert thickness to feet",
-    text: "Divide compacted thickness in inches by 12. A 3 in lift is 0.25 ft, not 0.3. Thickness means after rolling — the calculation uses compacted numbers throughout.",
+    text: "Divide compacted thickness in inches by 12. A 3 in lift is 0.25 ft, not 0.3. Thickness means after rolling; the calculation uses compacted numbers throughout.",
   },
   {
     name: "Compute the volume",
@@ -55,7 +58,7 @@ const steps = [
   },
   {
     name: "Apply the 145 lb/ft³ density",
-    text: "Multiply cubic feet by 145 lb/ft³ (2,322 kg/m³) — the estimating standard for compacted hot mix — then divide by 2,000 to convert pounds to US tons.",
+    text: "Multiply cubic feet by 145 lb/ft³ (2,322 kg/m³), the estimating standard for compacted hot mix, then divide by 2,000 to convert pounds to US tons.",
   },
   {
     name: "Add a waste allowance",
@@ -67,37 +70,37 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the formula for calculating asphalt tonnage?",
     answer:
-      "Tons = square feet × (thickness in inches ÷ 12) × 145 ÷ 2,000, times a 5–10% waste factor. The 145 is compacted hot mix density in lb/ft³. For a 600 ft² driveway at 3 in: 600 × 0.25 × 145 ÷ 2,000 = 10.9 tons before waste.",
+      "The formula is tons = square feet × (thickness in inches ÷ 12) × 145 ÷ 2,000, times a 5–10% waste factor. The 145 is compacted hot mix density in lb/ft³. For a 600 ft² driveway at 3 in: 600 × 0.25 × 145 ÷ 2,000 = 10.9 tons before waste.",
   },
   {
     question: "How many square feet does a ton of asphalt cover?",
     answer:
-      "About 80 ft² at 2 in compacted thickness, 160 ft² at 1 in, 53 ft² at 3 in and 40 ft² at 4 in. Coverage scales inversely with thickness, so halving the lift doubles the coverage. These figures already carry a small practical allowance over the raw density math.",
+      "A ton of asphalt covers about 80 ft² at 2 in compacted thickness, 160 ft² at 1 in, 53 ft² at 3 in and 40 ft² at 4 in. Coverage scales inversely with thickness, so halving the lift doubles the coverage. These figures already carry a small practical allowance over the raw density math.",
   },
   {
     question: "What is the 110 rule for asphalt?",
     answer:
-      "Field crews estimate 110 lb of hot mix per square yard per inch of compacted thickness. It is the same 145 lb/ft³ density restated in paver units: 9 ft² × (1/12 ft) × 145 ≈ 109 lb. Convert your area to square yards, multiply by inches, multiply by 110, divide by 2,000 for tons.",
+      "The 110 rule says hot mix weighs about 110 lb per square yard per inch of compacted thickness. It is the same 145 lb/ft³ density restated in paver units: 9 ft² × (1/12 ft) × 145 ≈ 109 lb. Convert your area to square yards, multiply by inches, multiply by 110, divide by 2,000 for tons.",
   },
   {
     question: "Do I calculate with loose or compacted thickness?",
     answer:
-      "Compacted, always. Loose mix runs about 117 lb/ft³ and fluffs roughly 25% taller in the mat before rolling, but tonnage is bought by weight, and weight does not change under the roller. Order from the finished compacted dimensions; the paver operator handles the roll-down factor when setting screed height.",
+      "Always calculate with compacted thickness. Loose mix runs about 117 lb/ft³ and fluffs roughly 25% taller in the mat before rolling, but tonnage is bought by weight, and weight does not change under the roller. Order from the finished compacted dimensions; the paver operator handles the roll-down factor when setting screed height.",
   },
   {
     question: "How much waste should I add to an asphalt order?",
     answer:
-      "5% for a well-graded, machine-laid rectangle; 10% for hand work, irregular shapes, or a subgrade that was fine-graded loosely. Running short mid-pour is expensive — a second truck means a second minimum-load fee and a cold joint where the two loads meet.",
+      "Add 5% for a well-graded, machine-laid rectangle and 10% for hand work, irregular shapes, or a subgrade that was fine-graded loosely. Running short mid-pour is expensive: a second truck means a second minimum-load fee and a cold joint where the two loads meet.",
   },
   {
     question: "How do I calculate asphalt in metric tonnes?",
     answer:
-      "Square meters × thickness in meters × 2.322 t/m³, plus waste. A 60 m² parking pad at 75 mm needs 60 × 0.075 × 2.322 = 10.5 t, or about 11 t ordered. No unit conversion gymnastics — this is why metric takeoffs have fewer errors.",
+      "Multiply square meters × thickness in meters × 2.322 t/m³, then add waste. A 60 m² parking pad at 75 mm needs 60 × 0.075 × 2.322 = 10.5 t, or about 11 t ordered. No unit conversion gymnastics, which is why metric takeoffs have fewer errors.",
   },
 ];
 
 const toc = tocFromTitles(
-  "The five-step method",
+  "How do you calculate tons of asphalt?",
   "Key conversions",
   "Worked example: residential driveway",
   "Worked example: metric takeoff in tonnes",
@@ -114,6 +117,7 @@ export default function HowToCalculateAsphaltPage() {
             path,
             category: "Asphalt",
             datePublished: "2026-07-15",
+            dateModified: modified,
             author,
           }),
           howToSchema({
@@ -138,7 +142,7 @@ export default function HowToCalculateAsphaltPage() {
               eyebrow="Asphalt · Method Guide"
               variant="centered"
               title="How to calculate asphalt"
-              description="Asphalt is sold by the ton but designed by the square foot. These five steps bridge the two — the same math a plant dispatcher runs when you call in dimensions."
+              description="Asphalt is sold by the ton but designed by the square foot. These five steps bridge the two with the same math a plant dispatcher runs when you call in dimensions."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -160,7 +164,18 @@ export default function HowToCalculateAsphaltPage() {
           />
         }
       >
-        <Section title="The five-step method">
+        <QuickAnswer
+          question="How do you calculate tons of asphalt?"
+          answer="To calculate tons of asphalt, multiply the area in square feet by the compacted thickness in feet, multiply by 145 lb/ft³, divide by 2,000, and add 5–10% waste. A 600 ft² driveway at 3 inches compacted needs 600 × 0.25 × 145 ÷ 2,000 = 10.9 tons, or about 11.4 tons with 5% waste."
+          ruleOfThumb="110 lb per square yard per inch of thickness."
+          formula="Tons = ft² × (in ÷ 12) × 145 ÷ 2,000 × (1 + waste)"
+        />
+
+        <Section title="How do you calculate tons of asphalt?">
+          <p className="text-muted-foreground">
+            Calculate tons of asphalt in five steps: area, thickness in feet, volume,
+            density, then waste.
+          </p>
           <ol className="space-y-4">
             {steps.map((step, index) => (
               <li id={`step-${index + 1}`} key={step.name} className="flex gap-4 rounded-xl border p-4">
@@ -185,7 +200,7 @@ export default function HowToCalculateAsphaltPage() {
             note="Metric: m² × m × 2.322 = tonnes. Compacted density is 2,322 kg/m³ either way."
           />
           <p className="text-muted-foreground">
-            The structure mirrors a concrete takeoff — the only differences are the density
+            The structure mirrors a concrete takeoff; the only differences are the density
             step and selling unit. If you know the{" "}
             <a href={CONCRETE.howTo} className="font-medium text-primary hover:underline">
               concrete calculation method
@@ -203,13 +218,13 @@ export default function HowToCalculateAsphaltPage() {
               { label: "1 compacted m³", spec: "2.32 tonnes", coverage: "2,322 kg/m³" },
               { label: "1 ton at 2 in", spec: "80 ft²", coverage: "2,000 ÷ (145 × 2 ÷ 12)", note: "160 ft² at 1 in, 53 at 3 in, 40 at 4 in" },
               { label: "1 yd² at 1 in", spec: "110 lb", coverage: "The paver's 110 rule" },
-              { label: "Loose mix in truck", spec: "≈ 117 lb/ft³", coverage: "~25% fluff before rolling", note: "Never use for tonnage — weight is weight" },
+              { label: "Loose mix in truck", spec: "≈ 117 lb/ft³", coverage: "~25% fluff before rolling", note: "Never use for tonnage; weight is weight" },
             ]}
             caption="The conversions that cover nearly every asphalt takeoff. Anything else derives from the 145 lb/ft³ density."
           />
           <TipBlock title="Sanity-check every takeoff with the 110 rule">
             Area in square yards × inches × 110 lb should land within a few percent of the
-            formula result. If it does not, you have a unit error — almost always inches
+            formula result. If it does not, you have a unit error, almost always inches
             multiplied as feet. Two independent routes to the same tonnage is the cheapest
             QC there is.
           </TipBlock>
@@ -238,7 +253,7 @@ export default function HowToCalculateAsphaltPage() {
               { label: "Weight at 2,322 kg/m³", work: "4.5 × 2,322 = 10,449 kg = 10.45 t" },
               { label: "Waste at 5%", work: "10.45 × 1.05 = 10.97 t" },
             ]}
-            result="Order 11 tonnes. One density constant, zero unit conversions — the metric path is shorter for a reason."
+            result="Order 11 tonnes. One density constant, zero unit conversions: the metric path is shorter for a reason."
           />
         </Section>
 
@@ -247,7 +262,7 @@ export default function HowToCalculateAsphaltPage() {
         <Cta
           variant="banner"
           title="Now run your numbers"
-          description="Enter dimensions and thickness — the calculator applies the 145 lb/ft³ density and waste factor for you."
+          description="Enter dimensions and thickness, and the calculator applies the 145 lb/ft³ density and waste factor for you."
           href={ASPHALT.calculator}
           buttonLabel="Open the Asphalt Calculator"
         />
@@ -264,7 +279,7 @@ export default function HowToCalculateAsphaltPage() {
           items={pickLinks(coreGuideLinks, ASPHALT.coverage, ASPHALT.densityChart, ASPHALT.costGuide)}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.ms4, AREFS.napa]} />
       </ArticleShell>

@@ -10,7 +10,7 @@ interface CalculatorPageShellProps {
    * so every calculator page gets a stable but different structure.
    */
   variant: CalculatorLayoutVariant;
-  /** Hero / title area — rendered full-width above everything */
+  /** Hero / title area: rendered full-width above everything */
   hero: React.ReactNode;
   /** The <CalculatorCard> (or a custom calculator composition) */
   calculator: React.ReactNode;
@@ -26,9 +26,9 @@ interface CalculatorPageShellProps {
 /**
  * Three structurally different calculator page layouts:
  *
- *  "split"     — calculator pinned left, content scrolls right (app-like)
- *  "hero-flow" — hero → formula → centered calculator → guide (editorial)
- *  "sidebar"   — article left, sticky calculator + aside right (docs-like)
+ *  "split"    : calculator pinned left, content scrolls right (app-like)
+ *  "hero-flow": hero → formula → centered calculator → guide (editorial)
+ *  "sidebar"  : article left, sticky calculator + aside right (docs-like)
  *
  * Using different variants across pages guarantees no two calculator
  * pages share an identical skeleton.

@@ -16,7 +16,7 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 interface EmbedInfo {
-  /** CalculatorDefinition.id — matches the route under app/embed/{id}/ */
+  /** CalculatorDefinition.id: matches the route under app/embed/{id}/ */
   id: string;
   /** Canonical page path, e.g. "/concrete/concrete-calculator/" */
   path: string;
@@ -65,7 +65,7 @@ export function CalculatorActions({
         await navigator.share({ title: shareTitle, text, url });
         return;
       } catch {
-        // user dismissed the sheet — fall through to clipboard
+        // user dismissed the sheet: fall through to clipboard
       }
     }
     await copy(`${text}\n${url}`);

@@ -3,7 +3,7 @@ import { ceilTo } from "@/lib/format";
 import { fromBase } from "@/lib/units";
 
 /**
- * TEMPLATE — reference calculator definition (not routed anywhere).
+ * TEMPLATE: reference calculator definition (not routed anywhere).
  *
  * Copy this file when creating a real calculator. The engine handles
  * validation, unit conversion and rendering; you only declare fields
@@ -52,9 +52,9 @@ export const slabCalculatorTemplate = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — precise forms" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — uneven subgrade" },
+        { value: "5", label: "5%: precise forms" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: uneven subgrade" },
       ],
       defaultValue: "10",
     },

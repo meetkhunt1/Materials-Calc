@@ -21,7 +21,7 @@ interface BarChartProps {
 }
 
 /**
- * Zero-JS horizontal bar chart — pure server-rendered HTML/CSS.
+ * Zero-JS horizontal bar chart: pure server-rendered HTML/CSS.
  * Ideal for density/cost comparisons without shipping a chart library.
  */
 export function BarChart({ data, title, unit, monochrome = true, className }: BarChartProps) {

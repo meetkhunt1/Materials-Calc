@@ -2,12 +2,12 @@ import { defineCalculator } from "@/lib/calculator";
 import { fromBase } from "@/lib/units";
 import { HMA_DENSITY } from "../charts/density-data";
 
-/** Pure volume calculator — every unit reported, tons as a courtesy. */
+/** Pure volume calculator: every unit reported, tons as a courtesy. */
 export const volumeCalculator = defineCalculator({
   id: "asphalt-volume-calculator",
   name: "Asphalt Volume Calculator",
   description:
-    "Plan dimensions to cubic yards, cubic feet and cubic meters — plus the equivalent hot-mix tonnage.",
+    "Plan dimensions to cubic yards, cubic feet and cubic meters, plus the equivalent hot-mix tonnage.",
   fields: [
     {
       id: "length",
@@ -76,10 +76,10 @@ export const volumeCalculator = defineCalculator({
         value: fromBase(volume * HMA_DENSITY, "ton"),
         unit: "US tons",
         precision: 2,
-        note: "At 145 lb/ft³ — add your waste factor before ordering.",
+        note: "At 145 lb/ft³. Add your waste factor before ordering.",
       },
     ];
   },
   disclaimer:
-    "No waste factor applied — this is the geometric volume. Add 5–15% before ordering; see the how-to-calculate guide for choosing the right factor.",
+    "No waste factor applied: this is the geometric volume. Add 5–15% before ordering; see the how-to-calculate guide for choosing the right factor.",
 });

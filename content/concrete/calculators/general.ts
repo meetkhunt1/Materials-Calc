@@ -15,7 +15,7 @@ export const concreteCalculator = defineCalculator({
   id: "concrete-calculator",
   name: "Concrete Calculator",
   description:
-    "Volume, weight and bag count for any rectangular pour. Switch units freely — the math is handled for you.",
+    "Volume, weight and bag count for any rectangular pour. Switch units freely; the math is handled for you.",
   embedPath: "/concrete/concrete-calculator/",
   fields: [
     {
@@ -66,9 +66,9 @@ export const concreteCalculator = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — formed edges, firm subgrade" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — pour against earth, uneven base" },
+        { value: "5", label: "5%: formed edges, firm subgrade" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: pour against earth, uneven base" },
       ],
       defaultValue: "10",
     },
@@ -126,7 +126,7 @@ export const concreteCalculator = defineCalculator({
     ];
   },
   disclaimer:
-    "Assumes normal-weight concrete at 2,400 kg/m³ (150 lb/ft³). Ready-mix is sold in 0.25 yd³ increments — confirm the final order with your supplier.",
+    "Assumes normal-weight concrete at 2,400 kg/m³ (150 lb/ft³). Ready-mix is sold in 0.25 yd³ increments, so confirm the final order with your supplier.",
   presets: [
     {
       id: "patio-10x10",

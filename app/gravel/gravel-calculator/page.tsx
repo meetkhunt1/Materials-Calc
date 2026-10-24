@@ -32,9 +32,9 @@ import { CONCRETE, calculatorLinks as concreteCalcs, pickLinks as pickConcrete }
 import { ASPHALT, asphaltCalculatorLinks, pickLinks as pickAsphalt } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Gravel Calculator — Tons & Cubic Yards";
+const title = "Gravel Calculator in Tons and Cubic Yards";
 const description =
-  "How much gravel do you need? Get tons and cubic yards for any gravel or crushed stone type, with the right density applied automatically.";
+  "Loose gravel weighs about 1.42 tons per cubic yard, so a 10×10 ft area 3 in deep takes 1.44 tons. Free calculator for landscape, base and crushed gravel.";
 const path = GRAVEL.calculator;
 const author = getAuthor("materials-team");
 
@@ -44,6 +44,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
@@ -55,12 +56,12 @@ const faqItems: FaqItem[] = [
   {
     question: "How many tons is a cubic yard of gravel?",
     answer:
-      "Loose common gravel: about 1.42 tons per cubic yard (2,800 lb). Pea gravel runs lighter (~1.3), compacted crusher run heavier (~1.9). That spread is why the calculator asks for the type — density is the whole game.",
+      "About 1.42 tons for loose common gravel (roughly 2,800 lb per cubic yard). Pea gravel runs lighter (~1.3), compacted crusher run heavier (~1.9). That spread is why the calculator asks for the type: density decides the answer.",
   },
   {
     question: "Should I order gravel by the ton or by the yard?",
     answer:
-      "Quarries scale-weigh trucks, so tons is the precise unit; landscape yards often sell loose cubic yards by the bucket. Get both numbers from the calculator and compare quotes in whichever unit each supplier uses — the conversion chart covers the math.",
+      "Quarries scale-weigh trucks, so tons is the precise unit; landscape yards often sell loose cubic yards by the bucket. Get both numbers from the calculator and compare quotes in whichever unit each supplier uses. The conversion chart covers the math.",
   },
   {
     question: "How deep should gravel be?",
@@ -70,17 +71,27 @@ const faqItems: FaqItem[] = [
   {
     question: "Does the calculator account for compaction?",
     answer:
-      "The type dropdown handles it: loose materials use loose density, and crusher run uses its compacted density since bases are always compacted. For a detailed loose-vs-in-place breakdown, the crushed stone calculator reports both volumes.",
+      "Yes. The type dropdown handles it: loose materials use loose density, and crusher run uses its compacted density since bases are always compacted. For a detailed loose-vs-in-place breakdown, the crushed stone calculator reports both volumes.",
+  },
+  {
+    question: "How much gravel base do I need under a patio, shed or driveway?",
+    answer:
+      "Plan on 4 inches of compacted crusher run under patios and sheds and 6–8 inches under driveways. Pick crusher run in the calculator so it uses the compacted density (about 1.9 tons per cubic yard); a 10×12 ft shed pad at 4 inches needs about 3.1 tons with a 10% waste allowance.",
+  },
+  {
+    question: "Does this work as a landscape gravel calculator?",
+    answer:
+      "Yes. Choose pea gravel or river rock, enter the bed size and a 2–3 inch depth, and the calculator returns tons and cubic yards. Decorative beds over landscape fabric rarely need more than 3 inches; deeper stone just shifts underfoot.",
   },
   {
     question: "How much does a truckload of gravel cover?",
     answer:
-      "A 14-ton tandem load is about 10 loose cubic yards — roughly 800 ft² at 4 inches or 1,600 ft² at 2 inches. One load handles most residential top-ups; new driveways typically need two to four.",
+      "About 800 ft² at 4 inches deep. A 14-ton tandem load is about 10 loose cubic yards, which spreads to roughly 800 ft² at 4 inches or 1,600 ft² at 2 inches. One load handles most residential top-ups; new driveways typically need two to four.",
   },
 ];
 
 const toc = tocFromTitles(
-  "The gravel formula",
+  "How do you calculate tons of gravel?",
   "Worked example: parking pad on soft ground",
   "Ordering mistakes to avoid",
   "Density quick reference",
@@ -91,7 +102,7 @@ export default function GravelCalculatorPage() {
     <>
       <JsonLd
         data={[
-          webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
+          webPageSchema({ title, description, path, datePublished: "2026-07-15", dateModified: "2026-10-24" }),
           calculatorSchema({
             name: "Gravel Calculator",
             description,
@@ -114,7 +125,7 @@ export default function GravelCalculatorPage() {
               eyebrow="Gravel"
               variant="centered"
               title="Gravel Calculator"
-              description="Length × width × depth × the right density. Six material presets cover pea gravel to compacted crusher run — pick honestly, because density varies 45% across them."
+              description="Length × width × depth × the right density. Six material presets cover pea gravel to compacted crusher run. Pick honestly, because density varies 45% across them."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -130,8 +141,8 @@ export default function GravelCalculatorPage() {
         aside={<TableOfContents items={toc} />}
       >
         <QuickAnswer
-          question="How much gravel do I need for a 10×10 area?"
-          answer="A 10×10 ft area at the common 3-inch depth needs about 1.44 tons (1.02 yd³) of common gravel with a 10% waste allowance. A 20×20 ft area at the same depth needs roughly 5.8 tons."
+          question="How many tons of gravel do I need?"
+          answer="Multiply length × width × depth in feet, divide by 27 for cubic yards, then multiply by about 1.42 tons per cubic yard for loose common gravel. A 10×10 ft area at 3 inches deep needs 1.02 yd³, or about 1.44 tons including a 10% waste allowance. Crusher run bases run heavier, near 1.9 tons per yard."
           ruleOfThumb="One ton of common gravel covers about 76 ft² at 3 in deep."
           formula="Tons = Area × depth × density ÷ 2,000 × (1 + waste)"
         />
@@ -146,11 +157,15 @@ export default function GravelCalculatorPage() {
               ["20×20 ft", "5.77 tons", "4.07 yd³", "$87–173"],
               ["24×24 ft", "8.31 tons", "5.87 yd³", "$125–249"],
             ]}
-            caption="3 in depth, common gravel (105 lb/ft³), 10% waste included. Cost uses the $15–30/ton crusher-run-equivalent range from our gravel price guide — exact pricing varies by material type."
+            caption="3 in depth, common gravel (105 lb/ft³), 10% waste included. Cost uses the $15–30/ton crusher-run-equivalent range from our gravel price guide; exact pricing varies by material type."
           />
         </Section>
 
-        <Section title="The gravel formula">
+        <Section title="How do you calculate tons of gravel?">
+          <p className="text-muted-foreground">
+            Tons of gravel equal area times depth in feet times the material&apos;s density,
+            divided by 2,000 lb per ton, plus a waste allowance.
+          </p>
           <FormulaBlock
             formula="Tons = Area (ft²) × (depth ÷ 12) × density ÷ 2,000 × (1 + waste)"
             variables={[
@@ -158,7 +173,7 @@ export default function GravelCalculatorPage() {
               { symbol: "depth", meaning: "placed depth", unit: "inches" },
               { symbol: "density", meaning: "loose bulk density by type", unit: "lb/ft³" },
             ]}
-            note="Same takeoff discipline as concrete and asphalt — only the density line changes. All type densities live in the gravel density database."
+            note="Same takeoff discipline as concrete and asphalt. Only the density line changes. All type densities live in the gravel density database."
           />
           <p className="text-muted-foreground">
             If you estimate more than one material, notice the pattern: the{" "}
@@ -169,7 +184,7 @@ export default function GravelCalculatorPage() {
             <a href={ASPHALT.calculator} className="font-medium text-primary hover:underline">
               asphalt calculator
             </a>{" "}
-            by 145, and gravel by 96–140 depending on type. One method, three materials —
+            by 145, and gravel by 96–140 depending on type. One method, three materials:
             the full walkthrough is in{" "}
             <a href={GRAVEL.howTo} className="font-medium text-primary hover:underline">
               how to calculate gravel
@@ -187,17 +202,21 @@ export default function GravelCalculatorPage() {
               { label: "Weight at 100 lb/ft³", work: "200 × 100 = 20,000 lb = 10 tons" },
               { label: "Soft ground: add 15%", work: "10 × 1.15 = 11.5 tons" },
             ]}
-            result="Order 12 tons — one tandem load. Strip the sod first or the first third disappears into the mud."
+            result="Order 12 tons, which is one tandem load. Strip the sod first or the first third disappears into the mud."
           />
         </Section>
 
         <Section title="Ordering mistakes to avoid">
+          <p className="text-muted-foreground">
+            Most short or over-sized gravel orders come from using the wrong density or
+            skipping the settling allowance.
+          </p>
           <WarningBlock title="The four classic gravel errors">
             <p>
-              1. Using the 1.4 t/yd³ rule for crusher run — compacted base runs 1.9 and
+              1. Using the 1.4 t/yd³ rule for crusher run: compacted base runs 1.9 and
               you&apos;ll arrive 25% short. 2. Skipping the settling allowance on soft
               subgrade, where the first lift presses into the soil. 3. Comparing a per-yard
-              quote against a per-ton quote without converting — a &quot;cheaper&quot; yard
+              quote against a per-ton quote without converting. A &quot;cheaper&quot; yard
               price is often the more expensive material. 4. Ordering decorative stone by
               coverage numbers written for common gravel; lava rock covers double per ton,
               river rock about the same.
@@ -205,7 +224,7 @@ export default function GravelCalculatorPage() {
           </WarningBlock>
           <TipBlock title="Round to the half ton">
             Quarries load in bucket increments anyway (~0.5–1 ton per bucket). Order in
-            half-ton steps and tell the loader operator the total — chasing 0.1-ton precision
+            half-ton steps and tell the loader operator the total. Chasing 0.1-ton precision
             just annoys everyone at the scale house.
           </TipBlock>
         </Section>

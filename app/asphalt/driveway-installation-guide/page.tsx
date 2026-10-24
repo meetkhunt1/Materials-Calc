@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { WarningBlock, TipBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
@@ -17,11 +18,12 @@ import { getAuthor } from "@/data/authors";
 import { ASPHALT, drivewayGuideLinks, pickLinks, AREFS } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Driveway Installation Guide (Step by Step)";
+const title = "Asphalt Driveway Installation Guide: 8 Steps";
 const description =
-  "How an asphalt driveway is built, step by step: excavation to 9–10 in, grading for drainage, 6 in of compacted aggregate base, tack coat, two hot mix lifts and final rolling — with the checks that separate a 25-year driveway from an 8-year one.";
+  "Asphalt driveway installation takes 1–2 days: dig 9–10 in, compact 6 in of gravel base, then pave 3 in of hot mix in two lifts. See all 8 steps and crew checks.";
 const path = ASPHALT.drivewayInstall;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -29,6 +31,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const installSteps = [
@@ -38,7 +41,7 @@ const installSteps = [
   },
   {
     name: "Excavate 9–10 inches",
-    text: "Strip topsoil and organics down to firm subgrade — typically 9–10 in below finished grade to fit 6 in of base plus 3 in of asphalt. Soft spots get dug out and replaced with compacted aggregate.",
+    text: "Strip topsoil and organics down to firm subgrade, typically 9–10 in below finished grade to fit 6 in of base plus 3 in of asphalt. Soft spots get dug out and replaced with compacted aggregate.",
   },
   {
     name: "Grade for drainage",
@@ -58,11 +61,11 @@ const installSteps = [
   },
   {
     name: "Pave in lifts",
-    text: "Place a 2 in compacted binder course, then a 1–1.5 in surface course of finer mix — 3 in total compacted. Mix should arrive at 275–325°F and be rolled before it cools below about 175°F.",
+    text: "Place a 2 in compacted binder course, then a 1–1.5 in surface course of finer mix, for 3 in total compacted. Mix should arrive at 275–325°F and be rolled before it cools below about 175°F.",
   },
   {
     name: "Compact and edge",
-    text: "Roll immediately behind the paver — breakdown, intermediate and finish passes — and hand-tamp edges at 45°. Support the edges with backfilled topsoil; unsupported edges are where driveways start to crumble.",
+    text: "Roll immediately behind the paver (breakdown, intermediate and finish passes) and hand-tamp edges at 45°. Support the edges with backfilled topsoil; unsupported edges are where driveways start to crumble.",
   },
 ];
 
@@ -70,37 +73,42 @@ const faqItems: FaqItem[] = [
   {
     question: "How long does it take to install an asphalt driveway?",
     answer:
-      "The paving itself usually takes one day; excavation and base work add another. Plan on 1–2 days on site for a typical residential drive, provided the base can be placed and compacted in dry conditions. If soft subgrade turns up during excavation, the fix — undercut and replace — can add a day.",
-  },
-  {
-    question: "How soon can I drive on a new asphalt driveway?",
-    answer:
-      "Walk on it after 24 hours; drive on it after 2–3 days in moderate weather, longer in summer heat. Fresh asphalt cures by oxidation over 6–12 months, so for the first season avoid parking in the same spot daily, keep trailer jacks and kickstands off it, and don't turn the wheels while stationary.",
+      "Installing an asphalt driveway takes 1–2 days on site for a typical residential drive. The paving itself usually takes one day, and excavation and base work add another, provided the base can be placed and compacted in dry conditions. If soft subgrade turns up during excavation, the fix (undercut and replace) can add a day.",
   },
   {
     question: "Can asphalt be paved over an existing driveway?",
     answer:
-      "An overlay of 1.5–2 in over structurally sound asphalt is legitimate and costs roughly half of full replacement. But an overlay over alligator cracking or base failure just reprints the old cracks within 2–3 years — reflection cracking is relentless. Sound surface, overlay; failed base, remove and rebuild.",
+      "Yes, if the old asphalt is structurally sound: an overlay of 1.5–2 in is legitimate and costs roughly half of full replacement. But an overlay over alligator cracking or base failure just reprints the old cracks within 2–3 years, because reflection cracking is relentless. Sound surface, overlay; failed base, remove and rebuild.",
   },
   {
     question: "What temperature is needed to pave a driveway?",
     answer:
-      "Ambient and surface temperatures of 50°F and rising are the practical floor for 3 in residential lifts. Hot mix leaves the plant at 275–325°F and must be compacted before it cools below about 175°F — cold weather shortens that window dramatically, and mix compacted too cold never reaches density.",
+      "Paving needs ambient and surface temperatures of 50°F and rising, the practical floor for 3 in residential lifts. Hot mix leaves the plant at 275–325°F and must be compacted before it cools below about 175°F. Cold weather shortens that window dramatically, and mix compacted too cold never reaches density.",
   },
   {
     question: "Do I need a permit to pave a driveway?",
     answer:
-      "Frequently, yes — most municipalities regulate the apron connection to the public street, curb cuts and drainage onto neighboring lots, and some require a right-of-way permit even when the driveway itself doesn't need one. A legitimate contractor handles this; a quote that never mentions permits is a small red flag.",
+      "Frequently, yes. Most municipalities regulate the apron connection to the public street, curb cuts and drainage onto neighboring lots, and some require a right-of-way permit even when the driveway itself doesn't need one. A legitimate contractor handles this; a quote that never mentions permits is a small red flag.",
   },
   {
     question: "How do I know the crew compacted the base properly?",
     answer:
-      "Ask for the numbers: base placed in 3–4 in lifts, each compacted to 95%+ of maximum density, verified by proof-rolling with a loaded truck. Watch the proof roll — visible rutting or pumping under the tires means more compaction or drainage work is needed. Any crew that spreads 6 in in one pass and hits it twice is building an 8-year driveway.",
+      "You know the base was compacted properly when it went down in 3–4 in lifts, each compacted to 95%+ of maximum density and verified by proof-rolling with a loaded truck. Ask for those numbers and watch the proof roll: visible rutting or pumping under the tires means more compaction or drainage work is needed. Any crew that spreads 6 in in one pass and hits it twice is building an 8-year driveway.",
+  },
+  {
+    question: "How deep do you dig for an asphalt driveway?",
+    answer:
+      "Dig 9–10 inches below finished grade for a standard residential asphalt driveway. That depth fits 6 in of compacted aggregate base plus 3 in of compacted hot mix. On clay, plan for an 8 in base and a correspondingly deeper excavation, and dig out any soft spots down to firm subgrade.",
+  },
+  {
+    question: "Can I install an asphalt driveway myself?",
+    answer:
+      "Not realistically for a full driveway. Hot mix arrives at 275–325°F and must be placed with a paver and compacted with a vibratory roller before it cools below about 175°F, which takes a crew working in step. DIY asphalt is practical only for small patches with cold mix and a hand tamper.",
   },
 ];
 
 const toc = tocFromTitles(
-  "The eight-step installation sequence",
+  "How is an asphalt driveway installed?",
   "Compaction: the make-or-break variable",
   "Weather windows",
   "Who and what shows up on paving day",
@@ -117,6 +125,7 @@ export default function DrivewayInstallationGuidePage() {
             path,
             category: "Asphalt",
             datePublished: "2026-07-15",
+            dateModified: modified,
             author,
           }),
           howToSchema({
@@ -146,7 +155,7 @@ export default function DrivewayInstallationGuidePage() {
               eyebrow="Asphalt · Driveway Guide"
               variant="stat-strip"
               title="Asphalt driveway installation guide"
-              description="A driveway is a small road: same physics, same failure modes. Here is the full build sequence — and the compaction and drainage checks that decide whether it lasts 8 years or 25."
+              description="A driveway is a small road: same physics, same failure modes. Here is the full build sequence, plus the compaction and drainage checks that decide whether it lasts 8 years or 25."
               stats={[
                 { value: "1–2 days", label: "typical install" },
                 { value: "6 in", label: "standard aggregate base" },
@@ -165,7 +174,17 @@ export default function DrivewayInstallationGuidePage() {
           </>
         }
       >
-        <Section title="The eight-step installation sequence">
+        <QuickAnswer
+          question="How is an asphalt driveway installed?"
+          answer="A residential asphalt driveway is installed in 1–2 days: the crew excavates 9–10 in, grades for drainage, compacts 6 in of aggregate base in 3–4 in lifts, applies a tack or prime coat, then paves 3 in of hot mix in two lifts and rolls it before it cools below about 175°F."
+          ruleOfThumb="6 in of base, 3 in of asphalt, 2% cross-slope, 50°F and rising."
+        />
+
+        <Section title="How is an asphalt driveway installed?">
+          <p className="text-muted-foreground">
+            An asphalt driveway is installed in eight steps, from utility locates to final
+            rolling, and the subgrade and base steps decide most of its service life.
+          </p>
           <ol className="space-y-4">
             {installSteps.map((step, index) => (
               <li id={`step-${index + 1}`} key={step.name} className="flex gap-4 rounded-xl border p-4">
@@ -184,14 +203,14 @@ export default function DrivewayInstallationGuidePage() {
         <Section title="Compaction: the make-or-break variable">
           <WarningBlock title="Compaction is everything">
             Nearly every premature driveway failure traces back to density. The base must be
-            placed in 3–4 in lifts and each lift compacted to 95%+ of maximum dry density —
-            dumping 6 in in one pass and rolling the top is how you build hidden soft
+            placed in 3–4 in lifts and each lift compacted to 95%+ of maximum dry density.
+            Dumping 6 in in one pass and rolling the top is how you build hidden soft
             layers that alligator-crack within five years. The asphalt itself follows the
             same law: mix rolled after it cools below ~175°F never densifies, and
             under-compacted asphalt lets in the water that destroys it from below.
           </WarningBlock>
           <p className="text-muted-foreground">
-            Compaction is also the one step you can verify from the sidewalk: count the
+            Compaction is the one step you can verify from the sidewalk: count the
             base lifts going in, and watch the proof roll. Everything else on this page is
             recoverable; a bad base is a rebuild.
           </p>
@@ -200,14 +219,14 @@ export default function DrivewayInstallationGuidePage() {
         <Section title="Weather windows">
           <TipBlock title="Schedule for temperature, not the calendar">
             Book paving for daytime temperatures of 50°F and rising, and never allow
-            placement on a saturated base — trapped moisture flashes to steam under
+            placement on a saturated base, because trapped moisture flashes to steam under
             300°F mix and destroys the bond. In marginal spring or fall weather, a morning
             pour beats an afternoon one: the mat has the warm hours to be compacted before
             temperatures fall off.
           </TipBlock>
           <p className="text-muted-foreground">
             Rain the day before is fine if the base drains and proof-rolls dry; rain during
-            paving stops the job. Good contractors reschedule without argument — the ones
+            paving stops the job. Good contractors reschedule without argument. The ones
             who pave anyway are spending your 20 years of service life to save their
             afternoon.
           </p>
@@ -220,7 +239,7 @@ export default function DrivewayInstallationGuidePage() {
               {
                 label: "Dump trucks (2–4)",
                 spec: "Haul mix from the plant",
-                coverage: "Steady arrivals — mix sitting in a truck is cooling",
+                coverage: "Steady arrivals, because mix sitting in a truck is cooling",
               },
               {
                 label: "Paver",
@@ -245,7 +264,7 @@ export default function DrivewayInstallationGuidePage() {
               {
                 label: "Tack/prime distributor",
                 spec: "Bonds lifts and base",
-                coverage: "Thin, uniform coat — puddles bleed through the surface",
+                coverage: "Thin, uniform coat; puddles bleed through the surface",
               },
             ]}
             caption="A typical residential paving crew. Missing rollers or a two-man crew are quote-stage warning signs."
@@ -257,7 +276,7 @@ export default function DrivewayInstallationGuidePage() {
         <Cta
           variant="banner"
           title="Price the materials before the quotes arrive"
-          description="The driveway calculator returns hot mix tonnage and base gravel for your footprint — so you can sanity-check every bid."
+          description="The driveway calculator returns hot mix tonnage and base gravel for your footprint, so you can sanity-check every bid."
           href={ASPHALT.driveway}
           buttonLabel="Driveway Calculator"
         />
@@ -273,7 +292,7 @@ export default function DrivewayInstallationGuidePage() {
           )}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.napa, AREFS.ms4, AREFS.fhwa]} />
       </ArticleShell>

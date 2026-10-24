@@ -47,7 +47,7 @@ export function ComparisonTable({ columns, rows, caption, className }: Compariso
                 key={col.key}
                 className={cn("text-muted-foreground", col.highlight && "bg-primary-soft/30")}
               >
-                {row.values[col.key] ?? "—"}
+                {row.values[col.key] ?? "N/A"}
               </TableCell>
             ))}
           </TableRow>

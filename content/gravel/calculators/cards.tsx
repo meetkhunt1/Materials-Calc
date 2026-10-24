@@ -2,7 +2,7 @@
 
 /**
  * Client-side bindings for gravel calculator definitions.
- * (CalculatorDefinition.compute can't cross the RSC boundary — see CLAUDE.md.)
+ * (CalculatorDefinition.compute can't cross the RSC boundary; see CLAUDE.md.)
  */
 import { Square, Circle } from "lucide-react";
 import { CalculatorCard } from "@/components/calculator/calculator-card";
@@ -18,7 +18,7 @@ export function GravelCalculatorCard() {
   return <CalculatorCard definition={gravelCalculator} />;
 }
 
-/** Rectangle vs circular gravel areas — fire pits, tree rings and round patios. */
+/** Rectangle vs circular gravel areas: fire pits, tree rings and round patios. */
 export function MultiShapeGravelCalculator() {
   return (
     <Tabs defaultValue="rectangle" className="w-full">

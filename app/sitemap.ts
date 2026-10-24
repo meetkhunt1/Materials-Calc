@@ -12,7 +12,7 @@ export const dynamic = "force-static";
  *   1. create the page  2. add it to data/search-index.ts → done.
  */
 
-/** The five highest-search-volume calculators — homepage-linked, top crawl priority. */
+/** The five highest-search-volume calculators: homepage-linked, top crawl priority. */
 const TOP_CALCULATORS = new Set([
   "/concrete/concrete-calculator/",
   "/concrete/concrete-slab-calculator/",
@@ -57,7 +57,7 @@ function priorityFor(href: string): number {
 
 /**
  * Real per-page freshness, not build time. `lastModified: now` on every URL
- * teaches Google to ignore our <lastmod> — so we report each route's last git
+ * teaches Google to ignore our <lastmod>, so we report each route's last git
  * commit date instead. Runs at build (static export) where git + Node exist;
  * falls back to build time if git is unavailable or the file is untracked.
  */
@@ -82,7 +82,7 @@ function lastModified(href: string): Date {
     }).trim();
     if (out) date = new Date(out);
   } catch {
-    // git missing or file untracked — keep build-time fallback
+    // git missing or file untracked: keep build-time fallback
   }
   gitDateCache.set(file, date);
   return date;

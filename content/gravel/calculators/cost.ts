@@ -63,9 +63,9 @@ export const gravelCostCalculator = defineCalculator({
       label: "Waste / settling allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — contained placement" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — soft ground" },
+        { value: "5", label: "5%: contained placement" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: soft ground" },
       ],
       defaultValue: "10",
     },
@@ -105,5 +105,5 @@ export const gravelCostCalculator = defineCalculator({
     ];
   },
   disclaimer:
-    "Uses common gravel density (105 lb/ft³). Spreading labor is extra — typically $10–25/ton or covered by your own rake and afternoon. See the labor cost guide.",
+    "Uses common gravel density (105 lb/ft³). Spreading labor is extra, typically $10–25/ton or covered by your own rake and afternoon. See the labor cost guide.",
 });

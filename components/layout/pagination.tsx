@@ -10,7 +10,7 @@ interface PaginationProps {
   className?: string;
 }
 
-/** Numbered pagination with prev/next — server-rendered links (SEO-friendly). */
+/** Numbered pagination with prev/next: server-rendered links (SEO-friendly). */
 export function Pagination({ currentPage, totalPages, buildHref, className }: PaginationProps) {
   if (totalPages <= 1) return null;
 

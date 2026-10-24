@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { InfoBlock, TipBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
 import { Faq } from "@/components/faq/faq";
@@ -25,9 +26,9 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "crushed-stone-sizes";
-const title = "Crushed Stone Sizes — #1 to #10 and Crusher Run, Decoded";
+const title = "Crushed Stone Sizes Chart: #1 to #10 and #57";
 const description =
-  "Every standard crushed stone size explained: #1, #2, #3, #5, #57, #8, #10 screenings and crusher run — nominal inch ranges, what each is for, and the ASTM D448 system behind the numbers.";
+  "#57 crushed stone is 3/4–1 in, #8 is 3/8–1/2 in and #1 is 2–4 in: smaller numbers mean bigger stone. See the ASTM D448 size chart and the job each size fits.";
 const path = GRAVEL.stoneSizes;
 const author = getAuthor("materials-team");
 
@@ -43,44 +44,50 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-16",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "What do crushed stone size numbers mean?",
     answer:
-      "They are gradation classes from ASTM D448 (mirrored by AASHTO M 43): each number defines which sieves the stone must pass and be retained on. Counterintuitively, smaller numbers mean bigger stone — #1 runs 2 to 4 inches while #10 is screenings that pass a 3/8 inch sieve. Two-digit numbers like #57 are blends spanning two single-size classes.",
+      "They are gradation classes from ASTM D448 (mirrored by AASHTO M 43): each number defines which sieves the stone must pass and be retained on. Counterintuitively, smaller numbers mean bigger stone: #1 runs 2 to 4 inches while #10 is screenings that pass a 3/8 inch sieve. Two-digit numbers like #57 are blends spanning two single-size classes.",
   },
   {
     question: "What size is #57 crushed stone?",
     answer:
-      "#57 is a blend graded from about 3/4 to 1 inch — it passes a 1 inch sieve, with allowance up to 1 1/2 inches, and is retained above the #4 sieve. It is the most-stocked size in North America because it drains freely, handles easily, and works for French drains, concrete aggregate, driveway top layers and pipe backfill alike.",
+      "#57 is a blend graded from about 3/4 to 1 inch. It passes a 1 inch sieve, with allowance up to 1 1/2 inches, and is retained above the #4 sieve. It is the most-stocked size in North America because it drains freely, handles easily, and works for French drains, concrete aggregate, driveway top layers and pipe backfill alike.",
+  },
+  {
+    question: "What size is #8 crushed stone?",
+    answer:
+      "#8 crushed stone is 3/8 to 1/2 inch. It is the angular counterpart to pea gravel, used for pipe bedding, asphalt mixes and walkway topping where a smaller, tighter surface matters. For a 4 inch drain line it is the standard bedding size.",
   },
   {
     question: "What is crusher run?",
     answer:
-      "Crusher run (also called dense-graded aggregate, road base, ABC or #411-type blends depending on region) is crushed stone with the fines left in — everything from dust up to a 3/4 or 1 1/2 inch top size. It is not a single ASTM D448 number. The fines let it compact into a near-solid layer, which is exactly what a base course needs and exactly what a drainage layer must avoid.",
+      "Crusher run (also called dense-graded aggregate, road base, ABC or #411-type blends depending on region) is crushed stone with the fines left in, everything from dust up to a 3/4 or 1 1/2 inch top size. It is not a single ASTM D448 number. The fines let it compact into a near-solid layer, which is exactly what a base course needs and exactly what a drainage layer must avoid.",
   },
   {
     question: "What is #10 crushed stone?",
     answer:
-      "#10 is screenings or stone dust — the fine fraction passing the 3/8 inch sieve, down to dust. It compacts hard and screeds flat, which makes it the standard leveling bed under pavers and a good topping for hard-packed paths. It does not drain; never use it where water must pass.",
+      "#10 is screenings or stone dust, the fine fraction passing the 3/8 inch sieve, down to dust. It compacts hard and screeds flat, which makes it the standard leveling bed under pavers and a good topping for hard-packed paths. It does not drain; never use it where water must pass.",
   },
   {
     question: "Which crushed stone size is best for a driveway?",
     answer:
-      "Two sizes, in layers: crusher run for the compacted base (4 inches per lift), and either more crusher run or #57 as the surface. Large open stone like #2 or #3 works as a first lift over soft subgrade. A driveway made only of clean large stone never locks together; one made only of screenings turns to mud.",
+      "Crusher run plus #57, in layers: crusher run for the compacted base (4 inches per lift), and either more crusher run or #57 as the surface. Large open stone like #2 or #3 works as a first lift over soft subgrade. A driveway made only of clean large stone never locks together; one made only of screenings turns to mud.",
   },
   {
     question: "Are crushed stone sizes the same at every quarry?",
     answer:
-      "The number system is standardized but regional names are not — one yard's crusher run is another's ABC, road bond or dense-graded base. When it matters, skip the nickname and confirm the gradation: ask whether the product meets ASTM D448 or AASHTO M 43 for the size number you need, and request the sieve-analysis sheet for base or concrete work.",
+      "Yes for the numbers, no for the names. The number system is standardized, but one yard's crusher run is another's ABC, road bond or dense-graded base. When it matters, skip the nickname and confirm the gradation: ask whether the product meets ASTM D448 or AASHTO M 43 for the size number you need, and request the sieve-analysis sheet for base or concrete work.",
   },
 ];
 
 const toc = tocFromTitles(
   "The size chart",
-  "How the numbering system works",
+  "How do crushed stone size numbers work?",
   "The workhorse sizes",
   "Crusher run and screenings",
   "Matching a size to the job",
@@ -96,6 +103,7 @@ export default function CrushedStoneSizesPage() {
           path,
           category: "Gravel",
           datePublished: "2026-07-16",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -105,7 +113,7 @@ export default function CrushedStoneSizesPage() {
         aside={
           <Cta
             variant={ctaVariant}
-            title="Size picked — get the tonnage"
+            title="Size picked? Get the tonnage"
             description="The crushed stone calculator carries densities for every size on this page, loose and compacted."
             href={GRAVEL.crushed}
             buttonLabel="Crushed Stone Calculator"
@@ -117,7 +125,7 @@ export default function CrushedStoneSizesPage() {
               eyebrow="Gravel · Crushed Stone"
               variant={heroVariant}
               title="Crushed stone sizes, decoded"
-              description="#1, #57, #8, #10 — the numbers are a sieve-based code from ASTM D448, and once you can read it, every quarry price list makes sense. Smaller number, bigger stone."
+              description="#1, #57, #8, #10: the numbers are a sieve-based code from ASTM D448, and once you can read it, every quarry price list makes sense. Smaller number, bigger stone."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -130,28 +138,34 @@ export default function CrushedStoneSizesPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="What are the crushed stone sizes?"
+          answer="Crushed stone sizes are numbered under ASTM D448, and smaller numbers mean bigger stone: #1 is 2–4 inches, #3 is 1–2 inches, #57 is a 3/4–1 inch blend, #8 is 3/8–1/2 inch, and #10 is screenings from dust to 3/8 inch. Crusher run is a separate dense-graded blend of stone and fines."
+          ruleOfThumb="Smaller number, bigger stone. #57 is the all-purpose size most yards stock."
+        />
+
         <Section title="The size chart">
           <CoverageTable
             headers={["Size number", "Nominal range", "Primary uses"]}
             rows={[
-              { label: "#1", spec: "2–4 in", coverage: "Culvert armor, fill over very soft ground, erosion aprons", note: "The largest standard class — machine-placed only" },
+              { label: "#1", spec: "2–4 in", coverage: "Culvert armor, fill over very soft ground, erosion aprons", note: "The largest standard class; machine-placed only" },
               { label: "#2", spec: "1 1/2 – 2 1/2 in", coverage: "Construction entrances, first lift over mud, heavy-truck base", note: "Bridges soft subgrade where smaller stone would sink" },
               { label: "#3", spec: "1–2 in", coverage: "Railroad ballast, dry wells, drainage beds under slabs" },
               { label: "#5", spec: "3/8 – 1 1/2 in", coverage: "Road base blends, paver sub-base", note: "Often specified in DOT base courses" },
-              { label: "#57", spec: "3/4 – 1 in blend", coverage: "French drains, concrete aggregate, driveway surface, pipe backfill", note: "The all-purpose size — most-stocked class in North America" },
+              { label: "#57", spec: "3/4 – 1 in blend", coverage: "French drains, concrete aggregate, driveway surface, pipe backfill", note: "The all-purpose size and most-stocked class in North America" },
               { label: "#8", spec: "3/8 – 1/2 in", coverage: "Pipe bedding, asphalt mixes, walkway topping", note: "Angular counterpart to pea gravel" },
-              { label: "#10", spec: "Dust – 3/8 in", coverage: "Paver leveling beds, path topping, joint filler", note: "Screenings / stone dust — compacts hard, does not drain" },
-              { label: "Crusher run", spec: "Dust – 3/4 or 1 1/2 in", coverage: "Compacted base for driveways, roads, sheds and patios", note: "Dense-graded blend with fines — not an ASTM number" },
+              { label: "#10", spec: "Dust – 3/8 in", coverage: "Paver leveling beds, path topping, joint filler", note: "Screenings / stone dust; compacts hard, does not drain" },
+              { label: "Crusher run", spec: "Dust – 3/4 or 1 1/2 in", coverage: "Compacted base for driveways, roads, sheds and patios", note: "Dense-graded blend with fines, not an ASTM number" },
             ]}
             caption="Nominal ranges per ASTM D448 / AASHTO M 43 size classes. Regional names vary; the numbers do not."
           />
         </Section>
 
-        <Section title="How the numbering system works">
+        <Section title="How do crushed stone size numbers work?">
           <p className="text-muted-foreground">
-            ASTM D448 defines each size class by a pair of sieves: nearly all of the stone
+            Each number is a sieve band: smaller numbers pass bigger sieves. ASTM D448 defines each size class by a pair of sieves: nearly all of the stone
             must pass the upper sieve and be retained on the lower one. The classes were
-            numbered from coarse to fine, which is why the scale runs backwards — #1 is the
+            numbered from coarse to fine, which is why the scale runs backwards: #1 is the
             biggest stone and #10 is dust. Two-digit designations are blends: #57 spans the
             #5 and #7 classes, #67 spans #6 and #7, and so on. AASHTO M 43 adopts the same
             gradations for road and bridge work, so a DOT spec and a quarry ticket are
@@ -159,10 +173,10 @@ export default function CrushedStoneSizesPage() {
           </p>
           <InfoBlock title="Clean stone vs dense-graded">
             <p>
-              Every numbered class is &quot;clean&quot; — screened to a narrow band with the
+              Every numbered class is &quot;clean&quot;: screened to a narrow band with the
               fines washed or sieved out, so it drains but never locks fully solid.
               Dense-graded products like crusher run deliberately keep the fines so the mix
-              compacts tight. That single distinction — clean or dense-graded — decides
+              compacts tight. That single distinction (clean or dense-graded) decides
               whether a product belongs in a drain or under a driveway.
             </p>
           </InfoBlock>
@@ -174,7 +188,7 @@ export default function CrushedStoneSizesPage() {
             is the default clean stone: big enough to leave drainage voids, small enough to
             shovel, rake and walk on. It is the specified aggregate in most ready-mix
             concrete and the standard fill around French-drain pipe.{" "}
-            <strong>#8</strong> is the fine clean stone — the angular cousin of pea gravel —
+            <strong>#8</strong> is the fine clean stone, the angular cousin of pea gravel,
             used where a smaller, tighter surface matters: pipe bedding, asphalt mixes and
             walkways that feel better underfoot. <strong>Crusher run</strong> is the base
             material: it does nothing decorative and everything structural. If a project has
@@ -189,7 +203,7 @@ export default function CrushedStoneSizesPage() {
         <Section title="Crusher run and screenings">
           <p className="text-muted-foreground">
             The two fines-heavy products confuse buyers most. Crusher run is a full gradation
-            — dust through 3/4 inch or larger — that compacts to about 140 lb/ft³ and behaves
+            (dust through 3/4 inch or larger) that compacts to about 140 lb/ft³ and behaves
             almost like weak concrete once rolled. Screenings (#10 / stone dust) are only the
             fine fraction: they screed dead flat and pack hard, which is why paver installers
             level with them, but a thick layer holds water and pumps into mud under load.
@@ -210,12 +224,12 @@ export default function CrushedStoneSizesPage() {
         <Section title="Matching a size to the job">
           <p className="text-muted-foreground">
             Choosing comes down to two questions. Does water need to pass? Then use clean
-            stone — #57 for most drains, #3 for high-flow beds and dry wells, #8 around small
-            pipe. Does the layer need to carry load? Then use dense-graded — crusher run in 4
+            stone: #57 for most drains, #3 for high-flow beds and dry wells, #8 around small
+            pipe. Does the layer need to carry load? Then use dense-graded crusher run in 4
             inch compacted lifts, with #2 or #3 beneath it if the subgrade is soft. Decorative
             surfaces sit in between: #8 and #57 both walk well, while anything larger is
             strictly for machines and ballast. When two sizes both work, buy the one your
-            nearest quarry stocks deepest — it will be cheaper per ton and easier to match on
+            nearest quarry stocks deepest, because it will be cheaper per ton and easier to match on
             a top-up later.
           </p>
         </Section>

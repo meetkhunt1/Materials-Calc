@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { WarningBlock } from "@/components/blocks/callout";
 import { DensityTable } from "@/components/tables/density-table";
@@ -28,9 +29,9 @@ import { ASPHALT } from "@/content/asphalt/links";
 import { gravelDensities } from "@/content/gravel/charts/density-data";
 import type { FaqItem } from "@/types";
 
-const title = "Gravel Density Chart — Unit Weights by Type";
+const title = "Gravel Density: 105 lb/ft³ (1,680 kg/m³) Chart";
 const description =
-  "Loose and compacted unit weights for every common gravel type: pea gravel, common gravel, #57 stone, crusher run, river rock and more, in lb/ft³, kg/m³ and t/m³.";
+  "Common gravel has a loose density of 105 lb/ft³ (1,680 kg/m³), or 1.42 tons per cubic yard. Chart of pea gravel, #57, crusher run and more in three units.";
 const path = GRAVEL.densityChart;
 const author = getAuthor("materials-team");
 
@@ -40,44 +41,50 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "What is the density of gravel?",
     answer:
-      "Common gravel runs 105 lb/ft³ loose — 1,680 kg/m³, or 1.42 US tons per cubic yard (2,800 lb). Pea gravel is lighter at 96 lb/ft³, #57 stone sits at 100 lb/ft³ loose, and crusher run with its fines reaches 125 lb/ft³ loose and about 140 compacted.",
+      "105 lb/ft³ loose for common gravel, which is 1,680 kg/m³ or 1.42 US tons per cubic yard (2,800 lb). Pea gravel is lighter at 96 lb/ft³, #57 stone sits at 100 lb/ft³ loose, and crusher run with its fines reaches 125 lb/ft³ loose and about 140 compacted.",
+  },
+  {
+    question: "Is the unit weight of gravel the same as its density?",
+    answer:
+      "Yes, for estimating purposes. Unit weight is bulk density stated as weight per volume, so common gravel's unit weight is 105 lb/ft³ (1,680 kg/m³) loose. Engineers sometimes reserve unit weight for force per volume (kN/m³), which is density times gravity: about 16.5 kN/m³ here.",
   },
   {
     question: "Why do loose and compacted densities differ?",
     answer:
-      "Compaction closes the air voids between particles, packing more stone into the same volume. Crusher run gains roughly 12% from loose to compacted (125 to 140 lb/ft³) because its fines fill the gaps; clean single-size stone like #57 gains less, about 9%, since uniform particles cannot interlock as tightly.",
+      "Because compaction closes the air voids between particles, packing more stone into the same volume. Crusher run gains roughly 12% from loose to compacted (125 to 140 lb/ft³) because its fines fill the gaps; clean single-size stone like #57 gains less, about 9%, since uniform particles cannot interlock as tightly.",
   },
   {
     question: "Why does density matter when ordering gravel?",
     answer:
-      "Suppliers sell by weight, but your project needs volume. Density is the bridge: cubic yards × density = tons ordered. Use the wrong figure — pea gravel numbers for crusher run, say — and a 10-yard order lands roughly 3 tons off, which is either wasted money or a second delivery fee.",
+      "Because suppliers sell by weight, but your project needs volume. Density is the bridge: cubic yards × density = tons ordered. Use the wrong figure (pea gravel numbers for crusher run, say) and a 10-yard order lands roughly 3 tons off, which is either wasted money or a second delivery fee.",
   },
   {
     question: "Which gravel type is heaviest, and which is lightest?",
     answer:
-      "Among standard aggregates, compacted crusher run is heaviest at about 140 lb/ft³ (2,240 kg/m³) because fines pack the voids. Lava rock is the outlier at the light end — roughly 50 lb/ft³, half the weight of common gravel, which is why a ton of it covers nearly twice the area.",
+      "Compacted crusher run is the heaviest standard aggregate at about 140 lb/ft³ (2,240 kg/m³) because fines pack the voids. Lava rock is the outlier at the light end, roughly 50 lb/ft³, half the weight of common gravel, which is why a ton of it covers nearly twice the area.",
   },
   {
     question: "How is gravel density measured?",
     answer:
-      "Per ASTM C29, a rigid container of known volume is filled under a defined procedure — loose fill or rodded in layers — and weighed. Loose bulk density mirrors gravel as it leaves the truck; the rodded figure approximates a compacted lift. Published values are typical; your quarry can supply certified numbers.",
+      "By weighing a container of known volume. Per ASTM C29, a rigid container of known volume is filled under a defined procedure (loose fill or rodded in layers) and weighed. Loose bulk density mirrors gravel as it leaves the truck; the rodded figure approximates a compacted lift. Published values are typical; your quarry can supply certified numbers.",
   },
   {
     question: "Does moisture change gravel density?",
     answer:
-      "Yes — wet gravel weighs 10–15% more because water fills the surface pores and voids without adding stone. The chart lists dry values at 1,680 kg/m³ for common gravel and 1,920 wet. When a supplier weighs a rained-on stockpile, that difference rides straight onto your ticket.",
+      "Yes. Wet gravel weighs 10–15% more because water fills the surface pores and voids without adding stone. The chart lists dry values at 1,680 kg/m³ for common gravel and 1,920 wet. When a supplier weighs a rained-on stockpile, that difference rides straight onto your ticket.",
   },
 ];
 
 const toc = tocFromTitles(
   "The density chart",
-  "Densities compared",
+  "Which gravel is heaviest?",
   "From density to order weight",
   "Wet vs dry gravel",
 );
@@ -92,6 +99,7 @@ export default function GravelDensityChartPage() {
           path,
           category: "Gravel",
           datePublished: "2026-07-15",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -120,17 +128,24 @@ export default function GravelDensityChartPage() {
           <Cta
             variant="card"
             title="Density applied for you"
-            description="The calculator carries every one of these unit weights — pick a type and it converts volume to tons automatically."
+            description="The calculator carries every one of these unit weights. Pick a type and it converts volume to tons automatically."
             href={GRAVEL.calculator}
             buttonLabel="Gravel Calculator"
           />
         }
       >
+        <QuickAnswer
+          question="What is the density of gravel?"
+          answer="Common dry gravel has a loose bulk density of about 105 lb/ft³ (1,680 kg/m³), which is 1.42 US tons per cubic yard. Pea gravel is lighter at 96 lb/ft³, clean #57 stone is about 100 lb/ft³ loose, and crusher run reaches 125 lb/ft³ loose and about 140 lb/ft³ (2,240 kg/m³) once compacted."
+          ruleOfThumb="Cubic yards × 1.42 = tons of common gravel."
+          formula="Weight = volume × density"
+        />
+
         <Section title="The density chart">
           <DensityTable
             rows={gravelDensities}
             highlight="Common gravel, dry (loose)"
-            caption="Loose bulk densities unless noted, per ASTM C29 typical values. The highlighted row — 105 lb/ft³, 1.42 US tons/yd³ — is the estimating standard for unspecified gravel."
+            caption="Loose bulk densities unless noted, per ASTM C29 typical values. The highlighted row (105 lb/ft³, 1.42 US tons/yd³) is the estimating standard for unspecified gravel."
           />
           <p className="text-muted-foreground">
             This chart covers the types that make up nearly every residential order. For crushed
@@ -142,7 +157,11 @@ export default function GravelDensityChartPage() {
           </p>
         </Section>
 
-        <Section title="Densities compared">
+        <Section title="Which gravel is heaviest?">
+          <p className="text-muted-foreground">
+            Compacted crusher run is the heaviest common gravel at 2,240 kg/m³, and pea gravel
+            the lightest at 1,540 kg/m³.
+          </p>
           <BarChart
             title="Loose and compacted unit weights, kg/m³"
             unit="kg/m³"
@@ -151,7 +170,7 @@ export default function GravelDensityChartPage() {
           <p className="text-muted-foreground">
             The spread matters more than the individual numbers: from pea gravel at 1,540 kg/m³
             to compacted crusher run at 2,240, the same cubic yard varies by 45% in weight. The
-            other materials on this site sit higher still — normal-weight concrete at ~2,400
+            other materials on this site sit higher still: normal-weight concrete at ~2,400
             kg/m³ (see the{" "}
             <a href={CONCRETE.density} className="font-medium text-primary hover:underline">
               concrete density chart
@@ -165,6 +184,9 @@ export default function GravelDensityChartPage() {
         </Section>
 
         <Section title="From density to order weight">
+          <p className="text-muted-foreground">
+            Multiply volume by density to get weight, then divide pounds by 2,000 for tons.
+          </p>
           <FormulaBlock
             formula="Weight = Volume × Density"
             variables={[
@@ -177,11 +199,11 @@ export default function GravelDensityChartPage() {
 
         <Section title="Wet vs dry gravel">
           <WarningBlock title="Rain rides on your scale ticket">
-            Wet gravel weighs 10–15% more than dry — water fills the voids without adding a
+            Wet gravel weighs 10–15% more than dry, because water fills the voids without adding a
             single stone. Suppliers weigh what crosses the scale, so a delivery from an
             uncovered stockpile during a rainy week means you&apos;re paying gravel prices for
             water. If the pile is visibly soaked, ask whether the plant applies a moisture
-            correction — or order by loose cubic yard instead, where volume doesn&apos;t care
+            correction, or order by loose cubic yard instead, where volume doesn&apos;t care
             about moisture.
           </WarningBlock>
         </Section>

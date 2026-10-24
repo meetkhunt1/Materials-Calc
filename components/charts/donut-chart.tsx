@@ -20,7 +20,7 @@ interface DonutChartProps {
 }
 
 /**
- * Zero-JS SVG donut chart with legend — server-rendered, no chart library.
+ * Zero-JS SVG donut chart with legend: server-rendered, no chart library.
  * Good for mix proportions (cement/sand/aggregate) and cost breakdowns.
  */
 export function DonutChart({ data, title, centerLabel, centerValue, className }: DonutChartProps) {

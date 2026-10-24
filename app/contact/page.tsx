@@ -6,9 +6,9 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { webPageSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
 
-const title = "Contact MaterialsCalc";
+const title = "Contact MaterialsCalc: Report Errors or Ideas";
 const description =
-  "Report a calculation error, suggest a calculator, or ask about the site.";
+  "Email MaterialsCalc to report a calculation error, suggest a new calculator or guide, or ask about the site. Data corrections are our top priority.";
 const path = "/contact";
 
 export const metadata = buildMetadata({ title, description, path });
@@ -17,7 +17,7 @@ const channels = [
   {
     icon: Bug,
     title: "Report an error",
-    body: "Found a number that doesn't check out? Tell us the page URL and the inputs you used — data corrections are our highest priority and typically ship within days.",
+    body: "Found a number that doesn't check out? Tell us the page URL and the inputs you used. Data corrections are our highest priority and typically ship within days.",
     email: "corrections@materialscalc.com",
   },
   {
@@ -42,7 +42,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         variant="compact"
         title="Get in touch"
-        description="No forms, no tickets — email the right inbox and a human reads it."
+        description="No forms, no tickets. Email the right inbox and a human reads it."
       >
         <Breadcrumbs items={breadcrumbTrail({ label: "Contact", href: path })} />
       </Hero>

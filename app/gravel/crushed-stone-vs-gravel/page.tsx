@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { InfoBlock } from "@/components/blocks/callout";
 import { ProsCons } from "@/components/blocks/pros-cons";
 import { ComparisonTable } from "@/components/tables/comparison-table";
@@ -28,9 +29,9 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "crushed-stone-vs-gravel";
-const title = "Crushed Stone vs Gravel — Angular vs Rounded, Compared";
+const title = "Crushed Stone vs Gravel: Angular vs Rounded";
 const description =
-  "Crushed stone is angular and locks solid under compaction; natural gravel is rounded, drains freely and feels better underfoot. Full comparison table, pros and cons, and which to pick for driveways, drains, paths and concrete.";
+  "Crushed stone is angular quarried rock that compacts into a solid base; gravel is rounded, drains freely and rolls underfoot. Compare cost, strength and uses.";
 const path = GRAVEL.stoneVsGravel;
 const author = getAuthor("materials-team");
 
@@ -46,44 +47,45 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-16",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "What is the difference between crushed stone and gravel?",
     answer:
-      "Origin and shape. Crushed stone is quarried rock mechanically broken into angular, sharp-edged pieces. Gravel in the strict sense is naturally weathered rock from rivers and glacial deposits — rounded and smooth. The angular faces of crushed stone interlock and compact into a near-solid layer; rounded gravel stays loose, drains freely and rolls underfoot.",
+      "Origin and shape. Crushed stone is quarried rock mechanically broken into angular, sharp-edged pieces. Gravel in the strict sense is naturally weathered rock from rivers and glacial deposits, rounded and smooth. The angular faces of crushed stone interlock and compact into a near-solid layer; rounded gravel stays loose, drains freely and rolls underfoot.",
   },
   {
-    question: "Which is better for a driveway — crushed stone or gravel?",
+    question: "Which is better for a driveway, crushed stone or gravel?",
     answer:
       "Crushed stone, without much debate. A driveway needs layers that lock together under wheel loads, and angular particles do that; rounded stones displace sideways, forming ruts and washboard. The standard build is compacted crusher run base topped with #57 or more crusher run. Rounded gravel on a driveway is a maintenance subscription.",
   },
   {
-    question: "Which drains better?",
+    question: "Does crushed stone or gravel drain better?",
     answer:
-      "Rounded pea gravel drains marginally faster in theory, but clean crushed stone like #57 is the standard in French drains for a better reason: it drains excellently AND stays put around the pipe without migrating. In practice, cleanliness (no fines) matters far more for drainage than particle shape.",
+      "Both drain well when clean. Rounded pea gravel drains marginally faster in theory, but clean crushed stone like #57 is the standard in French drains for a better reason: it drains excellently AND stays put around the pipe without migrating. In practice, cleanliness (no fines) matters far more for drainage than particle shape.",
   },
   {
-    question: "Which is cheaper — crushed stone or gravel?",
+    question: "Which is cheaper, crushed stone or gravel?",
     answer:
-      "Whichever is local. Crushed stone is usually cheaper near quarries — crusher run at $15–30 per ton undercuts everything. Natural pea gravel is cheaper near river and glacial deposits, at $30–60 per ton. Freight dominates aggregate pricing, so the material from 10 miles away nearly always wins.",
+      "Whichever is local. Crushed stone is usually cheaper near quarries, where crusher run at $15–30 per ton undercuts everything. Natural pea gravel is cheaper near river and glacial deposits, at $30–60 per ton. Freight dominates aggregate pricing, so the material from 10 miles away nearly always wins.",
   },
   {
     question: "Can I use crushed stone where the spec says gravel?",
     answer:
-      "Usually, and often it is an upgrade — most construction specs use gravel loosely to mean any coarse aggregate, and angular stone exceeds rounded material for anything structural. The exceptions run the other way: walking surfaces, play areas and dog runs genuinely want rounded stone for comfort, and exposed decorative work is a taste call.",
+      "Usually yes, and often it is an upgrade. Most construction specs use gravel loosely to mean any coarse aggregate, and angular stone exceeds rounded material for anything structural. The exceptions run the other way: walking surfaces, play areas and dog runs genuinely want rounded stone for comfort, and exposed decorative work is a taste call.",
   },
   {
     question: "Is crushed stone or pea gravel better for walkways?",
     answer:
-      "Pea gravel feels better barefoot and looks softer, but migrates and needs edging. Crushed fines or #8 with screenings compact into a firmer, wheelchair- and stroller-friendlier surface that stays where you raked it. High-traffic utility path: crushed. Garden stroll: pea gravel. Both are covered in the pea gravel landscaping guide.",
+      "It depends on the traffic. Pea gravel feels better barefoot and looks softer, but migrates and needs edging. Crushed fines or #8 with screenings compact into a firmer, wheelchair- and stroller-friendlier surface that stays where you raked it. High-traffic utility path: crushed. Garden stroll: pea gravel. Both are covered in the pea gravel landscaping guide.",
   },
 ];
 
 const toc = tocFromTitles(
   "The one difference that matters",
-  "Head to head",
+  "Crushed stone vs gravel: side-by-side comparison",
   "Pros and cons",
   "Which to pick, by application",
 );
@@ -98,6 +100,7 @@ export default function CrushedStoneVsGravelPage() {
           path,
           category: "Gravel",
           datePublished: "2026-07-16",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -110,7 +113,7 @@ export default function CrushedStoneVsGravelPage() {
               eyebrow="Gravel · Comparison"
               variant={heroVariant}
               title="Crushed stone vs gravel"
-              description="One is blasted and broken, the other tumbled smooth by rivers. That single difference — angular vs rounded — decides how each compacts, drains, walks and wears. Pick by shape and you will pick right."
+              description="One is blasted and broken, the other tumbled smooth by rivers. That single difference (angular vs rounded) decides how each compacts, drains, walks and wears. Pick by shape and you will pick right."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -123,13 +126,20 @@ export default function CrushedStoneVsGravelPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="What is the difference between crushed stone and gravel?"
+          answer="Crushed stone is quarried rock broken into angular pieces that interlock and compact into a near-solid, load-bearing layer. Gravel is naturally rounded by water or glaciers, so it stays loose, drains freely and is comfortable underfoot but ruts under tires. Use crushed stone for driveways and bases, and rounded gravel for paths and play areas."
+          ruleOfThumb="Wheels and structure want angular stone; feet and looks want rounded; drains want clean."
+        />
+
         <Section title="The one difference that matters">
           <p className="text-muted-foreground">
-            Crushed stone is manufactured: quarried rock fed through crushers and screens,
+            Shape is the one difference that matters: crushed stone is angular, gravel is
+            rounded. Crushed stone is manufactured: quarried rock fed through crushers and screens,
             leaving every particle with sharp, fractured faces. Natural gravel is found:
             rock rounded by water or glacial action, mined from pits and riverbeds. Under
             load, the two behave like different materials. Angular particles wedge against
-            each other — friction and interlock turn a compacted lift of crusher run into
+            each other, and friction and interlock turn a compacted lift of crusher run into
             something close to weak concrete. Rounded particles act like ball bearings: they
             resist compaction, keep large open voids, and displace sideways when a tire or
             heel pushes down. Neither behavior is better in the abstract; each is exactly
@@ -152,7 +162,7 @@ export default function CrushedStoneVsGravelPage() {
           </InfoBlock>
         </Section>
 
-        <Section title="Head to head">
+        <Section title="Crushed stone vs gravel: side-by-side comparison">
           <ComparisonTable
             columns={[
               { key: "crushed", label: "Crushed stone (angular)" },
@@ -161,10 +171,10 @@ export default function CrushedStoneVsGravelPage() {
             rows={[
               { feature: "Origin", values: { crushed: "Quarried rock, mechanically crushed and screened", gravel: "River and glacial deposits, naturally weathered" } },
               { feature: "Particle shape", values: { crushed: "Angular, sharp fractured faces", gravel: "Rounded, smooth" } },
-              { feature: "Compaction", values: { crushed: "Interlocks — compacts to a near-solid layer", gravel: "Resists compaction; stays loose" } },
-              { feature: "Load bearing", values: { crushed: "Excellent — the standard for bases and roads", gravel: "Poor — ruts and displaces under wheels" } },
-              { feature: "Drainage", values: { crushed: "Excellent when clean (e.g. #57); nil with fines", gravel: "Excellent — voids never close" } },
-              { feature: "Underfoot / paws", values: { crushed: "Firm but sharp-edged", gravel: "Comfortable — the walking surface" } },
+              { feature: "Compaction", values: { crushed: "Interlocks; compacts to a near-solid layer", gravel: "Resists compaction; stays loose" } },
+              { feature: "Load bearing", values: { crushed: "Excellent; the standard for bases and roads", gravel: "Poor; ruts and displaces under wheels" } },
+              { feature: "Drainage", values: { crushed: "Excellent when clean (e.g. #57); nil with fines", gravel: "Excellent; voids never close" } },
+              { feature: "Underfoot / paws", values: { crushed: "Firm but sharp-edged", gravel: "Comfortable; the walking surface" } },
               { feature: "Migration", values: { crushed: "Stays put once compacted", gravel: "Rolls and scatters; needs edging" } },
               { feature: "Look", values: { crushed: "Uniform gray, utilitarian", gravel: "Varied natural color, softer" } },
               { feature: "Typical 2026 price", values: { crushed: "$15–45 per ton", gravel: "$30–60 per ton" } },
@@ -178,28 +188,28 @@ export default function CrushedStoneVsGravelPage() {
           <ProsCons
             subject="Crushed stone"
             pros={[
-              "Compacts into a stable, load-bearing layer — the only choice for driveway and road bases",
+              "Compacts into a stable, load-bearing layer, the only choice for driveway and road bases",
               "Angular particles stay put; no migration once rolled",
               "Cheapest structural material per ton (crusher run $15–30)",
               "Clean sizes double as first-rate drainage stone",
             ]}
             cons={[
-              "Sharp edges — unpleasant barefoot, hard on paws and knees",
+              "Sharp edges: unpleasant barefoot, hard on paws and knees",
               "Utilitarian gray look unless you pay decorative prices",
-              "Dense-graded products seal up — wrong anywhere water must pass",
+              "Dense-graded products seal up, so they are wrong anywhere water must pass",
               "Dust in dry weather from the fine fraction",
             ]}
           />
           <ProsCons
             subject="Natural gravel"
             pros={[
-              "Comfortable walking surface — the pick for paths, play areas and dog runs",
+              "Comfortable walking surface, the pick for paths, play areas and dog runs",
               "Drains freely forever; voids cannot close under traffic",
               "Natural rounded look and varied color",
               "Easy to rake, redistribute and hand-work",
             ]}
             cons={[
-              "Will not compact — never structural, never a base",
+              "Will not compact, so never structural and never a base",
               "Migrates constantly; edging is mandatory",
               "Ruts and washboards under vehicle traffic",
               "Often pricier than crushed equivalents away from river deposits",
@@ -208,15 +218,19 @@ export default function CrushedStoneVsGravelPage() {
         </Section>
 
         <Section title="Which to pick, by application">
+          <p className="text-muted-foreground">
+            Pick crushed stone for driveways, drains, bases and concrete, and rounded gravel
+            for paths, play areas and dog runs.
+          </p>
           <CoverageTable
             headers={["Application", "Pick", "Why"]}
             rows={[
-              { label: "Driveway base & surface", spec: "Crushed — crusher run + #57", coverage: "Interlock carries wheel loads without rutting" },
-              { label: "French drain / drainage", spec: "Crushed — clean #57", coverage: "Drains like gravel but never migrates off the pipe" },
-              { label: "Garden path, patio", spec: "Rounded — 3/8 in pea gravel", coverage: "Comfort and looks; loads are only feet" },
-              { label: "Dog run / play area", spec: "Rounded — 1/2 in pea gravel", coverage: "Paw- and knee-friendly, hoses clean" },
-              { label: "Concrete aggregate", spec: "Crushed — washed #57/#8", coverage: "Angular faces bond better with cement paste" },
-              { label: "Decorative beds", spec: "Either", coverage: "Taste call — rounded looks softer, crushed stays put" },
+              { label: "Driveway base & surface", spec: "Crushed: crusher run + #57", coverage: "Interlock carries wheel loads without rutting" },
+              { label: "French drain / drainage", spec: "Crushed: clean #57", coverage: "Drains like gravel but never migrates off the pipe" },
+              { label: "Garden path, patio", spec: "Rounded: 3/8 in pea gravel", coverage: "Comfort and looks; loads are only feet" },
+              { label: "Dog run / play area", spec: "Rounded: 1/2 in pea gravel", coverage: "Paw- and knee-friendly, hoses clean" },
+              { label: "Concrete aggregate", spec: "Crushed: washed #57/#8", coverage: "Angular faces bond better with cement paste" },
+              { label: "Decorative beds", spec: "Either", coverage: "Taste call: rounded looks softer, crushed stays put" },
             ]}
             caption="The pattern: wheels and structure want angular; feet and looks want rounded; drains want clean."
           />

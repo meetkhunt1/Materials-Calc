@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock, TipBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
@@ -27,9 +28,9 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-coverage-guide";
-const title = "Gravel Coverage Guide — What a Ton & a Yard Cover";
+const title = "Gravel Coverage: 1 Ton Covers 76 ft² at 3 in";
 const description =
-  "Coverage tables for a ton and a cubic yard of gravel at 1–6 inch depths, a worked sizing example, and the three factors — compaction, subgrade, waste — that quietly shrink real-world coverage.";
+  "One ton of gravel covers about 114 ft² at 2 inches deep, 76 ft² at 3 inches and 57 ft² at 4 inches. Per-ton and per-yard tables for 1–6 in, plus an example.";
 const path = GRAVEL.coverage;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
@@ -46,38 +47,39 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much does a ton of gravel cover?",
     answer:
-      "At the typical loose density of 105 lb/ft³, a US ton is about 19 cubic feet of gravel — roughly 114 ft² at 2 inches deep, 76 ft² at 3 inches, or 57 ft² at 4 inches. The industry rule of thumb of 100 ft² per ton at 2 inches builds in a margin for settling and edge waste, which is why it survives on every quarry's price sheet.",
+      "About 114 ft² at 2 inches deep. At the typical loose density of 105 lb/ft³, a US ton is about 19 cubic feet of gravel: roughly 114 ft² at 2 inches deep, 76 ft² at 3 inches, or 57 ft² at 4 inches. The industry rule of thumb of 100 ft² per ton at 2 inches builds in a margin for settling and edge waste, which is why it survives on every quarry's price sheet.",
   },
   {
     question: "How much does a cubic yard of gravel cover?",
     answer:
-      "A cubic yard is exactly 27 cubic feet regardless of gravel type, so coverage is pure geometry: 162 ft² at 2 inches, 108 ft² at 3 inches, 81 ft² at 4 inches. Unlike per-ton coverage, these numbers never change with density — only real-world losses like compaction and spillage eat into them.",
+      "About 108 ft² at 3 inches deep. A cubic yard is exactly 27 cubic feet regardless of gravel type, so coverage is pure geometry: 162 ft² at 2 inches, 108 ft² at 3 inches, 81 ft² at 4 inches. Unlike per-ton coverage, these numbers never change with density; only real-world losses like compaction and spillage eat into them.",
   },
   {
     question: "Why does my gravel never cover as much as the chart says?",
     answer:
-      "Three reasons: gravel consolidates 5–15% under foot and vehicle traffic, an unlevel subgrade swallows extra stone in its low spots, and some material is always lost to edges, spillage and the last shovelful in the truck bed. Together they routinely cost 10–20% of theoretical coverage — which is exactly what the standard waste allowance exists to absorb.",
+      "Because of compaction, uneven ground and waste. Gravel consolidates 5–15% under foot and vehicle traffic, an unlevel subgrade swallows extra stone in its low spots, and some material is always lost to edges, spillage and the last shovelful in the truck bed. Together they routinely cost 10–20% of theoretical coverage, which is exactly what the standard waste allowance exists to absorb.",
   },
   {
     question: "Does gravel type change coverage per ton?",
     answer:
-      "Yes, because coverage per ton is driven by density. Light pea gravel at 96 lb/ft³ stretches to about 125 ft² at 2 inches, while dense crusher run at 125 lb/ft³ loose manages only 96 ft² — and just 86 ft² once compacted to 140 lb/ft³. Per-yard coverage, by contrast, is identical for every type.",
+      "Yes, because coverage per ton is driven by density. Light pea gravel at 96 lb/ft³ stretches to about 125 ft² at 2 inches, while dense crusher run at 125 lb/ft³ loose manages only 96 ft², and just 86 ft² once compacted to 140 lb/ft³. Per-yard coverage, by contrast, is identical for every type.",
   },
   {
     question: "How do I convert coverage back into an order quantity?",
     answer:
-      "Divide your area by the coverage figure for your depth and material, then add 10% (15% if the stone will be compacted or the ground is rough). A 600 ft² driveway topping at 3 inches with common gravel: 600 ÷ 76 = 7.9 tons, times 1.10 ≈ 8.7 — order 9 tons.",
+      "Divide your area by the coverage figure for your depth and material, then add 10% (15% if the stone will be compacted or the ground is rough). A 600 ft² driveway topping at 3 inches with common gravel: 600 ÷ 76 = 7.9 tons, times 1.10 ≈ 8.7, so order 9 tons.",
   },
   {
-    question: "Is it cheaper to order by coverage per ton or per yard?",
+    question: "How much gravel do I need for 500 square feet?",
     answer:
-      "Neither is inherently cheaper — a supplier's ton and yard prices describe the same stone. What matters is comparing like with like: convert every quote to cost per ton using the material's density (a yard of common gravel is about 1.42 tons loose) before deciding. The gravel cost calculator does this conversion automatically.",
+      "About 7.2 tons of common gravel at 3 inches deep, or 4.8 tons at 2 inches, including a 10% allowance. In volume that is roughly 5.1 or 3.4 loose cubic yards. For a compacted crusher run base, size from the compacted density instead, because it covers less per ton.",
   },
 ];
 
@@ -85,7 +87,7 @@ const toc = tocFromTitles(
   "What a ton of gravel covers",
   "What a cubic yard covers",
   "Worked example: sizing a parking pad",
-  "What shrinks real-world coverage",
+  "Why does gravel cover less than the chart says?",
   "Coverage by gravel type",
 );
 
@@ -99,6 +101,7 @@ export default function GravelCoverageGuidePage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -111,7 +114,7 @@ export default function GravelCoverageGuidePage() {
               eyebrow="Gravel · Coverage Guide"
               variant={heroVariant}
               title="Gravel coverage guide"
-              description="A ton of gravel covers 114 ft² at 2 inches — until compaction, a wavy subgrade and edge waste take their cut. Here are the honest coverage numbers, per ton and per yard, at every practical depth."
+              description="A ton of gravel covers 114 ft² at 2 inches, until compaction, a wavy subgrade and edge waste take their cut. Here are the honest coverage numbers, per ton and per yard, at every practical depth."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -124,10 +127,17 @@ export default function GravelCoverageGuidePage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much area does 1 ton of gravel cover?"
+          answer="One US ton of common gravel (105 lb/ft³ loose) covers about 114 square feet at 2 inches deep, 76 ft² at 3 inches and 57 ft² at 4 inches. A cubic yard covers 162 ft² at 2 inches and 108 ft² at 3 inches for any gravel type. Add about 10% for settling and edge waste."
+          ruleOfThumb="About 100 ft² per ton at 2 inches once settling is allowed for."
+          formula="Coverage (ft²/ton) = 2,000 ÷ (density × depth ÷ 12)"
+        />
+
         <Section title="What a ton of gravel covers">
           <p className="text-muted-foreground">
             A US ton (2,000 lb) of common gravel at 105 lb/ft³ loose is about 19 cubic
-            feet of stone. Spread thinner, it goes further — coverage scales inversely
+            feet of stone. Spread thinner, it goes further: coverage scales inversely
             with depth, so halving the depth doubles the footage. The table gives the
             straight geometric numbers; the popular &ldquo;100 ft² per ton at 2
             inches&rdquo; rule of thumb is simply the 2-inch row with a built-in
@@ -136,7 +146,7 @@ export default function GravelCoverageGuidePage() {
           <CoverageTable
             headers={["Depth", "Coverage per ton", "Where that depth belongs"]}
             rows={[
-              { label: "1 inch", spec: "≈ 229 ft²", coverage: "Refresh top-ups only", note: "Too thin for new cover — the fabric shows" },
+              { label: "1 inch", spec: "≈ 229 ft²", coverage: "Refresh top-ups only", note: "Too thin for new cover; the fabric shows" },
               { label: "2 inches", spec: "≈ 114 ft²", coverage: "Decorative cover over fabric", note: "Rule of thumb: 100 ft² after allowance" },
               { label: "3 inches", spec: "≈ 76 ft²", coverage: "Paths, patios, pet areas" },
               { label: "4 inches", spec: "≈ 57 ft²", coverage: "One compacted driveway lift" },
@@ -146,8 +156,8 @@ export default function GravelCoverageGuidePage() {
             caption="Coverage per US ton of common gravel (105 lb/ft³ loose). Divide your area by the coverage figure to get tons."
           />
           <p className="text-muted-foreground">
-            These figures assume common gravel. Lighter and heavier types shift them —
-            the{" "}
+            These figures assume common gravel. Lighter and heavier types shift them.
+            The{" "}
             <a href={GRAVEL.densityChart} className="font-medium text-primary hover:underline">
               density chart
             </a>{" "}
@@ -158,7 +168,8 @@ export default function GravelCoverageGuidePage() {
 
         <Section title="What a cubic yard covers">
           <p className="text-muted-foreground">
-            Per-yard coverage is friendlier than per-ton coverage because it ignores
+            A cubic yard of gravel covers 162 ft² at 2 inches, 108 ft² at 3 inches and 81 ft²
+            at 4 inches. Per-yard coverage is friendlier than per-ton coverage because it ignores
             density entirely: a cubic yard is 27 ft³ of any material, so the same table
             works for pea gravel, crusher run and river rock alike. That makes yards
             the safer unit when you are still choosing the gravel type.
@@ -173,7 +184,7 @@ export default function GravelCoverageGuidePage() {
               { label: "5 inches", spec: "65 ft²", coverage: "" },
               { label: "6 inches", spec: "54 ft²", coverage: "Two 3-inch lifts compact better than one 6-inch" },
             ]}
-            caption="Coverage per loose cubic yard — identical for every gravel type, since a yard is a volume, not a weight."
+            caption="Coverage per loose cubic yard, identical for every gravel type, since a yard is a volume, not a weight."
           />
         </Section>
 
@@ -192,13 +203,13 @@ export default function GravelCoverageGuidePage() {
 
         <Faq items={faqItems} variant={faqVariant} title="Coverage questions" />
 
-        <Section title="What shrinks real-world coverage">
+        <Section title="Why does gravel cover less than the chart says?">
           <p className="text-muted-foreground">
-            Charts describe gravel resting loose on a perfectly flat plane. Real sites
+            Compaction, an uneven subgrade and waste shave 10–20% off chart coverage. Charts describe gravel resting loose on a perfectly flat plane. Real sites
             take three predictable bites out of that number, and experienced estimators
             price them in rather than hoping they won&apos;t happen.
           </p>
-          <WarningBlock title="Compaction is not optional — it happens either way">
+          <WarningBlock title="Compaction is not optional: it happens either way">
             Gravel consolidates 5–15% whether you run a plate compactor over it or just
             let traffic and rain do the work over the first season. Crusher run with its
             fines loses the most volume (its density climbs from 125 to about 140
@@ -208,14 +219,14 @@ export default function GravelCoverageGuidePage() {
           <p className="text-muted-foreground">
             <strong className="text-foreground">Irregular subgrade</strong> is the second
             thief. A subgrade that undulates by an inch means your &ldquo;3-inch&rdquo;
-            layer is really 2–4 inches — and the low spots must be filled to reach the
+            layer is really 2–4 inches, and the low spots must be filled to reach the
             target surface, consuming stone the flat-plane math never counted. Grading
             before delivery is cheaper than the extra tonnage it saves.{" "}
             <strong className="text-foreground">Waste</strong> takes the last cut:
             spillage at the edges, stone trodden into soft ground during spreading, and
             the material that never quite leaves the truck bed. The standard remedy for
             all three is a 10% allowance, raised to 15% for compacted crusher run or
-            rough ground — the same allowance built into the{" "}
+            rough ground: the same allowance built into the{" "}
             <a href={GRAVEL.howTo} className="font-medium text-primary hover:underline">
               five-step calculation method
             </a>
@@ -224,6 +235,10 @@ export default function GravelCoverageGuidePage() {
         </Section>
 
         <Section title="Coverage by gravel type">
+          <p className="text-muted-foreground">
+            Lighter gravel covers more per ton: pea gravel reaches about 125 ft² at 2 inches,
+            compacted crusher run only 86 ft².
+          </p>
           <BarChart
             title="Coverage per ton at 2 inches deep, by type"
             unit="ft²"
@@ -239,14 +254,14 @@ export default function GravelCoverageGuidePage() {
           <p className="text-muted-foreground">
             The spread is worth money: a ton of pea gravel covers 45% more area than a
             ton of compacted crusher run at the same depth. When comparing per-ton
-            quotes across types, convert to cost per covered square foot — the{" "}
+            quotes across types, convert to cost per covered square foot. The{" "}
             <a href={GRAVEL.weightChart} className="font-medium text-primary hover:underline">
               weight chart
             </a>{" "}
             has the per-yard weights that make the conversion quick.
           </p>
           <TipBlock title="Check the compacted row, not the loose one">
-            If the stone will be compacted — any driveway or base course — size the
+            If the stone will be compacted (any driveway or base course), size the
             order from the compacted density. Ordering crusher run off the loose figure
             leaves the finished surface about an inch low on a 4-inch lift.
           </TipBlock>

@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils";
 interface ProsConsProps {
   pros: string[];
   cons: string[];
-  /** Optional subject, e.g. "Ready-mix concrete" — used in the column headers */
+  /** Optional subject, e.g. "Ready-mix concrete": used in the column headers */
   subject?: string;
   className?: string;
 }
 
-/** Side-by-side pros & cons — used heavily on comparison pages. */
+/** Side-by-side pros & cons: used heavily on comparison pages. */
 export function ProsCons({ pros, cons, subject, className }: ProsConsProps) {
   return (
     <div className={cn("grid gap-4 sm:grid-cols-2", className)}>

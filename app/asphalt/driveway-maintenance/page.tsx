@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { WarningBlock, SuccessBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
@@ -24,11 +25,12 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Driveway Maintenance — Schedule & Costs";
+const title = "Asphalt Driveway Maintenance: Schedule and Costs";
 const description =
-  "The asphalt driveway maintenance schedule that reaches 25 years: first sealcoat at 1–2 years, re-seal every 3–5 at $0.20–0.45/ft², annual crack filling, and the overlay decision at year 12–18 — with costs for every task.";
+  "Seal an asphalt driveway first at 1–2 years, then every 3–5 years at $0.20–0.45/ft², and fill cracks over 1/4 in each fall. Full schedule and task costs.";
 const path = ASPHALT.drivewayMaintenance;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -36,43 +38,44 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How often should I sealcoat my driveway?",
     answer:
-      "Every 3–5 years after the first application at 1–2 years old. Seal on the shorter cycle in high-UV climates or where the surface looks gray and dry; sealing more often than every 2–3 years just builds up a slick film that peels. At $0.20–0.45 per square foot, a 720 ft² double drive costs roughly $145–325 per cycle.",
+      "Sealcoat an asphalt driveway every 3–5 years after the first application at 1–2 years old. Seal on the shorter cycle in high-UV climates or where the surface looks gray and dry; sealing more often than every 2–3 years just builds up a slick film that peels. At $0.20–0.45 per square foot, a 720 ft² double drive costs roughly $145–325 per cycle.",
   },
   {
     question: "Can I sealcoat a driveway myself?",
     answer:
-      "Yes — DIY is the one paving task genuinely within reach. Bucket sealer from the supply store, a squeegee and a dry 50–85°F weekend handle a typical drive for $80–200 in materials, versus $150–500 hired out. The quality difference is in prep: professionals clean better and fill cracks first. Whoever does it, cracks get filled before sealer goes down.",
+      "Yes. DIY sealcoating is the one paving task genuinely within reach. Bucket sealer from the supply store, a squeegee and a dry 50–85°F weekend handle a typical drive for $80–200 in materials, versus $150–500 hired out. The quality difference is in prep: professionals clean better and fill cracks first. Whoever does it, cracks get filled before sealer goes down.",
   },
   {
     question: "What size cracks need filling?",
     answer:
-      "Anything wider than about 1/4 in gets hot-pour or quality cold-pour crack filler, ideally every fall before freeze-up. Hairline surface checking is cosmetic and sealcoat handles it. The reason 1/4 in matters: that is the width where meaningful water starts reaching the base, and freeze-thaw turns every wet crack into a wider one by spring.",
+      "Fill any crack wider than about 1/4 in with hot-pour or quality cold-pour crack filler, ideally every fall before freeze-up. Hairline surface checking is cosmetic and sealcoat handles it. The reason 1/4 in matters: that is the width where meaningful water starts reaching the base, and freeze-thaw turns every wet crack into a wider one by spring.",
   },
   {
     question: "What do driveway repairs cost?",
     answer:
-      "Rule-of-thumb 2026 figures: crack filling $1–3 per linear foot, patching $3–6 per square foot, and a 2 in overlay of the whole surface at $3–5 per square foot. The pattern to notice is the escalation — a $100 fall crack-filling session prevents the $600 patch, which prevents the $2,500 overlay arriving five years early.",
+      "Driveway repairs cost $1–3 per linear foot for crack filling, patching $3–6 per square foot, and $3–5 per square foot for a 2 in overlay of the whole surface (2026 rule-of-thumb figures). The pattern to notice is the escalation: a $100 fall crack-filling session prevents the $600 patch, which prevents the $2,500 overlay arriving five years early.",
   },
   {
     question: "When is it time to overlay instead of repair?",
     answer:
-      "Assess around years 12–18. If cracking covers more than 25–30% of the surface but the base is still sound — no rutting, no pumping, no alligator areas — a 2 in overlay buys another 10–12 years for about half the cost of replacement. Alligator cracking or soft spots mean base failure, and an overlay there just reprints the cracks within 2–3 years.",
+      "It is time to overlay when cracking covers more than 25–30% of the surface but the base is still sound, usually around years 12–18. With no rutting, no pumping and no alligator areas, a 2 in overlay buys another 10–12 years for about half the cost of replacement. Alligator cracking or soft spots mean base failure, and an overlay there just reprints the cracks within 2–3 years.",
   },
   {
     question: "Should I do anything to a brand-new driveway?",
     answer:
-      "For the first year, almost nothing — that is the point. Let it cure and oxidize; do not sealcoat it. Just keep gasoline and oil drips cleaned off (fresh asphalt dissolves in petroleum), avoid parking in one spot every day through the first summer, and keep sprinklers from soaking the edges. The first real task is the initial sealcoat at 1–2 years.",
+      "Almost nothing for the first year, and that is the point. Let it cure and oxidize; do not sealcoat it. Just keep gasoline and oil drips cleaned off (fresh asphalt dissolves in petroleum), avoid parking in one spot every day through the first summer, and keep sprinklers from soaking the edges. The first real task is the initial sealcoat at 1–2 years.",
   },
 ];
 
 const toc = tocFromTitles(
-  "The maintenance calendar",
+  "How often should you maintain an asphalt driveway?",
   "What each task costs",
   "The fall checklist",
   "The one mistake: sealing too early",
@@ -88,6 +91,7 @@ export default function DrivewayMaintenancePage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -99,8 +103,8 @@ export default function DrivewayMaintenancePage() {
             <Hero
               eyebrow="Asphalt · Driveway Guide"
               variant="compact"
-              title="Asphalt driveway maintenance — schedule and costs"
-              description="Asphalt is the pavement you maintain — that is the deal you accepted for the lower install price. The full schedule takes a weekend every few years and is the difference between a 15-year and a 25-year driveway."
+              title="Asphalt driveway maintenance: schedule and costs"
+              description="Asphalt is the pavement you maintain; that is the deal you accepted for the lower install price. The full schedule takes a weekend every few years and is the difference between a 15-year and a 25-year driveway."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -122,13 +126,23 @@ export default function DrivewayMaintenancePage() {
           />
         }
       >
-        <Section title="The maintenance calendar">
+        <QuickAnswer
+          question="How do you maintain an asphalt driveway?"
+          answer="Maintain an asphalt driveway by leaving it unsealed for the first 6–12 months, applying the first sealcoat at 1–2 years, re-sealing every 3–5 years at $0.20–0.45 per square foot, filling cracks wider than 1/4 in every fall, and assessing for a 2 in overlay around years 12–18."
+          ruleOfThumb="Seal every 3–5 years, fill cracks every fall."
+        />
+
+        <Section title="How often should you maintain an asphalt driveway?">
+          <p className="text-muted-foreground">
+            An asphalt driveway needs crack filling every year and a sealcoat every 3–5
+            years, plus one overlay decision in its second decade.
+          </p>
           <CoverageTable
             headers={["When", "Task", "Why"]}
             rows={[
               {
                 label: "Year 1",
-                spec: "Nothing — let it cure",
+                spec: "Nothing: let it cure",
                 coverage: "Oils must oxidize out before any sealer goes on",
                 note: "Clean fuel/oil drips promptly",
               },
@@ -187,8 +201,9 @@ export default function DrivewayMaintenancePage() {
             ]}
           />
           <p className="text-muted-foreground">
-            For scale: a maintained 720 ft² double drive spends roughly $1,500–2,500 on
-            upkeep across 25 years — less than a tenth of what it cost to build.
+            Upkeep is cheap next to replacement. A maintained 720 ft² double drive spends
+            roughly $1,500–2,500 on upkeep across 25 years, a fraction of the cost of
+            rebuilding it a decade early.
           </p>
           <Cta
             variant="inline"
@@ -202,8 +217,8 @@ export default function DrivewayMaintenancePage() {
             <p>
               Four items, in order: sweep and hose the surface clean; fill every crack
               wider than 1/4 in while daytime temperatures still allow filler to bond;
-              walk the edges and check that water still drains off and away — ponding
-              spots get marked for spring regrading; and degrease oil spots with detergent
+              walk the edges and check that water still drains off and away, marking ponding
+              spots for spring regrading; and degrease oil spots with detergent
               or a dedicated cleaner so they do not soften through the winter. Done before
               the first freeze, this list is what keeps small defects from becoming
               spring repairs.
@@ -215,14 +230,14 @@ export default function DrivewayMaintenancePage() {
           <WarningBlock title="Do not seal a driveway less than 6–12 months old">
             New asphalt needs its light oils to oxidize out before sealer is applied.
             Sealing inside the first 6–12 months traps those volatiles, and the pavement
-            stays permanently soft — it scuffs under turning tires and tracks in summer
+            stays permanently soft: it scuffs under turning tires and tracks in summer
             heat, and there is no fix short of waiting years for it to slowly harden.
             Wait a minimum of one full summer; most of the industry says a year.
           </WarningBlock>
           <p className="text-muted-foreground">
             The opposite error is milder but real: a driveway never sealed at all
-            oxidizes gray, turns brittle at the surface, and starts raveling — shedding
-            aggregate — years ahead of schedule. The 3–5 year cycle is the middle path.
+            oxidizes gray, turns brittle at the surface, and starts raveling (shedding
+            aggregate) years ahead of schedule. The 3–5 year cycle is the middle path.
           </p>
         </Section>
 
@@ -237,7 +252,7 @@ export default function DrivewayMaintenancePage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.napa, AREFS.ms4]} />
       </ArticleShell>

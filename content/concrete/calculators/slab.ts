@@ -36,23 +36,23 @@ export const slabCalculator = defineCalculator({
       label: "Slab thickness",
       type: "select",
       options: [
-        { value: "0.0762", label: '3 in (76 mm) — light foot traffic only' },
-        { value: "0.1016", label: '4 in (102 mm) — patios, walkways, shed bases' },
-        { value: "0.127", label: '5 in (127 mm) — single-car driveways' },
-        { value: "0.1524", label: '6 in (152 mm) — heavy vehicles, workshops' },
-        { value: "0.2032", label: '8 in (203 mm) — commercial / equipment pads' },
+        { value: "0.0762", label: '3 in (76 mm): light foot traffic only' },
+        { value: "0.1016", label: '4 in (102 mm): patios, walkways, shed bases' },
+        { value: "0.127", label: '5 in (127 mm): single-car driveways' },
+        { value: "0.1524", label: '6 in (152 mm): heavy vehicles, workshops' },
+        { value: "0.2032", label: '8 in (203 mm): commercial / equipment pads' },
       ],
       defaultValue: "0.1016",
-      hint: "Thickness drives cost more than any other input — don't overspec.",
+      hint: "Thickness drives cost more than any other input, so don't overspec.",
     },
     {
       id: "waste",
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — formed on a compacted, level base" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — uneven subgrade or hand mixing" },
+        { value: "5", label: "5%: formed on a compacted, level base" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: uneven subgrade or hand mixing" },
       ],
       defaultValue: "10",
     },
@@ -101,7 +101,7 @@ export const slabCalculator = defineCalculator({
     ];
   },
   disclaimer:
-    "Add rebar or welded wire mesh per your local code; reinforcement is not included in this estimate. Thickened slab edges need extra volume — see the worked example below.",
+    "Add rebar or welded wire mesh per your local code; reinforcement is not included in this estimate. Thickened slab edges need extra volume; see the worked example below.",
   presets: [
     {
       id: "patio-10x10",

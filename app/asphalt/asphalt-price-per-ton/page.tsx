@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock } from "@/components/blocks/callout";
 import { CostTable } from "@/components/tables/cost-table";
@@ -19,9 +20,9 @@ import { ASPHALT, costGuideLinks, pickLinks, AREFS } from "@/content/asphalt/lin
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Price Per Ton (2026)";
+const title = "Asphalt Price per Ton: $100–150 at the Plant";
 const description =
-  "2026 hot mix asphalt prices per ton at the plant: standard, polymer-modified, warm mix, cold patch and millings — plus the binder index that moves them and how to get a real local quote.";
+  "Hot mix asphalt costs $100–150 per ton at the plant in 2026, plus $8–20 per ton delivered. Prices for polymer mix, warm mix, cold patch and millings.";
 const path = ASPHALT.pricePerTon;
 const author = getAuthor("materials-team");
 
@@ -31,6 +32,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
@@ -40,29 +42,34 @@ const faqItems: FaqItem[] = [
       "Standard hot mix runs $100–150 per ton picked up at the plant in most US markets. Binder and base mixes sit $5–10 under surface mix because they use larger, cheaper aggregate and slightly less liquid binder. Delivered pricing adds $8–20 per ton in trucking depending on distance, and small orders may carry a plant minimum.",
   },
   {
-    question: "How much area does one ton of asphalt cover?",
+    question: "How do I convert a per-ton price to cost per square foot?",
     answer:
-      "At compacted density of roughly 145 lb per cubic foot, one ton covers about 80 square feet at 2 inches thick and about 55 square feet at 3 inches. Coverage is the bridge between the per-ton price plants quote and the per-square-foot price homeowners think in — run the conversion before comparing bids.",
+      "Divide the per-ton price by the square feet one ton covers. At compacted density of roughly 145 lb per cubic foot, one ton covers about 80 square feet at 2 inches thick and about 53 square feet at 3 inches. Coverage is the bridge between the per-ton price plants quote and the per-square-foot price homeowners think in, so run the conversion before comparing bids.",
   },
   {
     question: "Do asphalt plants sell to homeowners?",
     answer:
-      "Most do, for pickup in a truck or trailer that can legally carry the load. Expect a 1–2 ton minimum, cash-or-card terms, and mix loaded at 300°F — you have roughly 60–90 minutes of workable time in mild weather. For anything beyond a small patch, a contractor with a paver will beat hand work on both quality and compaction.",
+      "Yes, most do, for pickup in a truck or trailer that can legally carry the load. Expect a 1–2 ton minimum, cash-or-card terms, and mix loaded at 300°F, which gives you roughly 60–90 minutes of workable time in mild weather. For anything beyond a small patch, a contractor with a paver will beat hand work on both quality and compaction.",
   },
   {
     question: "Why did my quote change from last month?",
     answer:
-      "Liquid asphalt binder is refined from crude oil and repriced monthly by most plants. At $600–700 per ton and 5–6% of mix weight, binder alone is $30–42 of every ton of hot mix, so a 15% crude move shifts finished mix by several dollars per ton. Large projects handle this with a binder price-adjustment clause instead of re-quoting.",
+      "Because liquid asphalt binder is refined from crude oil and repriced monthly by most plants. At $600–700 per ton and 5–6% of mix weight, binder alone is $30–42 of every ton of hot mix, so a 15% crude move shifts finished mix by several dollars per ton. Large projects handle this with a binder price-adjustment clause instead of re-quoting.",
   },
   {
     question: "Are asphalt millings worth buying?",
     answer:
-      "At $10–25 per ton, millings are the cheapest paving material available and work well for rural drives, farm lanes and parking pads. They are reclaimed pavement, not new mix: they need compaction while warm or with a binder rejuvenator to knit together, and they will never match hot mix for a finished surface.",
+      "Yes, for the right job. At $10–25 per ton, millings are the cheapest paving material available and work well for rural drives, farm lanes and parking pads. They are reclaimed pavement, not new mix: they need compaction while warm or with a binder rejuvenator to knit together, and they will never match hot mix for a finished surface.",
   },
   {
     question: "Is warm mix asphalt cheaper than hot mix?",
     answer:
-      "Usually within $5 per ton either way. Warm mix is produced 50–100°F cooler, which saves plant fuel but adds additive cost — the two roughly cancel. Its real value is longer haul distances and a wider paving window in cool weather, not a lower sticker price.",
+      "Usually within $5 per ton either way. Warm mix is produced 50–100°F cooler, which saves plant fuel but adds additive cost, and the two roughly cancel. Its real value is longer haul distances and a wider paving window in cool weather, not a lower sticker price.",
+  },
+  {
+    question: "How much does a pound of asphalt cost?",
+    answer:
+      "About 5–7.5 cents per pound for hot mix bought by the ton, since $100–150 per ton divided by 2,000 lb is $0.05–0.075. Bagged cold patch is far more expensive per pound: $4–6 per 50 lb bag works out to 8–12 cents. Buy by the ton for anything bigger than a pothole.",
   },
 ];
 
@@ -83,6 +90,7 @@ export default function AsphaltPricePerTonPage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -114,12 +122,18 @@ export default function AsphaltPricePerTonPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much does a ton of asphalt cost?"
+          answer="Standard hot mix asphalt costs about $100–150 per ton picked up at the plant in most US markets in 2026. Delivery adds $8–20 per ton depending on haul distance. Polymer-modified mix runs $115–180 per ton, bagged cold patch works out to $150–250 per ton, and recycled millings cost $10–25 per ton."
+          ruleOfThumb="One ton of hot mix covers about 80 ft² at 2 in, so $100–150 per ton is roughly $1.25–1.90 per ft² of material."
+        />
+
         <Section title="Price per ton by product (2026)">
           <CostTable
             currency="USD"
             rows={[
               { item: "Standard HMA surface mix", unit: "ton", low: 100, high: 150, note: "9.5–12.5 mm dense-graded; the default quote" },
-              { item: "Binder / base course mix", unit: "ton", low: 95, high: 140, note: "Coarser stone, less binder — $5–10 under surface" },
+              { item: "Binder / base course mix", unit: "ton", low: 95, high: 140, note: "Coarser stone, less binder: $5–10 under surface" },
               { item: "Polymer-modified (PG+) mix", unit: "ton", low: 115, high: 180, note: "+$15–30 over standard; heavy traffic, hot climates" },
               { item: "Warm mix asphalt", unit: "ton", low: 100, high: 155, note: "±$0–5 vs hot mix; longer haul window" },
               { item: "Cold patch, bagged", unit: "ton", low: 150, high: 250, note: "Per-ton equivalent at $4–6 per 50 lb bag" },
@@ -128,8 +142,8 @@ export default function AsphaltPricePerTonPage() {
             caption="US plant-gate pricing, mid-2026, before trucking. Metro plants with binder terminals nearby sit at the low end; remote plants at the high end."
           />
           <p className="text-muted-foreground">
-            Where you sit inside these ranges is mostly geography — plant density, binder
-            terminal distance and season length. The{" "}
+            Standard hot mix is $100–150 per ton, and where you sit inside that range is
+            mostly geography: plant density, binder terminal distance and season length. The{" "}
             <a href={ASPHALT.regionalPrices} className="font-medium text-primary hover:underline">
               regional price factors guide
             </a>{" "}
@@ -143,10 +157,13 @@ export default function AsphaltPricePerTonPage() {
         </Section>
 
         <Section title="The binder index: why prices move">
+          <p className="text-muted-foreground">
+            Asphalt prices move mainly because liquid binder tracks crude oil.
+          </p>
           <InfoBlock title="Liquid asphalt tracks crude oil">
             The binder in hot mix is a refinery product priced around $600–700 per ton in
             2026, and it makes up 5–6% of mix weight. That puts $30–42 of binder in every
-            ton of finished mix — the single most volatile line in the plant&apos;s cost.
+            ton of finished mix, the single most volatile line in the plant&apos;s cost.
             Plants re-quote monthly against a published binder index, and any job big enough
             to span quote periods should carry a price-adjustment clause so neither side
             eats the swing.
@@ -155,14 +172,14 @@ export default function AsphaltPricePerTonPage() {
             The remainder of the ton is aggregate (cheap but freight-sensitive), burner fuel
             to hit 300°F, and plant overhead. Aggregate and fuel move slowly; binder moves
             with the oil market. When a contractor says the price is only good for 30 days,
-            that is not a sales tactic — it is how their plant quotes them.
+            that is not a sales tactic; it is how their plant quotes them.
           </p>
         </Section>
 
         <Section title="How to get a real local price">
           <p className="text-muted-foreground">
             Published averages get you to a budget; only a phone call gets you to a number.
-            Call the nearest hot mix plant — not a contractor — and ask three things: the
+            Call the nearest hot mix plant (not a contractor) and ask three things: the
             per-ton price for standard surface mix, the pickup vs delivered difference, and
             the minimum order. Plants typically charge $8–20 per ton for trucking depending
             on distance, and many carry a 1–2 ton pickup minimum or a $150–300 small-load
@@ -171,7 +188,7 @@ export default function AsphaltPricePerTonPage() {
           <p className="text-muted-foreground">
             Two more questions worth asking: whether they sell millings (often first-come,
             priced by the loader bucket), and whether a nearby paving job could piggyback
-            your tonnage — a plant already trucking to your area quotes delivery cheaper.
+            your tonnage, since a plant already trucking to your area quotes delivery cheaper.
           </p>
         </Section>
 
@@ -184,7 +201,7 @@ export default function AsphaltPricePerTonPage() {
               { label: "Trailer rental + fuel", work: "$120 + $60 = $180, and the last load arrives marginal for compaction" },
               { label: "Delivered cost", work: "10 × ($120 + $15) = $1,350 in one hot load" },
             ]}
-            result="Delivered wins: $1,350 in one hot load vs $1,380 all-in for pickup — and every ton arrives at temperature. Under ~5 tons with your own truck, pickup pencils out; at 10 tons, pay for the truck."
+            result="Delivered wins: $1,350 in one hot load vs $1,380 all-in for pickup, and every ton arrives at temperature. Under ~5 tons with your own truck, pickup pencils out; at 10 tons, pay for the truck."
           />
         </Section>
 
@@ -193,7 +210,7 @@ export default function AsphaltPricePerTonPage() {
         <Cta
           variant="banner"
           title="Turn tons into dollars"
-          description="Enter your area, thickness and local per-ton price — the calculator handles density and waste."
+          description="Enter your area, thickness and local per-ton price. The calculator handles density and waste."
           href={ASPHALT.cost}
           buttonLabel="Asphalt Cost Calculator"
         />
@@ -204,7 +221,7 @@ export default function AsphaltPricePerTonPage() {
           items={pickLinks(costGuideLinks, ASPHALT.costPerSqft, ASPHALT.regionalPrices, ASPHALT.costSaving)}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[AREFS.napa, AREFS.ms4]} />
       </ArticleShell>

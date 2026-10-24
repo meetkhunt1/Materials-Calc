@@ -98,7 +98,7 @@ export const guideLinks: RelatedArticle[] = [
   {
     title: "Concrete Coverage Guide",
     href: CONCRETE.coverage,
-    description: "What a yard — or a bag — actually covers.",
+    description: "What a yard (or a bag) actually covers.",
     category: "Guide",
     icon: Grid3x3,
   },
@@ -125,14 +125,14 @@ export const guideLinks: RelatedArticle[] = [
   },
 ];
 
-/** Pick a subset of links by href — keeps per-page related lists short and curated. */
+/** Pick a subset of links by href. Keeps per-page related lists short and curated. */
 export function pickLinks(from: RelatedArticle[], ...hrefs: string[]): RelatedArticle[] {
   return hrefs
     .map((href) => from.find((l) => l.href === href))
     .filter((l): l is RelatedArticle => Boolean(l));
 }
 
-/** Frequently cited standards — reuse instead of retyping. */
+/** Frequently cited standards. Reuse instead of retyping. */
 export const REFS: Record<string, Reference> = {
   aci318: {
     title: "ACI 318-19: Building Code Requirements for Structural Concrete",
@@ -165,13 +165,13 @@ export const REFS: Record<string, Reference> = {
     year: 2022,
   },
   is456: {
-    title: "IS 456:2000 — Plain and Reinforced Concrete: Code of Practice",
+    title: "IS 456:2000 Plain and Reinforced Concrete: Code of Practice",
     publisher: "Bureau of Indian Standards",
     url: "https://law.resource.org/pub/in/bis/S03/is.456.2000.pdf",
     year: 2000,
   },
   is10262: {
-    title: "IS 10262:2019 — Concrete Mix Proportioning Guidelines",
+    title: "IS 10262:2019 Concrete Mix Proportioning Guidelines",
     publisher: "Bureau of Indian Standards",
     url: "https://law.resource.org/pub/in/bis/S03/is.10262.2019.pdf",
     year: 2019,

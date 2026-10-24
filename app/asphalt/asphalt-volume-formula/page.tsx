@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
@@ -20,11 +21,12 @@ import { ASPHALT, volumeGuideLinks, pickLinks, AREFS } from "@/content/asphalt/l
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Volume Formula — Every Shape, Every Unit";
+const title = "Asphalt Volume Formula: L × W × D for Any Shape";
 const description =
-  "The three formulas that cover every paving footprint — rectangle, circle and triangle — plus the unit traps that wreck takeoffs and two worked examples in yards and tons.";
+  "Asphalt volume = length × width × depth in feet; ÷ 27 gives cubic yards and × 145 ÷ 2,000 gives tons. Plus circle and triangle formulas and worked examples.";
 const path = ASPHALT.volumeFormula;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -32,38 +34,39 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "What is the basic asphalt volume formula?",
     answer:
-      "Volume = length × width × depth, with all three dimensions in the same unit. In US practice that means feet: divide the result by 27 for cubic yards, or multiply by 145 lb/ft³ and divide by 2,000 for tons. Metric users multiply meters directly and read cubic meters.",
+      "The basic asphalt volume formula is volume = length × width × depth, with all three dimensions in the same unit. In US practice that means feet: divide the result by 27 for cubic yards, or multiply by 145 lb/ft³ and divide by 2,000 for tons. Metric users multiply meters directly and read cubic meters.",
   },
   {
     question: "How do I calculate asphalt volume for an irregular shape?",
     answer:
-      "Decompose it. Any straight-edged footprint splits into rectangles and triangles; curved features are circles or circle segments. Compute each piece with its own formula, sum the areas, then multiply once by depth. Two shapes cover 95% of driveways; three cover almost everything.",
+      "Decompose an irregular shape into simple pieces. Any straight-edged footprint splits into rectangles and triangles; curved features are circles or circle segments. Compute each piece with its own formula, sum the areas, then multiply once by depth. Two shapes cover 95% of driveways; three cover almost everything.",
   },
   {
     question: "Does the formula use loose or compacted depth?",
     answer:
-      "Compacted depth — the finished pavement thickness on the drawings. Density (145 lb/ft³) already accounts for the compacted state when you convert to tons. If you instead measure a loose windrow at about 117 lb/ft³, you are in a different bookkeeping system; never mix the two.",
+      "The formula uses compacted depth, the finished pavement thickness on the drawings. Density (145 lb/ft³) already accounts for the compacted state when you convert to tons. If you instead measure a loose windrow at about 117 lb/ft³, you are in a different bookkeeping system; never mix the two.",
   },
   {
     question: "How do I convert the volume result to tons?",
     answer:
-      "Multiply cubic feet by 145 and divide by 2,000, or take the shortcut: cubic yards × 1.96. A 170 ft³ takeoff is 170 × 145 ÷ 2,000 = 12.3 tons. Metric: cubic meters × 2.32 gives tonnes.",
+      "Convert volume to tons by multiplying cubic feet by 145 and dividing by 2,000, or take the shortcut: cubic yards × 1.96. A 170 ft³ takeoff is 170 × 145 ÷ 2,000 = 12.3 tons. Metric: cubic meters × 2.32 gives tonnes.",
   },
   {
     question: "Is the asphalt formula different from the concrete formula?",
     answer:
-      "No — volume is material-blind. Length × width × depth works identically for both; only the density constant and the order unit change. If you have run a concrete takeoff, an asphalt takeoff is the same worksheet with 145 lb/ft³ substituted for concrete's 150.",
+      "No. Volume is material-blind. Length × width × depth works identically for both; only the density constant and the order unit change. If you have run a concrete takeoff, an asphalt takeoff is the same worksheet with 145 lb/ft³ substituted for concrete's 150.",
   },
 ];
 
 const toc = tocFromTitles(
-  "The rectangle formula",
+  "What is the asphalt volume formula?",
   "Circles and triangles",
   "The three unit traps",
   "Worked example: L-shaped driveway",
@@ -80,6 +83,7 @@ export default function AsphaltVolumeFormulaPage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -92,7 +96,7 @@ export default function AsphaltVolumeFormulaPage() {
               eyebrow="Asphalt · Volume Guide"
               variant="centered"
               title="The asphalt volume formula"
-              description="Three formulas — rectangle, circle, triangle — dispatch every paving footprint you will ever measure. The formulas are trivial; the unit discipline around them is where takeoffs go wrong."
+              description="Three formulas (rectangle, circle, triangle) dispatch every paving footprint you will ever measure. The formulas are trivial; the unit discipline around them is where takeoffs go wrong."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -105,22 +109,32 @@ export default function AsphaltVolumeFormulaPage() {
           </>
         }
       >
-        <Section title="The rectangle formula">
+        <QuickAnswer
+          question="What is the formula for asphalt volume?"
+          answer="Asphalt volume equals length × width × compacted depth, with every dimension in feet, which gives cubic feet. Divide cubic feet by 27 for cubic yards, or multiply by 145 lb/ft³ and divide by 2,000 for US tons. A 40 × 12 ft area at 3 inches is 120 ft³, or 4.4 yd³ and 8.7 tons."
+          formula="V (ft³) = L × W × (inches ÷ 12)"
+        />
+
+        <Section title="What is the asphalt volume formula?">
+          <p className="text-muted-foreground">
+            The asphalt volume formula is V = L × W × D, with depth converted from inches to
+            feet before you multiply.
+          </p>
           <FormulaBlock
             formula="V = L × W × D"
             variables={[
               { symbol: "L, W", meaning: "length and width in feet" },
               { symbol: "D", meaning: "compacted depth in feet (inches ÷ 12; 4 in = 0.333 ft)" },
-              { symbol: "V", meaning: "cubic feet — ÷ 27 for yd³, × 145 ÷ 2,000 for tons" },
+              { symbol: "V", meaning: "cubic feet; ÷ 27 for yd³, × 145 ÷ 2,000 for tons" },
             ]}
             note="This one formula, applied to decomposed pieces, handles nearly every job. Metric: meters in, cubic meters out, × 2.32 for tonnes."
           />
           <p className="text-muted-foreground">
-            The method is identical for concrete —{" "}
+            The method is identical for concrete:{" "}
             <a href={CONCRETE.howTo} className="font-medium text-primary hover:underline">
               how to calculate concrete
             </a>{" "}
-            walks the same five steps with a different density — so a takeoff skill learned
+            walks the same five steps with a different density, so a takeoff skill learned
             on one material transfers whole to the other.
           </p>
         </Section>
@@ -141,7 +155,7 @@ export default function AsphaltVolumeFormulaPage() {
                 { symbol: "b", meaning: "triangle base in feet" },
                 { symbol: "h", meaning: "height perpendicular to the base" },
               ]}
-              note="Entrance flares, tapers and skewed corners — measure h square to b, not along the slanted edge."
+              note="Entrance flares, tapers and skewed corners. Measure h square to b, not along the slanted edge."
             />
           </div>
           <CoverageTable
@@ -159,10 +173,10 @@ export default function AsphaltVolumeFormulaPage() {
 
         <Section title="The three unit traps">
           <WarningBlock title="Where takeoffs actually fail">
-            First: multiplying feet by inches — a 4 in depth is 0.333 ft, and 40 × 12 × 4 is
+            First: multiplying feet by inches. A 4 in depth is 0.333 ft, and 40 × 12 × 4 is
             a number with no physical meaning. Second: forgetting ÷ 27 and quoting cubic feet
             as yards, a 27-fold error that somehow still reaches suppliers weekly. Third:
-            mixing loose and compacted depth — the formula wants compacted design thickness,
+            mixing loose and compacted depth. The formula wants compacted design thickness,
             because the 145 lb/ft³ density that converts it to tons is a compacted figure.
           </WarningBlock>
         </Section>
@@ -177,7 +191,7 @@ export default function AsphaltVolumeFormulaPage() {
               { label: "Cubic yards", work: "170 ÷ 27 = 6.3 yd³" },
               { label: "Tons for the plant", work: "170 × 145 ÷ 2,000 = 12.3 tons" },
             ]}
-            result="6.3 yd³ geometric — order about 13 tons with a 5% waste allowance."
+            result="6.3 yd³ geometric. Order about 13 tons with a 5% waste allowance."
           />
         </Section>
 
@@ -192,7 +206,7 @@ export default function AsphaltVolumeFormulaPage() {
               { label: "Cubic yards", work: "314.2 ÷ 27 = 11.6 yd³" },
               { label: "Tons", work: "314.2 × 145 ÷ 2,000 = 22.8 tons" },
             ]}
-            result="11.6 yd³ — call the plant for 24 tons with waste included."
+            result="11.6 yd³. Call the plant for 24 tons with waste included."
           />
         </Section>
 
@@ -201,7 +215,7 @@ export default function AsphaltVolumeFormulaPage() {
         <Cta
           variant="banner"
           title="Let the calculator carry the units"
-          description="Rectangle, feet, inches or meters — the volume calculator applies these formulas with the conversions handled."
+          description="Rectangle, feet, inches or meters: the volume calculator applies these formulas with the conversions handled."
           href={ASPHALT.volume}
           buttonLabel="Asphalt Volume Calculator"
         />
@@ -212,7 +226,7 @@ export default function AsphaltVolumeFormulaPage() {
           items={pickLinks(volumeGuideLinks, ASPHALT.measurement, ASPHALT.cubicFootGuide, ASPHALT.unitConversion)}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.ms4, AREFS.napa]} />
       </ArticleShell>

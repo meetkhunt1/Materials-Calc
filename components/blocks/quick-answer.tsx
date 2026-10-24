@@ -4,7 +4,7 @@ import { Zap } from "lucide-react";
 interface QuickAnswerProps {
   /** The query this answers, e.g. "How much concrete do I need for a 10×10 slab?" */
   question: string;
-  /** Concise 40–50 word answer — written to stand alone in a search snippet */
+  /** Concise 40–50 word answer: written to stand alone in a search snippet */
   answer: React.ReactNode;
   /** Optional quick heuristic, e.g. "1 cubic yard covers 81 sq ft at 4 in depth" */
   ruleOfThumb?: string;
@@ -14,7 +14,7 @@ interface QuickAnswerProps {
 
 /**
  * High-visibility direct-answer box for Featured Snippet targeting.
- * Marked `.quick-answer` — that class is what articleSchema's speakable
+ * Marked `.quick-answer`: that class is what articleSchema's speakable
  * cssSelector should list when a page includes this component.
  */
 export function QuickAnswer({ question, answer, ruleOfThumb, formula }: QuickAnswerProps) {

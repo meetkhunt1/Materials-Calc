@@ -5,7 +5,7 @@ export function formatNumber(
   options: { precision?: number; compact?: boolean } = {},
 ): string {
   const { precision = 2, compact = false } = options;
-  if (!Number.isFinite(value)) return "—";
+  if (!Number.isFinite(value)) return "N/A";
   return new Intl.NumberFormat("en-US", {
     maximumFractionDigits: precision,
     minimumFractionDigits: 0,
@@ -18,7 +18,7 @@ export function formatCurrency(
   options: { currency?: string; precision?: number } = {},
 ): string {
   const { currency = "USD", precision = 0 } = options;
-  if (!Number.isFinite(value)) return "—";
+  if (!Number.isFinite(value)) return "N/A";
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency,

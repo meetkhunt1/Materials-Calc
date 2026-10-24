@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { CoverageTable } from "@/components/tables/coverage-table";
@@ -19,9 +20,9 @@ import { ASPHALT, volumeGuideLinks, pickLinks, AREFS } from "@/content/asphalt/l
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Cubic Yard Guide — The Estimator's Unit";
+const title = "Cubic Yard of Asphalt: 1.96 Tons (3,915 lb)";
 const description =
-  "What one cubic yard of asphalt weighs, covers and costs to move: 27 ft³, 3,915 lb compacted, 1.96 tons, 81 ft² at 4 inches. With project tables and the yard formula.";
+  "A cubic yard of compacted asphalt weighs 3,915 lb (1.96 tons) and covers 81 ft² at 4 in. Project tables, the yard formula and a worked parking pad order.";
 const path = ASPHALT.cubicYardGuide;
 const author = getAuthor("materials-team");
 
@@ -31,33 +32,34 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much does a cubic yard of asphalt weigh?",
     answer:
-      "3,915 lb compacted — call it 1.96 US tons. That comes straight from the standard compacted hot-mix density of 145 lb/ft³ times 27 ft³ per yard. Loose in the truck it runs about 117 lb/ft³, or roughly 3,160 lb per yard, which is why a load looks bigger than it lays.",
+      "3,915 lb compacted, or 1.96 US tons. That comes straight from the standard compacted hot-mix density of 145 lb/ft³ times 27 ft³ per yard. Loose in the truck it runs about 117 lb/ft³, or roughly 3,160 lb per yard, which is why a load looks bigger than it lays.",
   },
   {
     question: "How many square feet does a cubic yard of asphalt cover?",
     answer:
-      "81 ft² at 4 inches compacted, 108 ft² at 3 inches, 162 ft² at 2 inches. The shortcut is 324 divided by thickness in inches. These are geometric figures — apply your 5–10% waste factor on top before ordering.",
+      "81 ft² at 4 inches compacted, 108 ft² at 3 inches, 162 ft² at 2 inches. The shortcut is 324 divided by thickness in inches. These are geometric figures, so apply your 5–10% waste factor on top before ordering.",
   },
   {
     question: "How many cubic yards do I need for a driveway?",
     answer:
-      "A single-car driveway of about 480 ft² takes 4.4 yd³ at 3 inches; a 720 ft² double runs 6.7 yd³. Measure your actual footprint, multiply by depth in feet, divide by 27, then add waste — the volume calculator does all four steps at once.",
+      "A single-car driveway of about 480 ft² takes 4.4 yd³ at 3 inches; a 720 ft² double runs 6.7 yd³. Measure your actual footprint, multiply by depth in feet, divide by 27, then add waste. The volume calculator does all four steps at once.",
   },
   {
     question: "Why do asphalt plants quote tons instead of cubic yards?",
     answer:
-      "Plants batch and weigh material over a truck scale, so weight is the unit they can certify. You estimate in yards because drawings give you area and depth. The bridge between the two is density: multiply yards by 1.96 to talk to the plant in tons.",
+      "Because plants batch and weigh material over a truck scale, so weight is the unit they can certify. You estimate in yards because drawings give you area and depth. The bridge between the two is density: multiply yards by 1.96 to talk to the plant in tons.",
   },
   {
     question: "Is an asphalt yard the same as a concrete yard?",
     answer:
-      "Geometrically, yes — 27 ft³ is 27 ft³, and both cover 81 ft² at 4 inches. The difference is weight and ordering: concrete arrives ready-mixed by the yard at about 4,050 lb, while asphalt sells by the ton at 3,915 lb per compacted yard. Same box, different bookkeeping.",
+      "Geometrically, yes: 27 ft³ is 27 ft³, and both cover 81 ft² at 4 inches. The difference is weight and ordering: concrete arrives ready-mixed by the yard at about 4,050 lb, while asphalt sells by the ton at 3,915 lb per compacted yard. Same box, different bookkeeping.",
   },
   {
     question: "Should I round my order up or down?",
@@ -83,6 +85,7 @@ export default function AsphaltCubicYardGuidePage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -111,15 +114,21 @@ export default function AsphaltCubicYardGuidePage() {
           <Cta
             variant="card"
             title="Volume in one pass"
-            description="Enter length, width and depth — get cubic yards, feet and meters together."
+            description="Enter length, width and depth to get cubic yards, feet and meters together."
             href={ASPHALT.volume}
             buttonLabel="Asphalt Volume Calculator"
           />
         }
       >
+        <QuickAnswer
+          question="How much does a cubic yard of asphalt weigh?"
+          answer="A cubic yard of compacted hot mix asphalt weighs about 3,915 lb, or 1.96 US tons, based on 145 lb/ft³ × 27 ft³. Loose in the truck the same yard weighs only about 3,160 lb. One compacted cubic yard covers 81 ft² at 4 inches, 108 ft² at 3 inches and 162 ft² at 2 inches."
+          formula="Tons = yd³ × 1.96; coverage (ft²) = 324 ÷ inches"
+        />
+
         <Section title="Cubic yard quick facts">
           <p className="text-muted-foreground">
-            One cubic yard is a 3 × 3 × 3 ft cube — 27 ft³, or 0.765 m³. Filled with
+            One cubic yard is a 3 × 3 × 3 ft cube: 27 ft³, or 0.765 m³. Filled with
             compacted hot-mix asphalt at 145 lb/ft³, that cube weighs 3,915 lb. Every other
             number on this page derives from those two constants.
           </p>
@@ -136,7 +145,7 @@ export default function AsphaltCubicYardGuidePage() {
             caption="One compacted cubic yard of hot-mix asphalt. Coverage = 324 ÷ thickness (in)."
           />
           <p className="text-muted-foreground">
-            If you have poured concrete before, the geometry transfers directly — a concrete
+            If you have poured concrete before, the geometry transfers directly: a concrete
             yard covers the same 81 ft² at 4 inches, as the{" "}
             <a href={CONCRETE.coverage} className="font-medium text-primary hover:underline">
               concrete coverage guide
@@ -146,6 +155,10 @@ export default function AsphaltCubicYardGuidePage() {
         </Section>
 
         <Section title="Yards needed for common projects">
+          <p className="text-muted-foreground">
+            A single-car driveway at 3 in needs about 4.4 yd³ of asphalt, and a double about
+            6.7 yd³.
+          </p>
           <CoverageTable
             headers={["Project", "Area × depth", "Cubic yards"]}
             rows={[
@@ -159,6 +172,9 @@ export default function AsphaltCubicYardGuidePage() {
         </Section>
 
         <Section title="The yard formula">
+          <p className="text-muted-foreground">
+            Cubic yards equal square feet times depth in feet, divided by 27.
+          </p>
           <FormulaBlock
             formula="yd³ = ft² × (in ÷ 12) ÷ 27"
             variables={[
@@ -172,7 +188,7 @@ export default function AsphaltCubicYardGuidePage() {
 
         <Section title="Worked example: a parking pad order">
           <ExampleBlock
-            scenario="A 22 × 25 ft equipment parking pad paved 4 in thick. How many cubic yards — and what does the plant hear?"
+            scenario="A 22 × 25 ft equipment parking pad paved 4 in thick. How many cubic yards, and what does the plant hear?"
             steps={[
               { label: "Area", work: "22 × 25 = 550 ft²" },
               { label: "Volume in cubic feet", work: "550 × 0.333 = 183.3 ft³" },
@@ -180,7 +196,7 @@ export default function AsphaltCubicYardGuidePage() {
               { label: "Add 5% waste", work: "6.8 × 1.05 = 7.1 yd³" },
               { label: "Translate for the plant", work: "7.1 × 1.96 = 13.9 tons" },
             ]}
-            result="Order 14 tons — that is 7.1 yd³ of compacted mix on the ground."
+            result="Order 14 tons, which is 7.1 yd³ of compacted mix on the ground."
           />
         </Section>
 
@@ -192,7 +208,7 @@ export default function AsphaltCubicYardGuidePage() {
           items={pickLinks(volumeGuideLinks, ASPHALT.cubicFootGuide, ASPHALT.volumeFormula, ASPHALT.unitConversion)}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[AREFS.ms4]} />
       </ArticleShell>

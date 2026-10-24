@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { CostTable } from "@/components/tables/cost-table";
@@ -20,6 +21,7 @@ import {
   BAND_500_1000,
   bandRangeShort,
   bandRangePerSqFt,
+  bandTotal,
   LARGE_JOB_GUIDANCE_SHORT,
 } from "@/data/pricing";
 import {
@@ -29,11 +31,11 @@ import {
 } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Driveway Cost Guide (2026 Installed Prices)";
-const description =
-  "What an asphalt driveway costs installed in 2026, all-in and by size — with real line items (excavation, base gravel, hot mix per ton, paving labor and mobilization) and worked budgets for single, double and rural drives.";
+const title = `Asphalt Driveway Cost 2026: $${BAND_500_1000.low.toFixed(2)}–${BAND_UNDER_500.high.toFixed(2)}/ft²`;
+const description = `Asphalt driveways cost ${bandRangeShort(BAND_UNDER_500)} installed under 500 ft² and ${bandRangeShort(BAND_500_1000)} at 500–1,000 ft². See every line item and a worked 480 ft² budget.`;
 const path = ASPHALT.drivewayCost;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -41,23 +43,24 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much does an asphalt driveway cost per square foot?",
     answer:
-      `It depends on size more than anything else, because mobilization is fixed. All-in — excavation, 6 in aggregate base, 3 in of compacted hot mix in two lifts and labor — a drive under 500 ft² runs ${bandRangePerSqFt(BAND_UNDER_500)}, and a 500–1,000 ft² drive ${bandRangePerSqFt(BAND_500_1000)}. Beyond that, ${LARGE_JOB_GUIDANCE_SHORT}. A quote far below these usually means a thin lift or a skipped base.`,
+      `An asphalt driveway costs ${bandRangePerSqFt(BAND_UNDER_500)} installed under 500 ft² and ${bandRangePerSqFt(BAND_500_1000)} at 500–1,000 ft². Size matters more than anything else because mobilization is fixed. Those all-in rates cover excavation, a 6 in aggregate base, 3 in of compacted hot mix in two lifts and labor. Beyond that, ${LARGE_JOB_GUIDANCE_SHORT}. A quote far below these usually means a thin lift or a skipped base.`,
   },
   {
     question: "Why do small driveways cost more per square foot?",
     answer:
-      "Mobilization — moving a paver, rollers and a 4–6 person crew to your address — runs $1,500–3,000 whether the job is 400 ft² or 4,000 ft². Spread over a small single drive, that fixed cost alone adds $3–6 per square foot. It is also why piggybacking on a neighbor's paving day is a genuinely effective negotiation tactic.",
+      "Small driveways cost more per square foot because mobilization (moving a paver, rollers and a 4–6 person crew to your address) runs $1,500–3,000 whether the job is 400 ft² or 4,000 ft². Spread over a small single drive, that fixed cost alone adds $3–6 per square foot. It is also why piggybacking on a neighbor's paving day is a genuinely effective negotiation tactic.",
   },
   {
     question: "How much does a ton of asphalt cost in 2026?",
     answer:
-      "Hot mix runs $100–150 per ton delivered for typical residential quantities, tracking oil prices and haul distance from the plant. One ton covers about 53 ft² at 3 in compacted, so material is roughly $2–3 per square foot — usually only a third of the installed price. The rest is sitework, labor, equipment and mobilization.",
+      "Hot mix runs $100–150 per ton delivered for typical residential quantities, tracking oil prices and haul distance from the plant. One ton covers about 53 ft² at 3 in compacted, so material is roughly $2–3 per square foot, usually only a third of the installed price. The rest is sitework, labor, equipment and mobilization.",
   },
   {
     question: "Is asphalt cheaper than concrete for a driveway?",
@@ -67,17 +70,21 @@ const faqItems: FaqItem[] = [
   {
     question: "What add-ons inflate a driveway quote?",
     answer:
-      "The usual suspects: extra excavation depth or soft-spot repair ($1–3/ft² more), geotextile fabric ($0.50–1/ft²), demolition and hauling of an old surface ($1–3/ft²), retaining edges on slopes, and long curb-cut aprons built to municipal spec. None are padding — but each should appear as a priced line item, not vanish into a lump sum.",
+      "The add-ons that inflate a quote most are extra excavation depth or soft-spot repair ($1–3/ft² more), geotextile fabric ($0.50–1/ft²), demolition and hauling of an old surface ($1–3/ft²), retaining edges on slopes, and long curb-cut aprons built to municipal spec. None are padding, but each should appear as a priced line item, not vanish into a lump sum.",
   },
   {
     question: "When is paving cheapest to schedule?",
     answer:
-      "Late season — September and October in most markets — when plants are still open but the commercial backlog is thinning and crews want fill-in work. Quotes can come in 5–15% under peak-season pricing. Avoid the first warm weeks of spring, when every homeowner calls at once and contractors price accordingly.",
+      "Paving is cheapest late in the season (September and October in most markets), when plants are still open but the commercial backlog is thinning and crews want fill-in work. Quotes can come in 5–15% under peak-season pricing. Avoid the first warm weeks of spring, when every homeowner calls at once and contractors price accordingly.",
+  },
+  {
+    question: "How much does a 12 × 40 ft asphalt driveway cost?",
+    answer: `A 12 × 40 ft (480 ft²) asphalt driveway costs about ${bandTotal(BAND_UNDER_500, 480)} installed, at ${bandRangeShort(BAND_UNDER_500)}. Mobilization is the biggest swing factor at this size: sharing a paving day with nearby jobs keeps a mid-range build near $4,500.`,
   },
 ];
 
 const toc = tocFromTitles(
-  "Line-item costs",
+  "What does each part of a driveway cost?",
   "Installed cost by driveway size",
   "Worked budget: a 12 × 40 ft single drive",
   "Where the money actually goes",
@@ -93,6 +100,7 @@ export default function DrivewayCostGuidePage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -105,9 +113,9 @@ export default function DrivewayCostGuidePage() {
               eyebrow="Asphalt · Driveway Guide"
               variant="standard"
               title="Asphalt driveway cost guide"
-              description="There is no single honest number — a small drive and a long one are different businesses. This guide gives installed cost by size and breaks it into line items you can hold a quote against: excavation, base, hot mix, labor and the mobilization fee nobody itemizes."
+              description="There is no single honest number, because a small drive and a long one are different businesses. This guide gives installed cost by size and breaks it into line items you can hold a quote against: excavation, base, hot mix, labor and the mobilization fee nobody itemizes."
             >
-              <AuthorBox author={author} datePublished="2026-07-15" variant="inline" />
+              <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} variant="inline" />
             </Hero>
             <Container className="pt-6">
               <Breadcrumbs
@@ -120,7 +128,17 @@ export default function DrivewayCostGuidePage() {
           </>
         }
       >
-        <Section title="Line-item costs">
+        <QuickAnswer
+          question="How much does an asphalt driveway cost?"
+          answer={`A new asphalt driveway costs ${bandRangePerSqFt(BAND_UNDER_500)} installed for drives under 500 ft² and ${bandRangePerSqFt(BAND_500_1000)} for 500–1,000 ft², including excavation, a 6 in gravel base, 3 in of compacted hot mix and labor. A 12 × 40 ft single drive lands around ${bandTotal(BAND_UNDER_500, 480)}.`}
+          ruleOfThumb="Hot mix itself is only about a third of the installed price."
+        />
+
+        <Section title="What does each part of a driveway cost?">
+          <p className="text-muted-foreground">
+            Hot mix runs $100–150 per ton delivered, but excavation, base, labor and a fixed
+            $1,500–3,000 mobilization fee make up most of the bill.
+          </p>
           <CostTable
             caption="2026 residential line items. Regional spread is roughly ±25% around these ranges."
             rows={[
@@ -157,7 +175,7 @@ export default function DrivewayCostGuidePage() {
                 unit: "per job",
                 low: 1500,
                 high: 3000,
-                note: "Fixed — why small jobs cost more per ft²",
+                note: "Fixed, which is why small jobs cost more per ft²",
               },
             ]}
           />
@@ -165,30 +183,31 @@ export default function DrivewayCostGuidePage() {
 
         <Section title="Installed cost by driveway size">
           <CostTable
-            caption="All-in installed budgets: excavation, 6 in base, 3 in hot mix in two lifts, labor and mobilization. Long rural drives past 1,000 ft² are deliberately absent — the per-square-foot rate keeps falling at that size, but not by an amount we can put a defensible number to."
+            caption="All-in installed budgets: excavation, 6 in base, 3 in hot mix in two lifts, labor and mobilization. Long rural drives past 1,000 ft² are deliberately absent: the per-square-foot rate keeps falling at that size, but not by an amount we can put a defensible number to."
             rows={[
               {
                 item: "Single drive, 12 × 40 ft",
                 unit: "480 ft²",
                 low: Math.round(BAND_UNDER_500.low * 480),
                 high: Math.round(BAND_UNDER_500.high * 480),
-                note: `${bandRangeShort(BAND_UNDER_500)} — mobilization dominates`,
+                note: `${bandRangeShort(BAND_UNDER_500)}; mobilization dominates`,
               },
               {
                 item: "Double drive, 20 × 36 ft",
                 unit: "720 ft²",
                 low: Math.round(BAND_500_1000.low * 720),
                 high: Math.round(BAND_500_1000.high * 720),
-                note: `${bandRangeShort(BAND_500_1000)} — fixed costs spread further`,
+                note: `${bandRangeShort(BAND_500_1000)}; fixed costs spread further`,
               },
             ]}
           />
           <p className="text-muted-foreground">
-            Comparing against a concrete drive? The{" "}
+            Installed cost per square foot falls as the driveway gets bigger, because the
+            fixed costs spread over more area. Comparing against a concrete drive? The{" "}
             <a href={CONCRETE.cost} className="font-medium text-primary hover:underline">
               concrete cost guide
             </a>{" "}
-            prices the same footprints in concrete — typically 40–60% higher upfront, with
+            prices the same footprints in concrete (typically 40–60% higher upfront), with
             the trade-offs covered in the comparison guides below.
           </p>
           <Cta
@@ -217,7 +236,7 @@ export default function DrivewayCostGuidePage() {
                 work: "$800 (bundled with two nearby jobs)",
               },
             ]}
-            result="Total ≈ $4,510 — about $9.40/ft², squarely inside the $3,400–5,800 range for this size. A standalone mobilization at $2,000+ pushes the same job past $5,700."
+            result={`Total ≈ $4,510, about $9.40/ft², right at the bottom of the ${bandTotal(BAND_UNDER_500, 480)} range for this size. A standalone mobilization at $2,000+ pushes the same job past $5,700.`}
           />
         </Section>
 
@@ -233,9 +252,9 @@ export default function DrivewayCostGuidePage() {
             ]}
           />
           <p className="text-muted-foreground">
-            Two-thirds of the budget is not asphalt. That is why haggling over the hot mix
+            Two-thirds of a driveway budget is not asphalt. That is why haggling over the hot mix
             price moves a quote very little, while job access, excavation surprises and
-            crew efficiency move it a lot — and why the cheapest quote usually got cheap by
+            crew efficiency move it a lot. It is also why the cheapest quote usually got cheap by
             thinning the parts you cannot see.
           </p>
         </Section>
@@ -267,7 +286,7 @@ export default function DrivewayCostGuidePage() {
           items={pickConcrete(concreteGuides, CONCRETE.cost, CONCRETE.vsAsphalt)}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
       </ArticleShell>
     </>

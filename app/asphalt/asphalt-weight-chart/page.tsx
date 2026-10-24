@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { InfoBlock } from "@/components/blocks/callout";
 import { DensityTable } from "@/components/tables/density-table";
@@ -21,11 +22,12 @@ import { ASPHALT, weightGuideLinks, pickLinks, AREFS } from "@/content/asphalt/l
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Weight Chart — Per Cubic Yard, Foot & Meter";
+const title = "Asphalt Weight Chart: 145 lb/ft³, 3,915 lb/yd³";
 const description =
-  "How much asphalt weighs in every common unit: 145 lb/ft³, 3,915 lb (1.96 tons) per cubic yard, 2,322 kg/m³ — plus loose, cold mix and millings values for ordering and hauling.";
+  "Compacted asphalt weighs 145 lb/ft³, 3,915 lb (1.96 tons) per cubic yard and 2,322 kg/m³. The chart adds loose, cold mix and millings weights.";
 const path = ASPHALT.weightChart;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -33,28 +35,29 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much does a cubic yard of asphalt weigh?",
     answer:
-      "Compacted hot mix weighs about 3,915 lb per cubic yard — 1.96 US tons, so 'call it 2 tons per yard' is a safe field rule. Loose in the truck the same material runs only ~3,155 lb/yd³ because it fluffs about 25% before rolling. Always confirm which state a quoted yard refers to.",
+      "A cubic yard of compacted hot mix weighs about 3,915 lb (1.96 US tons), so 'call it 2 tons per yard' is a safe field rule. Loose in the truck the same material runs only ~3,155 lb/yd³ because it fluffs about 25% before rolling. Always confirm which state a quoted yard refers to.",
   },
   {
     question: "How much does a cubic foot of asphalt weigh?",
     answer:
-      "145 lb for compacted hot mix — the estimating standard used by the Asphalt Institute and most DOTs. Loose mix runs ~117 lb/ft³, compacted cold mix ~137 lb/ft³, and millings 103 lb/ft³ loose or 122 lb/ft³ compacted. Multiply by 27 to get the per-cubic-yard figure.",
+      "A cubic foot of compacted hot mix asphalt weighs 145 lb, the estimating standard used by the Asphalt Institute and most DOTs. Loose mix runs ~117 lb/ft³, compacted cold mix ~137 lb/ft³, and millings 103 lb/ft³ loose or 122 lb/ft³ compacted. Multiply by 27 to get the per-cubic-yard figure.",
   },
   {
     question: "How much does asphalt weigh per square foot?",
     answer:
-      "About 12 lb per square foot per inch of compacted thickness (145 lb/ft³ ÷ 12). A 3-inch driveway lift is therefore 36 lb/ft², and 100 ft² at 3 inches weighs roughly 3,625 lb — call it 1.8 US tons. This shortcut turns any plan area straight into an order weight.",
+      "Asphalt weighs about 12 lb per square foot per inch of compacted thickness (145 lb/ft³ ÷ 12). A 3-inch driveway lift is therefore 36 lb/ft², and 100 ft² at 3 inches weighs roughly 3,625 lb, about 1.8 US tons. This shortcut turns any plan area straight into an order weight.",
   },
   {
     question: "How much does a cubic meter of asphalt weigh in kg?",
     answer:
-      "2,322 kg for compacted hot mix — about 5,119 lb or 2.56 US tons. Loose mix is roughly 1,870 kg/m³, compacted cold mix 2,200 kg/m³, and millings 1,650 kg/m³ loose. Metric plants quote in tonnes: one compacted cubic meter is 2.32 tonnes of mix.",
+      "A cubic meter of compacted hot mix asphalt weighs 2,322 kg, about 5,119 lb or 2.56 US tons. Loose mix is roughly 1,870 kg/m³, compacted cold mix 2,200 kg/m³, and millings 1,650 kg/m³ loose. Metric plants quote in tonnes: one compacted cubic meter is 2.32 tonnes of mix.",
   },
   {
     question: "Do these weights change with mix design?",
@@ -64,12 +67,12 @@ const faqItems: FaqItem[] = [
   {
     question: "Is asphalt heavier than concrete?",
     answer:
-      "Slightly lighter. Compacted hot mix runs 145 lb/ft³ against about 150 lb/ft³ for reinforced normal-weight concrete — roughly a 3% difference. Per cubic yard that is 3,915 lb of asphalt versus about 4,050 lb of concrete, so hauling and dead-load numbers are close but not interchangeable.",
+      "No, asphalt is slightly lighter. Compacted hot mix runs 145 lb/ft³ against about 150 lb/ft³ for reinforced normal-weight concrete, roughly a 3% difference. Per cubic yard that is 3,915 lb of asphalt versus about 4,050 lb of concrete, so hauling and dead-load numbers are close but not interchangeable.",
   },
 ];
 
 const toc = tocFromTitles(
-  "Quick weight reference",
+  "How much does asphalt weigh?",
   "Full asphalt density table",
   "Weight by material state",
   "Asphalt vs concrete weight",
@@ -85,6 +88,7 @@ export default function AsphaltWeightChartPage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -97,7 +101,7 @@ export default function AsphaltWeightChartPage() {
               eyebrow="Asphalt · Reference Chart"
               variant="compact"
               title="Asphalt weight chart"
-              description="Every unit weight you need to convert a takeoff into an order: pounds, tons, kilograms and tonnes per cubic foot, yard and meter — compacted, loose, cold mix and millings."
+              description="Every unit weight you need to convert a takeoff into an order: pounds, tons, kilograms and tonnes per cubic foot, yard and meter, for compacted, loose, cold mix and millings."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -119,9 +123,16 @@ export default function AsphaltWeightChartPage() {
           />
         }
       >
+        <QuickAnswer
+          question="How much does asphalt weigh?"
+          answer="Compacted hot mix asphalt weighs about 145 lb per cubic foot, 3,915 lb (1.96 US tons) per cubic yard and 2,322 kg per cubic meter. Loose in the truck it weighs about 117 lb/ft³, and a 3-inch driveway carries roughly 36 lb of asphalt per square foot."
+          ruleOfThumb="12 lb per square foot per inch of compacted thickness."
+          formula="Pounds = Area (ft²) × inches × 12"
+        />
+
         <Section
-          title="Quick weight reference"
-          lead="The five numbers estimators actually use, all derived from 145 lb/ft³ compacted hot mix."
+          title="How much does asphalt weigh?"
+          lead="Asphalt weighs 145 lb/ft³ compacted. These are the five numbers estimators actually use, all derived from that density."
         >
           <CoverageTable
             headers={["Quantity", "Basis", "Weight"]}
@@ -169,8 +180,8 @@ export default function AsphaltWeightChartPage() {
           />
           <InfoBlock title="Compacted vs loose is the trap">
             The same ton of mix occupies about 25% more volume loose in the truck than it does
-            rolled into the mat (145 vs ~117 lb/ft³). Order and pay by weight — tons do not
-            change with compaction — but when you convert a delivered volume to coverage, use
+            rolled into the mat (145 vs ~117 lb/ft³). Order and pay by weight, since tons do not
+            change with compaction, but when you convert a delivered volume to coverage, use
             the compacted density or you will come up short.
           </InfoBlock>
         </Section>
@@ -205,7 +216,7 @@ export default function AsphaltWeightChartPage() {
         <Section title="Asphalt vs concrete weight">
           <p className="text-muted-foreground">
             Compacted hot mix at 145 lb/ft³ sits just under reinforced concrete at about 150
-            lb/ft³ — close enough that a loaded tandem hauls a similar volume of either, far
+            lb/ft³: close enough that a loaded tandem hauls a similar volume of either, far
             enough apart that you should not swap densities in a dead-load or disposal
             calculation. The concrete side of that comparison, including lightweight and
             heavyweight mixes, is tabulated in the{" "}
@@ -231,7 +242,7 @@ export default function AsphaltWeightChartPage() {
           )}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.astmD2726, AREFS.ms4]} />
       </ArticleShell>

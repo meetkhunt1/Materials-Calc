@@ -3,7 +3,7 @@ import { slugify } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
-  /** Section heading — its id (auto-slugified or explicit) feeds the TOC */
+  /** Section heading: its id (auto-slugified or explicit) feeds the TOC */
   title: string;
   id?: string;
   /** Heading level (default h2) */

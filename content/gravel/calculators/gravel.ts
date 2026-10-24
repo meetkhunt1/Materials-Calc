@@ -2,14 +2,14 @@ import { defineCalculator } from "@/lib/calculator";
 import { fromBase } from "@/lib/units";
 import type { SelectOption } from "@/types";
 
-/** Shared material list — reused by the rectangular and circular gravel calculators. */
+/** Shared material list, reused by the rectangular and circular gravel calculators. */
 export const GRAVEL_TYPE_OPTIONS: SelectOption[] = [
-  { value: "common", label: "Common gravel — 105 lb/ft³", data: { density: 1680 } },
-  { value: "pea", label: "Pea gravel — 96 lb/ft³", data: { density: 1540 } },
-  { value: "57", label: "Crushed stone #57 — 100 lb/ft³", data: { density: 1600 } },
-  { value: "crusher", label: "Crusher run (compacted) — 140 lb/ft³", data: { density: 2240 } },
-  { value: "river", label: "River rock — 100 lb/ft³", data: { density: 1600 } },
-  { value: "bank", label: "Bank run mix — 112 lb/ft³", data: { density: 1800 } },
+  { value: "common", label: "Common gravel (105 lb/ft³)", data: { density: 1680 } },
+  { value: "pea", label: "Pea gravel (96 lb/ft³)", data: { density: 1540 } },
+  { value: "57", label: "Crushed stone #57 (100 lb/ft³)", data: { density: 1600 } },
+  { value: "crusher", label: "Crusher run, compacted (140 lb/ft³)", data: { density: 2240 } },
+  { value: "river", label: "River rock (100 lb/ft³)", data: { density: 1600 } },
+  { value: "bank", label: "Bank run mix (112 lb/ft³)", data: { density: 1800 } },
 ];
 
 /** General gravel calculator: area × depth × type density → tons + yards. */
@@ -17,7 +17,7 @@ export const gravelCalculator = defineCalculator({
   id: "gravel-calculator",
   name: "Gravel Calculator",
   description:
-    "Tons and cubic yards for any gravel or crushed stone type. Pick the material — the right density is applied automatically.",
+    "Tons and cubic yards for any gravel or crushed stone type. Pick the material and the right density is applied automatically.",
   embedPath: "/gravel/gravel-calculator/",
   fields: [
     {
@@ -66,9 +66,9 @@ export const gravelCalculator = defineCalculator({
       label: "Waste / settling allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — decorative, contained beds" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — soft ground, first lift sinks in" },
+        { value: "5", label: "5%: decorative, contained beds" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: soft ground, first lift sinks in" },
       ],
       defaultValue: "10",
     },
@@ -91,7 +91,7 @@ export const gravelCalculator = defineCalculator({
         unit: "US tons",
         precision: 2,
         primary: true,
-        note: "Suppliers sell by the ton or the yard — this line and the next cover both.",
+        note: "Suppliers sell by the ton or the yard, so this line and the next cover both.",
       },
       { id: "yd3", label: "Volume", value: fromBase(volume, "yd3"), unit: "yd³", precision: 2 },
       { id: "tonnes", label: "Metric tonnes", value: kg / 1000, unit: "t", precision: 2 },

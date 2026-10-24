@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { DensityTable } from "@/components/tables/density-table";
@@ -26,9 +27,9 @@ import {
 } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete Density Chart — Unit Weights (kg/m³, lb/ft³)";
+const title = "Concrete Density: 2,400 kg/m³ (150 lb/ft³) Chart";
 const description =
-  "Unit weights for every concrete type — normal, reinforced, lightweight, heavyweight — plus ingredient densities for batching, in metric and imperial.";
+  "Reinforced concrete weighs 2,400 kg/m³ (150 lb/ft³) and plain concrete 2,300 kg/m³ (145 lb/ft³). Chart for 7 concrete types, ingredients and the formula.";
 const path = CONCRETE.density;
 const author = getAuthor("materials-team");
 
@@ -38,6 +39,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
@@ -47,19 +49,29 @@ const faqItems: FaqItem[] = [
       "Normal-weight concrete is 2,300–2,400 kg/m³ (145–150 lb/ft³). Design codes use 145 lb/ft³ for plain and 150 lb/ft³ for reinforced concrete (ACI 318); IS 456 uses 24 kN/m³ ≈ 2,400 kg/m³ for RCC.",
   },
   {
-    question: "How much does a cubic yard of concrete weigh?",
+    question: "How many tons is a yard of concrete?",
     answer:
-      "About 4,050 lb — just over two US tons. A cubic meter weighs about 2,400 kg. A full 10-yard mixer truck therefore carries over 40,000 lb of concrete alone, which is why trucks stay off finished driveways and septic fields.",
+      "About 2 US tons. A cubic yard of normal-weight concrete weighs roughly 4,050 lb, just over two short tons. A cubic meter weighs about 2,400 kg. A full 10-yard mixer truck therefore carries over 40,000 lb of concrete alone, which is why trucks stay off finished driveways and septic fields.",
   },
   {
     question: "Is wet concrete heavier than dry?",
     answer:
-      "Slightly — fresh concrete carries mix water that later evaporates or binds chemically, so it weighs roughly 50–100 kg/m³ more than the cured slab. For formwork design you use the wet (fluid) weight; for structural dead load, the cured weight.",
+      "Yes, slightly. Fresh concrete carries mix water that later evaporates or binds chemically, so it weighs roughly 50–100 kg/m³ more than the cured slab. For formwork design you use the wet (fluid) weight; for structural dead load, the cured weight.",
   },
   {
     question: "Why does lightweight concrete exist?",
     answer:
-      "Replacing gravel with expanded shale or clay drops density to ~1,750 kg/m³ while keeping structural strength (ASTM C330). On a high-rise floor slab, that 25% dead-load reduction cascades into smaller beams, columns and footings — worth the higher material price.",
+      "Lightweight concrete cuts dead load. Replacing gravel with expanded shale or clay drops density to about 1,750 kg/m³ while keeping structural strength (ASTM C330). On a high-rise floor slab, that 25% dead-load reduction cascades into smaller beams, columns and footings, which is worth the higher material price.",
+  },
+  {
+    question: "What is the unit weight of concrete in kN/m³?",
+    answer:
+      "Reinforced concrete has a unit weight of about 24 kN/m³, the value IS 456 uses for RCC dead loads. Plain concrete at 2,300 kg/m³ works out to about 22.6 kN/m³ (2,300 × 9.81 ÷ 1,000).",
+  },
+  {
+    question: "What is the density of cement?",
+    answer:
+      "Loose bulk Portland cement has a density of about 1,440 kg/m³ (90 lb/ft³). That is why a 94 lb US bag holds roughly one cubic foot. It is far lighter than finished concrete because the bulk powder is full of air.",
   },
   {
     question: "What concrete is used for radiation shielding?",
@@ -69,7 +81,7 @@ const faqItems: FaqItem[] = [
 ];
 
 const toc = tocFromTitles(
-  "Concrete types compared",
+  "Density of concrete by type",
   "Density of concrete ingredients",
   "Density in the volume-to-weight formula",
   "Which density should you design with?",
@@ -85,6 +97,7 @@ export default function DensityChartPage() {
           path,
           category: "Concrete",
           datePublished: "2026-07-15",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -97,7 +110,7 @@ export default function DensityChartPage() {
               eyebrow="Concrete · Reference Chart"
               variant="compact"
               title="Concrete density chart"
-              description="Every unit weight you need for estimating, batching and load calculations — one page, both unit systems, values consistent with PCA and ACI."
+              description="Every unit weight you need for estimating, batching and load calculations: one page, both unit systems, values consistent with PCA and ACI."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -119,7 +132,18 @@ export default function DensityChartPage() {
           />
         }
       >
-        <Section title="Concrete types compared">
+        <QuickAnswer
+          question="What is the density of concrete?"
+          answer="Normal-weight reinforced concrete has a density of about 2,400 kg/m³ (150 lb/ft³, or 24 kN/m³). Plain, unreinforced concrete is about 2,300 kg/m³ (145 lb/ft³), and fresh wet concrete runs slightly heavier at about 2,450 kg/m³. A cubic yard of cured concrete weighs roughly 4,050 lb, just over two US tons."
+          ruleOfThumb="Use 2,400 kg/m³ (150 lb/ft³) unless a mix design sheet says otherwise."
+          formula="Weight = Volume × Density"
+        />
+
+        <Section title="Density of concrete by type">
+          <p className="text-muted-foreground">
+            Normal-weight concrete sits at 2,300–2,400 kg/m³. Lightweight mixes drop as low as
+            600 kg/m³ and heavyweight shielding concrete reaches about 3,800 kg/m³.
+          </p>
           <DensityTable
             rows={concreteDensities}
             highlight="Normal-weight concrete (reinforced)"
@@ -140,17 +164,21 @@ export default function DensityChartPage() {
         >
           <DensityTable
             rows={ingredientDensities}
-            caption="Loose bulk densities — compacted and saturated states differ. Wet sand bulks up to 25% by volume (IS 2386); batch by weight where accuracy matters."
+            caption="Loose bulk densities. Compacted and saturated states differ. Wet sand bulks up to 25% by volume (IS 2386); batch by weight where accuracy matters."
           />
           <WarningBlock title="Sand bulking will wreck volume batching">
             Damp sand occupies up to a quarter more volume than the same mass of dry sand. A
             1:2:4 mix batched with damp-sand buckets is silently cement-rich on sand and
-            gravel-poor — one reason site-mixed strength varies so much. Weigh batching (or at
+            gravel-poor, which is one reason site-mixed strength varies so much. Weigh batching (or at
             least a bulking correction) fixes it; details in the mix ratio guide.
           </WarningBlock>
         </Section>
 
         <Section title="Density in the volume-to-weight formula">
+          <p className="text-muted-foreground">
+            Multiply the pour volume by the density to get its weight: 1 m³ of reinforced
+            concrete weighs about 2,400 kg.
+          </p>
           <FormulaBlock
             formula="Weight = Volume × Density"
             variables={[
@@ -170,7 +198,7 @@ export default function DensityChartPage() {
         <Section title="Which density should you design with?">
           <p className="text-muted-foreground">
             For estimating deliveries and dead loads on ordinary work, use 2,400 kg/m³ (150
-            lb/ft³) — the reinforced normal-weight value that ACI 318 and IS 456 both build
+            lb/ft³). That is the reinforced normal-weight value that ACI 318 and IS 456 both build
             their load tables around. Use the plain-concrete 2,300 figure only for unreinforced
             mass pours, and switch to measured unit weight (ASTM C138) whenever a mix design
             sheet is available, because specialty aggregates move the number more than any
@@ -204,7 +232,7 @@ export default function DensityChartPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[REFS.pca, REFS.aci318, REFS.is456]} />
       </ArticleShell>

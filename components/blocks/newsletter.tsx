@@ -14,7 +14,7 @@ interface NewsletterProps {
 
 /**
  * Newsletter signup. Wire the onSubmit to a real provider (ConvertKit,
- * Mailchimp, Resend) later — the component validates and gives UI feedback now.
+ * Mailchimp, Resend) later: the component validates and gives UI feedback now.
  */
 export function Newsletter({
   title = "Get new calculators first",
@@ -46,7 +46,7 @@ export function Newsletter({
         {status === "done" ? (
           <p className="mt-5 flex items-center justify-center gap-2 text-sm font-medium text-success">
             <CircleCheck className="size-4" />
-            You&apos;re on the list — thanks for subscribing!
+            You&apos;re on the list. Thanks for subscribing!
           </p>
         ) : (
           <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-2 sm:flex-row">

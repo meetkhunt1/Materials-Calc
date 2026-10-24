@@ -46,7 +46,7 @@ export interface CalculatorField {
   max?: number;
   step?: number;
   required?: boolean;
-  /** Unit category — renders a unit dropdown next to the input */
+  /** Unit category: renders a unit dropdown next to the input */
   unitCategory?: Exclude<UnitCategory, "none">;
   /** Restrict/order the selectable units; defaults to all units of the category */
   units?: string[];
@@ -81,7 +81,7 @@ export interface CalculatorPreset {
   id: string;
   label: string;
   description?: string;
-  /** Field values to apply — same shape as CalculatorValues, so units come along with each preset. */
+  /** Field values to apply: same shape as CalculatorValues, so units come along with each preset. */
   values: CalculatorValues;
 }
 
@@ -101,7 +101,7 @@ export interface CalculatorDefinition {
   /** One-click project-size shortcuts rendered above the field grid */
   presets?: CalculatorPreset[];
   /**
-   * Canonical page path (e.g. "/concrete/concrete-calculator/") — set only when
+   * Canonical page path (e.g. "/concrete/concrete-calculator/"): set only when
    * a matching route exists under app/embed/{id}/. Presence of this field is what
    * makes the "Embed" action appear in <CalculatorActions>.
    */
@@ -178,7 +178,7 @@ export interface DensityRow {
   material: string;
   /** kg per cubic meter */
   kgPerM3: number;
-  /** lb per cubic foot — derived automatically if omitted */
+  /** lb per cubic foot: derived automatically if omitted */
   lbPerFt3?: number;
   note?: string;
 }
@@ -233,6 +233,6 @@ export interface CategoryInfo {
   name: string;
   description: string;
   icon?: LucideIcon;
-  /** Tailwind-safe accent class overrides are avoided — single brand accent */
+  /** Tailwind-safe accent class overrides are avoided: single brand accent */
   comingSoon?: boolean;
 }

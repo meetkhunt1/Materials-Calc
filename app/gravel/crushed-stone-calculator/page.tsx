@@ -24,9 +24,9 @@ import { GRAVEL, stoneGuideLinks, gravelCalculatorLinks, referenceLinks, pickLin
 import { CONCRETE, calculatorLinks as concreteCalcs, pickLinks as pickConcrete } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Crushed Stone Calculator — Tons by Size (#57, Crusher Run & More)";
+const title = "Crushed Stone Calculator: #57 Stone in Tons";
 const description =
-  "Crushed stone tonnage from finished dimensions, with loose and compacted densities per size. Shows the loose volume arriving on the truck.";
+  "Compacted #57 stone weighs about 109 lb/ft³, so 100 ft² at 4 in deep takes about 2 tons. Calculate tons and loose truck volume for #57, crusher run and more.";
 const path = GRAVEL.crushed;
 const author = getAuthor("materials-team");
 
@@ -36,38 +36,49 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How many tons of #57 stone do I need per 100 square feet?",
     answer:
-      "At 4 inches deep in place: 100 × 0.333 × 109 lb/ft³ (compacted) ÷ 2,000 ≈ 1.8 tons. Add 10% and call it 2 tons per 100 ft². At 2 inches, half that.",
+      "About 2 tons at 4 inches deep. In place: 100 × 0.333 × 109 lb/ft³ (compacted) ÷ 2,000 ≈ 1.8 tons. Add 10% and call it 2 tons per 100 ft². At 2 inches, half that.",
   },
   {
     question: "What's the difference between #57 and crusher run?",
     answer:
-      "#57 is clean stone — uniform 3/4–1 in pieces with no fines, so water flows through it and it stays permeable. Crusher run is stone plus dust down to powder; the fines lock together under compaction into a semi-solid base. Drainage jobs want #57; load-bearing bases want crusher run.",
+      "#57 is clean stone with no fines; crusher run includes them. #57 is uniform 3/4–1 in pieces, so water flows through it and it stays permeable. Crusher run is stone plus dust down to powder; the fines lock together under compaction into a semi-solid base. Drainage jobs want #57; load-bearing bases want crusher run.",
+  },
+  {
+    question: "Is crushed gravel the same as crushed stone?",
+    answer:
+      "Nearly. Crushed gravel is river or pit gravel run through a crusher, so it has some fractured faces, while crushed stone is quarried rock with all faces fractured. Both lock together far better than rounded gravel, and this calculator handles either with the #57 or crusher run density.",
+  },
+  {
+    question: "Does this work as a 3/4 crushed rock calculator?",
+    answer:
+      "Yes. #57 stone is the standard 3/4–1 in crushed rock, so select #57 and enter your dimensions. At 3 inches deep, 3/4 in crushed rock takes about 1.5 tons per 100 ft² including 10% waste.",
   },
   {
     question: "Why does my delivery look bigger than the calculation?",
     answer:
-      "You calculated in-place (compacted) volume; the truck delivers loose volume, which runs 10–15% larger for the same weight. The calculator's 'loose volume' line predicts the pile size so the delivery doesn't alarm you.",
+      "Because loose stone takes up more room. You calculated in-place (compacted) volume; the truck delivers loose volume, which runs 10–15% larger for the same weight. The calculator's 'loose volume' line predicts the pile size so the delivery doesn't alarm you.",
   },
   {
     question: "Can I compact crushed stone myself?",
     answer:
-      "For paths and pads, a rented plate compactor (about $90/day) does the job in 4-inch lifts with two to four passes per lift. Driveways and structural bases are better served by a ride-on or trench roller. Never place a full 8-inch depth and compact once — it only densifies the top 4 inches.",
+      "Yes, for paths and pads. A rented plate compactor (about $90/day) does the job in 4-inch lifts with two to four passes per lift. Driveways and structural bases are better served by a ride-on or trench roller. Never place a full 8-inch depth and compact once, because it only densifies the top 4 inches.",
   },
   {
     question: "Which stone goes under concrete slabs?",
     answer:
-      "Most specs call for 4 inches of compacted #57 or crusher run as a capillary break and uniform bearing layer. Check your plans — then size the layer with this calculator and the slab above it with the concrete slab calculator.",
+      "4 inches of compacted #57 or crusher run, in most specs, as a capillary break and uniform bearing layer. Check your plans, then size the layer with this calculator and the slab above it with the concrete slab calculator.",
   },
 ];
 
 const toc = tocFromTitles(
-  "Loose vs compacted: what you're really ordering",
+  "How much bigger is loose stone than compacted?",
   "Worked example: French drain",
   "Compaction rules that protect the estimate",
 );
@@ -77,7 +88,7 @@ export default function CrushedStoneCalculatorPage() {
     <>
       <JsonLd
         data={[
-          webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
+          webPageSchema({ title, description, path, datePublished: "2026-07-15", dateModified: "2026-10-24" }),
           calculatorSchema({ name: "Crushed Stone Calculator", description, path }),
         ]}
       />
@@ -89,7 +100,7 @@ export default function CrushedStoneCalculatorPage() {
               eyebrow="Gravel · Crushed Stone"
               variant="standard"
               title="Crushed Stone Calculator"
-              description="Angular, quarried and self-locking — crushed stone is the structural member of the aggregate family. Enter finished dimensions; the tool handles the loose-to-compacted arithmetic."
+              description="Angular, quarried and self-locking, crushed stone is the structural member of the aggregate family. Enter finished dimensions and the tool handles the loose-to-compacted arithmetic."
             >
               <AuthorBox author={author} datePublished="2026-07-15" variant="inline" />
             </Hero>
@@ -117,9 +128,9 @@ export default function CrushedStoneCalculatorPage() {
         <InlineToc items={toc} />
 
         <QuickAnswer
-          question="How many tons of #57 crushed stone do I need?"
-          answer="A 50 ft French drain (1 ft wide × 12 in deep) needs about 3.0 tons of #57 stone with a 10% waste allowance. A 20×10 ft driveway base at 6 in of crusher run needs about 7.7 tons. Tonnage scales directly with area and depth."
-          ruleOfThumb="#57 stone weighs about 109 lb/ft³ compacted — roughly 1.8 tons per 100 ft² at 4 in deep."
+          question="How much crushed stone do I need?"
+          answer="Multiply area by depth in feet, then by the stone's compacted density (about 109 lb/ft³ for #57 and 140 lb/ft³ for crusher run), and divide by 2,000 for tons. At 4 inches deep, #57 stone takes about 2 tons per 100 ft² with 10% waste, and a 50 ft French drain (1 × 1 ft) takes about 3 tons."
+          ruleOfThumb="#57 stone weighs about 109 lb/ft³ compacted, roughly 1.8 tons per 100 ft² at 4 in deep before waste."
           formula="Tons = Area × depth × compacted density ÷ 2,000 × (1 + waste)"
         />
 
@@ -133,21 +144,25 @@ export default function CrushedStoneCalculatorPage() {
               ["Driveway base", "20 ft × 10 ft × 6 in", "Crusher run", "7.69 tons", "4.56 yd³"],
               ["Driveway base, long run", "50 ft × 12 ft × 6 in", "Crusher run", "23.07 tons", "13.69 yd³"],
             ]}
-            caption="10% waste included. 'Loose volume' is what arrives on the truck — always larger than the finished in-place volume, since compaction densifies the stone. Cost varies by stone type and region; see the crushed stone cost guide."
+            caption="10% waste included. 'Loose volume' is what arrives on the truck. It is always larger than the finished in-place volume, since compaction densifies the stone. Cost varies by stone type and region; see the crushed stone cost guide."
           />
         </Section>
 
-        <Section title="Loose vs compacted: what you're really ordering">
+        <Section title="How much bigger is loose stone than compacted?">
+          <p className="text-muted-foreground">
+            Loose crushed stone takes up 10–15% more volume than the same weight compacted,
+            so order by tons and expect a bigger pile than the finished layer.
+          </p>
           <FormulaBlock
             formula="Tons = in-place volume × compacted density ÷ 2,000"
             variables={[
               { symbol: "in-place volume", meaning: "finished dimensions after compaction" },
               { symbol: "compacted density", meaning: "≈109 lb/ft³ #57 · 140 crusher run" },
             ]}
-            note="Weight is conserved through compaction — order the tons, and expect the loose pile to be 10–15% bigger than the finished layer."
+            note="Weight is conserved through compaction, so order the tons, and expect the loose pile to be 10–15% bigger than the finished layer."
           />
           <p className="text-muted-foreground">
-            This is the concept that separates clean estimates from short ones: a compacted
+            This is the concept that separates clean estimates from short ones. A compacted
             4-inch base consumes about 4.5 inches of delivered loose stone. The calculator
             reports both volumes so the takeoff, the delivery ticket, and the finished grade
             all reconcile. Densities by size live in the{" "}
@@ -176,9 +191,13 @@ export default function CrushedStoneCalculatorPage() {
         </Section>
 
         <Section title="Compaction rules that protect the estimate">
+          <p className="text-muted-foreground">
+            Compact in thin lifts, compact every lift, and use the right stone for the
+            job; break any of the three and the base settles.
+          </p>
           <WarningBlock title="Three rules, no exceptions">
             <p>
-              Compact in lifts of 4 in or less — a plate compactor only densifies the top few
+              Compact in lifts of 4 in or less, because a plate compactor only densifies the top few
               inches. Compact every lift before placing the next, or the base stays soft at
               depth and settles under load. And keep clean stone and crusher run in their
               lanes: clean stone under drains and slabs-on-grade, crusher run under anything

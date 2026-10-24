@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
@@ -21,9 +22,9 @@ import { GRAVEL, drivewayGuideLinks, pickLinks, GREFS } from "@/content/gravel/l
 import type { FaqItem } from "@/types";
 
 const slug = "driveway-gravel-base-layers";
-const title = "Driveway Gravel Base Layers — The Three-Layer System";
+const title = "Driveway Gravel Layers: #3, #57 and Crusher Run";
 const description =
-  "How a gravel driveway is really built: 4 in of #3 stone on the bottom, 3–4 in of #57 in the middle, 2–3 in of crusher run on top — plus geotextile fabric, why the sizes step down, and per-layer tonnage for a real drive.";
+  "A gravel driveway has three layers: 4 in of #3 stone, 3–4 in of #57 and 2–3 in of crusher run, with fabric on soft soil. See what each does and tons per layer.";
 const path = GRAVEL.drivewayLayers;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
@@ -40,44 +41,45 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "What are the layers of a gravel driveway?",
     answer:
-      "Bottom to top: 4 inches of #3 crushed stone (roughly 1–2 in rocks) as the load-bearing base, 3–4 inches of #57 stone (about 3/4 in) as the middle course, and 2–3 inches of crusher run — or a decorative stone like pea gravel — as the driving surface. On soft or clay soil, a woven geotextile fabric goes under everything.",
+      "Bottom to top: 4 inches of #3 crushed stone (roughly 1–2 in rocks) as the load-bearing base, 3–4 inches of #57 stone (about 3/4 in) as the middle course, and 2–3 inches of crusher run (or a decorative stone like pea gravel) as the driving surface. On soft or clay soil, a woven geotextile fabric goes under everything.",
   },
   {
     question: "Why does a gravel driveway need three layers?",
     answer:
-      "Each layer does a different job. The big #3 stones bridge soft spots and spread wheel loads into the subgrade; the mid-size #57 fills the voids above them and creates a stable, free-draining platform; and the fine crusher run surface locks tight under compaction so tires get a smooth, bound running course. One stone size cannot do all three jobs at once.",
+      "Because each layer does a different job. The big #3 stones bridge soft spots and spread wheel loads into the subgrade; the mid-size #57 fills the voids above them and creates a stable, free-draining platform; and the fine crusher run surface locks tight under compaction so tires get a smooth, bound running course. One stone size cannot do all three jobs at once.",
   },
   {
     question: "Can I skip the base layers and just use crusher run?",
     answer:
-      "On firm, well-drained soil a full-depth crusher run drive (6–8 in placed in compacted lifts) can work. On anything soft, wet or clay-rich, skipping the open-graded base layers means the fines in the crusher run mix with the soil, drainage stops, and the drive ruts within a season or two. The layer system exists for exactly those sites.",
+      "Only on firm, well-drained soil, where a full-depth crusher run drive (6–8 in placed in compacted lifts) can work. On anything soft, wet or clay-rich, skipping the open-graded base layers means the fines in the crusher run mix with the soil, drainage stops, and the drive ruts within a season or two. The layer system exists for exactly those sites.",
   },
   {
     question: "Do the layers go in all at once?",
     answer:
-      "No — each layer is spread and compacted separately before the next arrives, ideally as separate deliveries a day or more apart. A plate compactor or roller only densifies the top 3–4 inches of loose stone, so a single 10 in dump compacted from the top leaves a loose core that ruts from the inside out.",
+      "No. Each layer is spread and compacted separately before the next arrives, ideally as separate deliveries a day or more apart. A plate compactor or roller only densifies the top 3–4 inches of loose stone, so a single 10 in dump compacted from the top leaves a loose core that ruts from the inside out.",
   },
   {
     question: "Is geotextile fabric really necessary?",
     answer:
-      "On clay, silt or any soil that smears when wet: yes. The fabric is a separator, not a weed barrier — it stops the #3 base from punching down into the soil and stops soil fines from pumping up into the stone. At $0.30–0.50 per square foot it is the cheapest insurance in the whole build; replacing stone swallowed by mud costs far more.",
+      "On clay, silt or any soil that smears when wet: yes. The fabric is a separator, not a weed barrier: it stops the #3 base from punching down into the soil and stops soil fines from pumping up into the stone. At $0.30–0.50 per square foot it is the cheapest insurance in the whole build; replacing stone swallowed by mud costs far more.",
   },
   {
     question: "How thick should each driveway layer be?",
     answer:
-      "The working standard for a new residential drive: 4 in of #3 base, 3–4 in of #57 middle, and 2–3 in of crusher run surface — 9–11 inches total compacted. Under regular truck traffic, thicken the base course rather than the surface; depth at the bottom is what spreads heavy wheel loads.",
+      "9–11 inches total compacted for a new residential drive: 4 in of #3 base, 3–4 in of #57 middle, and 2–3 in of crusher run surface. Under regular truck traffic, thicken the base course rather than the surface; depth at the bottom is what spreads heavy wheel loads.",
   },
 ];
 
 const toc = tocFromTitles(
   "The three-layer system, bottom to top",
-  "What each layer actually does",
+  "What does each driveway layer do?",
   "Geotextile: the layer under the layers",
   "Per-layer tonnage: a 400 ft² drive",
   "Sequencing the build",
@@ -93,6 +95,7 @@ export default function DrivewayGravelBaseLayersPage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -105,7 +108,7 @@ export default function DrivewayGravelBaseLayersPage() {
               eyebrow="Gravel · Driveways"
               variant={heroVariant}
               title="Driveway gravel base layers"
-              description="A gravel driveway is a sandwich, not a pile. Big stone on the bottom, medium stone in the middle, fine stone on top — here is why the sizes step down and how many tons each course takes."
+              description="A gravel driveway is a sandwich, not a pile. Big stone on the bottom, medium stone in the middle, fine stone on top. Here is why the sizes step down and how many tons each course takes."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -118,11 +121,17 @@ export default function DrivewayGravelBaseLayersPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="What are the layers of a gravel driveway?"
+          answer="A gravel driveway has three layers, bottom to top: 4 inches of #3 crushed stone (1–2 in) as the load-bearing base, 3–4 inches of #57 stone (about 3/4 in) as the middle course, and 2–3 inches of crusher run as the compacted driving surface. On clay or soft soil, woven geotextile fabric goes under everything."
+          ruleOfThumb="Big stone on the bottom, fine stone on top; compact each layer before the next."
+        />
+
         <Section title="The three-layer system, bottom to top">
           <p className="text-muted-foreground">
-            The layer system comes straight from gravel-road engineering: stone sizes
+            Stone sizes step down from bottom to top: #3, then #57, then crusher run. The layer system comes straight from gravel-road engineering: stone sizes
             step down from bottom to top so that each course fills and confines the one
-            below it. Read the table from the bottom row up — that is the order the
+            below it. Read the table from the bottom row up: that is the order the
             trucks arrive in.
           </p>
           <CoverageTable
@@ -131,7 +140,7 @@ export default function DrivewayGravelBaseLayersPage() {
               {
                 label: "Surface (top)",
                 spec: "2–3 in",
-                coverage: "Crusher run — or pea/decorative stone over fabric",
+                coverage: "Crusher run, or pea/decorative stone over fabric",
                 note: "The running course tires actually touch",
               },
               {
@@ -148,7 +157,7 @@ export default function DrivewayGravelBaseLayersPage() {
               },
               {
                 label: "Geotextile fabric",
-                spec: "—",
+                spec: "Under all layers",
                 coverage: "Woven separation fabric on the subgrade",
                 note: "Required on clay or soft soil",
               },
@@ -156,7 +165,7 @@ export default function DrivewayGravelBaseLayersPage() {
             caption="The standard three-layer residential build: 9–11 in total compacted depth. Each layer is compacted before the next goes down."
           />
           <p className="text-muted-foreground">
-            Total depth by site condition — firm soil, clay, truck traffic — is covered
+            Total depth by site condition (firm soil, clay, truck traffic) is covered
             in the{" "}
             <a href={GRAVEL.drivewayDepth} className="font-medium text-primary hover:underline">
               driveway gravel depth guide
@@ -165,9 +174,10 @@ export default function DrivewayGravelBaseLayersPage() {
           </p>
         </Section>
 
-        <Section title="What each layer actually does">
+        <Section title="What does each driveway layer do?">
           <p className="text-muted-foreground">
-            The #3 base course is the foundation. Its fist-size angular stones interlock
+            The base carries the load, the middle course drains and fills voids, and the
+            surface sheds water and gives tires a firm crust. The #3 base course is the foundation. Its fist-size angular stones interlock
             into a rigid mat that bridges soft pockets and spreads a 1,000 lb wheel load
             across several square feet of subgrade instead of one tire print. Large
             stone also leaves large voids, so water that gets in drains straight down
@@ -178,12 +188,12 @@ export default function DrivewayGravelBaseLayersPage() {
             to rattle down into the surface voids of the #3 layer and choke them, but
             big enough to stay open-graded and free-draining themselves. Skip it and the
             fine surface stone simply disappears into the base voids over the first
-            year — you paid for crusher run and bought filler.
+            year: you paid for crusher run and bought filler.
           </p>
           <p className="text-muted-foreground">
             The crusher run surface is the wear course. Because it is crushed stone
             with fines all the way down to dust, it compacts into a tight, almost
-            pavement-like crust that sheds water sideways to the edges — which is why
+            pavement-like crust that sheds water sideways to the edges, which is why
             the surface, not the base, carries the 2–3% crown. Where a decorative
             surface like pea gravel is wanted, it replaces only this top course, kept to
             2 in so tires still reach firm material. The{" "}
@@ -194,7 +204,7 @@ export default function DrivewayGravelBaseLayersPage() {
           </p>
           <InfoBlock title="Angular stone or nothing">
             Every structural layer must be crushed, angular stone. Rounded river gravel
-            and pea gravel act like ball bearings under load — they never interlock, no
+            and pea gravel act like ball bearings under load: they never interlock, no
             matter how hard you compact them. Rounded stone belongs only in the top
             decorative course, and only over a compacted crushed-stone structure.
           </InfoBlock>
@@ -202,10 +212,11 @@ export default function DrivewayGravelBaseLayersPage() {
 
         <Section title="Geotextile: the layer under the layers">
           <p className="text-muted-foreground">
-            On clay or soft ground, a woven geotextile goes down before any stone. Its
+            On clay or soft ground, a woven geotextile goes down before any stone, at
+            $0.30–0.50 per square foot. Its
             job is separation: under repeated wheel loads, wet subgrade soil pumps
             upward into clean stone while the stone punches downward into the soil.
-            Within a few seasons an unseparated base is 30–40% mud by volume — it stops
+            Within a few seasons an unseparated base is 30–40% mud by volume. It stops
             draining, stops spreading load, and the drive ruts as if the base were never
             built. The fabric keeps the two materials apart forever, at $0.30–0.50 per
             square foot.
@@ -244,9 +255,9 @@ export default function DrivewayGravelBaseLayersPage() {
 
         <Section title="Sequencing the build">
           <p className="text-muted-foreground">
-            Order the layers as separate deliveries and compact each one — four to six
-            passes with a plate compactor or roller — before the next truck arrives.
-            Stone sizes must never be blended in place: a mixed pile compacts
+            Order the layers as separate deliveries and compact each one (four to six
+            passes with a plate compactor or roller) before the next truck arrives.
+            Stone sizes must never be blended in place, because a mixed pile compacts
             unpredictably and drains poorly. The full dig-to-crown sequence, including
             grading and edging, is walked step by step in the{" "}
             <a href={GRAVEL.drivewayInstall} className="font-medium text-primary hover:underline">

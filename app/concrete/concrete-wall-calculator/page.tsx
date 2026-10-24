@@ -23,9 +23,9 @@ import { getAuthor } from "@/data/authors";
 import { CONCRETE, guideLinks, calculatorLinks, pickLinks, REFS } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete Wall Calculator — Foundation & Retaining Walls";
+const title = "Concrete Wall Calculator: Foundation Wall Yards";
 const description =
-  "Concrete volume for cast-in-place walls with openings subtracted. Covers formwork pressure limits, lift heights and a basement wall worked example.";
+  "An 8-inch poured concrete wall uses about 1 cubic yard per 40 ft² of wall face. Subtract doors and windows to get yards and weight for foundation walls.";
 const path = CONCRETE.wall;
 const author = getAuthor("materials-team");
 
@@ -35,23 +35,24 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much concrete is in an 8-inch foundation wall?",
     answer:
-      "An 8 in wall holds 0.667 ft³ per square foot of wall face — almost exactly 1 yd³ per 40 ft² of wall. A typical 8 ft tall, 40 ft long wall face (320 ft²) therefore needs about 8 yd³ before waste.",
+      "About 1 cubic yard per 40 ft² of wall face. An 8 in wall holds 0.667 ft³ per square foot of wall face, which works out almost exactly to 1 yd³ per 40 ft². A typical 8 ft tall, 40 ft long wall face (320 ft²) therefore needs about 8 yd³ before waste.",
   },
   {
     question: "Should I subtract window and door openings?",
     answer:
-      "Yes, when they're large. A single basement window buck (say 32 × 16 in ≈ 3.5 ft²) is noise inside the waste allowance, but a walkout door plus three windows in one wall can exceed 60 ft² — nearly 1.5 yd³ in an 8 in wall. The calculator's openings field handles this.",
+      "Yes, when they're large. A single basement window buck (say 32 × 16 in ≈ 3.5 ft²) is noise inside the waste allowance, but a walkout door plus three windows in one wall can exceed 60 ft², nearly 1.5 yd³ in an 8 in wall. The calculator's openings field handles this.",
   },
   {
     question: "How fast can I fill a wall form?",
     answer:
-      "Form pressure is governed by pour rate and concrete temperature (ACI 347). Standard residential panel forms are commonly rated around 600–800 psf, which at 70°F works out to roughly 4–5 ft of placement per hour. Filling a full-height 8 ft wall in one fast pass can blow out forms — pour in lifts around the wall instead.",
+      "About 4–5 ft of height per hour at 70°F with standard residential forms. Form pressure is governed by pour rate and concrete temperature (ACI 347). Standard residential panel forms are commonly rated around 600–800 psf, which at 70°F works out to roughly 4–5 ft of placement per hour. Filling a full-height 8 ft wall in one fast pass can blow out forms, so pour in lifts around the wall instead.",
   },
   {
     question: "What slump should wall concrete be?",
@@ -61,7 +62,12 @@ const faqItems: FaqItem[] = [
   {
     question: "Is an ICF wall calculated the same way?",
     answer:
-      "The concrete core is — length × height × core thickness (typically 6 or 8 in) minus openings. The foam form adds no concrete. ICF suppliers publish per-form volumes; they agree with this calculator to within a percent or two.",
+      "Yes, for the concrete core: length × height × core thickness (typically 6 or 8 in) minus openings. The foam form adds no concrete. ICF suppliers publish per-form volumes; they agree with this calculator to within a percent or two.",
+  },
+  {
+    question: "How do I calculate concrete for a retaining wall?",
+    answer:
+      "The same way as any wall: length × height × thickness, divided by 27 for cubic yards, plus 10% waste. A poured retaining wall usually sits on its own footing, which is a separate volume to run through the footing calculator and add to the order.",
   },
 ];
 
@@ -77,7 +83,7 @@ export default function WallCalculatorPage() {
     <>
       <JsonLd
         data={[
-          webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
+          webPageSchema({ title, description, path, datePublished: "2026-07-15", dateModified: "2026-10-24" }),
           calculatorSchema({ name: "Concrete Wall Calculator", description, path }),
         ]}
       />
@@ -112,12 +118,16 @@ export default function WallCalculatorPage() {
       >
         <QuickAnswer
           question="How much concrete do I need for a foundation wall?"
-          answer="A 20 ft run of 8-inch foundation wall, 8 ft high, needs about 4.35 yd³ of concrete with a 10% waste allowance — roughly 8 tonnes. Openings like windows and doors subtract directly from this volume before the waste factor is applied."
+          answer="An 8-inch poured concrete wall needs about 1 cubic yard of concrete per 40 ft² of wall face before waste. A 20 ft run of 8 ft high foundation wall therefore needs about 4.35 yd³ with a 10% waste allowance, roughly 8 tonnes. Subtract window and door openings before applying the waste factor."
           ruleOfThumb="An 8-inch wall uses about 1 cubic yard per 40 ft² of wall face, before waste."
           formula="Order (yd³) = ((Run × Height − Openings) × Thickness ÷ 27) × (1 + waste)"
         />
 
         <Section title="Walls by common run length">
+          <p className="text-muted-foreground">
+            Each 20 ft of 8 ft high, 8-inch wall adds about 4.35 yd³ to the order, waste
+            included.
+          </p>
           <QuickSizeTable
             headers={["Wall run (8 in × 8 ft high)", "Order (yd³)", "Approx. weight", "Est. material cost"]}
             rows={[
@@ -145,7 +155,7 @@ export default function WallCalculatorPage() {
           <p className="text-muted-foreground">
             For a full foundation, run each wall face through the calculator (or sum the
             centerline perimeter and treat it as one long wall). Remember the footing below is
-            a separate volume — the{" "}
+            a separate volume. The{" "}
             <a href={CONCRETE.footing} className="font-medium text-primary hover:underline">
               footing calculator
             </a>{" "}
@@ -163,11 +173,11 @@ export default function WallCalculatorPage() {
               { label: "Net face × thickness", work: "(1,024 − 42.2) × 0.667 = 654.8 ft³" },
               { label: "Add 10%, convert to yards", work: "654.8 × 1.10 ÷ 27 = 26.7 yd³" },
             ]}
-            result="Order 27 yd³ — that's three 9-yard trucks, so sequence them 45 minutes apart."
+            result="Order 27 yd³. That's three 9-yard trucks, so sequence them 45 minutes apart."
           />
           <InfoBlock title="Multi-truck pours need a schedule">
             Each truck holds 8–10 yd³. For pours over one truck, tell the dispatcher the wall
-            layout and ask for staggered arrival — concrete sitting in a drum past 90 minutes
+            layout and ask for staggered arrival. Concrete sitting in a drum past 90 minutes
             (ASTM C94 limit) may be rejected, and a wall poured with an hour gap between trucks
             gets a visible cold joint.
           </InfoBlock>
@@ -177,7 +187,7 @@ export default function WallCalculatorPage() {
           <WarningBlock title="Forms fail sideways, not down">
             <p>
               Fresh concrete is a 150 lb/ft³ fluid. At a full 8 ft height poured quickly, lateral
-              pressure at the form base approaches 1,200 psf — above the rating of common
+              pressure at the form base approaches 1,200 psf, above the rating of common
               residential panels. ACI 347 lets you count on pressure relief as lower lifts
               stiffen: pour 2–4 ft lifts around the whole wall, then come back around. Never
               race the drum; blowouts dump yards of concrete in seconds and are genuinely
@@ -188,7 +198,7 @@ export default function WallCalculatorPage() {
 
         <Section
           title="Concrete per square foot of wall"
-          lead="Yards per 100 ft² of wall face — memorize your thickness and you can estimate standing in the excavation."
+          lead="An 8-inch wall takes 2.47 yd³ per 100 ft² of wall face. Memorize the figure for your thickness and you can estimate standing in the excavation."
         >
           <BarChart
             title="Concrete per 100 ft² of wall face"
@@ -219,7 +229,7 @@ export default function WallCalculatorPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[REFS.aci347, REFS.astmC94, REFS.aci318]} />
       </CalculatorPageShell>

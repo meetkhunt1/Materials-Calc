@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock } from "@/components/blocks/callout";
@@ -30,11 +31,12 @@ import {
 import { CONCRETE } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "How Long Does an Asphalt Driveway Last?";
+const title = "Asphalt Driveway Lifespan: 15–25 Years";
 const description =
-  "An asphalt driveway lasts 15–25 years — 25+ when built on a proper base and maintained, as little as 8 when thin asphalt meets a weak base. The scenarios, the year-by-year decline curve, and the cost-per-year math.";
+  "An asphalt driveway lasts 15–25 years: 25+ with a proper base and upkeep, as little as 8 with a thin lift on a weak base. See the timeline and cost per year.";
 const path = ASPHALT.drivewayLifespan;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -42,18 +44,19 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "What is the average lifespan of an asphalt driveway?",
     answer:
-      "15–25 years is the realistic range for a residential drive built with 3 in of compacted hot mix over a 6 in aggregate base. The spread is not random: construction quality sets the ceiling and maintenance decides whether you reach it. Well-built and maintained drives routinely pass 25 years; thin asphalt on a poor base can fail inside 8.",
+      "The average asphalt driveway lasts 15–25 years, the realistic range for a residential drive built with 3 in of compacted hot mix over a 6 in aggregate base. The spread is not random: construction quality sets the ceiling and maintenance decides whether you reach it. Well-built and maintained drives routinely pass 25 years; thin asphalt on a poor base can fail inside 8.",
   },
   {
     question: "What shortens a driveway's life the most?",
     answer:
-      "Water in the base, by a wide margin. Unfilled cracks let water reach the aggregate layer, where it softens the support and — in freeze climates — expands 9% on every freeze, jacking the cracks wider each winter. Everything else on the villain list (thin lifts, poor compaction, tree roots, heavy trucks) either lets that water in faster or exploits the softness it causes.",
+      "Water in the base shortens driveway life the most, by a wide margin. Unfilled cracks let water reach the aggregate layer, where it softens the support and, in freeze climates, expands 9% on every freeze, jacking the cracks wider each winter. Everything else on the villain list (thin lifts, poor compaction, tree roots, heavy trucks) either lets that water in faster or exploits the softness it causes.",
   },
   {
     question: "Does climate change how long asphalt lasts?",
@@ -63,22 +66,22 @@ const faqItems: FaqItem[] = [
   {
     question: "Can an old driveway be saved with an overlay?",
     answer:
-      "If the base is still sound — no rutting, pumping or widespread alligator cracking — a 2 in overlay effectively resets the clock, adding 10–12 years for roughly half the cost of replacement. If the base has failed, the overlay reprints the old crack pattern within 2–3 years. The year 12–18 assessment window exists to catch driveways while they still qualify.",
+      "Yes, if the base is still sound (no rutting, pumping or widespread alligator cracking): a 2 in overlay effectively resets the clock, adding 10–12 years for roughly half the cost of replacement. If the base has failed, the overlay reprints the old crack pattern within 2–3 years. The year 12–18 assessment window exists to catch driveways while they still qualify.",
   },
   {
     question: "How does asphalt lifespan compare with concrete?",
     answer:
-      "Concrete driveways typically run 25–40 years to asphalt's 15–25, in exchange for 40–60% higher installation cost and expensive repairs when they do crack. Asphalt counters with cheaper resurfacing — a mid-life overlay is routine, while concrete replacement is demolition. In freeze-thaw climates with road salt, the gap narrows considerably.",
+      "Concrete driveways typically run 25–40 years to asphalt's 15–25, in exchange for 40–60% higher installation cost and expensive repairs when they do crack. Asphalt counters with cheaper resurfacing: a mid-life overlay is routine, while concrete replacement is demolition. In freeze-thaw climates with road salt, the gap narrows considerably.",
   },
   {
-    question: "When should I replace instead of repair?",
+    question: "When should I replace an asphalt driveway instead of repairing it?",
     answer:
-      `Replace when the structure, not the surface, has failed: alligator cracking over large areas, ruts deeper than about 1 in, base pumping fines up through cracks, or a surface past 20–25 years that has already had an overlay. At that point patches and sealer are cosmetic — every dollar spent on them is a dollar not saved toward the ${bandRangeShort(BAND_500_1000)} rebuild.`,
+      `Replace when the structure, not the surface, has failed: alligator cracking over large areas, ruts deeper than about 1 in, base pumping fines up through cracks, or a surface past 20–25 years that has already had an overlay. At that point patches and sealer are cosmetic, and every dollar spent on them is a dollar not saved toward the ${bandRangeShort(BAND_500_1000)} rebuild.`,
   },
 ];
 
 const toc = tocFromTitles(
-  "Lifespan by scenario",
+  "How long does an asphalt driveway last?",
   "Maintained vs neglected: the timeline",
   "What actually determines lifespan",
   "Cost per year of ownership",
@@ -94,6 +97,7 @@ export default function DrivewayLifespanPage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -106,7 +110,7 @@ export default function DrivewayLifespanPage() {
               eyebrow="Asphalt · Driveway Guide"
               variant="centered"
               title="How long does an asphalt driveway last?"
-              description="15 to 25 years — and that 10-year spread is almost entirely under your control. Construction quality sets the ceiling; maintenance decides whether you reach it."
+              description="15 to 25 years, and that 10-year spread is almost entirely under your control. Construction quality sets the ceiling; maintenance decides whether you reach it."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -119,7 +123,17 @@ export default function DrivewayLifespanPage() {
           </>
         }
       >
-        <Section title="Lifespan by scenario">
+        <QuickAnswer
+          question="How long does an asphalt driveway last?"
+          answer="An asphalt driveway lasts 15–25 years when built with 3 in of compacted hot mix over a 6 in aggregate base. Well-built drives that are sealcoated every 3–5 years and crack-filled routinely pass 25 years, while thin asphalt on a weak base can fail in about 8."
+          ruleOfThumb="The base sets the ceiling; maintenance decides whether you reach it."
+        />
+
+        <Section title="How long does an asphalt driveway last?">
+          <p className="text-muted-foreground">
+            A well-built, maintained asphalt driveway lasts about 25 years, a neglected one
+            about 15, and a thin lift on a poor base about 8.
+          </p>
           <BarChart
             title="Expected service life by scenario (years)"
             unit="yr"
@@ -133,7 +147,7 @@ export default function DrivewayLifespanPage() {
           <p className="text-muted-foreground">
             &quot;Well built&quot; means the standard section: 3 in of compacted hot mix in
             two lifts over 6 in of compacted aggregate base (8 in on clay), with real
-            drainage. The overlay bar is additive — a 2 in overlay on a still-sound base
+            drainage. The overlay bar is additive: a 2 in overlay on a still-sound base
             buys roughly 12 more years on top of whatever the original surface delivered.
           </p>
         </Section>
@@ -164,14 +178,14 @@ export default function DrivewayLifespanPage() {
                 feature: "Year 15",
                 values: {
                   maintained: "Minor patching; surface still serviceable",
-                  neglected: "Alligator areas, edge crumbling — functionally end of life",
+                  neglected: "Alligator areas, edge crumbling; functionally end of life",
                 },
               },
               {
                 feature: "Year 20",
                 values: {
                   maintained: "Candidate for a 2 in overlay on a sound base",
-                  neglected: "Full removal and rebuild — base is gone too",
+                  neglected: "Full removal and rebuild; base is gone too",
                 },
               },
             ]}
@@ -182,11 +196,12 @@ export default function DrivewayLifespanPage() {
           <InfoBlock title="The base sets the ceiling; maintenance decides if you reach it">
             No amount of sealcoating rescues a driveway built on 3 in of loose gravel, and
             no construction quality survives 15 years of open cracks feeding water into
-            the base. The two factors multiply rather than add — which is why the scenario
+            the base. The two factors multiply rather than add, which is why the scenario
             chart spans 8 to 25+ years for what is nominally the same product.
           </InfoBlock>
           <p className="text-muted-foreground">
-            Deciding between materials on longevity? The{" "}
+            Base construction and maintenance together decide lifespan. Deciding between
+            materials on longevity? The{" "}
             <a href={CONCRETE.vsAsphalt} className="font-medium text-primary hover:underline">
               concrete vs asphalt comparison
             </a>{" "}
@@ -197,7 +212,7 @@ export default function DrivewayLifespanPage() {
 
         <Section title="Cost per year of ownership">
           <ExampleBlock
-            scenario="A 720 ft² double driveway installed for $6,000. Owner A follows the maintenance schedule; owner B does nothing. Which driveway is actually cheaper?"
+            scenario="A 720 ft² double driveway installed for $5,000. Owner A follows the maintenance schedule; owner B does nothing. Which driveway is actually cheaper?"
             steps={[
               {
                 label: "Owner A: upkeep over 25 years",
@@ -205,12 +220,12 @@ export default function DrivewayLifespanPage() {
               },
               {
                 label: "Owner A: cost per year",
-                work: "($6,000 + $2,200) ÷ 25 years = $328/yr",
+                work: "($5,000 + $2,200) ÷ 25 years = $288/yr",
               },
-              { label: "Owner B: upkeep", work: "$0 — but the surface fails at year 15" },
-              { label: "Owner B: cost per year", work: "$6,000 ÷ 15 years = $400/yr" },
+              { label: "Owner B: upkeep", work: "$0, but the surface fails at year 15" },
+              { label: "Owner B: cost per year", work: "$5,000 ÷ 15 years = $333/yr" },
             ]}
-            result="Neglect costs about $72 more per year — over 20% — and Owner B faces a new $6,000+ bill a decade sooner. The maintenance schedule is not an expense; it is the cheaper way to own asphalt."
+            result="Neglect costs about $45 more per year (roughly 16%), and Owner B faces a new $5,000+ bill a decade sooner. The maintenance schedule is not an expense; it is the cheaper way to own asphalt."
           />
         </Section>
 
@@ -233,7 +248,7 @@ export default function DrivewayLifespanPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.napa, AREFS.fhwa]} />
       </ArticleShell>

@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ProsCons } from "@/components/blocks/pros-cons";
 import { InfoBlock, WarningBlock } from "@/components/blocks/callout";
 import { ComparisonTable } from "@/components/tables/comparison-table";
@@ -27,9 +28,9 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "best-gravel-for-driveways";
-const title = "Best Gravel for Driveways (Ranked, With Trade-offs)";
+const title = "Best Gravel for Driveways: Crusher Run and #57";
 const description =
-  "The best gravel for a driveway, ranked: crusher run for the surface, #57 for structure, why pea gravel fails under tires, decorative options that survive traffic — plus the regional names (road base, ABC, 21A) so you order the right stone anywhere.";
+  "Crusher run is the best driveway gravel surface at $15–30 per ton, with #57 stone as the layer below. Compare pea gravel, decorative stone and regional names.";
 const path = GRAVEL.drivewayTypes;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
@@ -46,6 +47,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
@@ -57,12 +59,17 @@ const faqItems: FaqItem[] = [
   {
     question: "Is #57 gravel good for driveways?",
     answer:
-      "Excellent as the structural middle layer, workable but imperfect as a surface. Clean #57 stone has no fines, so it never binds — as a top course it stays slightly loose underfoot and migrates toward the edges, though it drains superbly and never gets muddy. Many rural drives run a #57 surface and simply rake it back periodically.",
+      "Excellent as the structural middle layer, workable but imperfect as a surface. Clean #57 stone has no fines, so it never binds. As a top course it stays slightly loose underfoot and migrates toward the edges, though it drains superbly and never gets muddy. Many rural drives run a #57 surface and simply rake it back periodically.",
   },
   {
     question: "Why is pea gravel bad for driveways?",
     answer:
-      "Pea gravel is rounded, so it cannot interlock — under tires it behaves like ball bearings, rutting, washboarding and spraying out of the wheel paths. If you want its look, confine it: use it only as a 2 in decorative top course over a compacted crusher run structure, inside solid edging, and expect to rake and top it up regularly.",
+      "Because it is rounded and cannot interlock. Under tires it behaves like ball bearings, rutting, washboarding and spraying out of the wheel paths. If you want its look, confine it: use it only as a 2 in decorative top course over a compacted crusher run structure, inside solid edging, and expect to rake and top it up regularly.",
+  },
+  {
+    question: "Is 3/4 inch gravel good for a driveway?",
+    answer:
+      "Yes. 3/4 inch angular stone is the best size for the driving surface, usually as crusher run (3/4 in down to dust). Below it, #57 stone (about 3/4–1 in) forms the middle layer and larger #3 stone the base. Anything over about 1 in on top rolls under tires and is hard to walk on.",
   },
   {
     question: "What do road base, ABC and 21A mean?",
@@ -72,7 +79,7 @@ const faqItems: FaqItem[] = [
   {
     question: "What is the cheapest gravel that actually works on a driveway?",
     answer:
-      "Crusher run is usually the cheapest per ton ($18–30 in most markets) because it is the least processed product a quarry sells — and it also happens to be the best surface. The expensive mistake is not the stone type, it is skipping base layers and buying the same stone twice.",
+      "Crusher run is usually the cheapest per ton ($15–30 in most markets) because it is the least processed product a quarry sells, and it also happens to be the best surface. The expensive mistake is not the stone type, it is skipping base layers and buying the same stone twice.",
   },
   {
     question: "Are decorative gravels like marble chips worth it on a driveway?",
@@ -85,7 +92,7 @@ const toc = tocFromTitles(
   "The ranking at a glance",
   "Crusher run: the default answer",
   "#57 stone: structure first",
-  "Why not pea gravel",
+  "Is pea gravel good for a driveway?",
   "Decorative options that survive tires",
   "Regional names decoded",
 );
@@ -100,6 +107,7 @@ export default function BestGravelForDrivewaysPage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -112,7 +120,7 @@ export default function BestGravelForDrivewaysPage() {
               eyebrow="Gravel · Driveways"
               variant={heroVariant}
               title="Best gravel for driveways"
-              description="Three stones do 95% of driveway duty — and one hugely popular stone should almost never touch a driveway. The ranking, the trade-offs, and the regional names that keep orders straight."
+              description="Three stones do 95% of driveway duty, and one hugely popular stone should almost never touch a driveway. Here are the ranking, the trade-offs, and the regional names that keep orders straight."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -125,11 +133,18 @@ export default function BestGravelForDrivewaysPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="What is the best gravel for a driveway?"
+          answer="Crusher run, a 3/4 inch crushed stone with fines, is the best gravel for a driveway surface because the fines compact into a firm crust that resists tire scatter and sheds water. Use clean #57 stone as the structural layer beneath it, and avoid pea gravel, which is rounded and rolls under tires."
+          ruleOfThumb="Angular stone for anything with wheels; rounded stone only for decoration."
+        />
+
         <Section title="The ranking at a glance">
           <p className="text-muted-foreground">
-            Every driveway stone is a trade between three forces: traction (does it
+            Crusher run ranks first for the surface, #57 stone first for structure, and pea
+            gravel last. Every driveway stone is a trade between three forces: traction (does it
             bind into a crust?), migration (does it stay where tires push it?), and
-            drainage (does water pass through or shed off?). No stone wins all three —
+            drainage (does water pass through or shed off?). No stone wins all three,
             which is why the right answer is usually two stones in{" "}
             <a href={GRAVEL.drivewayLayers} className="font-medium text-primary hover:underline">
               separate layers
@@ -164,15 +179,15 @@ export default function BestGravelForDrivewaysPage() {
                 values: {
                   crusher: "Compacts into a firm crust",
                   fiftyseven: "Interlocks but stays loose on top",
-                  pea: "Never binds — rolls underfoot",
+                  pea: "Never binds; rolls underfoot",
                 },
               },
               {
                 feature: "Migration under tires",
                 values: {
                   crusher: "Minimal once compacted",
-                  fiftyseven: "Moderate — rake back yearly",
-                  pea: "Severe — needs edging",
+                  fiftyseven: "Moderate; rake back yearly",
+                  pea: "Severe; needs edging",
                 },
               },
               {
@@ -186,13 +201,13 @@ export default function BestGravelForDrivewaysPage() {
               {
                 feature: "Typical bulk price",
                 values: {
-                  crusher: "$18–30 / ton",
+                  crusher: "$15–30 / ton",
                   fiftyseven: "$25–45 / ton",
                   pea: "$30–60 / ton",
                 },
               },
             ]}
-            caption="The three driveway candidates. Crusher run and #57 are teammates, not rivals — most good drives use both."
+            caption="The three driveway candidates. Crusher run and #57 are teammates, not rivals: most good drives use both."
           />
         </Section>
 
@@ -208,15 +223,15 @@ export default function BestGravelForDrivewaysPage() {
             subject="Crusher run"
             pros={[
               "Compacts into a semi-bound, almost pavement-like surface",
-              "Best traction of any gravel — for tires and for boots",
+              "Best traction of any gravel, for tires and for boots",
               "Cheapest per ton; regradable and reusable for decades",
               "Holds a crown, so it sheds water instead of soaking",
             ]}
             cons={[
               "Fines mean dust in dry spells and a firm-but-muddy skin in long rains",
-              "Must be compacted — dumped loose it is just a rock pile",
+              "Must be compacted; dumped loose it is just a rock pile",
               "Plain gray; nobody chooses it for looks",
-              "Sheds water — so the base below must still handle runoff",
+              "Sheds water, so the base below must still handle runoff",
             ]}
           />
         </Section>
@@ -224,7 +239,7 @@ export default function BestGravelForDrivewaysPage() {
         <Section title="#57 stone: structure first">
           <p className="text-muted-foreground">
             #57 is the clean, 3/4 in angular workhorse of the aggregate world. With no
-            fines it can never bind into a crust — but that same open grading makes it
+            fines it can never bind into a crust, but that same open grading makes it
             the best-draining structural stone you can buy, which is why it is the
             standard middle layer over a #3 base. As a surface it works on rural drives
             where a slightly loose, never-muddy top is an acceptable trade for annual
@@ -236,15 +251,19 @@ export default function BestGravelForDrivewaysPage() {
           </p>
           <InfoBlock title="The two-stone pattern">
             The most durable budget build in most regions: #3 base, #57 middle, crusher
-            run surface. You get #57&apos;s drainage where water lives — inside the
-            structure — and crusher run&apos;s traction where tires live. Neither stone
+            run surface. You get #57&apos;s drainage where water lives (inside the
+            structure) and crusher run&apos;s traction where tires live. Neither stone
             alone does both.
           </InfoBlock>
         </Section>
 
-        <Section title="Why not pea gravel">
+        <Section title="Is pea gravel good for a driveway?">
+          <p className="text-muted-foreground">
+            No. Pea gravel is a poor driveway surface because its rounded stones cannot
+            lock together under tires.
+          </p>
           <WarningBlock title="Rounded stone cannot carry traffic">
-            Pea gravel never interlocks — every stone is a polished ball. Under a
+            Pea gravel never interlocks, because every stone is a polished ball. Under a
             turning tire the surface flows like dry beans: ruts in the wheel paths,
             berms at the edges, stones thrown into the lawn. It also migrates downhill
             on any grade over about 4%. No amount of compaction fixes shape; angularity
@@ -254,7 +273,7 @@ export default function BestGravelForDrivewaysPage() {
             The honest exception: a flat parking court or short cottage drive where
             looks outrank everything, built as 2 in of pea gravel over a compacted
             crusher run base with steel edging on every side. Expect to rake weekly and
-            top up yearly — the{" "}
+            top up yearly. The{" "}
             <a href={GRAVEL.whatIsPea} className="font-medium text-primary hover:underline">
               pea gravel guide
             </a>{" "}
@@ -265,7 +284,7 @@ export default function BestGravelForDrivewaysPage() {
         <Section title="Decorative options that survive tires">
           <p className="text-muted-foreground">
             If plain gray will not do, choose decorative stone that keeps the two
-            properties tires demand — angular shape and modest size. Crushed granite
+            properties tires demand: angular shape and modest size. Crushed granite
             chips (3/8–3/4 in), crushed limestone in buff or white, and quarried
             bluestone chips all interlock acceptably as a 1.5–2 in top course over a
             crusher run structure. Costs run 2–5 times crusher run, so confine the
@@ -277,8 +296,8 @@ export default function BestGravelForDrivewaysPage() {
         <Section title="Regional names decoded">
           <p className="text-muted-foreground">
             The same material wears a dozen names across North America. If a supplier
-            does not recognize one name, describe the gradation — &quot;3/4 inch minus
-            with fines, compactable&quot; — and you will get the right product.
+            does not recognize one name, describe the gradation (&quot;3/4 inch minus
+            with fines, compactable&quot;) and you will get the right product.
           </p>
           <CoverageTable
             headers={["Name you'll hear", "What it is", "Where"]}

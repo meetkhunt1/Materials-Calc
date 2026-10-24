@@ -8,12 +8,12 @@ interface ArticleShellProps {
   hero: React.ReactNode;
   /** Main article content */
   children: React.ReactNode;
-  /** TOC items — sidebar on desktop, inline box on mobile */
+  /** TOC items: sidebar on desktop, inline box on mobile */
   toc?: TocItem[];
   /** Extra sidebar content under the TOC (CTA, related links) */
   aside?: React.ReactNode;
   /**
-   * "toc-right" (default) or "toc-left" — flip per page via
+   * "toc-right" (default) or "toc-left": flip per page via
    * pick(slug, ["toc-right", "toc-left"] as const) for structural variety.
    */
   tocPosition?: "toc-right" | "toc-left";

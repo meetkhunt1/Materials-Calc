@@ -3,13 +3,13 @@ import { fromBase } from "@/lib/units";
 
 /**
  * Driveway gravel: layered builds. Each option encodes its layers as
- * (depth m, density kg/m³) pairs — computed per layer, summed for the order.
+ * (depth m, density kg/m³) pairs, computed per layer, summed for the order.
  */
 export const drivewayGravelCalculator = defineCalculator({
   id: "driveway-gravel-calculator",
   name: "Driveway Gravel Calculator",
   description:
-    "Layer-by-layer tonnage for a gravel driveway that lasts — sub-base, base and surface computed separately.",
+    "Layer-by-layer tonnage for a gravel driveway that lasts, with sub-base, base and surface computed separately.",
   fields: [
     {
       id: "length",
@@ -65,9 +65,9 @@ export const drivewayGravelCalculator = defineCalculator({
       label: "Waste / settling allowance",
       type: "select",
       options: [
-        { value: "10", label: "10% — firm subgrade (recommended)" },
-        { value: "15", label: "15% — soft or clay subgrade" },
-        { value: "20", label: "20% — mud season, first load sinks" },
+        { value: "10", label: "10%: firm subgrade (recommended)" },
+        { value: "15", label: "15%: soft or clay subgrade" },
+        { value: "20", label: "20%: mud season, first load sinks" },
       ],
       defaultValue: "10",
     },
@@ -105,7 +105,7 @@ export const drivewayGravelCalculator = defineCalculator({
         unit: "US tons",
         precision: 1,
         primary: true,
-        note: layers.length > 1 ? "Order layers separately — they are different products." : undefined,
+        note: layers.length > 1 ? "Order layers separately because they are different products." : undefined,
       },
       ...layerResults,
       { id: "area", label: "Driveway area", value: fromBase(area, "ft2"), unit: "ft²", precision: 0 },

@@ -15,7 +15,7 @@ import { DEFAULT_UNIT, toBase, unitsOf } from "@/lib/units";
  * and unit normalization so compute() always receives clean SI numbers.
  */
 
-/** Identity helper — gives authors type inference when declaring calculators. */
+/** Identity helper: gives authors type inference when declaring calculators. */
 export function defineCalculator(definition: CalculatorDefinition): CalculatorDefinition {
   return definition;
 }
@@ -82,7 +82,7 @@ export function validate(
 /**
  * Normalize form values and run the calculator.
  * Numeric unit fields are converted to their category base unit before compute.
- * Throws if called with invalid values — call validate() first.
+ * Throws if called with invalid values: call validate() first.
  */
 export function compute(
   definition: CalculatorDefinition,
@@ -118,7 +118,7 @@ export function compute(
   return definition.compute(inputs);
 }
 
-/** Human-readable plain-text summary of results — used by Copy/Share actions. */
+/** Human-readable plain-text summary of results: used by Copy/Share actions. */
 export function resultsToText(
   definition: CalculatorDefinition,
   results: CalculatorResultItem[],

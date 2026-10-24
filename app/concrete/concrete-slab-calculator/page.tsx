@@ -23,9 +23,9 @@ import { getAuthor } from "@/data/authors";
 import { CONCRETE, guideLinks, calculatorLinks, pickLinks, REFS } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Concrete Slab Calculator — Yards & Bags";
+const title = "Concrete Slab Calculator: Yards, Bags and Cost";
 const description =
-  "Calculate concrete for a slab by area and thickness, with code-based thickness recommendations, bag counts and a worked garage-slab example.";
+  "A 4-inch concrete slab needs 1 cubic yard per 81 ft² of area. Enter length, width and thickness to get yards, 80 lb bags and weight, plus a thickness chart.";
 const path = CONCRETE.slab;
 const author = getAuthor("materials-team");
 
@@ -35,9 +35,20 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
+  {
+    question: "How do you calculate concrete for a slab?",
+    answer:
+      "Multiply length × width × thickness in feet, divide by 27 to get cubic yards, then add 10% for waste. A 12×12 ft slab at 4 in is 12 × 12 × 0.333 ÷ 27 = 1.78 yd³, so order about 2 yd³.",
+  },
+  {
+    question: "How much concrete do I need for a 20×20 garage floor slab?",
+    answer:
+      "Order about 8.25 cubic yards for a 20×20 ft garage floor at 6 inches thick, including 10% waste (20 × 20 × 0.5 ÷ 27 = 7.4 yd³ before waste). At 4 inches the same slab needs about 5.5 yd³, but 6 inches is the norm where trucks will park.",
+  },
   {
     question: "How thick should a concrete slab be?",
     answer:
@@ -46,22 +57,22 @@ const faqItems: FaqItem[] = [
   {
     question: "Do I need gravel under a concrete slab?",
     answer:
-      "On free-draining sandy soil, you can pour on compacted native ground. Everywhere else, 4 in of compacted crusher-run gravel gives uniform bearing, drainage and a capillary break. The IRC (R506.2.2) requires a 4-inch base course except in Group I well-drained soils.",
+      "Usually, yes. On free-draining sandy soil, you can pour on compacted native ground. Everywhere else, 4 in of compacted crusher-run gravel gives uniform bearing, drainage and a capillary break. The IRC (R506.2.2) requires a 4-inch base course except in Group I well-drained soils.",
   },
   {
     question: "How much does a 20×20 slab cost?",
     answer:
-      "A 20 × 20 ft slab at 4 in needs about 5.5 yd³ including waste. At $140–170/yd³ delivered, that's $770–940 for concrete alone; with base gravel, forms, mesh and finishing labor, installed prices typically land between $2,400 and $4,800. See our concrete cost guide for the full breakdown.",
+      "A 20 × 20 ft slab at 4 in costs about $825–990 for the concrete alone: it needs about 5.5 yd³ including waste, at $150–180/yd³ delivered. With base gravel, forms, mesh and finishing labor, installed prices typically land between $2,400 and $4,800. See our concrete cost guide for the full breakdown.",
   },
   {
     question: "Should slab thickness include the wire mesh or rebar?",
     answer:
-      "No — reinforcement sits inside the slab (mesh at mid-depth, rebar on chairs), not on top of it. Calculate volume from formwork height. What matters is cover: keep steel at least 1.5 in from the slab surface and 3 in from ground contact per ACI 318.",
+      "No. Reinforcement sits inside the slab (mesh at mid-depth, rebar on chairs), not on top of it. Calculate volume from formwork height. What matters is cover: keep steel at least 1.5 in from the slab surface and 3 in from ground contact per ACI 318.",
   },
   {
     question: "Can I pour a slab in sections?",
     answer:
-      "Yes — large slabs are routinely poured in alternating strips with construction joints. Each section becomes its own volume calculation. Plan joint locations first: control joints should divide the slab into panels no larger than about 24–36 times the thickness in inches (roughly 8–12 ft squares for a 4-inch slab).",
+      "Yes. Large slabs are routinely poured in alternating strips with construction joints. Each section becomes its own volume calculation. Plan joint locations first: control joints should divide the slab into panels no larger than about 24–36 times the thickness in inches (roughly 8–12 ft squares for a 4-inch slab).",
   },
 ];
 
@@ -77,7 +88,7 @@ export default function SlabCalculatorPage() {
     <>
       <JsonLd
         data={[
-          webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
+          webPageSchema({ title, description, path, datePublished: "2026-07-15", dateModified: "2026-10-24" }),
           calculatorSchema({ name: "Concrete Slab Calculator", description, path }),
         ]}
       />
@@ -116,13 +127,17 @@ export default function SlabCalculatorPage() {
         aside={<TableOfContents items={toc} />}
       >
         <QuickAnswer
-          question="How much concrete do I need for a 10×10 patio slab?"
-          answer="At the standard 4-inch thickness, a 10×10 ft patio slab needs 1.23 yd³ of concrete — order 1.5 yd³ with a 10% waste allowance, or 62 bags of 80 lb mix if hand mixing."
+          question="How much concrete do I need for a 10×10 slab?"
+          answer="A 10×10 ft concrete slab poured at the standard 4-inch thickness needs 1.23 cubic yards of concrete. With a 10% waste allowance, order 1.5 yd³ of ready-mix, or about 62 bags of 80 lb mix if you are hand mixing. Each extra inch of thickness adds roughly 0.31 yd³ at this size."
           ruleOfThumb="1 cubic yard of concrete covers about 81 ft² at 4 in thick."
           formula="Order (yd³) = (L × W × Thickness ÷ 27) × (1 + waste)"
         />
 
         <Section title="Slabs by common project size">
+          <p className="text-muted-foreground">
+            Most residential slabs need between 1.5 and 8.25 cubic yards: a 10×10 patio takes
+            1.5 yd³ and a 20×20 garage floor at 6 inches takes about 8.25 yd³.
+          </p>
           <QuickSizeTable
             headers={["Project size", "Order (yd³)", "80 lb bags", "Est. material cost"]}
             rows={[
@@ -131,13 +146,13 @@ export default function SlabCalculatorPage() {
               ["20×20 ft Garage, 6 in", "8.25 yd³", "Ready-mix recommended", "$1,238–1,485"],
               ["4×50 ft Sidewalk, 4 in", "2.75 yd³", "123", "$413–495"],
             ]}
-            caption="10% waste included. Bag counts use 80 lb bags (0.60 ft³ yield). Cost uses the $150–180/yd³ delivered ready-mix range from our concrete cost guide — confirm with your local plant. Match these to the presets above the calculator."
+            caption="10% waste included. Bag counts use 80 lb bags (0.60 ft³ yield). Cost uses the $150–180/yd³ delivered ready-mix range from our concrete cost guide; confirm with your local plant. Match these to the presets above the calculator."
           />
         </Section>
 
         <Section
           title="Choosing the slab thickness"
-          lead="Thickness is the single biggest cost lever — and the most common overspecification."
+          lead="Use 4 inches for patios and walkways, 5 for a car driveway and 6 for garage floors. Thickness is the single biggest cost lever, and the most common overspecification."
         >
           <CoverageTable
             headers={["Application", "Recommended thickness", "Notes"]}
@@ -151,8 +166,8 @@ export default function SlabCalculatorPage() {
             caption="Residential guidance consistent with IRC Ch. 5 and PCA recommendations. Local codes govern."
           />
           <InfoBlock title="Thickness compounds fast">
-            Upgrading a 24 × 24 ft slab from 4 in to 6 in adds 3.6 yd³ — roughly $550 of
-            concrete — while upgrading the subbase compaction costs almost nothing. A thinner
+            Upgrading a 24 × 24 ft slab from 4 in to 6 in adds 3.6 yd³ (roughly $550 of
+            concrete), while upgrading the subbase compaction costs almost nothing. A thinner
             slab on a properly compacted base outperforms a thick slab on soft ground.
           </InfoBlock>
         </Section>
@@ -161,7 +176,7 @@ export default function SlabCalculatorPage() {
           <p className="text-muted-foreground">
             The calculator above assumes a uniform-thickness slab on grade. Three situations
             need manual adjustment: thickened edges (add a footing-shaped volume around the
-            perimeter — see the example below), slopes poured to falls (use the average of the
+            perimeter, as in the example below), slopes poured to falls (use the average of the
             high and low thickness), and monolithic slab-and-footing pours (calculate the slab
             and the{" "}
             <a href={CONCRETE.footing} className="font-medium text-primary hover:underline">
@@ -181,7 +196,7 @@ export default function SlabCalculatorPage() {
               { label: "Total + 10% waste", work: "(288 + 48) × 1.10 = 369.6 ft³" },
               { label: "Convert to yards", work: "369.6 ÷ 27 = 13.7 yd³" },
             ]}
-            result="Order 14 yd³ — the thickened edge added 2 full yards over a flat slab."
+            result="Order 14 yd³. The thickened edge added 2 full yards over a flat slab."
           />
         </Section>
 
@@ -191,7 +206,7 @@ export default function SlabCalculatorPage() {
               Unmeasured subgrade dips are the top offender: a base that averages ½ inch low
               across a 24 × 24 slab swallows an extra 0.9 yd³. Second is ignoring the thickened
               edge on monolithic pours, as the example shows. Third is calculating from the
-              finished floor plan instead of the formed dimensions — forms sit outside the plan
+              finished floor plan instead of the formed dimensions. Forms sit outside the plan
               line, typically adding 3–4 inches each way.
             </p>
           </WarningBlock>
@@ -216,7 +231,7 @@ export default function SlabCalculatorPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified="2026-10-24" />
 
         <References items={[REFS.irc, REFS.aci318, REFS.pca]} />
       </CalculatorPageShell>

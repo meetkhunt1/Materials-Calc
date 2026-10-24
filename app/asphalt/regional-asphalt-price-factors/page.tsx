@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock } from "@/components/blocks/callout";
@@ -18,11 +19,12 @@ import { getAuthor } from "@/data/authors";
 import { ASPHALT, costGuideLinks, pickLinks } from "@/content/asphalt/links";
 import type { FaqItem } from "@/types";
 
-const title = "Regional Asphalt Price Factors — Why Quotes Vary 40%";
+const title = "Regional Asphalt Prices: Why Quotes Vary 40%";
 const description =
-  "The same driveway prices ±40% across US regions. Plant proximity, binder terminals, season length, labor markets and competition density — the mechanics behind regional asphalt pricing in 2026.";
+  "The same asphalt driveway can cost up to 40% more by region, driven by plant distance, binder freight, season, labor and competition. See the regional index.";
 const path = ASPHALT.regionalPrices;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -30,38 +32,39 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "Which US region has the cheapest asphalt?",
     answer:
-      "The South generally: year-round paving seasons, dense plant networks, competitive labor markets and strong contractor competition. We do not publish a per-square-foot figure by region, because region turns out to be a blunt instrument — the worked example below puts the same 600 ft² driveway at $3,500 in a competitive metro and $4,845 at a rural site 40 miles from the nearest plant. Distance to the plant and the crew moves the price more than which state you are in.",
+      "The South generally has the cheapest asphalt, thanks to year-round paving seasons, dense plant networks, competitive labor markets and strong contractor competition. We do not publish a per-square-foot figure by region, because region turns out to be a blunt instrument: the worked example below puts the same 600 ft² driveway at $3,500 in a competitive metro and $4,845 at a rural site 40 miles from the nearest plant. Distance to the plant and the crew moves the price more than which state you are in.",
   },
   {
     question: "Why does distance from the plant matter so much?",
     answer:
-      "Hot mix leaves the plant near 300°F and must be placed and compacted before it cools too far — a practical haul radius of about 25 miles, or roughly 45–60 minutes. Beyond that, contractors pay for insulated trucks, warm-mix additives or a more distant plant premium, and trucking itself adds $8–20 per ton before any of that.",
+      "Distance matters because hot mix leaves the plant near 300°F and must be placed and compacted before it cools too far, which sets a practical haul radius of about 25 miles, or roughly 45–60 minutes. Beyond that, contractors pay for insulated trucks, warm-mix additives or a more distant plant premium, and trucking itself adds $8–20 per ton before any of that.",
   },
   {
     question: "Why is asphalt more expensive in northern states?",
     answer:
-      "Season compression. Plants in cold states shut down for four to six months, so a year of demand squeezes into six to eight months of capacity — contractors price the backlog. Add prevailing higher labor costs and freeze-thaw base requirements (deeper gravel, more excavation) and installed prices run 15–25% above the national average.",
+      "Asphalt costs more in northern states because of season compression. Plants in cold states shut down for four to six months, so a year of demand squeezes into six to eight months of capacity, and contractors price the backlog. Add prevailing higher labor costs and freeze-thaw base requirements (deeper gravel, more excavation) and installed prices run 15–25% above the national average.",
   },
   {
     question: "Do binder terminals affect my local price?",
     answer:
-      "Yes, invisibly. Liquid binder moves from refineries to regional terminals by barge, rail and pipeline; plants far from a terminal pay meaningful freight on a $600–700-per-ton input that is 5–6% of every ton of mix. It is one reason inland and mountain markets show wider, less predictable pricing than coastal and river-corridor markets.",
+      "Yes, though invisibly. Liquid binder moves from refineries to regional terminals by barge, rail and pipeline; plants far from a terminal pay meaningful freight on a $600–700-per-ton input that is 5–6% of every ton of mix. It is one reason inland and mountain markets show wider, less predictable pricing than coastal and river-corridor markets.",
   },
   {
     question: "How do I use regional data when reading a quote?",
     answer:
-      "Treat it as a sanity band, not a target. If your quotes cluster inside the regional range, the market is working; if a single quote sits far above, ask what scope explains it — base work, removal, access — before assuming gouging. If all quotes sit high, your micro-market (plant distance, few contractors) is the cause, and more bids from farther afield may help.",
+      "Treat it as a sanity band, not a target. If your quotes cluster inside the regional range, the market is working; if a single quote sits far above, ask what scope explains it (base work, removal, access) before assuming gouging. If all quotes sit high, your micro-market (plant distance, few contractors) is the cause, and more bids from farther afield may help.",
   },
 ];
 
 const toc = tocFromTitles(
-  "Installed cost by US region",
+  "How much does asphalt cost by US region?",
   "The regional index at a glance",
   "What actually drives the spread",
   "Worked example: metro vs 40 miles rural",
@@ -77,6 +80,7 @@ export default function RegionalAsphaltPriceFactorsPage() {
           path,
           category: "Asphalt",
           datePublished: "2026-07-15",
+          dateModified: modified,
           author,
         })}
       />
@@ -89,7 +93,7 @@ export default function RegionalAsphaltPriceFactorsPage() {
               eyebrow="Asphalt · Cost Series"
               variant="stat-strip"
               title="Why asphalt quotes vary 40% by region"
-              description="Asphalt is a local product made from a global commodity. The binder tracks oil markets everywhere; everything else — plants, trucks, crews, seasons — is stubbornly regional."
+              description="Asphalt is a local product made from a global commodity. The binder tracks oil markets everywhere; everything else (plants, trucks, crews, seasons) is stubbornly regional."
               stats={[
                 { value: "±40%", label: "regional swing on identical scope" },
                 { value: "$8–20", label: "per ton trucking from the plant" },
@@ -115,17 +119,27 @@ export default function RegionalAsphaltPriceFactorsPage() {
           />
         }
       >
-        <Section title="Installed cost by US region">
+        <QuickAnswer
+          question="Why do asphalt prices vary by region?"
+          answer="Asphalt prices vary by up to about 40% between regions because installed cost depends on local factors: distance to the nearest hot mix plant (a practical haul radius is about 25 miles), binder freight, paving season length, crew labor rates and contractor competition. The asphalt itself varies far less than trucking and labor do."
+          ruleOfThumb="Distance to the plant moves the price more than which state you are in."
+        />
+
+        <Section title="How much does asphalt cost by US region?">
+          <p className="text-muted-foreground">
+            The Northeast and West Coast run highest and the South lowest, with the Mountain
+            West showing the widest spread.
+          </p>
           <CostTable
             currency="USD"
             rows={[
               { item: "Northeast", unit: "ft²", low: 3.5, high: 6.0, note: "Short season, union labor, high land and permit costs" },
               { item: "Midwest", unit: "ft²", low: 2.75, high: 4.5, note: "Good plant density; winter shutdown compresses schedules" },
               { item: "South", unit: "ft²", low: 2.25, high: 4.0, note: "Year-round season, strong competition" },
-              { item: "Mountain West", unit: "ft²", low: 2.5, high: 5.5, note: "Widest spread — plant distance varies enormously" },
+              { item: "Mountain West", unit: "ft²", low: 2.5, high: 5.5, note: "Widest spread; plant distance varies enormously" },
               { item: "West Coast", unit: "ft²", low: 3.25, high: 6.0, note: "High labor and compliance costs, metro concentration" },
             ]}
-            caption="Representative installed ranges at 3 in compacted on existing base, 2026. City vs rural moves prices more than state lines do — a metro with six competing contractors beats a cheap-state rural market with one."
+            caption="Representative installed ranges at 3 in compacted on existing base, 2026. City vs rural moves prices more than state lines do: a metro with six competing contractors beats a cheap-state rural market with one."
           />
         </Section>
 
@@ -147,21 +161,21 @@ export default function RegionalAsphaltPriceFactorsPage() {
           <p className="text-muted-foreground">
             Six factors explain nearly all regional variation. Plant proximity first: hot
             mix has a practical haul radius of about 25 miles before temperature loss
-            compromises compaction, so your price is set by the plants inside that circle —
-            one plant is a monopoly, five is a market. Binder terminal distance adds silent
+            compromises compaction, so your price is set by the plants inside that circle.
+            One plant is a monopoly; five is a market. Binder terminal distance adds silent
             freight on the costliest ingredient. Aggregate availability matters where good
             stone is scarce and quarried material travels. Season length compresses demand
             in the north. Labor markets set crew rates that vary nearly two-to-one across
-            states. And competition density — contractors per capita — determines how much
+            states. And competition density (contractors per capita) determines how much
             of all that cost structure gets passed through versus absorbed.
           </p>
           <p className="text-muted-foreground">
             Note what is not on the list: the asphalt itself. Per-ton plant pricing varies
-            far less than installed pricing — see the{" "}
+            far less than installed pricing (see the{" "}
             <a href={ASPHALT.pricePerTon} className="font-medium text-primary hover:underline">
               price per ton guide
-            </a>{" "}
-            — because binder is priced off national indices. The regional spread lives in
+            </a>
+            ) because binder is priced off national indices. The regional spread lives in
             trucking, labor, season and competition, which is why it shows up in installed
             quotes more than in material quotes.
           </p>
@@ -169,7 +183,7 @@ export default function RegionalAsphaltPriceFactorsPage() {
             A plant that closes from November to April sells a year of tonnage in six or
             seven months, and every contractor&apos;s calendar fills accordingly. Northern
             owners pay for that scarcity twice: higher unit prices, and less scheduling
-            leverage — the mid-season discount window that southern owners enjoy barely
+            leverage, because the mid-season discount window that southern owners enjoy barely
             exists. If you are paving in a cold state, book early and be flexible on dates;
             flexibility is the only discount lever the calendar leaves you.
           </InfoBlock>
@@ -184,7 +198,7 @@ export default function RegionalAsphaltPriceFactorsPage() {
               { label: "Rural material", work: "11 tons × ($125 + $19 trucking) = $1,585, warm-mix additive for the haul +$60" },
               { label: "Rural fixed costs", work: "Longer crew travel and equipment move: mobilization +$700 → total $4,845 ($8.10/ft²)" },
             ]}
-            result="Same driveway, same spec: $3,500 vs roughly $4,850 — a 38% premium from geography alone. Distance to the plant and the crew, not the asphalt, is the price."
+            result="Same driveway, same spec: $3,500 vs roughly $4,850, a 38% premium from geography alone. Distance to the plant and the crew, not the asphalt, is the price."
           />
         </Section>
 
@@ -193,12 +207,12 @@ export default function RegionalAsphaltPriceFactorsPage() {
         <Cta
           variant="banner"
           title="Localize the estimate"
-          description="Plug your local per-ton quote into the calculator — regional averages are for sanity checks, not orders."
+          description="Plug your local per-ton quote into the calculator. Regional averages are for sanity checks, not orders."
           href={ASPHALT.cost}
           buttonLabel="Asphalt Cost Calculator"
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
       </ArticleShell>
     </>

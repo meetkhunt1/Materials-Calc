@@ -37,9 +37,9 @@ export const drivewayCalculator = defineCalculator({
       label: "Asphalt thickness (compacted)",
       type: "select",
       options: [
-        { value: "0.0508", label: "2 in — light cars, mild climate (minimum)" },
-        { value: "0.0762", label: "3 in — standard residential (recommended)" },
-        { value: "0.1016", label: "4 in — trucks, RVs, cold climates" },
+        { value: "0.0508", label: "2 in: light cars, mild climate (minimum)" },
+        { value: "0.0762", label: "3 in: standard residential (recommended)" },
+        { value: "0.1016", label: "4 in: trucks, RVs, cold climates" },
       ],
       defaultValue: "0.0762",
     },
@@ -48,10 +48,10 @@ export const drivewayCalculator = defineCalculator({
       label: "Gravel base thickness",
       type: "select",
       options: [
-        { value: "0.1016", label: "4 in — existing sound gravel drive" },
-        { value: "0.1524", label: "6 in — standard on decent soil" },
-        { value: "0.2032", label: "8 in — clay or soft subgrade" },
-        { value: "0", label: "None — overlay on existing pavement" },
+        { value: "0.1016", label: "4 in: existing sound gravel drive" },
+        { value: "0.1524", label: "6 in: standard on decent soil" },
+        { value: "0.2032", label: "8 in: clay or soft subgrade" },
+        { value: "0", label: "None: overlay on existing pavement" },
       ],
       defaultValue: "0.1524",
     },
@@ -60,9 +60,9 @@ export const drivewayCalculator = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — straight rectangle" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — curves and flares" },
+        { value: "5", label: "5%: straight rectangle" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: curves and flares" },
       ],
       defaultValue: "10",
     },
@@ -115,7 +115,7 @@ export const drivewayCalculator = defineCalculator({
     return results;
   },
   disclaimer:
-    "Assumes compacted hot mix at 145 lb/ft³ over dense-graded aggregate at 140 lb/ft³. Base thickness is a soils decision — see the driveway installation guide before finalizing.",
+    "Assumes compacted hot mix at 145 lb/ft³ over dense-graded aggregate at 140 lb/ft³. Base thickness is a soils decision; see the driveway installation guide before finalizing.",
   presets: [
     {
       id: "1-car-12x30",

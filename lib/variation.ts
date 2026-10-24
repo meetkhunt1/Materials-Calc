@@ -4,11 +4,11 @@
  * Every page passes its slug through these helpers to pick layout variants,
  * section ordering, callout styles, image placement, etc. The same slug always
  * produces the same variation (stable across builds → SSG-safe, no hydration
- * mismatch), but different slugs land on different combinations — so no two
+ * mismatch), but different slugs land on different combinations: so no two
  * pages look identical while each page stays consistent forever.
  */
 
-/** FNV-1a string hash — fast, well distributed, deterministic. */
+/** FNV-1a string hash: fast, well distributed, deterministic. */
 export function hashSeed(seed: string): number {
   let hash = 0x811c9dc5;
   for (let i = 0; i < seed.length; i++) {
@@ -18,7 +18,7 @@ export function hashSeed(seed: string): number {
   return hash >>> 0;
 }
 
-/** Mulberry32 PRNG — tiny seeded generator for repeatable sequences. */
+/** Mulberry32 PRNG: tiny seeded generator for repeatable sequences. */
 export function seededRandom(seed: string): () => number {
   let state = hashSeed(seed);
   return () => {
@@ -46,7 +46,7 @@ export function chance(seed: string, probability = 0.5): boolean {
   return seededRandom(seed)() < probability;
 }
 
-/** Deterministic Fisher–Yates shuffle — reorder page sections per slug. */
+/** Deterministic Fisher–Yates shuffle: reorder page sections per slug. */
 export function shuffle<T>(seed: string, items: readonly T[]): T[] {
   const result = [...items];
   const random = seededRandom(seed);

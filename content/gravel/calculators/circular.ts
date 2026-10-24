@@ -7,7 +7,7 @@ export const circularGravelCalculator = defineCalculator({
   id: "circular-gravel-calculator",
   name: "Circular Gravel Calculator",
   description:
-    "Tons and cubic yards for round areas — fire pits, tree rings and circular patios — by diameter and depth.",
+    "Tons and cubic yards for round areas (fire pits, tree rings and circular patios) by diameter and depth.",
   fields: [
     {
       id: "diameter",
@@ -45,9 +45,9 @@ export const circularGravelCalculator = defineCalculator({
       label: "Waste / settling allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — decorative, contained beds" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — soft ground, first lift sinks in" },
+        { value: "5", label: "5%: decorative, contained beds" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: soft ground, first lift sinks in" },
       ],
       defaultValue: "10",
     },
@@ -71,7 +71,7 @@ export const circularGravelCalculator = defineCalculator({
         unit: "US tons",
         precision: 2,
         primary: true,
-        note: "Suppliers sell by the ton or the yard — this line and the next cover both.",
+        note: "Suppliers sell by the ton or the yard, so this line and the next cover both.",
       },
       { id: "yd3", label: "Volume", value: fromBase(volume, "yd3"), unit: "yd³", precision: 2 },
       { id: "tonnes", label: "Metric tonnes", value: kg / 1000, unit: "t", precision: 2 },

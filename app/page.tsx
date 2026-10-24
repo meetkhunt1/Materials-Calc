@@ -7,19 +7,23 @@ import { Newsletter } from "@/components/blocks/newsletter";
 import { JsonLd } from "@/components/seo/json-ld";
 import { webPageSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site";
 import { CONCRETE } from "@/content/concrete/links";
 import { GRAVEL } from "@/content/gravel/links";
 import { ASPHALT } from "@/content/asphalt/links";
 import type { RelatedArticle } from "@/types";
 
+const title = "Material Calculators: Asphalt, Gravel, Concrete";
+const description =
+  "Free calculators that turn length, width and depth into tons, cubic yards and bags of asphalt, gravel and concrete, plus density charts and cost guides.";
+
 export const metadata = buildMetadata({
-  title: `${siteConfig.name} — Construction Material Calculators`,
-  description: siteConfig.description,
+  title,
+  description,
   path: "/",
+  modifiedTime: "2026-10-24",
 });
 
-/** Highest-search-volume calculators — linked directly from the homepage, the site's highest-authority page. */
+/** Highest-search-volume calculators, linked directly from the homepage (the site's highest-authority page). */
 const popularCalculators: RelatedArticle[] = [
   {
     title: "Concrete Slab Calculator",
@@ -70,17 +74,27 @@ export default function HomePage() {
     <>
       <JsonLd
         data={webPageSchema({
-          title: `${siteConfig.name} — Construction Material Calculators`,
-          description: siteConfig.description,
+          title,
+          description,
           path: "/",
+          dateModified: "2026-10-24",
         })}
       />
       <Hero
         eyebrow="Free estimating tools"
         variant="centered"
         title="Get material quantities right the first time"
-        description="Accurate calculators, density charts and cost guides for concrete, asphalt, gravel and sand — built for contractors and serious DIYers."
+        description="MaterialsCalc is a free set of construction material calculators. Enter your dimensions and get the tons, cubic yards or bags of asphalt, gravel or concrete to order, backed by density charts and cost guides."
       />
+      <Container size="narrow" className="pt-10">
+        <p className="text-muted-foreground">
+          It is built for contractors, estimators and homeowners planning a driveway, slab,
+          patio or landscaping job who need an order quantity they can check. Every calculator page
+          explains its formula, uses the same density values as the reference charts (for
+          example, 145 lb/ft³ for compacted hot mix asphalt and 2,400 kg/m³ for reinforced
+          concrete), and adds a waste allowance before rounding to what a supplier sells.
+        </p>
+      </Container>
       <Container className="py-14">
         <RelatedArticles
           title="Popular calculators"

@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { WarningBlock } from "@/components/blocks/callout";
@@ -28,9 +29,9 @@ import {
 import type { DensityRow, FaqItem } from "@/types";
 
 const slug = "crushed-stone-weight";
-const title = "Crushed Stone Weight — lb/ft³ and Tons per Yard by Size";
+const title = "Crushed Stone Weight: 1.35 Tons per Cubic Yard";
 const description =
-  "How much crushed stone weighs: ~100 lb/ft³ loose for clean stone (1.35 tons/yd³), up to 140 lb/ft³ for compacted crusher run (1.89 tons/yd³) — by size, by rock type, with worked conversions.";
+  "Clean #57 crushed stone weighs about 100 lb/ft³ loose (1.35 tons per cubic yard); compacted crusher run reaches 140 lb/ft³. Weight chart by size and rock type.";
 const path = GRAVEL.stoneWeight;
 const author = getAuthor("materials-team");
 
@@ -46,17 +47,18 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-16",
+  modifiedTime: "2026-10-24",
 });
 
-/** Loose bulk unless noted — consistent with content/gravel/charts/density-data.ts */
+/** Loose bulk unless noted; consistent with content/gravel/charts/density-data.ts */
 const weightRows: DensityRow[] = [
-  { material: "Crushed stone #57 (loose)", kgPerM3: 1600, note: "≈1.35 US tons/yd³ — the clean-stone standard" },
+  { material: "Crushed stone #57 (loose)", kgPerM3: 1600, note: "≈1.35 US tons/yd³, the clean-stone standard" },
   { material: "Crushed stone #57 (compacted)", kgPerM3: 1750, note: "≈1.47 tons/yd³" },
   { material: "Crushed stone #8 (3/8 in, loose)", kgPerM3: 1550 },
   { material: "Crushed stone #2 (2–3 in, loose)", kgPerM3: 1600 },
   { material: "Stone dust / screenings", kgPerM3: 1600 },
-  { material: "Crusher run / road base (loose)", kgPerM3: 2000, note: "Fines fill the voids — ≈1.69 tons/yd³" },
-  { material: "Crusher run / road base (compacted)", kgPerM3: 2240, note: "≈1.89 tons/yd³ — the heaviest common product" },
+  { material: "Crusher run / road base (loose)", kgPerM3: 2000, note: "Fines fill the voids: ≈1.69 tons/yd³" },
+  { material: "Crusher run / road base (compacted)", kgPerM3: 2240, note: "≈1.89 tons/yd³, the heaviest common product" },
   { material: "Crushed limestone (loose)", kgPerM3: 1550 },
   { material: "Crushed granite (loose)", kgPerM3: 1650 },
 ];
@@ -70,33 +72,38 @@ const faqItems: FaqItem[] = [
   {
     question: "How many tons is a cubic yard of crushed stone?",
     answer:
-      "Multiply lb/ft³ by 27 and divide by 2,000: clean #57 stone is about 1.35 US tons per cubic yard loose, 1.47 compacted. Crusher run runs 1.69 loose and 1.89 compacted. If a supplier quotes a flat 1.4 tons per yard, that is the clean-stone average — do not use it for crusher run.",
+      "About 1.35 US tons per cubic yard for clean #57 stone, loose, and 1.47 compacted (lb/ft³ × 27 ÷ 2,000). Crusher run runs 1.69 loose and 1.89 compacted. If a supplier quotes a flat 1.4 tons per yard, that is the clean-stone average; do not use it for crusher run.",
+  },
+  {
+    question: "How many cubic yards are in a ton of crushed stone?",
+    answer:
+      "About 0.74 cubic yards per ton of clean #57 stone, loose (1 ÷ 1.35). Crusher run is denser, so a ton fills about 0.59 loose cubic yards and 0.53 compacted. Divide your tonnage by the tons-per-yard figure for your product to get the volume.",
   },
   {
     question: "Why is crusher run so much heavier than #57?",
     answer:
-      "Fines. Clean #57 is a single size, so 35–40% of its volume is air voids between stones. Crusher run keeps everything from dust up, and the fine particles pack into those voids — same rock, 25% more of it per cubic yard. That extra mass is exactly what makes it a base material.",
+      "Fines. Clean #57 is a single size, so 35–40% of its volume is air voids between stones. Crusher run keeps everything from dust up, and the fine particles pack into those voids: same rock, 25% more of it per cubic yard. That extra mass is exactly what makes it a base material.",
   },
   {
     question: "How much more does compacted crushed stone weigh?",
     answer:
-      "Compaction squeezes out air, so density rises roughly 9% for clean #57 (100 to 109 lb/ft³) and about 12% for crusher run (125 to 140 lb/ft³). A ton is still a ton — compaction never changes weight, only the volume that weight occupies. That is why base-course orders need 15–20% extra material to end up at the designed compacted depth.",
+      "About 9–12% more per cubic foot. Compaction squeezes out air, so density rises roughly 9% for clean #57 (100 to 109 lb/ft³) and about 12% for crusher run (125 to 140 lb/ft³). A ton is still a ton: compaction never changes weight, only the volume that weight occupies. That is why base-course orders need 15–20% extra material to end up at the designed compacted depth.",
   },
   {
     question: "Does the rock type change crushed stone weight?",
     answer:
-      "By roughly 10% across common quarry rock. Crushed limestone runs about 1,550 kg/m³ loose, granite about 1,650, and dense trap rock (basalt/diabase) heavier still. The gradation matters more than the geology, though — dense-graded crusher run of any rock outweighs clean stone of any rock.",
+      "By roughly 10% across common quarry rock. Crushed limestone runs about 1,550 kg/m³ loose, granite about 1,650, and dense trap rock (basalt/diabase) heavier still. The gradation matters more than the geology, though: dense-graded crusher run of any rock outweighs clean stone of any rock.",
   },
   {
     question: "Does wet crushed stone weigh more?",
     answer:
-      "Yes — moisture clinging to particle surfaces and filling voids adds 5–15% to scale weight, and fines-heavy products like crusher run hold the most water. Suppliers weigh whatever crosses the scale, so a soaked stockpile after a rainy week quietly inflates a per-ton purchase.",
+      "Yes. Moisture clinging to particle surfaces and filling voids adds 5–15% to scale weight, and fines-heavy products like crusher run hold the most water. Suppliers weigh whatever crosses the scale, so a soaked stockpile after a rainy week quietly inflates a per-ton purchase.",
   },
 ];
 
 const toc = tocFromTitles(
   "The weight chart",
-  "Loose vs compacted",
+  "How much heavier is compacted crushed stone?",
   "Weight by rock type",
   "Worked conversion: yards to tons",
   "Worked conversion: tons to coverage",
@@ -112,6 +119,7 @@ export default function CrushedStoneWeightPage() {
           path,
           category: "Gravel",
           datePublished: "2026-07-16",
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -124,7 +132,7 @@ export default function CrushedStoneWeightPage() {
               eyebrow="Gravel · Crushed Stone"
               variant={heroVariant}
               title="Crushed stone weight"
-              description="Clean stone runs about 100 lb/ft³ loose; compacted crusher run reaches 140. That 40% spread is the difference between an accurate order and a second delivery fee — here are the numbers by size and rock type."
+              description="Clean stone runs about 100 lb/ft³ loose; compacted crusher run reaches 140. That 40% spread is the difference between an accurate order and a second delivery fee. Here are the numbers by size and rock type."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -137,17 +145,24 @@ export default function CrushedStoneWeightPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much does crushed stone weigh?"
+          answer="Clean crushed stone such as #57 weighs about 100 lb per cubic foot loose, which is 2,700 lb or 1.35 US tons per cubic yard. Crusher run is heavier because its fines fill the voids: about 125 lb/ft³ loose (1.69 tons per yard) and 140 lb/ft³ once compacted (1.89 tons per yard)."
+          ruleOfThumb="Clean stone ≈ 1.35 tons per yard; compacted crusher run ≈ 1.89."
+          formula="Tons = yd³ × lb/ft³ × 27 ÷ 2,000"
+        />
+
         <Section title="The weight chart">
           <DensityTable
             rows={weightRows}
             highlight="Crushed stone #57 (loose)"
-            caption="Loose bulk unit weights unless noted, per ASTM C29 typical values. The highlighted row — 100 lb/ft³, 1.35 tons/yd³ — is the estimating standard for clean crushed stone."
+            caption="Loose bulk unit weights unless noted, per ASTM C29 typical values. The highlighted row (100 lb/ft³, 1.35 tons/yd³) is the estimating standard for clean crushed stone."
           />
           <p className="text-muted-foreground">
-            Two patterns run through the chart. Single-size clean stone — #2, #57, #8 — all
+            Two patterns run through the chart. Single-size clean stone (#2, #57, #8) all
             lands near 100 lb/ft³ regardless of particle size, because the void ratio between
-            uniform particles barely changes with scale. And anything carrying fines — crusher
-            run, dense-graded base — jumps 25% heavier because the fines occupy the voids.
+            uniform particles barely changes with scale. And anything carrying fines (crusher
+            run, dense-graded base) jumps 25% heavier because the fines occupy the voids.
             Size ranges for each product are decoded in the{" "}
             <a href={GRAVEL.stoneSizes} className="font-medium text-primary hover:underline">
               crushed stone sizes guide
@@ -156,7 +171,11 @@ export default function CrushedStoneWeightPage() {
           </p>
         </Section>
 
-        <Section title="Loose vs compacted">
+        <Section title="How much heavier is compacted crushed stone?">
+          <p className="text-muted-foreground">
+            Compacted crushed stone is about 9% denser than loose for clean #57 and about 12%
+            denser for crusher run.
+          </p>
           <BarChart
             title="Loose vs compacted unit weight, lb/ft³"
             unit="lb/ft³"
@@ -172,13 +191,13 @@ export default function CrushedStoneWeightPage() {
             Compaction removes air, not stone: a ton stays a ton, but it occupies about 9%
             less volume for clean #57 and 12% less for crusher run. The practical consequence
             is that a base layer specified at 4 inches <em>compacted</em> consumes more
-            material than 4 loose inches would suggest — plan on ordering 15–20% extra
+            material than 4 loose inches would suggest, so plan on ordering 15–20% extra
             (compaction shrinkage plus normal waste) to finish at the designed depth.
           </p>
           <WarningBlock title="Quote compacted density for base work">
             If you order a compacted crusher run base using the loose figure of 125 lb/ft³,
             a 15-ton order arrives roughly 1.6 tons short. Base courses convert at 140
-            lb/ft³ — 1.89 tons per compacted cubic yard — before the waste allowance.
+            lb/ft³ (1.89 tons per compacted cubic yard) before the waste allowance.
           </WarningBlock>
         </Section>
 
@@ -186,12 +205,12 @@ export default function CrushedStoneWeightPage() {
           <p className="text-muted-foreground">
             Geology moves the numbers about 10%. Crushed limestone, the most common quarry
             rock east of the Rockies, runs about 1,550 kg/m³ (97 lb/ft³) loose. Granite is
-            denser at roughly 1,650 kg/m³ (103 lb/ft³), and trap rock — basalt and diabase,
-            common in the Northeast — is heavier still. Lightweight outliers exist too:
+            denser at roughly 1,650 kg/m³ (103 lb/ft³), and trap rock (basalt and diabase,
+            common in the Northeast) is heavier still. Lightweight outliers exist too:
             recycled concrete aggregate runs about 1,450 kg/m³ because the old mortar is
             porous. Unless you are ordering hundreds of tons, the gradation (clean vs
             dense-graded, loose vs compacted) dominates the calculation and the rock type is
-            a rounding adjustment — the full list is in the{" "}
+            a rounding adjustment. The full list is in the{" "}
             <a href={GRAVEL.refDensity} className="font-medium text-primary hover:underline">
               gravel density database
             </a>
@@ -216,7 +235,7 @@ export default function CrushedStoneWeightPage() {
               { label: "Tons", work: "17,550 ÷ 2,000 = 8.8 tons" },
               { label: "Add 10% allowance", work: "8.8 × 1.10 = 9.7 tons" },
             ]}
-            result="Order 10 tons of #57 — or quote it back as 6.5 loose cubic yards and let the dispatcher confirm the conversion."
+            result="Order 10 tons of #57, or quote it back as 6.5 loose cubic yards and let the dispatcher confirm the conversion."
           />
         </Section>
 
@@ -229,7 +248,7 @@ export default function CrushedStoneWeightPage() {
               { label: "Depth in feet", work: "3 in ÷ 12 = 0.25 ft" },
               { label: "Coverage", work: "100 ÷ 0.25 = 400 ft²" },
             ]}
-            result="About 400 ft² at 3 inches — an 80 ft² per-ton rule of thumb for #57 at that depth. Full depth-by-depth tables are in the coverage chart."
+            result="About 400 ft² at 3 inches, an 80 ft² per-ton rule of thumb for #57 at that depth. Full depth-by-depth tables are in the coverage chart."
           />
         </Section>
 

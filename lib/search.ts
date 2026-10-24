@@ -11,7 +11,7 @@ function matchScore(entry: SearchEntry, query: string): number {
   return 0;
 }
 
-/** Ranked, filtered search results — shared by <SiteSearch> and /search. */
+/** Ranked, filtered search results: shared by <SiteSearch> and /search. */
 export function searchSite(query: string, limit = 8): SearchEntry[] {
   const q = query.trim();
   if (!q) return searchIndex.slice(0, limit);

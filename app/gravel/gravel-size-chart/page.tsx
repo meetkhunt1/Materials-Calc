@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { InfoBlock, TipBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
 import { Faq } from "@/components/faq/faq";
@@ -25,11 +26,12 @@ import {
 import type { CoverageRow, FaqItem } from "@/types";
 
 const slug = "gravel-size-chart";
-const title = "Gravel Size Chart — Every Standard Aggregate Size Number";
+const title = "Gravel Size Chart: #1 to #10 Stone Sizes (ASTM)";
 const description =
-  "All standard aggregate sizes in one chart: #1, #2, #3, #357, #5, #57, #67, #8, #89 and #10, plus crusher run, pea gravel and river rock — dimension ranges and typical uses, per ASTM D448 / AASHTO M 43.";
+  "Gravel sizes run from #1 (1.5–3.5 in) down to #10 screenings under 4.75 mm, and #57 is 1 in to No. 4. Every size, plus crusher run, pea gravel and uses.";
 const path = GRAVEL.refSizes;
 const datePublished = "2026-07-16";
+const dateModified = "2026-10-24";
 const author = getAuthor("materials-team");
 
 const heroVariant = pick(slug, HERO_VARIANTS);
@@ -43,6 +45,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: dateModified,
 });
 
 const sizeRows: CoverageRow[] = [
@@ -50,7 +53,7 @@ const sizeRows: CoverageRow[] = [
     label: "#1",
     spec: "1.5–3.5 in (37.5–90 mm)",
     coverage: "Culvert bedding, stabilizing very soft ground, erosion control",
-    note: "Too large to shovel or rake — machine-placed",
+    note: "Too large to shovel or rake; machine-placed",
   },
   {
     label: "#2",
@@ -102,7 +105,7 @@ const sizeRows: CoverageRow[] = [
   },
   {
     label: "Crusher run",
-    spec: '3/4 or 1.5 in "minus" — stone down to dust',
+    spec: '3/4 or 1.5 in "minus": stone down to dust',
     coverage: "Compactable base for driveways, patios and sheds",
     note: "Regional names: CR-6, 21A/21B, DGA, road base",
   },
@@ -157,32 +160,32 @@ const faqItems: FaqItem[] = [
   {
     question: "What size is #57 gravel?",
     answer:
-      "#57 stone is graded from 1 inch down to the No. 4 sieve (25 to 4.75 mm) — most particles are about 3/4 inch. It is the default order for concrete aggregate, driveway topping and French drains, and if a supplier just says 'gravel', #57 is usually what arrives.",
+      "#57 stone is graded from 1 inch down to the No. 4 sieve (25 to 4.75 mm), and most particles are about 3/4 inch. It is the default order for concrete aggregate, driveway topping and French drains, and if a supplier just says 'gravel', #57 is usually what arrives.",
   },
   {
     question: "Do smaller size numbers mean smaller stone?",
     answer:
-      "The opposite: under ASTM D448 the numbering runs from #1 (up to 3.5 inches) down to #10 (screenings passing 4.75 mm). Multi-digit designations like #57, #67, #89 and #357 are graded blends spanning the sizes their digits reference — #57 covers the #5-to-#7 range.",
+      "No, the opposite: under ASTM D448 the numbering runs from #1 (up to 3.5 inches) down to #10 (screenings passing 4.75 mm). Multi-digit designations like #57, #67, #89 and #357 are graded blends spanning the sizes their digits reference, so #57 covers the #5-to-#7 range.",
   },
   {
     question: "What is the best gravel size for a driveway?",
     answer:
-      "Use two sizes: a compacted crusher-run base (its fines lock into a near-solid layer), topped with 2–3 inches of #57 for the running surface. Skipping the base and laying #57 straight on soil is the classic mistake — clean stone migrates and ruts without a locked base under it.",
+      "Two sizes: a compacted crusher-run base (its fines lock into a near-solid layer), topped with 2–3 inches of #57 for the running surface. Skipping the base and laying #57 straight on soil is the classic mistake, because clean stone migrates and ruts without a locked base under it.",
   },
   {
     question: "Are ASTM D448 and AASHTO M 43 sizes the same?",
     answer:
-      "Effectively yes — the two standards use the same size numbers and gradation bands. ASTM D448 is the general classification; AASHTO M 43 adopts it for road and bridge work, which is why a DOT spec and a landscape yard both understand '#57' identically.",
+      "Effectively yes. The two standards use the same size numbers and gradation bands. ASTM D448 is the general classification; AASHTO M 43 adopts it for road and bridge work, which is why a DOT spec and a landscape yard both understand '#57' identically.",
   },
   {
     question: "Is pea gravel an official ASTM size?",
     answer:
-      "No. Pea gravel is a commercial name for rounded natural stone screened to roughly 1/4–5/8 inch. Its nearest ASTM cousin by particle size is #8, but #8 is crushed and angular — the two behave very differently underfoot and are not interchangeable in drainage or paving specs.",
+      "No. Pea gravel is a commercial name for rounded natural stone screened to roughly 1/4–5/8 inch. Its nearest ASTM cousin by particle size is #8, but #8 is crushed and angular, and the two behave very differently underfoot and are not interchangeable in drainage or paving specs.",
   },
   {
     question: "What size gravel drains best?",
     answer:
-      "Clean, washed single-size stone in the #57 range drains best for most work: its voids stay open because there are no fines to plug them. Go larger (#3) for dry wells and high-flow beds. Never use crusher run or screenings where drainage matters — the fines seal the layer.",
+      "Clean, washed single-size stone in the #57 range drains best for most work: its voids stay open because there are no fines to plug them. Go larger (#3) for dry wells and high-flow beds. Never use crusher run or screenings where drainage matters, because the fines seal the layer.",
   },
 ];
 
@@ -202,6 +205,7 @@ export default function GravelSizeChartPage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified,
           author,
         })}
       />
@@ -214,7 +218,7 @@ export default function GravelSizeChartPage() {
               eyebrow="Gravel · Reference Chart"
               variant={heroVariant}
               title="Gravel size chart"
-              description="Every standard aggregate size number — #1 through #10, the graded blends, crusher run, pea gravel and river rock — with dimension ranges and the jobs each size is made for, per ASTM D448 and AASHTO M 43."
+              description="Every standard aggregate size number (#1 through #10, the graded blends, crusher run, pea gravel and river rock) with dimension ranges and the jobs each size is made for, per ASTM D448 and AASHTO M 43."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -227,6 +231,12 @@ export default function GravelSizeChartPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="What are the standard gravel sizes?"
+          answer="Standard gravel sizes follow ASTM D448 numbers, where a smaller number means bigger stone: #1 is 1.5–3.5 in, #3 is 1–2 in, #57 runs from 1 in down to No. 4 (mostly about 3/4 in), #8 is 3/8 in and #10 is screenings under 4.75 mm. Pea gravel (1/4–5/8 in, rounded) is a trade name, not an ASTM size."
+          ruleOfThumb="The smaller the number, the larger the stone; #57 is the most-ordered size."
+        />
+
         <Section
           title="The gravel size chart"
           lead="Size numbers per ASTM D448 / AASHTO M 43. Each range runs from the sieve nearly all particles pass down to the sieve nearly all are retained on."
@@ -254,7 +264,7 @@ export default function GravelSizeChartPage() {
             The system dates to early highway specifications and reads backwards from
             intuition: <strong>the smaller the number, the larger the stone</strong>. #1 is
             fist-sized rock; #10 is dust. Single-digit numbers are close to one particle
-            size; multi-digit designations are graded blends named by the sizes they span —
+            size; multi-digit designations are graded blends named by the sizes they span:
             #57 covers the #5-to-#7 band, #89 the #8-to-#9 band, and #357 runs all the way
             from #3 down to #7.
           </p>
@@ -287,7 +297,7 @@ export default function GravelSizeChartPage() {
         <Cta
           variant="banner"
           title="Sized the stone? Now size the order"
-          description="Enter your dimensions and gravel type — the calculator returns cubic yards and tons."
+          description="Enter your dimensions and gravel type, and the calculator returns cubic yards and tons."
           href={GRAVEL.calculator}
           buttonLabel="Open the Gravel Calculator"
         />
@@ -301,7 +311,7 @@ export default function GravelSizeChartPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished={datePublished} />
+        <AuthorBox author={author} datePublished={datePublished} dateModified={dateModified} />
 
         <References items={[GREFS.astmD448, GREFS.aashtoM43, GREFS.nssga]} />
       </ArticleShell>

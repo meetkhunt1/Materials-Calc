@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { CalculatorPageShell } from "@/components/layouts/calculator-page-shell";
 import { WeightCalculatorCard } from "@/content/asphalt/calculators/cards";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { Section, tocFromTitles } from "@/components/blocks/section";
 import { TableOfContents } from "@/components/toc/table-of-contents";
 import { FormulaBlock } from "@/components/blocks/formula-block";
@@ -22,11 +23,12 @@ import { ASPHALT, weightGuideLinks, asphaltCalculatorLinks, pickLinks, AREFS } f
 import { CONCRETE, guideLinks as concreteGuides, pickLinks as pickConcrete } from "@/content/concrete/links";
 import type { FaqItem } from "@/types";
 
-const title = "Asphalt Weight Calculator — Volume to Tons";
+const title = "Asphalt Weight Calculator: Cubic Yards to Tons";
 const description =
-  "Convert cubic yards, feet or meters of asphalt to tons, tonnes, pounds and kilograms — for ordering, hauling and demolition disposal.";
+  "A compacted cubic yard of asphalt weighs 3,915 lb (1.96 tons); loose, about 3,155 lb. Convert yards, feet or meters to tons, tonnes, pounds and kg.";
 const path = ASPHALT.weight;
 const author = getAuthor("materials-team");
+const modified = "2026-10-24";
 
 export const metadata = buildMetadata({
   title,
@@ -34,33 +36,34 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: "2026-07-15",
+  modifiedTime: modified,
 });
 
 const faqItems: FaqItem[] = [
   {
-    question: "How much does a cubic yard of asphalt weigh?",
+    question: "What density does the asphalt weight calculator use?",
     answer:
-      "Compacted in place: about 3,915 lb — call it 2 tons. Loose in the truck: around 3,150 lb. The 25% difference between those two numbers causes more ordering errors than any other figure in paving.",
+      "The calculator uses 145 lb/ft³ for compacted hot mix, about 117 lb/ft³ for loose hot mix, 137 lb/ft³ for compacted cold mix, and 103 lb/ft³ loose or 122 lb/ft³ compacted for millings. Pick the state that matches what you measured; the 25% gap between loose and compacted hot mix causes more ordering errors than any other figure in paving.",
   },
   {
-    question: "How much does a square foot of asphalt weigh?",
+    question: "How much does a 3-inch asphalt driveway weigh per square foot?",
     answer:
-      "12 lb per square foot per inch of compacted thickness (145 ÷ 12). A 3 in driveway therefore carries about 36 lb/ft² of asphalt — handy for estimating removal weight on tear-outs.",
+      "A 3-inch asphalt driveway weighs about 36 lb per square foot, at 12 lb per inch of compacted thickness (145 ÷ 12), which is handy for estimating removal weight on tear-outs.",
   },
   {
-    question: "How many tons of asphalt fit in a dump truck?",
+    question: "How many truckloads does an asphalt tear-out need?",
     answer:
-      "Tandem-axle: 13–15 tons legally. Tri-axle: 16–19. Quad and super dumps: 19–26. End dumps: 23–25. Legal payload is gross vehicle weight limit minus empty weight — the truck load capacity guide has the full table.",
+      "Divide the in-place tonnage by the truck's legal payload: about 13–15 tons for a tandem, 16–19 for a tri-axle and 23–25 for an end dump. A 24-ton tear-out is two tandem loads. The truck load capacity guide has the full payload table.",
   },
   {
     question: "How much does removed (demolition) asphalt weigh?",
     answer:
-      "In place it's simple: area × thickness × 145 lb/ft³. Loaded in the truck as broken chunks it bulks enormously — plan on nearly double the truck volume, though the weight stays the same. Disposal is priced by the ton, so the in-place number is the one your budget needs.",
+      "Removed asphalt weighs the same as it did in place: area × thickness × 145 lb/ft³. Loaded in the truck as broken chunks it bulks enormously, so plan on nearly double the truck volume. Disposal is priced by the ton, so the in-place number is the one your budget needs.",
   },
   {
-    question: "Is hot asphalt heavier than cold?",
+    question: "Does temperature change how much asphalt weighs?",
     answer:
-      "Per unit volume, hot mix compacted is slightly denser than cold mix (145 vs ~137 lb/ft³) because it compacts tighter. Temperature itself changes density trivially — the real differences come from mix design and compaction, covered in hot mix vs cold mix weight.",
+      "Only trivially. A ton of mix weighs the same hot or cooled; what changes density is mix design and compaction. Compacted hot mix reaches 145 lb/ft³ while cold mix stays near 137 lb/ft³ because it cannot be rolled as tight, as covered in hot mix vs cold mix weight.",
   },
 ];
 
@@ -75,7 +78,7 @@ export default function WeightCalculatorPage() {
     <>
       <JsonLd
         data={[
-          webPageSchema({ title, description, path, datePublished: "2026-07-15" }),
+          webPageSchema({ title, description, path, datePublished: "2026-07-15", dateModified: modified }),
           calculatorSchema({ name: "Asphalt Weight Calculator", description, path }),
         ]}
       />
@@ -87,7 +90,7 @@ export default function WeightCalculatorPage() {
               eyebrow="Asphalt · Weight"
               variant="standard"
               title="Asphalt Weight Calculator"
-              description="Six material states, four weight units, and a truck-load count — because volume is what you measure, but weight is what you order, haul and pay for."
+              description="Six material states, four weight units, and a truck-load count, because volume is what you measure, but weight is what you order, haul and pay for."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -104,7 +107,7 @@ export default function WeightCalculatorPage() {
             formula="Weight = Volume × Density"
             variables={[
               { symbol: "Volume", meaning: "measured or calculated", unit: "yd³, ft³, m³" },
-              { symbol: "Density", meaning: "state-dependent — pick it honestly", unit: "lb/ft³" },
+              { symbol: "Density", meaning: "state-dependent; pick it honestly", unit: "lb/ft³" },
             ]}
             note="Compacted hot mix: 145 lb/ft³. Loose in the truck: ~117. Millings: 103 loose / 122 compacted. Wrong state = wrong trucks."
           />
@@ -112,10 +115,17 @@ export default function WeightCalculatorPage() {
         calculator={<WeightCalculatorCard />}
         aside={<TableOfContents items={toc} />}
       >
+        <QuickAnswer
+          question="How much does a cubic yard of asphalt weigh?"
+          answer="A cubic yard of compacted hot mix asphalt weighs about 3,915 lb (1.96 US tons), based on a density of 145 lb/ft³. The same yard loose in a truck weighs about 3,155 lb, and compacted millings about 3,290 lb, so always confirm which state a quote or ticket refers to."
+          ruleOfThumb="1 compacted cubic yard of asphalt ≈ 2 tons."
+          formula="Weight (lb) = Volume (ft³) × 145"
+        />
+
         <Section title="Weight = volume × density">
           <p className="text-muted-foreground">
-            There&apos;s only one formula on this page — the skill is choosing the density that
-            matches the material&apos;s state. Asphalt exists on your job in at least three
+            Asphalt weight is volume times density, and the skill is choosing the density that
+            matches the material&apos;s state. There&apos;s only one formula on this page. Asphalt exists on your job in at least three
             states (loose in the truck, compacted in the pavement, broken in the demo pile),
             and each has its own unit weight. Full numbers and the reasons behind them live in{" "}
             <a href={ASPHALT.densityChart} className="font-medium text-primary hover:underline">
@@ -153,7 +163,7 @@ export default function WeightCalculatorPage() {
               { label: "Truckloads at 14-ton payload", work: "24.1 ÷ 14 = 1.7 → 2 tandem loads" },
               { label: "Disposal", work: "24.1 × $28 = $675" },
             ]}
-            result="Two tandem loads, ~$675 tipping — and the trucks will look overfull because chunks bulk to nearly twice the in-place volume."
+            result="Two tandem loads and about $675 in tipping fees. The trucks will look overfull because chunks bulk to nearly twice the in-place volume."
           />
         </Section>
 
@@ -162,12 +172,12 @@ export default function WeightCalculatorPage() {
             Quotes, tickets and specs silently switch between states. A supplier selling
             millings &quot;by the yard&quot; means loose yards off the pile (103 lb/ft³); your
             pavement design needs compacted yards (122). Buy loose volume for a compacted
-            requirement and you arrive 16% short. Convert to tons first — weight never lies.
+            requirement and you arrive 16% short. Convert to tons first, because weight never lies.
           </WarningBlock>
           <TipBlock title="Sanity-check any delivery">
             Divide the scale ticket&apos;s net tons by the truck&apos;s struck volume. Hot mix should
             land near 1.55–1.6 tons per loose cubic yard. A number far off means the wrong
-            material or a wrong ticket — catch it before the truck dumps.
+            material or a wrong ticket, so catch it before the truck dumps.
           </TipBlock>
         </Section>
 
@@ -190,7 +200,7 @@ export default function WeightCalculatorPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished="2026-07-15" />
+        <AuthorBox author={author} datePublished="2026-07-15" dateModified={modified} />
 
         <References items={[AREFS.astmD2726, AREFS.ms4, AREFS.bridgeFormula]} />
       </CalculatorPageShell>

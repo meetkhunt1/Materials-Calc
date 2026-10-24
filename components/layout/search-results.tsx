@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { FileText } from "lucide-react";
 import { searchSite } from "@/lib/search";
 
-/** Reads ?q= from the URL — the entry point Google's Sitelinks SearchBox targets. */
+/** Reads ?q= from the URL: the entry point Google's Sitelinks SearchBox targets. */
 export function SearchResults() {
   const params = useSearchParams();
   const query = params.get("q") ?? "";

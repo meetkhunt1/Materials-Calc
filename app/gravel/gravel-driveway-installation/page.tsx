@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { FormulaBlock } from "@/components/blocks/formula-block";
 import { WarningBlock, SuccessBlock } from "@/components/blocks/callout";
 import { CoverageTable } from "@/components/tables/coverage-table";
@@ -20,12 +21,13 @@ import { GRAVEL, drivewayGuideLinks, pickLinks, GREFS } from "@/content/gravel/l
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-driveway-installation";
-const title = "Gravel Driveway Installation (Step by Step)";
+const title = "Gravel Driveway Installation: 8 Steps, 3 Layers";
 const description =
-  "How to install a gravel driveway that lasts: layout and utility locates, excavation to 8–12 in, grading a 2–3% crown, geotextile fabric, three stone layers compacted one at a time, and edging — with the tool list and the checks that matter.";
+  "To install a gravel driveway, dig 8–12 in to firm subgrade, grade a 2–3% crown and compact three stone layers one at a time. Steps, tool rentals and checks.";
 const path = GRAVEL.drivewayInstall;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
+const dateModified = "2026-10-24";
 
 const heroVariant = pick(slug, HERO_VARIANTS);
 const tocPosition = pick(slug, ["toc-right", "toc-left"] as const);
@@ -39,6 +41,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: dateModified,
 });
 
 const installSteps = [
@@ -48,7 +51,7 @@ const installSteps = [
   },
   {
     name: "Excavate 8–12 inches",
-    text: "Strip all topsoil and organic material down to firm mineral subgrade — typically 8 in deep on firm soil, 12 in on clay or soft ground. Organics rot and settle; any left behind becomes a dip in two years. Dig out soft pockets and fill them with compacted base stone.",
+    text: "Strip all topsoil and organic material down to firm mineral subgrade, typically 8 in deep on firm soil, 12 in on clay or soft ground. Organics rot and settle; any left behind becomes a dip in two years. Dig out soft pockets and fill them with compacted base stone.",
   },
   {
     name: "Grade the subgrade and set the crown",
@@ -60,7 +63,7 @@ const installSteps = [
   },
   {
     name: "Place and compact the #3 base",
-    text: "Spread 4 in of #3 crushed stone (1–2 in angular rock), rake it level while holding the crown, and compact with 4–6 passes of a plate compactor or roller. This layer spreads wheel loads into the subgrade — it is the structural heart of the drive.",
+    text: "Spread 4 in of #3 crushed stone (1–2 in angular rock), rake it level while holding the crown, and compact with 4–6 passes of a plate compactor or roller. This layer spreads wheel loads into the subgrade and is the structural heart of the drive.",
   },
   {
     name: "Place and compact the #57 middle layer",
@@ -68,11 +71,11 @@ const installSteps = [
   },
   {
     name: "Place, crown and compact the surface",
-    text: "Spread 2–3 in of crusher run, shape the final 2–3% crown carefully, dampen lightly if the stone is dust-dry, and compact to a tight crust. This is the layer you see and drive on — take the time to get the profile true.",
+    text: "Spread 2–3 in of crusher run, shape the final 2–3% crown carefully, dampen lightly if the stone is dust-dry, and compact to a tight crust. This is the layer you see and drive on, so take the time to get the profile true.",
   },
   {
     name: "Edge and finish",
-    text: "Contain the edges with steel edging, timber, or a compacted soil shoulder flush with the surface, and cut in any drainage ditches or culvert aprons. Unsupported edges are where gravel drives start to unravel — and where every future rake-back begins.",
+    text: "Contain the edges with steel edging, timber, or a compacted soil shoulder flush with the surface, and cut in any drainage ditches or culvert aprons. Unsupported edges are where gravel drives start to unravel, and where every future rake-back begins.",
   },
 ];
 
@@ -80,32 +83,37 @@ const faqItems: FaqItem[] = [
   {
     question: "Can I lay a gravel driveway over grass or dirt?",
     answer:
-      "No — stone placed on turf or topsoil sinks as the organics beneath it rot and compress, and you effectively buy the same gravel twice. Always strip to firm mineral subgrade first. The one exception is topping up an existing gravel drive that already has a sound compacted base.",
+      "No. Stone placed on turf or topsoil sinks as the organics beneath it rot and compress, and you effectively buy the same gravel twice. Always strip to firm mineral subgrade first. The one exception is topping up an existing gravel drive that already has a sound compacted base.",
   },
   {
     question: "How long does it take to install a gravel driveway?",
     answer:
-      "With a rented skid steer and plate compactor, a 600 ft² single-car drive is a solid 2–3 day DIY project: one day to excavate and grade, one to two days to place and compact three layers. A contractor crew with a tractor and roller typically does the same drive in a day once materials are staged.",
+      "Two to three days for a DIYer, or about one day for a contractor crew. With a rented skid steer and plate compactor, a 600 ft² single-car drive breaks down as one day to excavate and grade, one to two days to place and compact three layers. A contractor crew with a tractor and roller typically does the same drive in a day once materials are staged.",
   },
   {
     question: "What slope should a gravel driveway have?",
     answer:
-      "A 2–3% cross-slope crown — the center 1/4 to 3/8 in higher per foot of half-width — so rain sheds to the edges instead of soaking in or running down the wheel paths. Along its length, gravel handles running grades up to about 10–12%; steeper sections migrate downhill and usually need a paved or grid-stabilized strip.",
+      "A 2–3% cross-slope crown, with the center 1/4 to 3/8 in higher per foot of half-width, so rain sheds to the edges instead of soaking in or running down the wheel paths. Along its length, gravel handles running grades up to about 10–12%; steeper sections migrate downhill and usually need a paved or grid-stabilized strip.",
   },
   {
     question: "Do I need to compact every layer separately?",
     answer:
-      "Yes. A plate compactor only densifies the top 3–4 in of loose stone, so compaction has to happen layer by layer — 4–6 passes each, working from the edges toward the crown. Stone dumped 8–10 in deep and compacted once forms a crust over a loose core that ruts from the inside out.",
+      "Yes. A plate compactor only densifies the top 3–4 in of loose stone, so compaction has to happen layer by layer: 4–6 passes each, working from the edges toward the crown. Stone dumped 8–10 in deep and compacted once forms a crust over a loose core that ruts from the inside out.",
   },
   {
     question: "What equipment do I need to build a gravel driveway?",
     answer:
-      "Minimum: a machine to dig and move stone (skid steer, compact tractor, or a mini excavator plus wheelbarrows for small drives), a plate compactor, a landscape rake, string lines and a line level for the crown, and a utility knife for fabric. All of it rents for a combined $350–550 per weekend in most markets.",
+      "At minimum you need a machine to dig and move stone (skid steer, compact tractor, or a mini excavator plus wheelbarrows for small drives), a plate compactor, a landscape rake, string lines and a line level for the crown, and a utility knife for fabric. All of it rents for a combined $350–550 per weekend in most markets.",
   },
   {
     question: "When is the best time of year to install?",
     answer:
-      "Late spring through early fall, on a dry subgrade. Compacting stone over saturated soil traps water and pumps mud into the base; frozen ground cannot be graded or compacted at all. If the excavation floor is wet enough to smear underfoot, wait — a week of patience buys years of performance.",
+      "Late spring through early fall, on a dry subgrade. Compacting stone over saturated soil traps water and pumps mud into the base; frozen ground cannot be graded or compacted at all. If the excavation floor is wet enough to smear underfoot, wait. A week of patience buys years of performance.",
+  },
+  {
+    question: "How deep should a gravel driveway be?",
+    answer:
+      "About 9–11 inches of compacted stone in three layers: 4 in of #3 base, 3–4 in of #57 and 2–3 in of crusher run on top. That is why the excavation goes 8–12 in deep. On clay or soft ground, dig to the deeper end and add geotextile fabric under the first layer.",
   },
 ];
 
@@ -128,6 +136,7 @@ export default function GravelDrivewayInstallationPage() {
             path,
             category: "Gravel",
             datePublished,
+            dateModified,
             author,
           }),
           howToSchema({
@@ -176,7 +185,19 @@ export default function GravelDrivewayInstallationPage() {
           />
         }
       >
+        <QuickAnswer
+          question="How do you install a gravel driveway?"
+          answer="Install a gravel driveway by stripping topsoil 8–12 inches down to firm subgrade, grading a 2–3% crown, laying geotextile fabric on soft soil, then placing about 4 in of #3 stone, 3–4 in of #57 and 2–3 in of crusher run. Compact each layer separately with 4–6 plate compactor passes."
+          ruleOfThumb="Compact in lifts of 3–4 in or less; a plate compactor cannot densify a thicker lift."
+          formula="Crown rise = half-width × 0.02 to 0.03"
+        />
+
         <Section title="The eight-step build">
+          <p className="text-muted-foreground">
+            A gravel driveway that lasts takes eight steps: lay out and locate utilities,
+            excavate, crown the subgrade, add fabric, then place and compact three stone
+            layers before edging.
+          </p>
           <ol className="space-y-4">
             {installSteps.map((step, index) => (
               <li id={`step-${index + 1}`} key={step.name} className="flex gap-4 rounded-xl border p-4">
@@ -191,8 +212,8 @@ export default function GravelDrivewayInstallationPage() {
             ))}
           </ol>
           <p className="text-muted-foreground">
-            What each stone layer is doing structurally — and why the sizes step down
-            from bottom to top — is covered in the{" "}
+            What each stone layer is doing structurally, and why the sizes step down
+            from bottom to top, is covered in the{" "}
             <a href={GRAVEL.drivewayLayers} className="font-medium text-primary hover:underline">
               base layers guide
             </a>
@@ -208,11 +229,11 @@ export default function GravelDrivewayInstallationPage() {
               { symbol: "half-width", meaning: "centerline to edge", unit: "ft" },
               { symbol: "slope", meaning: "target cross-slope, 0.02–0.03", unit: "decimal" },
             ]}
-            note="A 12 ft wide drive (6 ft half-width) at 2.5% needs the centerline about 1.8 in higher than the edges. Check it with a string line and line level across the drive — eyeballing a crown reliably produces a flat one."
+            note="A 12 ft wide drive (6 ft half-width) at 2.5% needs the centerline about 1.8 in higher than the edges. Check it with a string line and line level across the drive, because eyeballing a crown reliably produces a flat one."
           />
           <p className="text-muted-foreground">
-            Water is the only force that destroys gravel drives — everything else just
-            rearranges stone. A true crown sheds rain sideways in seconds; a flat or
+            A 2–3% crown is what keeps a gravel drive alive, because water is the only force
+            that destroys gravel drives. Everything else just rearranges stone. A true crown sheds rain sideways in seconds; a flat or
             dished surface ponds it, softens the layers below, and turns wheel paths
             into ruts the next time a car passes. Build the crown into the subgrade and
             hold it through every layer, checking with the string line as you rake.
@@ -223,7 +244,7 @@ export default function GravelDrivewayInstallationPage() {
           <WarningBlock title="Never compact three layers in one pass">
             A plate compactor densifies only the top 3–4 inches of loose material. If
             the stone goes down as one 9 in lift, the bottom two-thirds stay loose
-            forever — the drive feels firm for a few weeks, then ruts from the inside
+            forever. The drive feels firm for a few weeks, then ruts from the inside
             out under the first heavy rain. Place, rake, crown and compact each layer
             with 4–6 overlapping passes before the next delivery is spread. Same
             tonnage, completely different driveway.
@@ -231,7 +252,7 @@ export default function GravelDrivewayInstallationPage() {
           <p className="text-muted-foreground">
             Compact from the edges toward the center so stone migrates uphill into the
             crown rather than off the shoulders. Crusher run compacts best slightly
-            damp — if the surface layer is dust-dry, mist it with a hose before the
+            damp: if the surface layer is dust-dry, mist it with a hose before the
             final passes and the fines will bind into a crust.
           </p>
         </Section>
@@ -249,7 +270,7 @@ export default function GravelDrivewayInstallationPage() {
               {
                 label: "Plate compactor (heavier is better)",
                 spec: "Compacting each layer",
-                coverage: "$90–160 / day",
+                coverage: "$90–150 / day",
               },
               {
                 label: "Landscape rake (wide aluminum)",
@@ -272,7 +293,7 @@ export default function GravelDrivewayInstallationPage() {
                 coverage: "$2–6 / linear ft",
               },
             ]}
-            caption="The full DIY kit rents for roughly $350–550 a weekend — a small line in a budget that stone dominates."
+            caption="The full DIY kit rents for roughly $350–550 a weekend, a small line in a budget that stone dominates."
           />
         </Section>
 
@@ -281,13 +302,13 @@ export default function GravelDrivewayInstallationPage() {
             <p>
               Walk the drive after the final compaction pass and verify: the string
               line still shows 2–3% of crown at three stations along the length; a slow
-              hose stream placed on the centerline runs to the edge and off — not down
+              hose stream placed on the centerline runs to the edge and off, not down
               the drive; and a hard heel twist anywhere on the surface leaves a scuff,
               not a hole. Pass all three and the drive is ready for its first car.
             </p>
           </SuccessBlock>
           <p className="text-muted-foreground">
-            Then put the maintenance dates in a calendar — a light regrade after the
+            Then put the maintenance dates in a calendar. A light regrade after the
             first winter locks in the profile while the stone is still fresh, ahead of
             the pothole repairs and annual top-up the surface will need over time.
           </p>
@@ -313,7 +334,7 @@ export default function GravelDrivewayInstallationPage() {
           )}
         />
 
-        <AuthorBox author={author} datePublished={datePublished} />
+        <AuthorBox author={author} datePublished={datePublished} dateModified={dateModified} />
 
         <References items={[GREFS.fhwaGravel, GREFS.aashtoM43]} />
       </ArticleShell>

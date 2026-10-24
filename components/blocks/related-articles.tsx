@@ -13,7 +13,7 @@ interface RelatedArticlesProps {
 }
 
 /**
- * Internal-link block with three visual styles — pass pick(slug, RELATED_STYLES)
+ * Internal-link block with three visual styles: pass pick(slug, RELATED_STYLES)
  * so related sections differ from page to page.
  */
 export function RelatedArticles({

@@ -2,13 +2,13 @@
  * Single source of truth for asphalt installed pricing.
  *
  * Every number in this file is DERIVED from a worked example that already
- * exists on the site — not from an industry rule of thumb, a vendor page or an
+ * exists on the site, not from an industry rule of thumb, a vendor page or an
  * editorial guess. Each band records the arithmetic it came from in
  * `derivedFrom`, so the only legitimate way to change a price here is to change
  * (and re-verify) the worked example it descends from.
  *
  * This file is deliberately INCOMPLETE. Jobs above 1,000 ft² get no number,
- * because no worked example anywhere in the repo computes one — the figures
+ * because no worked example anywhere in the repo computes one. The figures
  * that used to appear for large lots ($2.50–5/ft²) were stated, never
  * calculated. Rather than publish a guess with the authority of a shared
  * constant, large jobs render LARGE_JOB_GUIDANCE instead. Add a band here only
@@ -28,7 +28,7 @@ export interface CostBand {
   /**
    * Excavation + aggregate base per ft². Subtract from the all-in range to
    * price a resurface over an already-prepared base. null where no worked
-   * example computes it for this size — do not interpolate.
+   * example computes it for this size. Do not interpolate.
    */
   basePrep: { low: number; high: number } | null;
   /**
@@ -62,7 +62,7 @@ export const BAND_500_1000: CostBand = {
   basePrep: null,
   // SCOPE INFERRED: the regional-price-factors example itemises material,
   // labor, equipment and mobilization but never names excavation or base.
-  // Treating its total as all-in is our inference, not the page's claim — and
+  // Treating its total as all-in is our inference, not the page's claim, and
   // it is why basePrep is null here rather than carried over from the band
   // above. Re-derive both if that example is ever itemised properly.
   scopeInferred: true,
@@ -75,21 +75,21 @@ export const COST_BANDS: CostBand[] = [BAND_UNDER_500, BAND_500_1000];
 
 /**
  * What every page says instead of a number once the job passes 1,000 ft².
- * Directional only — the direction IS supported by the computed examples
+ * Directional only: the direction IS supported by the computed examples
  * (cost per ft² falls monotonically as area grows); the magnitude is not.
  */
 export const LARGE_JOB_GUIDANCE =
-  "Above about 1,000 ft², the per-square-foot price keeps falling as mobilization and crew time spread across more area — but how far it falls depends on access, haul distance and how the contractor schedules the work, so jobs that size are worth quoting rather than estimating from a table.";
+  "Above about 1,000 ft², the per-square-foot price keeps falling as mobilization and crew time spread across more area. How far it falls depends on access, haul distance and how the contractor schedules the work, so jobs that size are worth quoting rather than estimating from a table.";
 
 /** Short inline variant of the same point, for sentences rather than callouts. */
 export const LARGE_JOB_GUIDANCE_SHORT =
-  "larger jobs keep getting cheaper per square foot as fixed costs spread, but the drop depends on site access and haul distance — get them quoted";
+  "larger jobs keep getting cheaper per square foot as fixed costs spread, but the drop depends on site access and haul distance, so get them quoted";
 
 /**
  * Recurring maintenance rates used by lifetime-cost arithmetic.
  * These are carried over unchanged: unlike installed cost they are stated
  * consistently everywhere they appear on the site, so there was no conflict to
- * resolve. They are still uncited — see the pricing-sources TODO.
+ * resolve. They are still uncited (see the pricing-sources TODO).
  */
 export const RECURRING_RATES = {
   sealcoat: { low: 0.2, high: 0.45, cycleYearsLow: 3, cycleYearsHigh: 5 },

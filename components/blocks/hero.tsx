@@ -14,7 +14,7 @@ interface HeroProps {
   description: string;
   /** Small eyebrow label above the title, e.g. the category name */
   eyebrow?: string;
-  /** Layout variant — pass pick(slug, HERO_VARIANTS) for per-page variety */
+  /** Layout variant: pass pick(slug, HERO_VARIANTS) for per-page variety */
   variant?: HeroVariant;
   /** Optional stats row (only rendered by the "stat-strip" variant) */
   stats?: HeroStat[];

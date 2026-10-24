@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { TipBlock, InfoBlock } from "@/components/blocks/callout";
 import { ProsCons } from "@/components/blocks/pros-cons";
 import { CostTable } from "@/components/tables/cost-table";
@@ -27,12 +28,13 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-labor-cost";
-const title = "Gravel Labor Cost — Spreading, Grading & Compaction";
+const title = "Gravel Labor Cost: $15–35 per Ton Installed";
 const description =
-  "What gravel installation labor costs in 2026: $40–80/hr crew rates, $75–125/hr skid steer with operator, $10–35 per ton installed premiums, equipment rental prices, and when DIY genuinely pays.";
+  "Spreading, grading and compacting gravel costs $15–35 per ton over material in 2026, or $40–60/hr for labor. See machine rates, rentals and when DIY pays.";
 const path = GRAVEL.laborCost;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
+const dateModified = "2026-10-24";
 
 // Deterministic per-slug variation (see lib/variation.ts)
 const heroVariant = pick(slug, HERO_VARIANTS); // "centered"
@@ -47,6 +49,7 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: dateModified,
 });
 
 const faqItems: FaqItem[] = [
@@ -56,14 +59,14 @@ const faqItems: FaqItem[] = [
       "Spread-only runs $10–20 per ton on top of material; spread, grade and compact runs $15–35 per ton. In hourly terms, general labor bills $40–60 per hour and a skid steer with operator $75–125. A 20-ton driveway top-up typically carries $200–500 of labor beyond the delivered stone.",
   },
   {
-    question: "What does an installed gravel driveway cost per square foot?",
+    question: "How much of an installed gravel driveway is labor?",
     answer:
-      "Fully installed — grading, fabric, layered stone, compaction — figure $1–3 per square foot in 2026, of which labor and machine time is roughly $0.30–0.80. Material is usually the bigger half, which is why installed quotes track stone prices so closely.",
+      "Roughly $0.30–0.80 per square foot of a $1–3 per square foot installed total in 2026, covering grading, fabric, layered stone placement and compaction. Material is usually the bigger half, which is why installed quotes track stone prices so closely.",
   },
   {
     question: "How long does it take to spread a ton of gravel by hand?",
     answer:
-      "With a wheelbarrow and rake, 30–60 minutes per ton over a short haul distance — so a 5-ton path is a solid half-day for one fit person. A skid steer moves the same 5 tons in well under an hour, which is why machine rental starts paying for itself around 10–15 tons.",
+      "With a wheelbarrow and rake, 30–60 minutes per ton over a short haul distance, so a 5-ton path is a solid half-day for one fit person. A skid steer moves the same 5 tons in well under an hour, which is why machine rental starts paying for itself around 10–15 tons.",
   },
   {
     question: "Do I really need to compact gravel?",
@@ -73,12 +76,12 @@ const faqItems: FaqItem[] = [
   {
     question: "When does hiring beat DIY on a gravel job?",
     answer:
-      "Above roughly 15–20 tons, when grading or drainage work is involved, or when the site needs a machine you cannot operate confidently. Below that — top-ups, paths, patios over an existing firm base — DIY labor savings are real: on a small job labor is 30–50% of the installed price and almost all of it is honest shovel work.",
+      "Hire out jobs above roughly 15–20 tons, jobs where grading or drainage work is involved, or when the site needs a machine you cannot operate confidently. Below that (top-ups, paths, patios over an existing firm base) DIY labor savings are real: on a small job labor is 30–50% of the installed price and almost all of it is honest shovel work.",
   },
   {
     question: "What should I get in a gravel installation quote?",
     answer:
-      "Line items, not a lump sum: tons of each material with the per-ton price, delivery, grading hours or a grading price, geotextile fabric with area, compaction per lift, and haul-off of any spoil. A quote written that way can be checked against this page's rates line by line — and contractors who write them tend to be the ones worth hiring.",
+      "Get line items, not a lump sum: tons of each material with the per-ton price, delivery, grading hours or a grading price, geotextile fabric with area, compaction per lift, and haul-off of any spoil. A quote written that way can be checked against this page's rates line by line, and contractors who write them tend to be the ones worth hiring.",
   },
 ];
 
@@ -99,6 +102,7 @@ export default function GravelLaborCostPage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified,
           author,
         })}
       />
@@ -111,7 +115,7 @@ export default function GravelLaborCostPage() {
               eyebrow="Gravel · Cost Series"
               variant={heroVariant}
               title="Gravel labor cost"
-              description="The stone is only half the bill. Spreading, grading and compaction turn a pile into a surface — here is what that work costs by the hour, by the ton, and by the square foot in 2026."
+              description="The stone is only half the bill. Spreading, grading and compaction turn a pile into a surface. Here is what that work costs by the hour, by the ton, and by the square foot in 2026."
             />
             <Container className="pt-6">
               <Breadcrumbs
@@ -124,6 +128,13 @@ export default function GravelLaborCostPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much does it cost to spread gravel?"
+          answer="Gravel labor costs about $10–20 per ton to spread only, or $15–35 per ton to spread, grade and compact, on top of the stone itself (2026 US rates). By the hour, general labor runs $40–60 and a skid steer with operator $75–125. Labor is typically 30–50% of an installed gravel job."
+          ruleOfThumb="A skid steer crew places stone for about $5–8 per ton; by hand it costs $25–40 per ton."
+          formula="Installed cost = tons × (material price + labor per ton) + delivery"
+        />
+
         <Section title="Labor and machine rates (2026)">
           <CoverageTable
             headers={["Rate", "Typical range", "What it buys"]}
@@ -134,13 +145,13 @@ export default function GravelLaborCostPage() {
               { label: "Tractor / box blade + operator", spec: "$70–110/hr", coverage: "Lane grading and regrading" },
               { label: "Motor grader + operator", spec: "$120–180/hr", coverage: "Long private roads; overkill for driveways" },
             ]}
-            caption="Loaded 2026 US rates — wage plus insurance and overhead. Two-hour to half-day minimums are standard for machine work."
+            caption="Loaded 2026 US rates: wage plus insurance and overhead. Two-hour to half-day minimums are standard for machine work."
           />
           <InfoBlock title="Machines are priced by the hour, jobs by the ton">
             Contractors quote crews hourly but think per ton: a skid steer crew that places
             20 tons an hour costs $5–8 per ton, while the same tonnage by hand costs $25–40.
-            Whoever brings the right machine to the right size job pockets that spread —
-            which can be you, with a rental.
+            Whoever brings the right machine to the right size job pockets that spread,
+            and that can be you, with a rental.
           </InfoBlock>
         </Section>
 
@@ -153,7 +164,7 @@ export default function GravelLaborCostPage() {
               { item: "Regrade existing gravel drive", unit: "per ft²", low: 0.1, high: 0.3, note: "Machine work only, no new stone" },
               { item: "New gravel driveway, installed total", unit: "per ft²", low: 1, high: 3, note: "Material + labor; see the driveway cost guide" },
             ]}
-            caption="2026 labor pricing. On a typical job, labor and machine time is 30–50% of the installed total — material is the rest."
+            caption="2026 labor pricing. On a typical job, labor and machine time is 30–50% of the installed total; material is the rest."
           />
           <p className="text-muted-foreground">
             To budget a whole project, price the stone first with the{" "}
@@ -180,17 +191,17 @@ export default function GravelLaborCostPage() {
           <ProsCons
             subject="DIY gravel installation"
             pros={[
-              "Saves the full labor line — 30–50% of an installed quote on small jobs",
+              "Saves the full labor line: 30–50% of an installed quote on small jobs",
               "Paths, patios and top-ups need no skill beyond raking to depth",
               "Tailgate spreading by the delivery driver does half the work free",
               "Rental compactor + a weekend genuinely matches pro results on flat sites",
-              "No scheduling — the job happens the day the truck comes",
+              "No scheduling: the job happens the day the truck comes",
             ]}
             cons={[
               "Hand-spreading is brutal above ~10 tons; a ton is 30–60 minutes of barrow work",
               "Grading and drainage mistakes cost more to fix than pros charge to avoid",
               "Machine work without seat time risks torn fabric and gouged subgrade",
-              "No warranty — ruts and washboard six months in are yours",
+              "No warranty, so ruts and washboard six months in are yours",
               "Slopes, soft subgrade and culverts are not first-timer terrain",
             ]}
           />
@@ -215,7 +226,7 @@ export default function GravelLaborCostPage() {
           <TipBlock title="Rent the compactor, hire the grading">
             The highest-value hybrid: pay an operator 2–3 hours ($150–350) to cut grade and
             crown, then rent a $120 plate compactor and place the lifts yourself. You buy
-            the skill you lack and supply the sweat you have — it routinely halves the labor
+            the skill you lack and supply the sweat you have. It routinely halves the labor
             line without risking the result.
           </TipBlock>
         </Section>
@@ -229,7 +240,7 @@ export default function GravelLaborCostPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished={datePublished} />
+        <AuthorBox author={author} datePublished={datePublished} dateModified={dateModified} />
 
         <References items={[GREFS.fhwaGravel, GREFS.nssga]} />
       </ArticleShell>

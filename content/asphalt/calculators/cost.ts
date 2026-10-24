@@ -63,9 +63,9 @@ export const costCalculator = defineCalculator({
       label: "Waste allowance",
       type: "select",
       options: [
-        { value: "5", label: "5% — simple rectangle" },
-        { value: "10", label: "10% — typical (recommended)" },
-        { value: "15", label: "15% — irregular shape" },
+        { value: "5", label: "5%: simple rectangle" },
+        { value: "10", label: "10%: typical (recommended)" },
+        { value: "15", label: "15%: irregular shape" },
       ],
       defaultValue: "10",
     },
@@ -119,5 +119,5 @@ export const costCalculator = defineCalculator({
     return results;
   },
   disclaimer:
-    "Budget-grade estimate. Mobilization minimums ($1,000–2,500) dominate small jobs regardless of area — get three local quotes before committing.",
+    "Budget-grade estimate. Mobilization minimums ($1,500–3,000) dominate small jobs regardless of area, so get three local quotes before committing.",
 });

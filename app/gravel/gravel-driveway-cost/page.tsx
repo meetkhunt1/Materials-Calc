@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { TipBlock } from "@/components/blocks/callout";
 import { CostTable } from "@/components/tables/cost-table";
@@ -26,12 +27,13 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-driveway-cost";
-const title = "Gravel Driveway Cost — 2026 Installed Pricing";
+const title = "Gravel Driveway Cost: $1–3 per Sq Ft Installed";
 const description =
-  "What a gravel driveway costs in 2026: $1–3 per ft² installed for a standard build, every line item priced (excavation, fabric, stone per layer, grading, compaction), a worked 12 × 50 ft budget, and the honest DIY-vs-contractor math.";
+  "A gravel driveway costs $1–3 per sq ft installed in 2026, or $3–5 on clay with a three-layer base. See every line item, a 12 × 50 ft budget and DIY savings.";
 const path = GRAVEL.drivewayCost;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
+const dateModified = "2026-10-24";
 
 const heroVariant = pick(slug, HERO_VARIANTS);
 const tocPosition = pick(slug, ["toc-right", "toc-left"] as const);
@@ -45,23 +47,29 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: dateModified,
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much does a gravel driveway cost per square foot?",
     answer:
-      "A standard two-layer build on firm soil runs $1–3 per square foot installed in 2026. A three-layer build on clay with geotextile fabric runs $3–5, and difficult access, long culverts or heavy excavation can push past that. Material alone (stone delivered) is typically $0.60–1.50 per square foot of the total.",
+      "$1–3 per square foot installed in 2026 for a standard two-layer build on firm soil. A three-layer build on clay with geotextile fabric runs $3–5, and difficult access, long culverts or heavy excavation can push past that. Material alone (stone delivered) is typically $0.60–1.50 per square foot of the total.",
   },
   {
     question: "How much does a 12 × 50 ft gravel driveway cost?",
     answer:
-      "About $1,000–1,800 installed for a standard 8 in two-layer build on firm soil — roughly 28 tons of stone at $700–1,100 delivered, plus excavation, grading and compaction. DIY with rented equipment, the same drive lands near $1,100–1,400; a contractor quote of $1,500–2,200 is fair once fabric or extra depth enters the picture.",
+      "About $1,500–2,200 from a contractor, or $1,300–1,800 DIY with rented equipment, for a standard 8 in two-layer build on firm soil. That covers roughly 28 tons of stone (about $700–1,200 delivered) plus excavation, grading and compaction. On clay, add fabric and a #3 sub-base.",
+  },
+  {
+    question: "How much does a 200 ft gravel driveway cost?",
+    answer:
+      "About $2,400–7,200 for a 200 ft long, 12 ft wide drive (2,400 ft²) at the standard $1–3 per square foot installed. Long rural runs on firm soil land at the low end; clay ground needing fabric and a third layer pushes toward $3–5 per square foot, or $7,200–12,000.",
   },
   {
     question: "Is a gravel driveway cheaper than asphalt or concrete?",
     answer:
-      "By a wide margin up front: gravel runs $1–3 per ft² against several times that for asphalt or concrete on the same drive. The trade is maintenance — gravel wants regrading every 1–2 years and a top-up every 2–3 — but even with 25 years of top-ups a gravel drive usually stays the cheapest total-cost option for long rural runs.",
+      "Yes, by a wide margin up front: gravel runs $1–3 per ft² against several times that for asphalt or concrete on the same drive. The trade is maintenance (gravel wants regrading every 1–2 years and a top-up every 2–3), but even with 25 years of top-ups a gravel drive usually stays the cheapest total-cost option for long rural runs.",
   },
   {
     question: "How many tons of gravel does a driveway need?",
@@ -71,12 +79,12 @@ const faqItems: FaqItem[] = [
   {
     question: "What does gravel driveway excavation cost?",
     answer:
-      "Contractors charge $1–2 per square foot to strip topsoil and cut to grade in normal conditions. DIY, a skid steer or compact tractor rents for $250–400 a day and a competent operator clears a 600 ft² drive in a day — but haul-off of spoil, if you cannot spread it on site, can add $300–600.",
+      "Contractors charge $1–2 per square foot to strip topsoil and cut to grade in normal conditions. DIY, a skid steer or compact tractor rents for $250–400 a day and a competent operator clears a 600 ft² drive in a day. Haul-off of spoil, if you cannot spread it on site, can add $300–600.",
   },
   {
     question: "Does a gravel driveway add value to a property?",
     answer:
-      "On rural and semi-rural lots, a well-built and well-drained gravel drive is expected infrastructure and appraises as such; a rutted one reads as deferred maintenance. In suburban markets buyers generally expect pavement, so gravel is priced as a placeholder. The value case is strongest where the drive is long — exactly where paving is unaffordable.",
+      "Yes on rural and semi-rural lots, where a well-built and well-drained gravel drive is expected infrastructure and appraises as such; a rutted one reads as deferred maintenance. In suburban markets buyers generally expect pavement, so gravel is priced as a placeholder. The value case is strongest where the drive is long, which is exactly where paving is unaffordable.",
   },
 ];
 
@@ -98,6 +106,7 @@ export default function GravelDrivewayCostPage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified,
           author,
         })}
       />
@@ -110,7 +119,7 @@ export default function GravelDrivewayCostPage() {
               eyebrow="Gravel · Driveways"
               variant={heroVariant}
               title="Gravel driveway cost (2026)"
-              description="A gravel drive is the cheapest driveway money can build — $1–3 per square foot installed — but only if you know what each line item should cost. Here is the full budget, item by item."
+              description="A gravel drive is the cheapest driveway money can build at $1–3 per square foot installed, but only if you know what each line item should cost. Here is the full budget, item by item."
               stats={[
                 { value: "$1–3", label: "per ft² installed, standard build" },
                 { value: "$3–5", label: "per ft², clay / three-layer" },
@@ -129,6 +138,13 @@ export default function GravelDrivewayCostPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much does a gravel driveway cost?"
+          answer="A gravel driveway costs about $1–3 per square foot installed in 2026 for a standard 8-inch, two-layer build on firm soil, and $3–5 per square foot on clay or wet ground that needs fabric and a third layer. A 12 × 50 ft single-car drive typically runs $1,500–2,200 from a contractor."
+          ruleOfThumb="Delivered stone is typically $0.60–1.50 of every installed square foot."
+          formula="Installed cost ≈ length × width (ft) × $1–3"
+        />
+
         <Section title="Installed cost per square foot">
           <p className="text-muted-foreground">
             The 2026 market rate for a professionally built gravel driveway is $1–3 per
@@ -138,13 +154,13 @@ export default function GravelDrivewayCostPage() {
             <a href={GRAVEL.drivewayLayers} className="font-medium text-primary hover:underline">
               three-layer system
             </a>{" "}
-            with geotextile — clay soil, wet ground or truck traffic. A simple 2 in
+            with geotextile: clay soil, wet ground or truck traffic. A simple 2 in
             top-up of an existing sound drive is far cheaper: $0.40–0.80 per square
             foot, mostly material.
           </p>
           <p className="text-muted-foreground">
             Two variables dominate every estimate: depth (each extra inch of crusher
-            run adds about 2.9 tons per 500 ft² — see the{" "}
+            run adds about 2.9 tons per 500 ft²; see the{" "}
             <a href={GRAVEL.drivewayDepth} className="font-medium text-primary hover:underline">
               depth guide
             </a>
@@ -202,7 +218,7 @@ export default function GravelDrivewayCostPage() {
                 item: "Compaction",
                 unit: "per day (rental)",
                 low: 90,
-                high: 160,
+                high: 150,
                 note: "Plate compactor or walk-behind roller, per layer",
               },
               {
@@ -210,7 +226,7 @@ export default function GravelDrivewayCostPage() {
                 unit: "per truckload",
                 low: 50,
                 high: 150,
-                note: "Flat per trip — consolidate loads where possible",
+                note: "Flat per trip; consolidate loads where possible",
               },
             ]}
             caption="2026 line-item pricing. Contractor quotes bundle these; DIY budgets pay them separately."
@@ -219,7 +235,7 @@ export default function GravelDrivewayCostPage() {
 
         <Section title="Worked budget: a 12 × 50 ft driveway">
           <ExampleBlock
-            scenario="A 12 × 50 ft (600 ft²) single-car drive on firm, well-drained soil: standard 8 in two-layer build — 4 in of #57 base under 4 in of crusher run — with a 10% allowance on stone."
+            scenario="A 12 × 50 ft (600 ft²) single-car drive on firm, well-drained soil: standard 8 in two-layer build (4 in of #57 base under 4 in of crusher run) with a 10% allowance on stone."
             steps={[
               {
                 label: "Excavation & grading",
@@ -248,10 +264,10 @@ export default function GravelDrivewayCostPage() {
 
         <Section title="DIY vs contractor">
           <p className="text-muted-foreground">
-            Gravel is the most DIY-friendly driveway material by far — no hot mix, no
-            cure windows, no finishing skill. The honest split: DIY saves 30–60% and
+            DIY saves 30–60% on a gravel driveway, the most DIY-friendly driveway material
+            by far: no hot mix, no cure windows, no finishing skill. The honest split: DIY
             costs two to three full days of machine work, and the quality risk sits
-            almost entirely in two invisible steps — grading a true 2–3% crown, and
+            almost entirely in two invisible steps: grading a true 2–3% crown, and
             compacting every layer separately. A contractor with a laser level and a
             ride-on roller does both better than a first-timer.
           </p>
@@ -272,17 +288,17 @@ export default function GravelDrivewayCostPage() {
 
         <Section title="Where quotes hide the money">
           <TipBlock title="Make every bid itemize depth and tons">
-            &quot;Gravel driveway, $1,800&quot; is not a quote — it is a guess you
+            &quot;Gravel driveway, $1,800&quot; is not a quote. It is a guess you
             cannot compare. Insist every bid states total compacted depth, tons per
             layer, stone type per layer, and whether fabric is included. Two bids $700
             apart are usually not different margins; one is quietly 3 inches thinner.
-            Tonnage is checkable math — run your dimensions through the calculator
+            Tonnage is checkable math, so run your dimensions through the calculator
             before the first contractor visits.
           </TipBlock>
           <p className="text-muted-foreground">
-            The other quiet variable is spoil: hauling excavated soil off site can add
+            Spoil is the other quiet variable: hauling excavated soil off site can add
             $300–600, and bids differ on whether they include it. If you have anywhere
-            on the property to spread the cut, say so — it is the easiest $500 you will
+            on the property to spread the cut, say so. It is the easiest $500 you will
             ever negotiate away.
           </p>
         </Section>
@@ -292,7 +308,7 @@ export default function GravelDrivewayCostPage() {
         <Cta
           variant={ctaVariant}
           title="Budget your exact driveway"
-          description="Enter your dimensions and site type — the calculator returns tons per layer, truck loads and a material budget."
+          description="Enter your dimensions and site type, and the calculator returns tons per layer, truck loads and a material budget."
           href={GRAVEL.driveway}
           buttonLabel="Driveway Gravel Calculator"
         />
@@ -306,7 +322,7 @@ export default function GravelDrivewayCostPage() {
           ]}
         />
 
-        <AuthorBox author={author} datePublished={datePublished} />
+        <AuthorBox author={author} datePublished={datePublished} dateModified={dateModified} />
 
         <References items={[GREFS.usgs, GREFS.fhwaGravel]} />
       </ArticleShell>

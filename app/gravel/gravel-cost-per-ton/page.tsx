@@ -3,6 +3,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Breadcrumbs, breadcrumbTrail } from "@/components/breadcrumbs/breadcrumbs";
 import { ArticleShell } from "@/components/layouts/article-shell";
 import { Section, tocFromTitles } from "@/components/blocks/section";
+import { QuickAnswer } from "@/components/blocks/quick-answer";
 import { ExampleBlock } from "@/components/blocks/example-block";
 import { InfoBlock, TipBlock } from "@/components/blocks/callout";
 import { CostTable } from "@/components/tables/cost-table";
@@ -21,9 +22,9 @@ import { GRAVEL, costGuideLinks, pickLinks, GREFS } from "@/content/gravel/links
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-cost-per-ton";
-const title = "Gravel Cost Per Ton (2026)";
+const title = "Gravel Cost Per Ton: $15–60 by Type (2026)";
 const description =
-  "2026 gravel prices per ton: crusher run $15–30, #57 stone $25–45, pea gravel $30–60, river rock $45–130 — plus gate vs delivered pricing, what a ton covers, and how to negotiate volume breaks.";
+  "Gravel costs $15–30 per ton for crusher run, $25–45 for #57 stone and $30–60 for pea gravel in 2026, plus delivery. See what a ton covers and volume breaks.";
 const path = GRAVEL.costPerTon;
 const author = getAuthor("materials-team");
 const datePublished = "2026-07-16";
@@ -41,46 +42,47 @@ export const metadata = buildMetadata({
   path,
   type: "article",
   publishedTime: datePublished,
+  modifiedTime: "2026-10-24",
 });
 
 const faqItems: FaqItem[] = [
   {
     question: "How much is a ton of gravel in 2026?",
     answer:
-      "At the gate: crusher run $15–30, #57 stone $25–45, pea gravel $30–60, river rock $45–130, decorative stone $50–200. Add a $50–150 delivery fee per trip. Regional spread is wide — quarry-dense areas sit at the low end, stone-poor regions 30–50% higher for identical material.",
+      "$15–60 for most types at the gate: crusher run $15–30, #57 stone $25–45, pea gravel $30–60, river rock $45–130, decorative stone $50–200. Add a $50–150 delivery fee per trip. Regional spread is wide: quarry-dense areas sit at the low end, stone-poor regions 30–50% higher for identical material.",
   },
   {
     question: "What is the difference between gate price and delivered price?",
     answer:
-      "Gate price is what you pay picking material up at the quarry scale; delivered price adds trucking. On small orders the gap is enormous: 3 tons of $25 crusher run is $75 at the gate but $175 delivered with a $100 fee — an effective $58 per ton. Always compare quotes as delivered totals for your specific tonnage.",
+      "Gate price is what you pay picking material up at the quarry scale; delivered price adds trucking. On small orders the gap is enormous: 3 tons of $25 crusher run is $75 at the gate but $175 delivered with a $100 fee, an effective $58 per ton. Always compare quotes as delivered totals for your specific tonnage.",
   },
   {
     question: "How much area does a ton of gravel cover?",
     answer:
-      "Common gravel covers about 114 ft² at 2 inches deep, 76 ft² at 3 inches, and 57 ft² at 4 inches. Lighter pea gravel stretches a little further (about 125 ft² at 2 inches); dense compacted crusher run covers less. Coverage is how you convert a per-ton price into a per-square-foot budget.",
+      "About 76 ft² at 3 inches deep for common gravel. It covers about 114 ft² at 2 inches deep, and 57 ft² at 4 inches. Lighter pea gravel stretches a little further (about 125 ft² at 2 inches); dense compacted crusher run covers less. Coverage is how you convert a per-ton price into a per-square-foot budget.",
   },
   {
     question: "How many tons of gravel do I need?",
     answer:
-      "Square feet × (depth in inches ÷ 12) × density in lb/ft³ ÷ 2,000, plus 10% for settling. For common gravel a quick shortcut is cubic yards × 1.4. A 300 ft² path at 3 inches needs about 4.3 tons; a full single-car driveway build runs 20–25 tons across its layers.",
+      "Tons = square feet × (depth in inches ÷ 12) × density in lb/ft³ ÷ 2,000, plus 10% for settling. For common gravel a quick shortcut is cubic yards × 1.4. A 300 ft² path at 3 inches needs about 4.3 tons; a full single-car driveway build runs 20–25 tons across its layers.",
   },
   {
     question: "Do quarries give volume discounts?",
     answer:
-      "Routinely. Pricing is tiered by load: the minimum-order rate might be $32 per ton, a full 18-ton tri-axle $26, and 100+ tons quoted individually. Tiers are rarely advertised — ask the scale house directly for the full-truck rate and the next price break above your takeoff.",
+      "Yes, routinely. Pricing is tiered by load: the minimum-order rate might be $32 per ton, a full 18-ton tri-axle $26, and 100+ tons quoted individually. Tiers are rarely advertised, so ask the scale house directly for the full-truck rate and the next price break above your takeoff.",
   },
   {
     question: "Is buying gravel by the ton better than by the yard?",
     answer:
-      "Tons are more precise because they come off a certified truck scale, while a loose yard depends on the loader operator's bucket. Quarries sell by the ton; landscape yards often sell by the yard. Neither is cheaper by nature — but you must convert to one unit before comparing quotes, at roughly 1.4 tons per cubic yard for common gravel.",
+      "For precision, yes. Tons are more precise because they come off a certified truck scale, while a loose yard depends on the loader operator's bucket. Quarries sell by the ton; landscape yards often sell by the yard. Neither is cheaper by nature, but you must convert to one unit before comparing quotes, at roughly 1.4 tons per cubic yard for common gravel.",
   },
 ];
 
 const toc = tocFromTitles(
   "Price per ton by type (2026)",
-  "Gate price vs delivered price",
+  "What is the difference between gate and delivered price?",
   "Comparing quotes stated in different units",
-  "What a ton actually covers",
+  "How much does a ton of gravel cover?",
   "Negotiating volume breaks",
 );
 
@@ -94,6 +96,7 @@ export default function GravelCostPerTonPage() {
           path,
           category: "Gravel",
           datePublished,
+          dateModified: "2026-10-24",
           author,
         })}
       />
@@ -106,7 +109,7 @@ export default function GravelCostPerTonPage() {
               eyebrow="Gravel · Cost Series"
               variant={heroVariant}
               title="Gravel cost per ton"
-              description="The ton is the industry's native unit — it comes off a certified scale and it is how every quarry quotes. Here is what a ton costs in 2026, what it covers, and how to compare it against yard-priced quotes."
+              description="The ton is the industry's native unit: it comes off a certified scale and it is how every quarry quotes. Here is what a ton costs in 2026, what it covers, and how to compare it against yard-priced quotes."
             >
               <AuthorBox author={author} variant="inline" datePublished={datePublished} />
             </Hero>
@@ -121,6 +124,13 @@ export default function GravelCostPerTonPage() {
           </>
         }
       >
+        <QuickAnswer
+          question="How much does a ton of gravel cost?"
+          answer="A ton of gravel costs $15–30 for crusher run, $25–45 for #57 crushed stone and $30–60 for pea gravel at the quarry gate in 2026, while river rock runs $45–130. A $50–150 delivery fee comes on top, so a 3-ton order of $25 stone with a $100 fee really costs about $58 per ton."
+          ruleOfThumb="One ton of common gravel covers about 76 ft² at 3 inches deep."
+          formula="Effective $/ton = gate price + (delivery fee ÷ tons ordered)"
+        />
+
         <Section title="Price per ton by type (2026)">
           <CostTable
             rows={[
@@ -140,18 +150,19 @@ export default function GravelCostPerTonPage() {
           </p>
         </Section>
 
-        <Section title="Gate price vs delivered price">
+        <Section title="What is the difference between gate and delivered price?">
           <p className="text-muted-foreground">
-            Every quarry has two prices. The <strong>gate price</strong> is per ton across
+            Delivered price is gate price plus trucking, and on small orders trucking can
+            double the real cost per ton. Every quarry has two prices. The <strong>gate price</strong> is per ton across
             the scale, loaded into whatever you drove in. The <strong>delivered price</strong>{" "}
-            adds a $50–150 per-trip trucking fee — a fixed cost that gets divided by your
+            adds a $50–150 per-trip trucking fee, a fixed cost that gets divided by your
             tonnage. Small orders therefore pay wildly more per ton than the sticker
             suggests: $25 stone delivered as a 3-ton load with a $100 fee is really $58 a
             ton, while the same stone on a full 18-ton tri-axle is $31.
           </p>
           <InfoBlock title="The effective per-ton rule">
             Effective price per ton = gate price + (delivery fee ÷ tons ordered). Run this
-            one line on every quote before comparing anything — it is the difference between
+            one line on every quote before comparing anything. It is the difference between
             comparing stone and comparing suppliers. The delivery cost guide covers the fee
             structures themselves.
           </InfoBlock>
@@ -166,11 +177,11 @@ export default function GravelCostPerTonPage() {
               { label: "Compare like for like", work: "$34.00 (A) vs $32.60 (B) per ton" },
               { label: "Check the job total", work: "10 tons: A = $340, B ≈ $326" },
             ]}
-            result="Supplier B wins by about $14 — the opposite of what the raw stickers ($34 vs $44) suggest. Never compare a ton price against a yard price without converting; the density factor is the whole answer."
+            result="Supplier B wins by about $14, the opposite of what the raw stickers ($34 vs $44) suggest. Never compare a ton price against a yard price without converting; the density factor is the whole answer."
           />
           <p className="text-muted-foreground">
-            The conversion factor changes with material — 1.3 for pea gravel, 1.35–1.4 for
-            clean stone, up to 1.9 for compacted crusher run. The{" "}
+            The conversion factor changes with material: 1.3 for pea gravel, 1.35–1.4 for
+            clean stone, about 1.7 for loose crusher run and 1.9 compacted. The{" "}
             <a href={GRAVEL.costPerYard} className="font-medium text-primary hover:underline">
               cost-per-cubic-yard guide
             </a>{" "}
@@ -178,7 +189,11 @@ export default function GravelCostPerTonPage() {
           </p>
         </Section>
 
-        <Section title="What a ton actually covers">
+        <Section title="How much does a ton of gravel cover?">
+          <p className="text-muted-foreground">
+            A ton of common gravel covers about 114 ft² at 2 inches, 76 ft² at 3 inches and
+            57 ft² at 4 inches.
+          </p>
           <CoverageTable
             headers={["Depth", "Coverage per ton", "Typical use"]}
             rows={[
@@ -191,7 +206,7 @@ export default function GravelCostPerTonPage() {
           />
           <TipBlock title="Think in dollars per square foot">
             Divide the delivered per-ton price by the coverage at your depth. $40-a-ton
-            stone at 3 inches deep is $40 ÷ 76 ≈ $0.53 per square foot of material — the
+            stone at 3 inches deep is $40 ÷ 76 ≈ $0.53 per square foot of material, the
             number that makes gravel comparable to mulch, pavers or concrete at a glance.
           </TipBlock>
         </Section>
@@ -199,11 +214,11 @@ export default function GravelCostPerTonPage() {
         <Section title="Negotiating volume breaks">
           <p className="text-muted-foreground">
             Quarry pricing is tiered, and the tiers are rarely posted. Three questions to
-            the scale house move most quotes: What is the full-truck rate? — an 18-ton
+            the scale house move most quotes. What is the full-truck rate? An 18-ton
             tri-axle load routinely prices 15–25% under the minimum-order rate. Where is the
-            next price break? — if your takeoff says 14 tons and the break is at 16, the
+            next price break? If your takeoff says 14 tons and the break is at 16, the
             extra two tons of base stone often cost less than the price difference on the
-            whole order. And can you piggyback? — a truck already delivering to your area
+            whole order. And can you piggyback? A truck already delivering to your area
             quotes cheaper freight. None of this is haggling; it is asking for the price
             sheet the contractors use.
           </p>
@@ -215,7 +230,7 @@ export default function GravelCostPerTonPage() {
         <Cta
           variant={ctaVariant}
           title="Turn tons into a total"
-          description="Enter dimensions and your local per-ton price — the calculator handles density, waste and delivery."
+          description="Enter dimensions and your local per-ton price, and the calculator handles density, waste and delivery."
           href={GRAVEL.cost}
           buttonLabel="Gravel Cost Calculator"
         />

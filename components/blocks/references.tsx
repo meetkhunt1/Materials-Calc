@@ -8,7 +8,7 @@ interface ReferencesProps {
   className?: string;
 }
 
-/** Cited sources list — builds E-E-A-T trust on every guide. */
+/** Cited sources list: builds E-E-A-T trust on every guide. */
 export function References({ items, title = "Sources & references", className }: ReferencesProps) {
   if (items.length === 0) return null;
 
@@ -37,9 +37,9 @@ export function References({ items, title = "Sources & references", className }:
               {(ref.publisher || ref.year) && (
                 <span className="text-muted-foreground">
                   {" "}
-                  — {ref.publisher}
+                  ({ref.publisher}
                   {ref.publisher && ref.year ? ", " : ""}
-                  {ref.year}
+                  {ref.year})
                 </span>
               )}
             </span>

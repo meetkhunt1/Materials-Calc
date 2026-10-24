@@ -63,7 +63,7 @@ export function TableOfContents({
   );
 }
 
-/** Compact inline variant — renders at the top of the article on mobile. */
+/** Compact inline variant: renders at the top of the article on mobile. */
 export function InlineToc({ items, className }: { items: TocItem[]; className?: string }) {
   if (items.length === 0) return null;
   return (

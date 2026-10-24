@@ -8,7 +8,7 @@ interface CalculatorPresetsProps {
   onSelect: (preset: CalculatorPreset) => void;
 }
 
-/** One-click project-size shortcuts — fills the form and calculates instantly. */
+/** One-click project-size shortcuts: fills the form and calculates instantly. */
 export function CalculatorPresets({ presets, onSelect }: CalculatorPresetsProps) {
   if (presets.length === 0) return null;
 
