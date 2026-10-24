@@ -24,7 +24,7 @@ import {
 import type { FaqItem } from "@/types";
 
 const slug = "gravel-faq";
-const title = "Tons of Gravel per Cubic Yard: 1.42 Tons";
+const title = "Gravel FAQ: 17 Answers Before You Order";
 const description =
   "One cubic yard of common gravel weighs about 1.42 tons, so 1 ton is roughly 0.7 cubic yards. Plus 16 more answers on coverage, depth, fabric, cost and types.";
 const path = GRAVEL.faq;

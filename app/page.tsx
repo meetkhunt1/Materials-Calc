@@ -3,7 +3,6 @@ import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { CategoryNav } from "@/components/layout/category-nav";
 import { RelatedArticles } from "@/components/blocks/related-articles";
-import { Newsletter } from "@/components/blocks/newsletter";
 import { JsonLd } from "@/components/seo/json-ld";
 import { webPageSchema } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/seo";
@@ -105,9 +104,6 @@ export default function HomePage() {
       <Container className="pb-14">
         <h2 className="text-2xl font-semibold tracking-tight">Browse by material</h2>
         <CategoryNav className="mt-6" />
-      </Container>
-      <Container size="narrow" className="pb-4">
-        <Newsletter />
       </Container>
     </>
   );

@@ -27,7 +27,7 @@ export function AuthorBox({
   const avatar = author.avatar ? (
     <Image
       src={author.avatar}
-      alt={author.name}
+      alt=""
       width={variant === "card" ? 56 : 36}
       height={variant === "card" ? 56 : 36}
       className="rounded-full border object-cover"
@@ -65,6 +65,12 @@ export function AuthorBox({
             Updated {formatDate(dateModified)}
           </span>
         )}
+        <a
+          href="mailto:corrections@materialscalc.com"
+          className="text-muted-foreground underline-offset-2 hover:text-primary hover:underline"
+        >
+          Report an error
+        </a>
       </div>
     );
   }
@@ -99,6 +105,16 @@ export function AuthorBox({
               )}
             </p>
           )}
+          <p className="mt-3 text-xs text-muted-foreground">
+            Spotted a wrong number or a confusing result?{" "}
+            <a
+              href="mailto:corrections@materialscalc.com"
+              className="font-medium text-primary hover:underline"
+            >
+              Report an error
+            </a>
+            . We check every report and correct the page.
+          </p>
         </div>
       </div>
     </aside>

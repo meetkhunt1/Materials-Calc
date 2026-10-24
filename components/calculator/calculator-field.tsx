@@ -38,6 +38,9 @@ export function CalculatorField({
   const errorId = `${inputId}-error`;
   const hintId = `${inputId}-hint`;
 
+  // The hint is hidden while an error shows, so only reference what is rendered.
+  const describedBy = error ? errorId : field.hint ? hintId : undefined;
+
   const units =
     field.unitCategory && field.unitCategory !== "currency"
       ? unitsOf(field.unitCategory, field.units)
@@ -49,7 +52,11 @@ export function CalculatorField({
 
       {field.type === "select" ? (
         <Select value={String(value.value)} onValueChange={onValueChange}>
-          <SelectTrigger id={inputId} aria-describedby={field.hint ? hintId : undefined}>
+          <SelectTrigger
+            id={inputId}
+            aria-invalid={Boolean(error)}
+            aria-describedby={describedBy}
+          >
             <SelectValue placeholder={field.placeholder ?? "Select…"} />
           </SelectTrigger>
           <SelectContent>
@@ -73,7 +80,7 @@ export function CalculatorField({
             value={value.value === "" ? "" : String(value.value)}
             onChange={(e) => onValueChange(e.target.value)}
             aria-invalid={Boolean(error)}
-            aria-describedby={cn(error && errorId, field.hint && hintId) || undefined}
+            aria-describedby={describedBy}
             className="flex-1"
           />
           {units.length > 0 && (

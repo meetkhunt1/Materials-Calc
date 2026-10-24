@@ -125,6 +125,8 @@ export interface Author {
   sameAs?: string[];
   /** Topics this author/team actually covers, for Article/Person schema. */
   knowsAbout?: string[];
+  /** A team byline is an Organization in schema, a named writer a Person. */
+  isOrganization?: boolean;
 }
 
 export interface FaqItem {

@@ -1,4 +1,5 @@
 import { defineCalculator } from "@/lib/calculator";
+import { ceilTo } from "@/lib/format";
 import { fromBase } from "@/lib/units";
 
 /** Volume → weight converter for every common asphalt state. */
@@ -64,7 +65,7 @@ export const weightCalculator = defineCalculator({
       {
         id: "loads",
         label: "Tandem dump trucks (≈14 ton legal payload)",
-        value: Math.ceil(fromBase(kg, "ton") / 14),
+        value: ceilTo(fromBase(kg, "ton") / 14),
         precision: 0,
         note: "See the truck load capacity guide for other truck classes.",
       },

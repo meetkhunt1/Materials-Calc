@@ -45,9 +45,16 @@ export function formatDate(iso: string): string {
   }).format(date);
 }
 
-/** Rounds up to a sensible purchasing quantity (e.g. bags, truckloads). */
+/**
+ * Rounds up to a sensible purchasing quantity (e.g. bags, truckloads).
+ * A value within floating-point noise of an exact multiple stays on that
+ * multiple, so 6.6 ft³ at 0.6 ft³ per bag is 11 bags, not 12.
+ */
 export function ceilTo(value: number, step = 1): number {
-  return Math.ceil(value / step) * step;
+  const q = value / step;
+  const nearest = Math.round(q);
+  if (Math.abs(q - nearest) <= 1e-9 * Math.max(1, Math.abs(q))) return nearest * step;
+  return Math.ceil(q) * step;
 }
 
 export function slugify(text: string): string {

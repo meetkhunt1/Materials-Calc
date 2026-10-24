@@ -1,14 +1,8 @@
 import * as React from "react";
 import type { FaqItem } from "@/types";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { ChevronDown } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqSchema } from "@/lib/jsonld";
-import { slugify } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 interface FaqProps {
@@ -42,14 +36,21 @@ export function Faq({
       <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
 
       {variant === "accordion" ? (
-        <Accordion type="single" collapsible className="mt-4 rounded-xl border px-5">
+        // Native <details>: answers ship in the static HTML (crawlers and AI
+        // answer engines read them without JS) and toggling needs no client code.
+        <div className="mt-4 rounded-xl border px-5">
           {items.map((item) => (
-            <AccordionItem key={item.question} value={slugify(item.question)}>
-              <AccordionTrigger className="text-[15px]">{item.question}</AccordionTrigger>
-              <AccordionContent className="leading-relaxed">{item.answer}</AccordionContent>
-            </AccordionItem>
+            <details key={item.question} className="group border-b last:border-b-0">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-[15px] font-medium transition-colors hover:text-primary [&::-webkit-details-marker]:hidden">
+                {item.question}
+                <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+              </summary>
+              <div className="pb-4 text-sm leading-relaxed text-muted-foreground">
+                {item.answer}
+              </div>
+            </details>
           ))}
-        </Accordion>
+        </div>
       ) : (
         <dl className="mt-6 space-y-6">
           {items.map((item) => (

@@ -1,12 +1,12 @@
 import { defineCalculator } from "@/lib/calculator";
 import { ceilTo } from "@/lib/format";
-import { fromBase } from "@/lib/units";
+import { fromBase, toBase } from "@/lib/units";
 
-/** Bag yields in m³ (QUIKRETE/Sakrete published yields: 0.30/0.45/0.60 ft³) */
+/** Bag yields in m³, from the QUIKRETE/Sakrete published 0.30 / 0.45 / 0.60 ft³. */
 export const BAG_YIELD_M3 = {
-  "40": 0.0085,
-  "60": 0.0127,
-  "80": 0.017,
+  "40": toBase(0.3, "ft3"),
+  "60": toBase(0.45, "ft3"),
+  "80": toBase(0.6, "ft3"),
 } as const;
 
 export const CONCRETE_DENSITY = 2400; // kg/m³, normal-weight (ACI 318 assumes 145–150 lb/ft³)

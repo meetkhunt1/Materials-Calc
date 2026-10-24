@@ -74,9 +74,9 @@ export function faqSchema(items: FaqItem[]): Schema {
 
 function personSchema(author: Author): Schema {
   return {
-    "@type": "Person",
+    "@type": author.isOrganization ? "Organization" : "Person",
     name: author.name,
-    jobTitle: author.role,
+    ...(!author.isOrganization && { jobTitle: author.role }),
     ...(author.url && { url: canonicalUrl(author.url) }),
     ...(author.sameAs?.length && { sameAs: author.sameAs }),
     ...(author.knowsAbout?.length && { knowsAbout: author.knowsAbout }),

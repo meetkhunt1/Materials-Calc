@@ -10,13 +10,16 @@ interface CalculatorResultsProps {
   className?: string;
 }
 
-/** Result panel: primary answer highlighted, secondary values in a grid. */
+/**
+ * Result panel: primary answer highlighted, secondary values in a grid.
+ * The aria-live region is owned by the always-mounted wrapper in CalculatorCard.
+ */
 export function CalculatorResults({ results, disclaimer, className }: CalculatorResultsProps) {
   const primary = results.filter((r) => r.primary);
   const secondary = results.filter((r) => !r.primary);
 
   return (
-    <div className={cn("space-y-3", className)} aria-live="polite">
+    <div className={cn("space-y-3", className)}>
       {primary.map((result) => (
         <div
           key={result.id}

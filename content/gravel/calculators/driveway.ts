@@ -1,4 +1,5 @@
 import { defineCalculator } from "@/lib/calculator";
+import { ceilTo } from "@/lib/format";
 import { fromBase } from "@/lib/units";
 
 /**
@@ -112,7 +113,7 @@ export const drivewayGravelCalculator = defineCalculator({
       {
         id: "loads",
         label: "Tandem truck loads (≈14 tons)",
-        value: Math.ceil(fromBase(totalKg, "ton") / 14),
+        value: ceilTo(fromBase(totalKg, "ton") / 14),
         precision: 0,
       },
     ];

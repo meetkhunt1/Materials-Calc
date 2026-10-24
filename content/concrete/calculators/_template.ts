@@ -1,6 +1,6 @@
 import { defineCalculator } from "@/lib/calculator";
 import { ceilTo } from "@/lib/format";
-import { fromBase } from "@/lib/units";
+import { fromBase, toBase } from "@/lib/units";
 
 /**
  * TEMPLATE: reference calculator definition (not routed anywhere).
@@ -69,8 +69,8 @@ export const slabCalculatorTemplate = defineCalculator({
     const DENSITY = 2400; // kg/m³, normal-weight concrete
     const weightKg = volumeM3 * DENSITY;
 
-    // An 80 lb bag yields ≈ 0.60 ft³ ≈ 0.0170 m³
-    const bags80 = ceilTo(volumeM3 / 0.017);
+    // An 80 lb bag yields 0.60 ft³ (published yield), converted exactly to m³
+    const bags80 = ceilTo(volumeM3 / toBase(0.6, "ft3"));
 
     return [
       {

@@ -1,9 +1,9 @@
 import { defineCalculator } from "@/lib/calculator";
 import { ceilTo } from "@/lib/format";
-import { fromBase } from "@/lib/units";
+import { fromBase, toBase } from "@/lib/units";
 
-const PEA_DENSITY = 1540; // kg/m³ loose
-const BAG_YIELD_M3 = 0.0142; // 0.5 ft³ retail bag
+export const PEA_DENSITY = 1540; // kg/m³ loose
+export const PEA_BAG_YIELD_M3 = toBase(0.5, "ft3"); // 0.5 ft³ retail bag
 
 /** Pea gravel: tons, yards and retail bag count. */
 export const peaGravelCalculator = defineCalculator({
@@ -67,7 +67,7 @@ export const peaGravelCalculator = defineCalculator({
 
     const volume = l * w * d * waste;
     const kg = volume * PEA_DENSITY;
-    const bags = ceilTo(volume / BAG_YIELD_M3);
+    const bags = ceilTo(volume / PEA_BAG_YIELD_M3);
 
     return [
       {

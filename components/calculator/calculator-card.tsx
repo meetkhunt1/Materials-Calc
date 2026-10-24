@@ -73,12 +73,15 @@ export function CalculatorCard({
         Calculate
       </Button>
 
-      {calc.results && calc.results.length > 0 && (
-        <>
-          <Separator />
-          <CalculatorResults results={calc.results} disclaimer={definition.disclaimer} />
-        </>
-      )}
+      {/* Live region stays mounted so screen readers announce new results. */}
+      <div aria-live="polite" className="space-y-5 empty:hidden">
+        {calc.results && calc.results.length > 0 && (
+          <>
+            <Separator />
+            <CalculatorResults results={calc.results} disclaimer={definition.disclaimer} />
+          </>
+        )}
+      </div>
 
       <CalculatorActions
         getText={calc.asText}

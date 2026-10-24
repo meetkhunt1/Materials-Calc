@@ -53,20 +53,26 @@ RewriteRule ^(detail|products)\.php$ - [G]
 
 # 301s for old WordPress URLs still indexed by Google — preserve their
 # ranking equity by pointing each at its closest equivalent page.
-RewriteRule ^the-asphalt-engineering-guide/?$ /asphalt/asphalt-thickness-guide/ [R=301,L]
-RewriteRule ^tons-of-asphalt-per-square-foot/?$ /asphalt/asphalt-coverage-guide/ [R=301,L]
-RewriteRule ^cubic-yards-to-tons/?$ /asphalt/tons-vs-cubic-yards/ [R=301,L]
-RewriteRule ^asphalt-driveway-cost-per-square-foot/?$ /asphalt/asphalt-cost-per-square-foot/ [R=301,L]
-RewriteRule ^how-much-asphalt-do-i-need/?$ /asphalt/asphalt-calculator/ [R=301,L]
+RewriteRule ^the-asphalt-engineering-guide/?$ https://materialscalc.com/asphalt/asphalt-thickness-guide/ [R=301,L]
+RewriteRule ^tons-of-asphalt-per-square-foot/?$ https://materialscalc.com/asphalt/asphalt-coverage-guide/ [R=301,L]
+RewriteRule ^cubic-yards-to-tons/?$ https://materialscalc.com/asphalt/tons-vs-cubic-yards/ [R=301,L]
+RewriteRule ^asphalt-driveway-cost-per-square-foot/?$ https://materialscalc.com/asphalt/asphalt-cost-per-square-foot/ [R=301,L]
+RewriteRule ^how-much-asphalt-do-i-need/?$ https://materialscalc.com/asphalt/asphalt-calculator/ [R=301,L]
 
 # ── Consolidated pages: 301 to the surviving canonical URL ──
 # Three asphalt density pages and two paving-comparison pages competed for the
 # same queries. Content was merged into one canonical page per topic; these
 # rules pass the old URLs' ranking equity to it. Must stay ahead of the
 # canonical-host rule so the hop count stays at one for https/non-www traffic.
-RewriteRule ^asphalt/asphalt-density-explained/?$ /asphalt/asphalt-density-chart/ [R=301,L]
-RewriteRule ^asphalt/asphalt-density-and-volume/?$ /asphalt/asphalt-density-chart/ [R=301,L]
-RewriteRule ^asphalt/asphalt-vs-concrete/?$ /concrete/concrete-vs-asphalt/ [R=301,L]
+RewriteRule ^asphalt/asphalt-density-explained/?$ https://materialscalc.com/asphalt/asphalt-density-chart/ [R=301,L]
+RewriteRule ^asphalt/asphalt-density-and-volume/?$ https://materialscalc.com/asphalt/asphalt-density-chart/ [R=301,L]
+RewriteRule ^asphalt/asphalt-vs-concrete/?$ https://materialscalc.com/concrete/concrete-vs-asphalt/ [R=301,L]
+
+# ── Missing trailing slash: add it AND canonicalize host/scheme in one hop ──
+# Without this Apache's DirectorySlash adds the slash in a separate redirect
+# (http://www.…/page → https://www.…/page → …/page/ chains).
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+[^/])$ https://materialscalc.com/$1/ [R=301,L]
 
 # ── Canonical host + HTTPS in one hop ──
 # GSC shows BOTH www and non-www indexed (www./ at pos 3, / at pos 40),
@@ -86,4 +92,5 @@ RewriteRule ^ https://materialscalc.com%{REQUEST_URI} [R=301,L]
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
 </IfModule>

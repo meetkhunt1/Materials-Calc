@@ -39,6 +39,12 @@ export function initialValues(definition: CalculatorDefinition): CalculatorValue
   return values;
 }
 
+/**
+ * Ceiling applied to number fields that declare no `max`. Keeps absurd
+ * inputs (1e12, 1e400) from overflowing to Infinity inside compute().
+ */
+export const DEFAULT_MAX = 1e6;
+
 export function validate(
   definition: CalculatorDefinition,
   values: CalculatorValues,
@@ -47,11 +53,15 @@ export function validate(
 
   for (const field of definition.fields) {
     const entry: FieldValue | undefined = values[field.id];
-    const raw = entry?.value;
+    const raw = typeof entry?.value === "string" ? entry.value.trim() : entry?.value;
 
     if (field.type === "select") {
-      if (field.required !== false && (raw === "" || raw == null)) {
-        errors.push({ fieldId: field.id, message: "Please choose an option." });
+      if (raw === "" || raw == null) {
+        if (field.required !== false) {
+          errors.push({ fieldId: field.id, message: "Please choose an option." });
+        }
+      } else if (!field.options?.some((o) => o.value === String(raw))) {
+        errors.push({ fieldId: field.id, message: "Please choose one of the listed options." });
       }
       continue;
     }
@@ -68,11 +78,26 @@ export function validate(
       errors.push({ fieldId: field.id, message: "Enter a valid number." });
       continue;
     }
-    if (field.min != null && num < field.min) {
-      errors.push({ fieldId: field.id, message: `Must be at least ${field.min}.` });
+
+    if (field.unitCategory && field.unitCategory !== "currency") {
+      const allowed = unitsOf(field.unitCategory, field.units).map((u) => u.id);
+      if (!entry?.unit || !allowed.includes(entry.unit)) {
+        errors.push({ fieldId: field.id, message: "Choose a unit from the list." });
+        continue;
+      }
     }
-    if (field.max != null && num > field.max) {
-      errors.push({ fieldId: field.id, message: `Must be at most ${field.max}.` });
+
+    const min = field.min ?? 0;
+    const max = field.max ?? DEFAULT_MAX;
+    if (num < min) {
+      errors.push({ fieldId: field.id, message: `Must be at least ${min}.` });
+    } else if (num > max) {
+      errors.push({
+        fieldId: field.id,
+        message: `Must be at most ${max.toLocaleString("en-US")}.`,
+      });
+    } else if (field.step === 1 && !Number.isInteger(num)) {
+      errors.push({ fieldId: field.id, message: "Enter a whole number." });
     }
   }
 
@@ -106,7 +131,9 @@ export function compute(
       continue;
     }
 
-    const num = typeof entry.value === "number" ? entry.value : Number(entry.value);
+    const raw = typeof entry.value === "string" ? entry.value.trim() : entry.value;
+    if (raw === "") continue;
+    const num = typeof raw === "number" ? raw : Number(raw);
     if (!Number.isFinite(num)) continue;
 
     inputs[field.id] =
