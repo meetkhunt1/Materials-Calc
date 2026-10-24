@@ -1,0 +1,118 @@
+# MaterialsCalc
+
+> Free construction material calculators, density charts, cost guides and coverage tables for asphalt, gravel, concrete, sand and more. Every calculator shows its formula, and every guide includes worked examples, reference tables and cited sources.
+
+All calculators are free, need no sign-up and work in imperial and metric units. Figures are US-based unless a page says otherwise.
+
+## Key reference values
+
+- Compacted hot-mix asphalt weighs about 145 lb/ft³ (2,322 kg/m³), so 1 cubic yard of compacted asphalt is about 1.96 US tons.
+- One ton of asphalt covers about 80 ft² at 2 in compacted thickness, 53 ft² at 3 in and 40 ft² at 4 in.
+- Asphalt tonnage = area (ft²) × thickness (ft) × 145 lb/ft³ ÷ 2,000.
+- One cubic yard of common gravel weighs about 1.42 US tons (2,800 lb) loose.
+- One cubic yard of concrete covers about 81 ft² at 4 in thick, 65 ft² at 5 in and 54 ft² at 6 in.
+- Normal-weight concrete is 2,300–2,400 kg/m³ (145–150 lb/ft³).
+
+## Concrete
+
+Volume, bags, slabs, footings, walls and columns, plus density charts, cost guides and mix ratios.
+
+- [Concrete calculators and guides](https://materialscalc.com/concrete/)
+- [Concrete Calculator](https://materialscalc.com/concrete/concrete-calculator/): volume, yards, bags, weight, ready-mix
+- [Concrete Slab Calculator](https://materialscalc.com/concrete/concrete-slab-calculator/): patio, driveway, garage floor, thickness, slab
+- [Concrete Footing Calculator](https://materialscalc.com/concrete/concrete-footing-calculator/): footing, foundation, strip, trench, frost depth
+- [Concrete Wall Calculator](https://materialscalc.com/concrete/concrete-wall-calculator/): wall, foundation wall, retaining, basement, formwork
+- [Concrete Column Calculator](https://materialscalc.com/concrete/concrete-column-calculator/): column, pier, sonotube, deck, post, round
+- [How to Calculate Concrete](https://materialscalc.com/concrete/how-to-calculate-concrete/): formula, method, takeoff, cubic yards, estimate
+- [Concrete Cost Guide](https://materialscalc.com/concrete/concrete-cost-guide/): price, cost per yard, ready-mix price, bags, fees
+- [Concrete Density Chart](https://materialscalc.com/concrete/concrete-density-chart/): density, unit weight, kg/m3, lb/ft3, kN/m3, lightweight
+- [Concrete Coverage Guide](https://materialscalc.com/concrete/concrete-coverage-guide/): coverage, square feet, yard covers, bag covers
+- [Concrete Mix Ratio Guide](https://materialscalc.com/concrete/concrete-mix-ratio-guide/): mix ratio, 1:2:4, M20, C15, C20, cement ratio, water cement ratio, batching
+- [Concrete Curing Guide](https://materialscalc.com/concrete/concrete-curing-guide/): curing, 28 days, strength, cure time, cold weather
+- [Concrete vs Asphalt](https://materialscalc.com/concrete/concrete-vs-asphalt/): comparison, driveway, asphalt, cost, lifespan
+
+## Asphalt
+
+Tonnage, driveway, weight, cost and volume calculators, with density charts, thickness guides and installed pricing.
+
+- [Asphalt calculators and guides](https://materialscalc.com/asphalt/)
+- [Asphalt Calculator](https://materialscalc.com/asphalt/asphalt-calculator/): tons, tonnage, hot mix, paving
+- [Asphalt Driveway Calculator](https://materialscalc.com/asphalt/asphalt-driveway-calculator/): driveway, tons, gravel base, paving
+- [Asphalt Weight Calculator](https://materialscalc.com/asphalt/asphalt-weight-calculator/): weight, tons, volume to tons, hauling
+- [Asphalt Cost Calculator](https://materialscalc.com/asphalt/asphalt-cost-calculator/): cost, price, budget, installed
+- [Asphalt Volume Calculator](https://materialscalc.com/asphalt/asphalt-volume-calculator/): volume, cubic yards, cubic feet
+- [How to Calculate Asphalt](https://materialscalc.com/asphalt/how-to-calculate-asphalt/): formula, method, takeoff, tons
+- [Asphalt Density Chart](https://materialscalc.com/asphalt/asphalt-density-chart/): density, unit weight, 145, kg/m3
+- [Asphalt Coverage Guide](https://materialscalc.com/asphalt/asphalt-coverage-guide/): coverage, ton covers, square feet
+- [Asphalt Cost Guide](https://materialscalc.com/asphalt/asphalt-cost-guide/): cost, price per ton, installed price
+- [Asphalt Thickness Guide](https://materialscalc.com/asphalt/asphalt-thickness-guide/): thickness, lifts, base course, surface
+- [Asphalt FAQs](https://materialscalc.com/asphalt/asphalt-faqs/): questions, answers, paving basics
+- [Standard Driveway Dimensions](https://materialscalc.com/asphalt/standard-driveway-dimensions/): width, length, single car, double
+- [Best Asphalt Thickness for Driveways](https://materialscalc.com/asphalt/best-asphalt-thickness-for-driveways/): thickness, 2 inch, 3 inch, driveway
+- [Driveway Installation Guide](https://materialscalc.com/asphalt/driveway-installation-guide/): install, excavation, base, paving steps
+- [Driveway Cost Guide](https://materialscalc.com/asphalt/driveway-cost-guide/): driveway cost, installed, per square foot
+- [Driveway Maintenance](https://materialscalc.com/asphalt/driveway-maintenance/): sealcoat, crack filling, maintenance schedule
+- [Driveway Lifespan](https://materialscalc.com/asphalt/driveway-lifespan/): lifespan, how long, 15 years, replacement
+- [Driveway FAQs](https://materialscalc.com/asphalt/driveway-faqs/): driveway questions, curing, sealing
+- [Asphalt Weight Chart](https://materialscalc.com/asphalt/asphalt-weight-chart/): weight chart, per yard, per foot
+- [Tons vs Cubic Yards](https://materialscalc.com/asphalt/tons-vs-cubic-yards/): tons, cubic yards, convert
+- [Weight Conversion Guide](https://materialscalc.com/asphalt/weight-conversion-guide/): tons, tonnes, pounds, kilograms
+- [Truck Load Capacity](https://materialscalc.com/asphalt/truck-load-capacity/): dump truck, payload, tandem, tri-axle
+- [Hot Mix vs Cold Mix Weight](https://materialscalc.com/asphalt/hot-mix-vs-cold-mix-weight/): hot mix, cold mix, density difference
+- [Asphalt Weight FAQs](https://materialscalc.com/asphalt/asphalt-weight-faqs/): weight questions, tonnage
+- [Asphalt Price Per Ton](https://materialscalc.com/asphalt/asphalt-price-per-ton/): price per ton, hot mix price, 2026
+- [Asphalt Cost Per Square Foot](https://materialscalc.com/asphalt/asphalt-cost-per-square-foot/): cost per square foot, installed
+- [Asphalt Labor Cost Guide](https://materialscalc.com/asphalt/asphalt-labor-cost-guide/): labor, crew, paving wages
+- [Asphalt Equipment Cost](https://materialscalc.com/asphalt/asphalt-equipment-cost/): paver, roller, equipment rental
+- [Asphalt Cost Saving Tips](https://materialscalc.com/asphalt/asphalt-cost-saving-tips/): save money, cheaper, tips
+- [Regional Asphalt Price Factors](https://materialscalc.com/asphalt/regional-asphalt-price-factors/): regional, by state, price factors
+- [Asphalt Cost FAQs](https://materialscalc.com/asphalt/asphalt-cost-faqs/): cost questions, budget
+- [Asphalt Cubic Yard Guide](https://materialscalc.com/asphalt/asphalt-cubic-yard-guide/): cubic yard, 27 cubic feet
+- [Asphalt Cubic Foot Guide](https://materialscalc.com/asphalt/asphalt-cubic-foot-guide/): cubic foot, small batch, patch
+- [Asphalt Volume Formula](https://materialscalc.com/asphalt/asphalt-volume-formula/): formula, length width depth
+- [Asphalt Measurement Guide](https://materialscalc.com/asphalt/asphalt-measurement-guide/): measure, irregular area, takeoff
+- [Asphalt Unit Conversion](https://materialscalc.com/asphalt/asphalt-unit-conversion/): convert, yards, meters, tons
+- [Asphalt Volume FAQs](https://materialscalc.com/asphalt/asphalt-volume-faqs/): volume questions
+
+## Gravel
+
+Gravel, pea gravel, crushed stone and driveway calculators, plus density, size, weight and coverage reference charts.
+
+- [Gravel calculators and guides](https://materialscalc.com/gravel/)
+- [Gravel Calculator](https://materialscalc.com/gravel/gravel-calculator/): tons, cubic yards, how much gravel
+- [Pea Gravel Calculator](https://materialscalc.com/gravel/pea-gravel-calculator/): pea gravel, bags, patio, path
+- [Crushed Stone Calculator](https://materialscalc.com/gravel/crushed-stone-calculator/): crushed stone, #57, crusher run
+- [Driveway Gravel Calculator](https://materialscalc.com/gravel/driveway-gravel-calculator/): driveway, layers, base, tons
+- [Gravel Cost Calculator](https://materialscalc.com/gravel/gravel-cost-calculator/): cost, price, budget, delivered
+- [How to Calculate Gravel](https://materialscalc.com/gravel/how-to-calculate-gravel/): formula, method, tons, yards
+- [Gravel Density Chart](https://materialscalc.com/gravel/gravel-density-chart/): density, unit weight, lb/ft3
+- [Gravel Coverage Guide](https://materialscalc.com/gravel/gravel-coverage-guide/): coverage, ton covers, square feet
+- [Gravel Weight Chart](https://materialscalc.com/gravel/gravel-weight-chart/): weight, per yard, per foot
+- [Gravel Volume Formula](https://materialscalc.com/gravel/gravel-volume-formula/): volume, formula, cubic yards
+- [Gravel Measurement Guide](https://materialscalc.com/gravel/gravel-measurement-guide/): measure, irregular, takeoff
+- [Gravel FAQ](https://materialscalc.com/gravel/gravel-faq/): questions, answers, basics
+- [What Is Pea Gravel?](https://materialscalc.com/gravel/what-is-pea-gravel/): pea gravel, rounded stone, uses
+- [Pea Gravel Sizes](https://materialscalc.com/gravel/pea-gravel-sizes/): sizes, 3/8 inch, grades
+- [Pea Gravel Cost](https://materialscalc.com/gravel/pea-gravel-cost/): cost, per ton, per bag
+- [Pea Gravel Coverage](https://materialscalc.com/gravel/pea-gravel-coverage/): coverage, depth, square feet
+- [Pea Gravel Landscaping Guide](https://materialscalc.com/gravel/pea-gravel-landscaping-guide/): landscaping, paths, xeriscape
+- [Pea Gravel Installation Guide](https://materialscalc.com/gravel/pea-gravel-installation-guide/): install, edging, base, fabric
+- [Pea Gravel FAQ](https://materialscalc.com/gravel/pea-gravel-faq/): pea gravel questions
+- [Crushed Stone Sizes](https://materialscalc.com/gravel/crushed-stone-sizes/): sizes, #57, #2, stone dust
+- [Crushed Stone Weight](https://materialscalc.com/gravel/crushed-stone-weight/): weight, loose, compacted
+- [Crushed Stone Cost](https://materialscalc.com/gravel/crushed-stone-cost/): cost, per ton, crusher run price
+- [Crushed Stone vs Gravel](https://materialscalc.com/gravel/crushed-stone-vs-gravel/): comparison, angular, rounded
+- [Crushed Stone Best Uses](https://materialscalc.com/gravel/crushed-stone-best-uses/): uses, drainage, base, french drain
+- [Crushed Stone Coverage Chart](https://materialscalc.com/gravel/crushed-stone-coverage-chart/): coverage, per ton, chart
+- [Driveway Gravel Depth](https://materialscalc.com/gravel/driveway-gravel-depth/): depth, how deep, layers
+- [Driveway Gravel Base Layers](https://materialscalc.com/gravel/driveway-gravel-base-layers/): base, layers, sub-base
+- [Best Gravel for Driveways](https://materialscalc.com/gravel/best-gravel-for-driveways/): best gravel, crusher run, types
+- [Gravel Driveway Cost](https://materialscalc.com/gravel/gravel-driveway-cost/): driveway cost, installed, per foot
+- [Gravel Driveway Installation](https://materialscalc.com/gravel/gravel-driveway-installation/): install, grading, geotextile, crown
+- [Gravel Price Guide](https://materialscalc.com/gravel/gravel-price-guide/): prices, 2026, by type
+- [Gravel Delivery Cost](https://materialscalc.com/gravel/gravel-delivery-cost/): delivery, fees, minimums
+- [Gravel Cost Per Ton](https://materialscalc.com/gravel/gravel-cost-per-ton/): cost per ton, compare quotes
+- [Gravel Cost Per Cubic Yard](https://materialscalc.com/gravel/gravel-cost-per-cubic-yard/): cost per yard, convert to tons
+- [Gravel Labor Cost](https://materialscalc.com/gravel/gravel-labor-cost/): labor, spreading, grading
+- [Gravel Density Database](https://materialscalc.com/gravel/gravel-density-database/): density database, all aggregates, unit weights
+- [Gravel Size Chart](https://materialscalc.com/gravel/gravel-size-chart/): size chart, aggregate sizes, #57
