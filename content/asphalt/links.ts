@@ -20,6 +20,7 @@ import {
   MapPin,
   PiggyBank,
   Pencil,
+  Recycle,
 } from "lucide-react";
 
 /**
@@ -35,6 +36,7 @@ export const ASPHALT = {
   weight: "/asphalt/asphalt-weight-calculator/",
   cost: "/asphalt/asphalt-cost-calculator/",
   volume: "/asphalt/asphalt-volume-calculator/",
+  millings: "/asphalt/asphalt-millings-calculator/",
   // Core set (Asphalt Calculator)
   howTo: "/asphalt/how-to-calculate-asphalt/",
   densityChart: "/asphalt/asphalt-density-chart/",
@@ -109,6 +111,13 @@ export const asphaltCalculatorLinks: RelatedArticle[] = [
     description: "Cubic yards, feet and meters from plan dimensions.",
     category: "Calculator",
     icon: Box,
+  },
+  {
+    title: "Asphalt Millings Calculator",
+    href: ASPHALT.millings,
+    description: "Tons and loose yards of recycled millings for driveways.",
+    category: "Calculator",
+    icon: Recycle,
   },
 ];
 

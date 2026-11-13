@@ -159,6 +159,18 @@ export default function GravelCalculatorPage() {
             ]}
             caption="3 in depth, common gravel (105 lb/ft³), 10% waste included. Cost uses the $15–30/ton crusher-run-equivalent range from our gravel price guide; exact pricing varies by material type."
           />
+          <TipBlock title="Ordering pea gravel or #57 stone?">
+            These figures are for common gravel. Pea gravel is about 9% lighter per yard and is
+            often bought in bags, so use the{" "}
+            <a href={GRAVEL.pea} className="font-medium text-primary hover:underline">
+              pea gravel calculator
+            </a>{" "}
+            for bag counts and patio depths. For angular base stone, the{" "}
+            <a href={GRAVEL.crushed} className="font-medium text-primary hover:underline">
+              crushed stone calculator
+            </a>{" "}
+            handles #57 and crusher run.
+          </TipBlock>
         </Section>
 
         <Section title="How do you calculate tons of gravel?">

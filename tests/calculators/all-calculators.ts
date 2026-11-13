@@ -4,6 +4,7 @@ import { costCalculator } from "@/content/asphalt/calculators/cost";
 import { drivewayCalculator } from "@/content/asphalt/calculators/driveway";
 import { volumeCalculator } from "@/content/asphalt/calculators/volume";
 import { weightCalculator } from "@/content/asphalt/calculators/weight";
+import { millingsCalculator } from "@/content/asphalt/calculators/millings";
 import { slabCalculatorTemplate } from "@/content/concrete/calculators/_template";
 import { columnCalculator } from "@/content/concrete/calculators/column";
 import { footingCalculator } from "@/content/concrete/calculators/footing";
@@ -24,6 +25,7 @@ export const ALL_CALCULATORS: CalculatorDefinition[] = [
   drivewayCalculator,
   volumeCalculator,
   weightCalculator,
+  millingsCalculator,
   slabCalculatorTemplate,
   columnCalculator,
   footingCalculator,
@@ -48,6 +50,7 @@ export const VALID_INPUTS: Record<string, Record<string, number | string | [numb
   "asphalt-driveway-calculator": { length: [30, "ft"], width: [12, "ft"] },
   "asphalt-volume-calculator": { length: [60, "ft"], width: [20, "ft"], depth: [4, "in"] },
   "asphalt-weight-calculator": { volume: [10, "yd3"] },
+  "asphalt-millings-calculator": { length: [50, "ft"], width: [12, "ft"], depth: [4, "in"], pricePerTon: 20 },
   "concrete-slab-template": { length: [12, "ft"], width: [10, "ft"], thickness: [4, "in"] },
   "concrete-column-calculator": { size: [12, "in"], height: [4, "ft"] },
   "concrete-footing-calculator": {},

@@ -163,6 +163,14 @@ export default function AsphaltCalculatorPage() {
             ]}
             caption="3 in compacted depth, hot mix asphalt (145 lb/ft³), 10% waste included. Cost uses the $100–150/ton material range from our driveway cost guide; installed price (with labor and base) runs higher."
           />
+          <p className="text-muted-foreground">
+            Using recycled asphalt instead of hot mix? Millings are lighter (122 lb/ft³ rolled,
+            103 lb/ft³ loose) and are sold loose, so use the{" "}
+            <a href={ASPHALT.millings} className="font-medium text-primary hover:underline">
+              asphalt millings calculator
+            </a>{" "}
+            for tons and loose yards.
+          </p>
         </Section>
 
         <Section title="How do you calculate tons of asphalt?">
@@ -268,7 +276,7 @@ export default function AsphaltCalculatorPage() {
         <RelatedArticles
           title="More asphalt calculators"
           variant="inline-strip"
-          items={pickLinks(asphaltCalculatorLinks, ASPHALT.driveway, ASPHALT.weight, ASPHALT.cost, ASPHALT.volume)}
+          items={pickLinks(asphaltCalculatorLinks, ASPHALT.driveway, ASPHALT.millings, ASPHALT.weight, ASPHALT.cost, ASPHALT.volume)}
         />
 
         <RelatedArticles

@@ -1,4 +1,4 @@
-import { Square, Ruler, Calculator, Circle, Car } from "lucide-react";
+import { Square, Calculator, Circle, Car } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Hero } from "@/components/blocks/hero";
 import { CategoryNav } from "@/components/layout/category-nav";
@@ -25,18 +25,18 @@ export const metadata = buildMetadata({
 /** Highest-search-volume calculators, linked directly from the homepage (the site's highest-authority page). */
 const popularCalculators: RelatedArticle[] = [
   {
+    title: "Concrete Calculator",
+    href: CONCRETE.calculator,
+    description: "Cubic yards, bags and weight for slabs, columns and footings",
+    category: "Concrete",
+    icon: Calculator,
+  },
+  {
     title: "Concrete Slab Calculator",
     href: CONCRETE.slab,
     description: "Patios, sheds, garages and walkways",
     category: "Concrete",
     icon: Square,
-  },
-  {
-    title: "Concrete Footing Calculator",
-    href: CONCRETE.footing,
-    description: "Strip footings & trenches by run length",
-    category: "Concrete",
-    icon: Ruler,
   },
   {
     title: "Gravel Calculator",

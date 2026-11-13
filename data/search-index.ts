@@ -91,6 +91,7 @@ export const searchIndex: SearchEntry[] = [
   { title: "Asphalt Weight Calculator", href: "/asphalt/asphalt-weight-calculator/", category: "Asphalt", keywords: ["weight", "tons", "volume to tons", "hauling"] },
   { title: "Asphalt Cost Calculator", href: "/asphalt/asphalt-cost-calculator/", category: "Asphalt", keywords: ["cost", "price", "budget", "installed"] },
   { title: "Asphalt Volume Calculator", href: "/asphalt/asphalt-volume-calculator/", category: "Asphalt", keywords: ["volume", "cubic yards", "cubic feet"] },
+  { title: "Asphalt Millings Calculator", href: "/asphalt/asphalt-millings-calculator/", category: "Asphalt", keywords: ["millings", "recycled asphalt", "RAP", "crushed asphalt", "driveway"] },
   // Asphalt: core guides
   { title: "How to Calculate Asphalt", href: "/asphalt/how-to-calculate-asphalt/", category: "Asphalt", keywords: ["formula", "method", "takeoff", "tons"] },
   { title: "Asphalt Density Chart", href: "/asphalt/asphalt-density-chart/", category: "Asphalt", keywords: ["density", "unit weight", "145", "kg/m3"] },

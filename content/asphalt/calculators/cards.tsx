@@ -10,6 +10,7 @@ import { drivewayCalculator } from "./driveway";
 import { weightCalculator } from "./weight";
 import { costCalculator } from "./cost";
 import { volumeCalculator } from "./volume";
+import { millingsCalculator } from "./millings";
 
 export function AsphaltCalculatorCard() {
   return <CalculatorCard definition={asphaltCalculator} />;
@@ -29,4 +30,8 @@ export function CostCalculatorCard() {
 
 export function VolumeCalculatorCard() {
   return <CalculatorCard definition={volumeCalculator} />;
+}
+
+export function MillingsCalculatorCard() {
+  return <CalculatorCard definition={millingsCalculator} />;
 }

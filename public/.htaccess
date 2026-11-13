@@ -21,6 +21,11 @@ RedirectMatch 404 /\.git
 # No directory listings
 Options -Indexes
 
+# Declare UTF-8 on text responses (llms.txt, robots.txt and sitemap.xml contain
+# ×, ³ and en dashes; without a charset non-browser clients guess Latin-1)
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .txt .xml .json .css .js
+
 # Security headers
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
@@ -68,6 +73,13 @@ RewriteRule ^asphalt/asphalt-density-explained/?$ https://materialscalc.com/asph
 RewriteRule ^asphalt/asphalt-density-and-volume/?$ https://materialscalc.com/asphalt/asphalt-density-chart/ [R=301,L]
 RewriteRule ^asphalt/asphalt-vs-concrete/?$ https://materialscalc.com/concrete/concrete-vs-asphalt/ [R=301,L]
 
+# ── /index.html duplicates: 301 to the directory URL ──
+# Static export writes every page as <dir>/index.html, so /x/index.html would
+# otherwise serve a 200 duplicate of /x/. THE_REQUEST check avoids loops with
+# DirectoryIndex's internal rewrite.
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://materialscalc.com/$1 [R=301,L,NC]
+
 # ── Missing trailing slash: add it AND canonicalize host/scheme in one hop ──
 # Without this Apache's DirectorySlash adds the slash in a separate redirect
 # (http://www.…/page → https://www.…/page → …/page/ chains).
@@ -93,4 +105,10 @@ RewriteRule ^ https://materialscalc.com%{REQUEST_URI} [R=301,L]
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType text/javascript "access plus 1 year"
+</IfModule>
+
+# Next.js build assets are content-hashed: cache forever, never revalidate.
+<IfModule mod_headers.c>
+  SetEnvIf Request_URI "^/_next/static/" NEXT_STATIC
+  Header set Cache-Control "public, max-age=31536000, immutable" env=NEXT_STATIC
 </IfModule>

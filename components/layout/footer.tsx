@@ -14,13 +14,19 @@ const legalLinks = [
   { label: "Terms of Use", href: "/terms/" },
 ];
 
-/** Direct links to the highest-search-volume calculators: footer appears on every page. */
+/**
+ * Direct links to the highest-search-volume calculators: the footer appears on
+ * every page, so these get the strongest internal-link signal on the site.
+ * The general concrete and asphalt calculators target the biggest head terms
+ * and must stay in this list.
+ */
 const popularCalculatorLinks = [
+  { label: "Concrete Calculator", href: CONCRETE.calculator },
   { label: "Concrete Slab Calculator", href: CONCRETE.slab },
-  { label: "Concrete Footing Calculator", href: CONCRETE.footing },
+  { label: "Asphalt Calculator", href: ASPHALT.calculator },
+  { label: "Asphalt Driveway Calculator", href: ASPHALT.driveway },
   { label: "Gravel Calculator", href: GRAVEL.calculator },
   { label: "Pea Gravel Calculator", href: GRAVEL.pea },
-  { label: "Asphalt Driveway Calculator", href: ASPHALT.driveway },
 ];
 
 export function Footer() {

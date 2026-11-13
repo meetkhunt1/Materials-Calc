@@ -36,14 +36,8 @@ export function websiteSchema(): Schema {
     name: siteConfig.name,
     url: canonicalUrl("/"),
     publisher: { "@id": canonicalUrl("/#organization") },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${canonicalUrl("/search")}?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    // No SearchAction: Google retired the sitelinks search box (Nov 2024) and
+    // /search/ is disallowed in robots.txt, so the markup earned nothing.
   };
 }
 

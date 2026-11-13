@@ -9,9 +9,8 @@ const title = "Search";
 const description = "Search calculators and guides across MaterialsCalc.";
 const path = "/search";
 
-// Internal search results are not useful indexed on its own; kept out of the
-// sitemap and search index. Exists so Google's Sitelinks SearchBox has a
-// real, working target (see websiteSchema's potentialAction).
+// Internal search results are not useful indexed on their own; kept out of the
+// sitemap and search index. Serves the header search's "see all results" view.
 export const metadata = buildMetadata({ title, description, path, noIndex: true });
 
 export default function SearchPage() {

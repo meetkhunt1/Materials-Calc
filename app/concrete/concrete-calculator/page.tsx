@@ -137,21 +137,64 @@ export default function ConcreteCalculatorPage() {
           formula="Order (yd³) = (L × W × D ÷ 27) × (1 + waste)"
         />
 
-        <Section title="Concrete for common project sizes">
+        <Section title="Which concrete calculator should you use?">
           <p className="text-muted-foreground">
-            Small residential pours need 1.5–3 cubic yards; a 6-inch two-car garage floor needs
-            8 or more.
+            This calculator handles any rectangular pour, round column or strip footing, and
+            reports bag counts for every bag size. Switch to a shape-specific tool when the job
+            has details a single rectangle can&apos;t describe.
           </p>
           <QuickSizeTable
-            headers={["Project size", "Order (yd³)", "80 lb bags", "Est. material cost"]}
+            headers={["Your pour", "Best tool", "What it adds"]}
             rows={[
-              ["10×10 ft, 4 in", "1.50 yd³", "62", "$225–270"],
-              ["12×12 ft, 4 in", "2.00 yd³", "88", "$300–360"],
-              ["20×20 ft, 6 in", "8.25 yd³", "Ready-mix recommended", "$1,238–1,485"],
-              ["4×50 ft, 4 in", "2.75 yd³", "123", "$413–495"],
+              ["Any rectangle, column or footing", "This calculator", "Yards, m³, 40/60/80 lb bags, weight"],
+              ["Patio, shed base, garage floor", "Slab calculator", "Thickened edges, slab-specific presets"],
+              ["Continuous foundation footing", "Footing calculator", "Total run, width and frost depth"],
+              ["Foundation or retaining wall", "Wall calculator", "Openings for doors and windows"],
+              ["Deck piers, sonotubes", "Column calculator", "Tube diameters and pier counts"],
             ]}
-            caption="10% waste included. Bag counts use 80 lb bags (0.60 ft³ yield). Cost uses the $150–180/yd³ delivered ready-mix range from our concrete cost guide; confirm with your local plant."
+            caption="All five tools use the same 2,400 kg/m³ (150 lb/ft³) density and the same bag yields, so their results agree."
           />
+          <p className="text-muted-foreground">
+            Jump straight to the{" "}
+            <a href={CONCRETE.slab} className="font-medium text-primary hover:underline">
+              slab
+            </a>
+            ,{" "}
+            <a href={CONCRETE.footing} className="font-medium text-primary hover:underline">
+              footing
+            </a>
+            ,{" "}
+            <a href={CONCRETE.wall} className="font-medium text-primary hover:underline">
+              wall
+            </a>{" "}
+            or{" "}
+            <a href={CONCRETE.column} className="font-medium text-primary hover:underline">
+              column
+            </a>{" "}
+            calculator.
+          </p>
+        </Section>
+
+        <Section
+          title="How many bags of concrete do I need?"
+          lead="Bag counts for a 4-inch slab by area, for all three common bag sizes."
+        >
+          <QuickSizeTable
+            headers={["Area at 4 in", "Concrete (yd³)", "80 lb bags", "60 lb bags", "40 lb bags"]}
+            rows={[
+              ["10 ft²", "0.14", "7", "9", "13"],
+              ["25 ft²", "0.34", "16", "21", "31"],
+              ["50 ft²", "0.68", "31", "41", "62"],
+              ["100 ft²", "1.36", "62", "82", "123"],
+              ["200 ft²", "2.72", "123", "163", "245"],
+            ]}
+            caption="10% waste included, rounded up to whole bags. Yields per manufacturer data: 80 lb = 0.60 ft³, 60 lb = 0.45 ft³, 40 lb = 0.30 ft³."
+          />
+          <TipBlock title="Bags or ready-mix?">
+            Past about 1 yd³ (45 bags of 80 lb mix), ready-mix usually costs less once you count
+            mixer rental and labor, and a single truck pour avoids cold joints between batches.
+            Below half a yard, bags win because most plants add a short-load fee.
+          </TipBlock>
         </Section>
 
         <Section
