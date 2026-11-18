@@ -44,7 +44,7 @@ RewriteEngine On
 # (a) Query-string spam served off "/" as HTTP 200 (the largest ghost group
 #     in GSC — e.g. /?products/detail/233526373, /?category/0/1/..., /?userguide).
 #     RewriteRule matches only the path, so these MUST be caught on QUERY_STRING.
-RewriteCond %{QUERY_STRING} (^|&)?(products/|category/|userguide|detail/) [NC,OR]
+RewriteCond %{QUERY_STRING} (^|&)?(products/|category/|userguide|detail/|grp/) [NC,OR]
 RewriteCond %{QUERY_STRING} (SPC=|SGC=|CPPR=|SFL_DF=) [NC]
 RewriteRule ^ - [G]
 
